@@ -10,6 +10,12 @@ const routes = {
     '#contact':  ContactView,
 };
 
+// Cada vista puede tener una función que se ejecuta
+// DESPUÉS de que su HTML esté en el DOM
+const inits = {
+    '#contact': initContact,
+};
+
 function router() {
     // Lee lo que hay después del # en la URL
     // Si no hay nada, usamos #home por defecto
@@ -22,6 +28,8 @@ function router() {
     const app = document.getElementById('app');
     if (view) {
         app.innerHTML = view();
+        // Si esta ruta tiene init, la ejecutamos ahora que el HTML ya existe
+        if (inits[hash]) inits[hash]();
     } else {
         app.innerHTML = '<p class="p-8 text-gray-400">Página no encontrada</p>';
     }
