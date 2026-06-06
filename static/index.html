@@ -10,6 +10,9 @@
 </head>
 <body class="bg-gray-900 text-white min-h-screen">
 
+    <!-- Canvas del fondo estrellado: fixed lo pone fijo detrás de todo -->
+    <canvas id="stars" class="fixed inset-0 -z-10"></canvas>
+
     <!-- NAVBAR: siempre visible, nunca cambia -->
     <nav class="flex gap-6 p-6 border-b border-gray-700">
         <a href="#home"     class="hover:text-blue-400 transition-colors">Inicio</a>
@@ -26,6 +29,7 @@
     </main>
 
     <!-- Los scripts van al final, en este orden -->
+    <script src="/js/stars.js"></script>
     <script src="/js/views/home.js"></script>
     <script src="/js/views/about.js"></script>
     <script src="/js/views/services.js"></script>
