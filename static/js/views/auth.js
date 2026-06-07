@@ -207,6 +207,7 @@ async function handleRegister() {
 // Actualiza el navbar según si hay sesión activa o no
 function updateNavAuth(session) {
     const navAuth = document.getElementById('nav-auth');
+    const mobileNavAuth = document.getElementById('mobile-nav-auth');
     if (!navAuth) return;
 
     if (session && session.user) {
@@ -221,7 +222,8 @@ function updateNavAuth(session) {
                 </button>
             </div>
         `;
-        document.getElementById('logout-btn').addEventListener('click', handleLogout);
+        document.getElementById('mobile-logout-btn').addEventListener('click', handleLogout);
+
     } else {
         // Sin sesión: muestra el botón de iniciar sesión
         navAuth.innerHTML = `
@@ -231,6 +233,13 @@ function updateNavAuth(session) {
                 Iniciar sesión
             </a>
         `;
+             if (mobileNavAuth) {
+            mobileNavAuth.innerHTML = `
+                <a href="#auth" class="mobile-link px-4 py-2 border border-indigo-500 rounded-full text-indigo-400 text-sm hover:bg-indigo-500/10 transition-colors w-fit">
+                    Iniciar sesión
+                </a>
+            `;
+        }
     }
 }
 

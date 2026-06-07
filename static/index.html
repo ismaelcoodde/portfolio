@@ -14,21 +14,38 @@
     <canvas id="stars" class="fixed inset-0 -z-10"></canvas>
 
     <!-- NAVBAR: siempre visible, nunca cambia -->
-<nav class="flex items-center justify-between p-6 border-b border-white/10">
+<nav class="flex items-center justify-between p-4 md:p-6 border-b border-white/10 relative z-50">
 
-    <div class="flex gap-6">
-        <a href="#home"     class="hover:text-indigo-400 transition-colors">Inicio</a>
-        <a href="#chat"     class="hover:text-indigo-400 transition-colors">Chat</a>
-        <a href="#contact"  class="hover:text-indigo-400 transition-colors">Contacto</a>
+    <!-- Links visibles solo en pantallas medianas o más grandes -->
+    <div class="hidden md:flex gap-6">
+        <a href="#home"    class="hover:text-indigo-400 transition-colors">Inicio</a>
+        <a href="#chat"    class="hover:text-indigo-400 transition-colors">Chat</a>
+        <a href="#contact" class="hover:text-indigo-400 transition-colors">Contacto</a>
     </div>
 
-    <!-- Este div se actualizará dinámicamente según si hay sesión o no -->
-    <div id="nav-auth">
-        <a href="#auth"
-           class="px-4 py-2 border border-indigo-500 rounded-full text-indigo-400
-                  text-sm hover:bg-indigo-500/10 transition-colors">
+    <!-- Solo en móvil: nombre del sitio -->
+    <span class="md:hidden font-bold text-white">Ismael Cruz</span>
+
+    <!-- Solo en móvil: botón hamburguesa -->
+    <button id="hamburger-btn" class="md:hidden flex flex-col justify-center gap-1.5 w-8 h-8 focus:outline-none">
+        <span class="w-6 h-0.5 bg-white rounded transition-all duration-300"></span>
+        <span class="w-6 h-0.5 bg-white rounded transition-all duration-300"></span>
+        <span class="w-6 h-0.5 bg-white rounded transition-all duration-300"></span>
+    </button>
+
+    <!-- Auth: visible solo en desktop -->
+    <div id="nav-auth" class="hidden md:block">
+        <a href="#auth" class="px-4 py-2 border border-indigo-500 rounded-full text-indigo-400 text-sm hover:bg-indigo-500/10 transition-colors">
             Iniciar sesión
         </a>
+    </div>
+
+    <!-- Menú desplegable móvil (oculto por defecto) -->
+    <div id="mobile-menu" class="hidden absolute top-full left-0 right-0 bg-[#06060f] border-b border-white/10 p-6 flex flex-col gap-5">
+        <a href="#home"    class="mobile-link text-lg hover:text-indigo-400 transition-colors">Inicio</a>
+        <a href="#chat"    class="mobile-link text-lg hover:text-indigo-400 transition-colors">Chat</a>
+        <a href="#contact" class="mobile-link text-lg hover:text-indigo-400 transition-colors">Contacto</a>
+        <div id="mobile-nav-auth"></div>
     </div>
 
 </nav>
