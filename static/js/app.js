@@ -8,4 +8,14 @@ window.addEventListener('load', function() {
     }
     // Arranca el router para mostrar la vista correcta
     router();
+
+        // Comprueba si ya hay una sesión activa al cargar la página
+    const { data: { session } } = await supabaseClient.auth.getSession();
+    updateNavAuth(session);
+
+    // Escucha cualquier cambio de sesión (login, logout, expiración)
+    // y actualiza el navbar automáticamente
+    supabaseClient.auth.onAuthStateChange((event, session) => {
+        updateNavAuth(session);
+    });
 });

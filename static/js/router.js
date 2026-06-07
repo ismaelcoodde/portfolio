@@ -8,12 +8,14 @@ const routes = {
     '#services': ServicesView,
     '#gallery':  GalleryView,
     '#contact':  ContactView,
+    '#auth':     AuthView,
 };
 
 // Cada vista puede tener una función que se ejecuta
 // DESPUÉS de que su HTML esté en el DOM
 const inits = {
     '#contact': initContact,
+    '#auth':    initAuth,
 };
 
 function router() {
