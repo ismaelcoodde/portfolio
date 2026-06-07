@@ -7,11 +7,11 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-950 text-white min-h-screen">
-
+ 
     <canvas id="stars" class="fixed inset-0 -z-10"></canvas>
-
+ 
     <nav class="flex items-center justify-between p-4 md:p-6 border-b border-white/10 relative z-50">
-
+ 
         <!-- Izquierda: links en desktop / nombre en móvil -->
         <div class="hidden md:flex gap-6">
             <a href="#home"    class="hover:text-indigo-400 transition-colors">Inicio</a>
@@ -19,39 +19,48 @@
             <a href="#contact" class="hover:text-indigo-400 transition-colors">Contacto</a>
         </div>
         <span class="md:hidden font-bold text-white">Ismael Cruz</span>
-
-        <!-- Derecha: auth (siempre visible) + hamburguesa (solo móvil) -->
+ 
+        <!-- Derecha: auth + hamburguesa -->
         <div class="flex items-center gap-3">
-
-            <!-- Auth: siempre visible en mobile y desktop -->
-            <div id="nav-auth">
-                <a href="#auth" class="px-3 md:px-4 py-1.5 md:py-2 border border-indigo-500 rounded-full text-indigo-400 text-xs md:text-sm hover:bg-indigo-500/10 transition-colors whitespace-nowrap">
+ 
+            <!-- Desktop: email + Salir (o Iniciar sesión) -->
+            <div id="nav-auth" class="hidden md:block">
+                <a href="#auth" class="px-4 py-2 border border-indigo-500 rounded-full text-indigo-400 text-sm hover:bg-indigo-500/10 transition-colors">
                     Iniciar sesión
                 </a>
             </div>
-
+ 
+            <!-- Móvil: avatar con inicial (solo cuando hay sesión) -->
+            <div id="nav-auth-mobile" class="md:hidden"></div>
+ 
             <!-- Hamburguesa: solo en móvil -->
             <button id="hamburger-btn" class="md:hidden flex flex-col justify-center gap-1.5 w-8 h-8 focus:outline-none">
                 <span class="w-6 h-0.5 bg-white rounded transition-all duration-300"></span>
                 <span class="w-6 h-0.5 bg-white rounded transition-all duration-300"></span>
                 <span class="w-6 h-0.5 bg-white rounded transition-all duration-300"></span>
             </button>
-
+ 
         </div>
-
-        <!-- Menú desplegable móvil: solo links de navegación -->
+ 
+        <!-- Menú desplegable móvil -->
         <div id="mobile-menu" class="hidden absolute top-full left-0 right-0 bg-[#06060f] border-b border-white/10 p-6 flex flex-col gap-5">
             <a href="#home"    class="mobile-link text-lg hover:text-indigo-400 transition-colors">Inicio</a>
             <a href="#chat"    class="mobile-link text-lg hover:text-indigo-400 transition-colors">Chat</a>
             <a href="#contact" class="mobile-link text-lg hover:text-indigo-400 transition-colors">Contacto</a>
+            <!-- Auth en el menú móvil: se actualiza dinámicamente -->
+            <div id="mobile-menu-auth" class="pt-4 border-t border-white/10">
+                <a href="#auth" class="mobile-link text-lg hover:text-indigo-400 transition-colors">
+                    Iniciar sesión
+                </a>
+            </div>
         </div>
-
+ 
     </nav>
-
+ 
     <main id="app" class="p-8">
         Cargando...
     </main>
-
+ 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="/js/supabase-client.js"></script>
     <script src="/js/stars.js"></script>
@@ -61,6 +70,6 @@
     <script src="/js/views/chat.js"></script>
     <script src="/js/router.js"></script>
     <script src="/js/app.js"></script>
-
+ 
 </body>
 </html>

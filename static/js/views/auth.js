@@ -206,31 +206,77 @@ async function handleRegister() {
 
 // Actualiza el navbar según si hay sesión activa o no
 function updateNavAuth(session) {
-    const navAuth = document.getElementById('nav-auth');
-    if (!navAuth) return;
+    const desktopAuth  = document.getElementById('nav-auth');
+    const mobileAvatar = document.getElementById('nav-auth-mobile');
+    const menuAuth     = document.getElementById('mobile-menu-auth');
 
     if (session && session.user) {
-        navAuth.innerHTML = `
-            <div class="flex items-center gap-2 md:gap-3">
-                <span class="text-slate-400 text-xs md:text-sm max-w-[90px] md:max-w-none truncate">
-                    ${session.user.email}
-                </span>
-                <button id="logout-btn"
-                    class="px-3 md:px-4 py-1.5 md:py-2 border border-red-500/50 rounded-full
-                           text-red-400 text-xs md:text-sm hover:bg-red-500/10 transition-colors whitespace-nowrap">
-                    Salir
-                </button>
-            </div>
-        `;
-        document.getElementById('logout-btn').addEventListener('click', handleLogout);
+        const email   = session.user.email;
+        const initial = email[0].toUpperCase();
+
+        // Desktop: email completo + botón Salir
+        if (desktopAuth) {
+            desktopAuth.innerHTML = `
+                <div class="flex items-center gap-3">
+                    <span class="text-slate-400 text-sm">${email}</span>
+                    <button id="logout-btn"
+                        class="px-4 py-2 border border-red-500/50 rounded-full text-red-400
+                               text-sm hover:bg-red-500/10 transition-colors">
+                        Salir
+                    </button>
+                </div>
+            `;
+            document.getElementById('logout-btn').addEventListener('click', handleLogout);
+        }
+
+        // Móvil: círculo con la inicial del email
+        if (mobileAvatar) {
+            mobileAvatar.innerHTML = `
+                <div class="w-8 h-8 rounded-full bg-indigo-600 flex items-center
+                            justify-center text-white text-sm font-bold select-none">
+                    ${initial}
+                </div>
+            `;
+        }
+
+        // Menú móvil: email + botón Salir
+        if (menuAuth) {
+            menuAuth.innerHTML = `
+                <div class="flex flex-col gap-3">
+                    <span class="text-slate-500 text-sm">${email}</span>
+                    <button id="menu-logout-btn"
+                        class="px-4 py-2 border border-red-500/50 rounded-full text-red-400
+                               text-sm hover:bg-red-500/10 transition-colors w-fit">
+                        Cerrar sesión
+                    </button>
+                </div>
+            `;
+            document.getElementById('menu-logout-btn').addEventListener('click', handleLogout);
+        }
+
     } else {
-        navAuth.innerHTML = `
-            <a href="#auth"
-               class="px-3 md:px-4 py-1.5 md:py-2 border border-indigo-500 rounded-full
-                      text-indigo-400 text-xs md:text-sm hover:bg-indigo-500/10 transition-colors whitespace-nowrap">
-                Iniciar sesión
-            </a>
-        `;
+        // Sin sesión: Iniciar sesión en desktop
+        if (desktopAuth) {
+            desktopAuth.innerHTML = `
+                <a href="#auth"
+                   class="px-4 py-2 border border-indigo-500 rounded-full text-indigo-400
+                          text-sm hover:bg-indigo-500/10 transition-colors">
+                    Iniciar sesión
+                </a>
+            `;
+        }
+
+        // Sin sesión: nada en el avatar móvil
+        if (mobileAvatar) mobileAvatar.innerHTML = '';
+
+        // Sin sesión: Iniciar sesión en el menú móvil
+        if (menuAuth) {
+            menuAuth.innerHTML = `
+                <a href="#auth" class="mobile-link text-lg hover:text-indigo-400 transition-colors">
+                    Iniciar sesión
+                </a>
+            `;
+        }
     }
 }
 

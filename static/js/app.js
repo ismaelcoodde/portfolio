@@ -30,11 +30,11 @@ if (hamburgerBtn) {
         mobileMenu.classList.toggle('hidden');
     });
 
-    // Cierra el menú al hacer clic en un enlace
-    document.querySelectorAll('.mobile-link').forEach(link => {
-        link.addEventListener('click', () => {
+    // Cierra el menú al hacer clic en cualquier enlace dentro de él
+    mobileMenu.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A' || e.target.closest('a')) {
             mobileMenu.classList.add('hidden');
-        });
+        }
     });
 }
 });
