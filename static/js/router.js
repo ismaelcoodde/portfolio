@@ -5,8 +5,6 @@
 const routes = {
     '#home':     HomeView,
     '#about':    AboutView,
-    '#services': ServicesView,
-    '#gallery':  GalleryView,
     '#contact':  ContactView,
     '#auth':     AuthView,
 };
