@@ -1,21 +1,23 @@
-// app.js
-// El punto de arranque: se ejecuta cuando la página termina de cargar
-
 window.addEventListener('load', function() {
-    // Si entras a la web sin # en la URL, te manda a #home
-    if (!window.location.hash) {
-        window.location.hash = '#home';
+
+    const hasOAuthRedirect = window.location.hash.includes('access_token');
+
+    // Si NO viene de OAuth, carga la vista normal
+    if (!hasOAuthRedirect) {
+        if (!window.location.hash) window.location.hash = '#home';
+        router();
     }
-    // Arranca el router para mostrar la vista correcta
-    router();
 
-        // Comprueba si ya hay una sesión activa al cargar la página
-    const { data: { session } } = await supabaseClient.auth.getSession();
-    updateNavAuth(session);
-
-    // Escucha cualquier cambio de sesión (login, logout, expiración)
-    // y actualiza el navbar automáticamente
+    // onAuthStateChange escucha TODOS los cambios de sesión
+    // Se configura siempre, independientemente de si hay redirect OAuth o no
     supabaseClient.auth.onAuthStateChange((event, session) => {
         updateNavAuth(session);
+
+        // Cuando Supabase termina de procesar el token de Google,
+        // navega a home y carga la vista
+        if (event === 'SIGNED_IN' && hasOAuthRedirect) {
+            window.location.hash = '#home';
+            router();
+        }
     });
 });
