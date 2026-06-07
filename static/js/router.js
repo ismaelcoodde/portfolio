@@ -4,9 +4,9 @@
 // El mapa de rutas: qué función llamar según el # de la URL
 const routes = {
     '#home':     HomeView,
-    '#about':    AboutView,
     '#contact':  ContactView,
     '#auth':     AuthView,
+    '#chat': ChatView,
 };
 
 // Cada vista puede tener una función que se ejecuta
@@ -14,6 +14,7 @@ const routes = {
 const inits = {
     '#contact': initContact,
     '#auth':    initAuth,
+    '#chat': initChat,
 };
 
 function router() {
