@@ -4,61 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Portfolio</title>
-
-    <!-- Tailwind CSS: lo cargamos directamente desde internet, sin instalación -->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-950 text-white min-h-screen">
 
-    <!-- Canvas del fondo estrellado: fixed lo pone fijo detrás de todo -->
     <canvas id="stars" class="fixed inset-0 -z-10"></canvas>
 
-    <!-- NAVBAR: siempre visible, nunca cambia -->
-<nav class="flex items-center justify-between p-4 md:p-6 border-b border-white/10 relative z-50">
+    <nav class="flex items-center justify-between p-4 md:p-6 border-b border-white/10 relative z-50">
 
-    <!-- Links visibles solo en pantallas medianas o más grandes -->
-    <div class="hidden md:flex gap-6">
-        <a href="#home"    class="hover:text-indigo-400 transition-colors">Inicio</a>
-        <a href="#chat"    class="hover:text-indigo-400 transition-colors">Chat</a>
-        <a href="#contact" class="hover:text-indigo-400 transition-colors">Contacto</a>
-    </div>
+        <!-- Izquierda: links en desktop / nombre en móvil -->
+        <div class="hidden md:flex gap-6">
+            <a href="#home"    class="hover:text-indigo-400 transition-colors">Inicio</a>
+            <a href="#chat"    class="hover:text-indigo-400 transition-colors">Chat</a>
+            <a href="#contact" class="hover:text-indigo-400 transition-colors">Contacto</a>
+        </div>
+        <span class="md:hidden font-bold text-white">Ismael Cruz</span>
 
-    <!-- Solo en móvil: nombre del sitio -->
-    <span class="md:hidden font-bold text-white">Ismael Cruz</span>
+        <!-- Derecha: auth (siempre visible) + hamburguesa (solo móvil) -->
+        <div class="flex items-center gap-3">
 
-    <!-- Solo en móvil: botón hamburguesa -->
-    <button id="hamburger-btn" class="md:hidden flex flex-col justify-center gap-1.5 w-8 h-8 focus:outline-none">
-        <span class="w-6 h-0.5 bg-white rounded transition-all duration-300"></span>
-        <span class="w-6 h-0.5 bg-white rounded transition-all duration-300"></span>
-        <span class="w-6 h-0.5 bg-white rounded transition-all duration-300"></span>
-    </button>
+            <!-- Auth: siempre visible en mobile y desktop -->
+            <div id="nav-auth">
+                <a href="#auth" class="px-3 md:px-4 py-1.5 md:py-2 border border-indigo-500 rounded-full text-indigo-400 text-xs md:text-sm hover:bg-indigo-500/10 transition-colors whitespace-nowrap">
+                    Iniciar sesión
+                </a>
+            </div>
 
-    <!-- Auth: visible solo en desktop -->
-    <div id="nav-auth" class="hidden md:block">
-        <a href="#auth" class="px-4 py-2 border border-indigo-500 rounded-full text-indigo-400 text-sm hover:bg-indigo-500/10 transition-colors">
-            Iniciar sesión
-        </a>
-    </div>
+            <!-- Hamburguesa: solo en móvil -->
+            <button id="hamburger-btn" class="md:hidden flex flex-col justify-center gap-1.5 w-8 h-8 focus:outline-none">
+                <span class="w-6 h-0.5 bg-white rounded transition-all duration-300"></span>
+                <span class="w-6 h-0.5 bg-white rounded transition-all duration-300"></span>
+                <span class="w-6 h-0.5 bg-white rounded transition-all duration-300"></span>
+            </button>
 
-    <!-- Menú desplegable móvil (oculto por defecto) -->
-    <div id="mobile-menu" class="hidden absolute top-full left-0 right-0 bg-[#06060f] border-b border-white/10 p-6 flex flex-col gap-5">
-        <a href="#home"    class="mobile-link text-lg hover:text-indigo-400 transition-colors">Inicio</a>
-        <a href="#chat"    class="mobile-link text-lg hover:text-indigo-400 transition-colors">Chat</a>
-        <a href="#contact" class="mobile-link text-lg hover:text-indigo-400 transition-colors">Contacto</a>
-        <div id="mobile-nav-auth"></div>
-    </div>
+        </div>
 
-</nav>
+        <!-- Menú desplegable móvil: solo links de navegación -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 right-0 bg-[#06060f] border-b border-white/10 p-6 flex flex-col gap-5">
+            <a href="#home"    class="mobile-link text-lg hover:text-indigo-400 transition-colors">Inicio</a>
+            <a href="#chat"    class="mobile-link text-lg hover:text-indigo-400 transition-colors">Chat</a>
+            <a href="#contact" class="mobile-link text-lg hover:text-indigo-400 transition-colors">Contacto</a>
+        </div>
 
-    <!-- AQUÍ es donde el router meterá cada vista -->
-    <!-- Este div empieza vacío. JavaScript lo rellenará -->
+    </nav>
+
     <main id="app" class="p-8">
         Cargando...
     </main>
 
-    <!-- Los scripts van al final, en este orden -->
-     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="/js/supabase-client.js"></script>
+    <script src="/js/stars.js"></script>
     <script src="/js/views/home.js"></script>
     <script src="/js/views/contact.js"></script>
     <script src="/js/views/auth.js"></script>

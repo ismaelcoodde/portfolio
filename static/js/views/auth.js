@@ -207,39 +207,30 @@ async function handleRegister() {
 // Actualiza el navbar según si hay sesión activa o no
 function updateNavAuth(session) {
     const navAuth = document.getElementById('nav-auth');
-    const mobileNavAuth = document.getElementById('mobile-nav-auth');
     if (!navAuth) return;
 
     if (session && session.user) {
-        // Usuario logueado: muestra su email y botón de salir
         navAuth.innerHTML = `
-            <div class="flex items-center gap-3">
-                <span class="text-slate-400 text-sm">${session.user.email}</span>
+            <div class="flex items-center gap-2 md:gap-3">
+                <span class="text-slate-400 text-xs md:text-sm max-w-[90px] md:max-w-none truncate">
+                    ${session.user.email}
+                </span>
                 <button id="logout-btn"
-                    class="px-4 py-2 border border-red-500/50 rounded-full text-red-400
-                           text-sm hover:bg-red-500/10 transition-colors">
+                    class="px-3 md:px-4 py-1.5 md:py-2 border border-red-500/50 rounded-full
+                           text-red-400 text-xs md:text-sm hover:bg-red-500/10 transition-colors whitespace-nowrap">
                     Salir
                 </button>
             </div>
         `;
-        document.getElementById('mobile-logout-btn').addEventListener('click', handleLogout);
-
+        document.getElementById('logout-btn').addEventListener('click', handleLogout);
     } else {
-        // Sin sesión: muestra el botón de iniciar sesión
         navAuth.innerHTML = `
             <a href="#auth"
-               class="px-4 py-2 border border-indigo-500 rounded-full text-indigo-400
-                      text-sm hover:bg-indigo-500/10 transition-colors">
+               class="px-3 md:px-4 py-1.5 md:py-2 border border-indigo-500 rounded-full
+                      text-indigo-400 text-xs md:text-sm hover:bg-indigo-500/10 transition-colors whitespace-nowrap">
                 Iniciar sesión
             </a>
         `;
-             if (mobileNavAuth) {
-            mobileNavAuth.innerHTML = `
-                <a href="#auth" class="mobile-link px-4 py-2 border border-indigo-500 rounded-full text-indigo-400 text-sm hover:bg-indigo-500/10 transition-colors w-fit">
-                    Iniciar sesión
-                </a>
-            `;
-        }
     }
 }
 
