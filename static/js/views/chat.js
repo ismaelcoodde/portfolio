@@ -1,6 +1,6 @@
 function ChatView() {
     return `
-        <section class="flex flex-col" style="height: calc(100dvh - 65px)">
+        <section class="flex flex-col" style="height: calc(100dvh - 190px)">
 
             <div class="p-6 border-b border-white/10">
                 <p class="text-indigo-400 text-xs font-medium tracking-[0.3em] uppercase mb-1">
