@@ -13,6 +13,7 @@ const routes = {
 // Cada vista puede tener una función que se ejecuta
 // DESPUÉS de que su HTML esté en el DOM
 const inits = {
+    '#home':    initHome,
     '#contact': initContact,
     '#auth':    initAuth,
     '#chat': initChat,
