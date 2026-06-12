@@ -194,6 +194,45 @@ function HomeView() {
 
                 </div>
 
+                                <!-- Proyecto 4 -->
+                <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-indigo-500/50 transition-colors duration-300">
+
+                    <!-- Preview en vivo -->
+                    <div class="relative w-full overflow-hidden" style="height: 220px;">
+                        <iframe
+                            src="https://peluqueria-rust.vercel.app/"
+                            style="position: absolute; top: 40px; left: calc(50% - 173px); width: 1280px; height: 900px; transform: scale(0.27); transform-origin: top left; pointer-events: none; border: none;"
+                            scrolling="no"
+                            loading="lazy">
+                        </iframe>
+                    </div>
+
+                    <!-- Info del proyecto -->
+                    <div class="p-5 text-center">
+                        <h3 class="text-lg font-bold mb-2">Mallorca Mar Excursiones</h3>
+                        <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+                            Web de reservas y citas para peluquería
+                        </p>
+
+                        <div class="flex gap-2 justify-center flex-wrap mb-4">
+                            <span class="px-3 py-1 bg-indigo-500/10 text-indigo-400 text-xs rounded-full border border-indigo-500/20">React</span>
+                            <span class="px-3 py-1 bg-indigo-500/10 text-indigo-400 text-xs rounded-full border border-indigo-500/20">Tailwind</span>
+                            <span class="px-3 py-1 bg-indigo-500/10 text-indigo-400 text-xs rounded-full border border-indigo-500/20">Vercel</span>
+                        </div>
+
+                        <a href="https://peluqueria-rust.vercel.app/" target="_blank" rel="noopener noreferrer"
+                           class="inline-flex items-center gap-2 text-sm text-indigo-400 hover:text-indigo-300 transition-colors">
+                            Ver proyecto en vivo
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                <polyline points="15 3 21 3 21 9"/>
+                                <line x1="10" y1="14" x2="21" y2="3"/>
+                            </svg>
+                        </a>
+                    </div>
+
+                </div>
+
             </div>
 
         </section>
