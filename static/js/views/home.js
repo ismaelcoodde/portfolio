@@ -209,7 +209,7 @@ function HomeView() {
 
                     <!-- Info del proyecto -->
                     <div class="p-5 text-center">
-                        <h3 class="text-lg font-bold mb-2">Mallorca Mar Excursiones</h3>
+                        <h3 class="text-lg font-bold mb-2">Peluqueria</h3>
                         <p class="text-slate-400 text-sm mb-4 leading-relaxed">
                             Web de reservas y citas para peluquería
                         </p>
