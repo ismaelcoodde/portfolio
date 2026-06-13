@@ -2,7 +2,6 @@ function GalleryView() {
     return `
         <section class="min-h-screen px-6 py-16 max-w-6xl mx-auto">
 
-            <!-- Cabecera -->
             <div class="flex items-center justify-between mb-12">
                 <div>
                     <p class="text-indigo-400 text-xs font-medium tracking-[0.3em] uppercase mb-2">
@@ -11,7 +10,6 @@ function GalleryView() {
                     <h2 class="text-4xl font-extrabold">Galería</h2>
                 </div>
 
-                <!-- Botón subir foto: solo visible para el admin -->
                 <button id="upload-btn" class="hidden px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500
                        rounded-xl text-white text-sm font-medium transition-colors duration-300
                        flex items-center gap-2">
@@ -22,7 +20,6 @@ function GalleryView() {
                 </button>
             </div>
 
-            <!-- Grid de fotos -->
             <div id="photos-grid" class="grid grid-cols-2 md:grid-cols-3 gap-3">
                 <p class="text-slate-500 text-sm col-span-full text-center py-20">
                     Cargando fotos...
@@ -39,7 +36,6 @@ async function initGallery() {
     const uploadBtn = document.getElementById('upload-btn');
     if (uploadBtn) uploadBtn.addEventListener('click', openUploadModal);
 
-    // Comprueba el admin tanto al cargar como cuando cambia la sesión
     supabaseClient.auth.onAuthStateChange((event, session) => {
         if (session && session.user.email === 'ibcruzismael@gmail.com') {
             const btn = document.getElementById('upload-btn');
@@ -47,7 +43,6 @@ async function initGallery() {
         }
     });
 
-    // También comprueba la sesión actual por si ya está cargada
     const { data: { session } } = await supabaseClient.auth.getSession();
     if (session && session.user.email === 'ibcruzismael@gmail.com') {
         const btn = document.getElementById('upload-btn');
@@ -55,16 +50,6 @@ async function initGallery() {
     }
 }
 
-// Muestra el botón de subir solo si eres el admin
-async function checkAdminButton() {
-    const { data: { session } } = await supabaseClient.auth.getSession();
-    if (session && session.user.email === 'ibcruzismael@gmail.com') {
-        const btn = document.getElementById('upload-btn');
-        if (btn) btn.classList.remove('hidden');
-    }
-}
-
-// Carga las fotos desde Supabase
 async function loadPhotos() {
     const { data, error } = await supabaseClient
         .from('photos')
@@ -96,9 +81,6 @@ async function loadPhotos() {
     `).join('');
 }
 
-
-
-// Abre el modal cuando se hace clic en una foto
 async function openPhoto(photoId) {
     const { data: photo } = await supabaseClient
         .from('photos')
@@ -108,7 +90,9 @@ async function openPhoto(photoId) {
 
     if (!photo) return;
 
-    // Crea el modal y lo añade al body
+    const { data: { session } } = await supabaseClient.auth.getSession();
+    const isAdmin = session && session.user.email === 'ibcruzismael@gmail.com';
+
     const modal = document.createElement('div');
     modal.id = 'photo-modal';
     modal.className = 'fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4';
@@ -117,16 +101,13 @@ async function openPhoto(photoId) {
         <div class="bg-[#0f0f1a] rounded-2xl overflow-hidden w-full max-w-4xl
                     flex flex-col md:flex-row max-h-[90vh]">
 
-            <!-- Foto izquierda -->
             <div class="md:w-3/5 bg-black flex items-center justify-center">
                 <img src="${photo.url}" alt="${photo.description || ''}"
                      class="w-full object-contain max-h-[45vh] md:max-h-[90vh]"/>
             </div>
 
-            <!-- Panel derecho -->
             <div class="md:w-2/5 flex flex-col max-h-[45vh] md:max-h-[90vh] border-l border-white/10">
 
-                <!-- Header -->
                 <div class="flex items-center justify-between px-4 py-3 border-b border-white/10 flex-shrink-0">
                     <div class="flex items-center gap-3">
                         <div class="w-8 h-8 rounded-full bg-indigo-600 flex items-center justify-center text-white text-sm font-bold">
@@ -137,13 +118,25 @@ async function openPhoto(photoId) {
                             <p class="text-slate-500 text-xs">${new Date(photo.created_at).toLocaleDateString('es-ES')}</p>
                         </div>
                     </div>
-                    <button onclick="closeModal()"
-                            class="text-slate-400 hover:text-white transition-colors p-1">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <line x1="18" y1="6" x2="6" y2="18"/>
-                            <line x1="6" y1="6" x2="18" y2="18"/>
-                        </svg>
-                    </button>
+                    <div class="flex items-center gap-2">
+                        ${isAdmin ? `
+                        <button id="delete-photo-btn"
+                                class="text-red-400 hover:text-red-300 transition-colors p-1">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="3 6 5 6 21 6"/>
+                                <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/>
+                                <path d="M10 11v6"/><path d="M14 11v6"/>
+                                <path d="M9 6V4h6v2"/>
+                            </svg>
+                        </button>` : ''}
+                        <button onclick="closeModal()"
+                                class="text-slate-400 hover:text-white transition-colors p-1">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="18" y1="6" x2="6" y2="18"/>
+                                <line x1="6" y1="6" x2="18" y2="18"/>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
 
                 ${photo.description ? `
@@ -151,21 +144,22 @@ async function openPhoto(photoId) {
                     <p class="text-sm text-slate-300 leading-relaxed">${photo.description}</p>
                 </div>` : ''}
 
-                <!-- Lista de comentarios -->
                 <div id="comments-list" class="flex-1 overflow-y-auto p-4 flex flex-col gap-4">
                     <p class="text-slate-500 text-xs text-center">Cargando comentarios...</p>
                 </div>
 
-                <!-- Input comentario -->
                 <div id="comment-input-area" class="border-t border-white/10 p-4 flex-shrink-0">
                 </div>
-
             </div>
         </div>
     `;
 
     document.body.appendChild(modal);
     modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+
+    if (isAdmin) {
+        document.getElementById('delete-photo-btn').addEventListener('click', () => deletePhoto(photo));
+    }
 
     await loadComments(photoId);
     setupCommentInput(photoId);
@@ -177,7 +171,6 @@ function closeModal() {
     if (modal) modal.remove();
 }
 
-// Carga los comentarios de una foto
 async function loadComments(photoId) {
     const { data } = await supabaseClient
         .from('comments')
@@ -214,7 +207,6 @@ function renderComments(comments) {
     list.scrollTop = list.scrollHeight;
 }
 
-// Input para escribir comentarios
 async function setupCommentInput(photoId) {
     const area = document.getElementById('comment-input-area');
     if (!area) return;
@@ -265,7 +257,6 @@ async function sendComment(photoId, session) {
     });
 }
 
-// Realtime: nuevos comentarios aparecen al instante
 function subscribeToPhotoComments(photoId) {
     supabaseClient
         .channel(`comments-${photoId}`)
@@ -293,10 +284,6 @@ function subscribeToPhotoComments(photoId) {
         )
         .subscribe();
 }
-
-//Fase 4
-
-// Fase 4 — Subir fotos
 
 function openUploadModal() {
     const modal = document.createElement('div');
@@ -421,5 +408,17 @@ async function uploadPhoto() {
     }
 
     closeUploadModal();
+    await loadPhotos();
+}
+
+async function deletePhoto(photo) {
+    if (!confirm('¿Seguro que quieres borrar esta foto?')) return;
+
+    const filePath = photo.url.split('/gallery/')[1];
+
+    await supabaseClient.storage.from('gallery').remove([filePath]);
+    await supabaseClient.from('photos').delete().eq('id', photo.id);
+
+    closeModal();
     await loadPhotos();
 }
