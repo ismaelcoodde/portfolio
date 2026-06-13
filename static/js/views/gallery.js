@@ -34,8 +34,23 @@ function GalleryView() {
 }
 
 async function initGallery() {
-    await checkAdminButton();
     await loadPhotos();
+    setupUploadButton();
+
+    // Comprueba el admin tanto al cargar como cuando cambia la sesión
+    supabaseClient.auth.onAuthStateChange((event, session) => {
+        if (session && session.user.email === 'ibcruzismael@gmail.com') {
+            const btn = document.getElementById('upload-btn');
+            if (btn) btn.classList.remove('hidden');
+        }
+    });
+
+    // También comprueba la sesión actual por si ya está cargada
+    const { data: { session } } = await supabaseClient.auth.getSession();
+    if (session && session.user.email === 'ibcruzismael@gmail.com') {
+        const btn = document.getElementById('upload-btn');
+        if (btn) btn.classList.remove('hidden');
+    }
 }
 
 // Muestra el botón de subir solo si eres el admin
