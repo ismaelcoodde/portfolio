@@ -5,7 +5,7 @@ function GalleryView() {
             <div class="flex items-center justify-between mb-12">
                 <div>
                     <p class="text-indigo-400 text-xs font-medium tracking-[0.3em] uppercase mb-2">
-                        Astrofotografía
+                        Ismael Cruz Fernandez
                     </p>
                     <h2 class="text-4xl font-extrabold">Galería</h2>
                 </div>
