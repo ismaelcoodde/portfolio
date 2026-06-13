@@ -793,6 +793,10 @@ video {
   height: 1.75rem;
 }
 
+.h-48 {
+  height: 12rem;
+}
+
 .max-h-\[45vh\] {
   max-height: 45vh;
 }
@@ -984,6 +988,10 @@ video {
   border-width: 1px;
 }
 
+.border-2 {
+  border-width: 2px;
+}
+
 .border-b {
   border-bottom-width: 1px;
 }
@@ -994,6 +1002,10 @@ video {
 
 .border-l {
   border-left-width: 1px;
+}
+
+.border-dashed {
+  border-style: dashed;
 }
 
 .border-indigo-500 {
@@ -1011,6 +1023,10 @@ video {
 
 .border-white\/10 {
   border-color: rgb(255 255 255 / 0.1);
+}
+
+.border-white\/20 {
+  border-color: rgb(255 255 255 / 0.2);
 }
 
 .bg-\[\#06060f\] {
