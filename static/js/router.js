@@ -5,6 +5,7 @@
 const routes = {
     '#home':     HomeView,
     '#works':   WorksView,
+    '#gallery': GalleryView,
     '#contact':  ContactView,
     '#auth':     AuthView,
     '#chat': ChatView,
@@ -14,6 +15,7 @@ const routes = {
 // DESPUÉS de que su HTML esté en el DOM
 const inits = {
     '#home':    initHome,
+    '#gallery': initGallery,
     '#contact': initContact,
     '#auth':    initAuth,
     '#chat': initChat,
