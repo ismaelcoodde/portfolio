@@ -1,0 +1,22 @@
+{
+    "name": "Ismael Cruz - Desarrollador Web",
+    "short_name": "Ismael Cruz",
+    "description": "Desarrollador web full stack. Tu web lista en 1 semana.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0a0a14",
+    "theme_color": "#6366f1",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "/images/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

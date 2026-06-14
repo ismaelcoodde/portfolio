@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Portfolio</title>
     <link rel="stylesheet" href="/css/style.css">
+    <!-- PWA -->
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#6366f1">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Ismael Cruz">
+<link rel="apple-touch-icon" href="/images/icon-192.png">
 </head>
 <body class="bg-gray-950 text-white min-h-screen">
  
@@ -129,6 +136,17 @@
     <script src="/js/views/gallery.js"></script>
     <script src="/js/router.js"></script>
     <script src="/js/app.js"></script>
+
+    <!-- Registro del Service Worker -->
+<script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/sw.js')
+                .then(() => console.log('PWA lista'))
+                .catch((err) => console.log('SW error:', err));
+        });
+    }
+</script>
  
 </body>
 </html>
