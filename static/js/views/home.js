@@ -257,7 +257,7 @@ function initProjectCard() {
         loadProject(currentProject);
     }
 
-    // Flechas
+    // Flechass
     prev.addEventListener('click', () => goTo(currentProject - 1));
     next.addEventListener('click', () => goTo(currentProject + 1));
 
