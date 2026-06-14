@@ -2,7 +2,7 @@
 // Una vista es simplemente una función que devuelve HTML como texto
 
 function HomeView() {
-    return `
+  return `
         <section class="flex flex-col items-center justify-center px-6 py-16">
 
            <div class="photo-ring">
@@ -62,6 +62,7 @@ function HomeView() {
 </div>
         </section>
 
+        <!-- Final HEro -->
 
 
         <!-- CONTACTO -->
@@ -121,63 +122,63 @@ function HomeView() {
 
 // Esta función se ejecuta después de que el HTML del formulario existe en el DOM
 function initContact() {
-    const btn = document.getElementById('submit-btn');
-    btn.addEventListener('click', handleSubmit);
+  const btn = document.getElementById("submit-btn");
+  btn.addEventListener("click", handleSubmit);
 }
 
 async function handleSubmit() {
-    // Recoge los valores de los campos
-    const name    = document.getElementById('name').value.trim();
-    const email   = document.getElementById('email').value.trim();
-    const message = document.getElementById('message').value.trim();
+  // Recoge los valores de los campos
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const message = document.getElementById("message").value.trim();
 
-    // Validación básica antes de enviar
-    if (!name || !email || !message) {
-        showStatus('Por favor rellena todos los campos.', 'error');
-        return;
+  // Validación básica antes de enviar
+  if (!name || !email || !message) {
+    showStatus("Por favor rellena todos los campos.", "error");
+    return;
+  }
+
+  // Cambia el botón a estado "cargando"
+  const btn = document.getElementById("submit-btn");
+  btn.textContent = "Enviando...";
+  btn.disabled = true;
+
+  try {
+    // fetch() envía una petición HTTP al servidor
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, email, message }),
+    });
+
+    const data = await response.json();
+
+    if (data.ok) {
+      showStatus("¡Mensaje enviado! Te respondo pronto.", "success");
+      document.getElementById("name").value = "";
+      document.getElementById("email").value = "";
+      document.getElementById("message").value = "";
+    } else {
+      showStatus("Algo salió mal. Inténtalo de nuevo.", "error");
     }
-
-    // Cambia el botón a estado "cargando"
-    const btn = document.getElementById('submit-btn');
-    btn.textContent = 'Enviando...';
-    btn.disabled = true;
-
-    try {
-        // fetch() envía una petición HTTP al servidor
-        const response = await fetch('/api/contact', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name, email, message })
-        });
-
-        const data = await response.json();
-
-        if (data.ok) {
-            showStatus('¡Mensaje enviado! Te respondo pronto.', 'success');
-            document.getElementById('name').value    = '';
-            document.getElementById('email').value   = '';
-            document.getElementById('message').value = '';
-        } else {
-            showStatus('Algo salió mal. Inténtalo de nuevo.', 'error');
-        }
-
-    } catch (error) {
-        showStatus('Error de conexión. Inténtalo de nuevo.', 'error');
-    } finally {
-        // Esto se ejecuta SIEMPRE, haya error o no
-        btn.textContent = 'Enviar mensaje';
-        btn.disabled = false;
-    }
+  } catch (error) {
+    showStatus("Error de conexión. Inténtalo de nuevo.", "error");
+  } finally {
+    // Esto se ejecuta SIEMPRE, haya error o no
+    btn.textContent = "Enviar mensaje";
+    btn.disabled = false;
+  }
 }
 
 function showStatus(message, type) {
-    const el = document.getElementById('status-msg');
-    el.textContent = message;
-    el.className = type === 'success'
-        ? 'text-green-400 text-sm text-center'
-        : 'text-red-400 text-sm text-center';
+  const el = document.getElementById("status-msg");
+  el.textContent = message;
+  el.className =
+    type === "success"
+      ? "text-green-400 text-sm text-center"
+      : "text-red-400 text-sm text-center";
 }
 
 function initHome() {
-    initContact();
+  initContact();
 }

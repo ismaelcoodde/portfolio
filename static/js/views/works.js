@@ -201,6 +201,69 @@ function WorksView() {
                 </div>
 
             </div>
+            <div class="max-w-4xl mx-auto p-8 bg-white dark:bg-gray-800 rounded-3xl shadow-lg border border-gray-100 dark:border-gray-700 font-sans transition-transform hover:shadow-xl">
+  
+  <div class="mb-8 text-center md:text-left md:flex md:items-center md:justify-between">
+    <div>
+      <h2 class="text-3xl font-bold text-gray-800 dark:text-white mb-2">Stack Tecnológico</h2>
+      <p class="text-gray-500 dark:text-gray-400">Las herramientas y tecnologías con las que construyo aplicaciones web.</p>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+    
+    <div class="flex flex-col items-center justify-center p-4 rounded-2xl bg-gray-50 dark:bg-gray-900/50 hover:bg-gray-100 dark:hover:bg-gray-700/50 transition-colors group">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" class="w-12 h-12 mb-3 group-hover:scale-110 transition-transform duration-300" alt="HTML5" />
+      <span class="text-sm font-semibold text-gray-700 dark:text-gray-300">HTML5</span>
+    </div>
+
+    <div class="flex flex-col items-center justify-center p-4 rounded-2xl bg-gray-50 dark:bg-gray-900/50 hover:bg-gray-100 dark:hover:bg-gray-700/50 transition-colors group">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" class="w-12 h-12 mb-3 group-hover:scale-110 transition-transform duration-300" alt="CSS3" />
+      <span class="text-sm font-semibold text-gray-700 dark:text-gray-300">CSS3</span>
+    </div>
+
+    <div class="flex flex-col items-center justify-center p-4 rounded-2xl bg-gray-50 dark:bg-gray-900/50 hover:bg-gray-100 dark:hover:bg-gray-700/50 transition-colors group">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" class="w-12 h-12 mb-3 group-hover:scale-110 transition-transform duration-300" alt="JavaScript" />
+      <span class="text-sm font-semibold text-gray-700 dark:text-gray-300">JavaScript</span>
+    </div>
+
+    <div class="flex flex-col items-center justify-center p-4 rounded-2xl bg-gray-50 dark:bg-gray-900/50 hover:bg-gray-100 dark:hover:bg-gray-700/50 transition-colors group">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" class="w-12 h-12 mb-3 group-hover:scale-110 transition-transform duration-300" alt="Tailwind CSS" />
+      <span class="text-sm font-semibold text-gray-700 dark:text-gray-300">Tailwind CSS</span>
+    </div>
+
+    <div class="flex flex-col items-center justify-center p-4 rounded-2xl bg-gray-50 dark:bg-gray-900/50 hover:bg-gray-100 dark:hover:bg-gray-700/50 transition-colors group">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" class="w-12 h-12 mb-3 group-hover:scale-110 transition-transform duration-300" alt="React" />
+      <span class="text-sm font-semibold text-gray-700 dark:text-gray-300">React</span>
+    </div>
+
+    <div class="flex flex-col items-center justify-center p-4 rounded-2xl bg-gray-50 dark:bg-gray-900/50 hover:bg-gray-100 dark:hover:bg-gray-700/50 transition-colors group">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg" class="w-12 h-12 mb-3 group-hover:scale-110 transition-transform duration-300" alt="Vue.js" />
+      <span class="text-sm font-semibold text-gray-700 dark:text-gray-300">Vue.js</span>
+    </div>
+
+    <div class="flex flex-col items-center justify-center p-4 rounded-2xl bg-gray-50 dark:bg-gray-900/50 hover:bg-gray-100 dark:hover:bg-gray-700/50 transition-colors group">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg" class="w-12 h-12 mb-3 group-hover:scale-110 transition-transform duration-300" alt="Vite" />
+      <span class="text-sm font-semibold text-gray-700 dark:text-gray-300">Vite</span>
+    </div>
+
+    <div class="flex flex-col items-center justify-center p-4 rounded-2xl bg-gray-50 dark:bg-gray-900/50 hover:bg-gray-100 dark:hover:bg-gray-700/50 transition-colors group">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" class="w-12 h-12 mb-3 group-hover:scale-110 transition-transform duration-300" alt="Python" />
+      <span class="text-sm font-semibold text-gray-700 dark:text-gray-300">Python</span>
+    </div>
+
+    <div class="flex flex-col items-center justify-center p-4 rounded-2xl bg-gray-50 dark:bg-gray-900/50 hover:bg-gray-100 dark:hover:bg-gray-700/50 transition-colors group">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg" class="w-12 h-12 mb-3 group-hover:scale-110 transition-transform duration-300" alt="FastAPI" />
+      <span class="text-sm font-semibold text-gray-700 dark:text-gray-300">FastAPI</span>
+    </div>
+
+    <div class="flex flex-col items-center justify-center p-4 rounded-2xl bg-gray-50 dark:bg-gray-900/50 hover:bg-gray-100 dark:hover:bg-gray-700/50 transition-colors group">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" class="w-12 h-12 mb-3 group-hover:scale-110 transition-transform duration-300" alt="PostgreSQL" />
+      <span class="text-sm font-semibold text-gray-700 dark:text-gray-300">PostgreSQL</span>
+    </div>
+
+  </div>
+</div>
 
         </section>
     `;
