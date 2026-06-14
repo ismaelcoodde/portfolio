@@ -54,35 +54,45 @@ function HomeView() {
 
         <!--Targeta-->
 
-    <div class="flex py-8 justify-center">
-    <div class="project-card  relative w-96 rounded-2xl overflow-hidden bg-white/5 border border-white/10">
+ 
+       <div class="flex items-center justify-center gap-4 py-8">
 
-    <!-- Imágenes apiladas: solo se ve la que tiene opacity-100 -->
-    <div class="relative h-64">
-        <img src="/images/programacion.png"
-             class="absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-700"/>
-        <img src="/images/astrofotografia.png"
-             class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"/>
-        <img src="/images/yo2.jpg"
-             class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"/>
+    <!-- Flecha izquierda -->
+    <button id="proj-prev" style="width:36px; height:36px; background:rgba(255,255,255,0.1); border:none; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"/>
+        </svg>
+    </button>
+
+    <!-- Tarjeta -->
+    <div id="project-card" class="project-card relative w-96 rounded-2xl overflow-hidden bg-white/5 border border-white/10">
+        <div class="relative h-64" id="card-images">
+            <img class="absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-700"/>
+            <img class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"/>
+            <img class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"/>
+        </div>
+        <div class="p-5 text-center">
+            <h3 id="card-title" class="text-lg font-bold mb-2"></h3>
+            <p id="card-desc" class="text-slate-400 text-sm leading-relaxed mb-4"></p>
+            <a id="card-btn" href="#" target="_blank"
+               class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-500
+                      rounded-xl text-white text-sm font-medium transition-colors duration-300">
+                Ver proyecto
+            </a>
+        </div>
     </div>
 
-    <!-- Texto y botónn -->
-    <div class="p-5 text-center">
-        <h3 class="text-lg font-bold mb-2 text-center">Full Stack Develoer</h3>
-        <p class="text-slate-400 text-sm leading-relaxed text-center mb-4">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae sapiente adipisci quisquam praesentium, blanditiis cum cumque repudiandae quod soluta quaerat perferendis, eius incidunt sed atque laudantium nesciunt. Itaque, ipsum similique.
-        </p>
-        <a href="https://www.cruzismael.es/#works" target="_blank"
-           class=" inline-flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-500
-                  rounded-xl text-white text-sm font-medium transition-colors duration-300">
-            Ver proyecto
-        </a>
-    </div>
-    </div>
-</div>
+    <!-- Flecha derecha -->
+    <button id="proj-next" style="width:36px; height:36px; background:rgba(255,255,255,0.1); border:none; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"/>
+        </svg>
+    </button>
 
-<!--Targrta->
+</div> 
+
+
+        <!--Targrta->
 
         <!-- CONTACTO -->
         <section class="flex items-center justify-center px-6 py-16">
@@ -132,20 +142,7 @@ function HomeView() {
         </section>
     `;
 }
-//Targeta
-function initProjectCard() {
-  const imgs = document.querySelectorAll(".project-card img");
-  if (!imgs.length) return;
 
-  let current = 0;
-
-  setInterval(() => {
-    imgs[current].classList.replace("opacity-100", "opacity-0");
-    current = (current + 1) % imgs.length;
-    imgs[current].classList.replace("opacity-0", "opacity-100");
-  }, 2500);
-}
-//Targeta
 
 function initContact() {
   const btn = document.getElementById("submit-btn");
@@ -197,6 +194,84 @@ function showStatus(message, type) {
       ? "text-green-400 text-sm text-center"
       : "text-red-400 text-sm text-center";
 }
+
+//Targetas
+const projects = [
+    {
+        title: 'Mallorca Mar Excursiones',
+        description: 'Web de reservas de excursiones en barco por Mallorca.',
+        url: 'https://mallorca-mar-excursiones.vercel.app/',
+        images: ['/images/programacion.png', '/images/astrofotografia.png', '/images/yo2.jpg']
+    },
+    {
+        title: 'Ismael Cruz - Portfolio',
+        description: 'Portfolio personal con galería, chat en tiempo real y autenticación.',
+        url: 'https://ismaelcruz.onrender.com/',
+        images: ['/images/yo2.jpg', '/images/programacion.png', '/images/astrofotografia.png']
+    },
+    {
+        title: 'Toni Cruz Music',
+        description: 'Web de contrataciones para músicos.',
+        url: 'https://tonicruzmusic.com/',
+        images: ['/images/astrofotografia.png', '/images/yo2.jpg', '/images/programacion.png']
+    }
+];
+
+//Targeta
+function initProjectCard() {
+    const imgs  = document.querySelectorAll('#card-images img');
+    const title = document.getElementById('card-title');
+    const desc  = document.getElementById('card-desc');
+    const btn   = document.getElementById('card-btn');
+    const prev  = document.getElementById('proj-prev');
+    const next  = document.getElementById('proj-next');
+    const card  = document.getElementById('project-card');
+
+    if (!imgs.length) return;
+
+    let currentProject = 0;
+    let currentImg = 0;
+    let imgTimer;
+
+    function loadProject(index) {
+        const p = projects[index];
+        title.textContent = p.title;
+        desc.textContent  = p.description;
+        btn.href          = p.url;
+        imgs.forEach((img, i) => {
+            img.src = p.images[i];
+            img.classList.toggle('opacity-100', i === 0);
+            img.classList.toggle('opacity-0',   i !== 0);
+        });
+        currentImg = 0;
+        clearInterval(imgTimer);
+        imgTimer = setInterval(() => {
+            imgs[currentImg].classList.replace('opacity-100', 'opacity-0');
+            currentImg = (currentImg + 1) % imgs.length;
+            imgs[currentImg].classList.replace('opacity-0', 'opacity-100');
+        }, 3500);
+    }
+
+    function goTo(index) {
+        currentProject = (index + projects.length) % projects.length;
+        loadProject(currentProject);
+    }
+
+    // Flechas
+    prev.addEventListener('click', () => goTo(currentProject - 1));
+    next.addEventListener('click', () => goTo(currentProject + 1));
+
+    // Swipe táctil
+    let startX = 0;
+    card.addEventListener('touchstart', (e) => startX = e.touches[0].clientX);
+    card.addEventListener('touchend',   (e) => {
+        const diff = startX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) goTo(currentProject + (diff > 0 ? 1 : -1));
+    });
+
+    loadProject(0);
+}
+//Targetas
 
 function initHome() {
   initContact();
