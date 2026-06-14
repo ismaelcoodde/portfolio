@@ -17,7 +17,7 @@ function HomeView() {
             </p>
 
             <p class="text-slate-400 text-center max-w-md leading-relaxed">
-                De Palma de Mallorca, España. 1994<br/> Me gusta escribir código, la fotografía y el mar.
+                De Palma de Mallorca, España. 1994<br/> Me gusta escribir código, la fotografía, el cielo y por supuesto también el mar.
             </p>
 
             <div class="flex gap-6 mt-8">
@@ -198,21 +198,21 @@ function showStatus(message, type) {
 //Targetas
 const projects = [
     {
-        title: 'Mallorca Mar Excursiones',
-        description: 'Web de reservas de excursiones en barco por Mallorca.',
-        url: 'https://mallorca-mar-excursiones.vercel.app/',
-        images: ['/images/programacion.png', '/images/astrofotografia.png', '/images/yo2.jpg']
+        title: 'Full Stack Developer',
+        description: 'Especialista en tiendas online, plataformas de reservas automatizadas e integración de pagos seguros. Soluciones rápidas, modernas y listas para hacer crecer tu negocio.',
+        url: '#works',
+        images: ['/images/programacion.png', '/images/programacion2.jpg', '/images/programacion3.jpg']
     },
     {
-        title: 'Ismael Cruz - Portfolio',
-        description: 'Portfolio personal con galería, chat en tiempo real y autenticación.',
-        url: 'https://ismaelcruz.onrender.com/',
-        images: ['/images/yo2.jpg', '/images/programacion.png', '/images/astrofotografia.png']
+        title: 'Astrofotografía',
+        description: 'Aprendiendo cada día un poco más sobre los misterios del cielo nocturno, capturando desde los detalles de la Luna hasta nuestros planetas vecinos. A veces, la mejor forma de poner los pies en la tierra es pasar la noche mirando hacia el cielo.',
+        url: '#gallery',
+        images: ['/images/luna1.JPG', '/images/luna2.JPG', '/images/astrofotografia.png']
     },
     {
-        title: 'Toni Cruz Music',
-        description: 'Web de contrataciones para músicos.',
-        url: 'https://tonicruzmusic.com/',
+        title: '¿Quien soy?',
+        description: 'mi espacio personal',
+        url: '#gallery',
         images: ['/images/astrofotografia.png', '/images/yo2.jpg', '/images/programacion.png']
     }
 ];
