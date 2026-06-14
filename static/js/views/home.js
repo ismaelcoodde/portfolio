@@ -19,7 +19,7 @@ function HomeView() {
             </p>
 
             <p class="text-slate-400 text-center max-w-md leading-relaxed">
-                Transformo negocios locales en negocios digitales. Tiendas online, reservas con pago, webs con registro de clientes. Todo a medida, profesional y listo para captar clientes.
+               De Palma de Mallorca, España. 1994</br> Me gusta escribir código, la fotografía y el mar.
             </p>
 
 
