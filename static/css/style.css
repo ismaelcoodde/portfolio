@@ -664,10 +664,13 @@ video {
   z-index: 50;
 }
 
+<<<<<<< Updated upstream
 .col-span-full {
   grid-column: 1 / -1;
 }
 
+=======
+>>>>>>> Stashed changes
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -686,10 +689,13 @@ video {
   margin-bottom: 2.5rem;
 }
 
+<<<<<<< Updated upstream
 .mb-12 {
   margin-bottom: 3rem;
 }
 
+=======
+>>>>>>> Stashed changes
 .mb-16 {
   margin-bottom: 4rem;
 }
@@ -712,6 +718,7 @@ video {
 
 .mb-8 {
   margin-bottom: 2rem;
+<<<<<<< Updated upstream
 }
 
 .mt-0\.5 {
@@ -720,6 +727,8 @@ video {
 
 .mt-1 {
   margin-top: 0.25rem;
+=======
+>>>>>>> Stashed changes
 }
 
 .mt-20 {
@@ -728,6 +737,7 @@ video {
 
 .mt-8 {
   margin-top: 2rem;
+<<<<<<< Updated upstream
 }
 
 .line-clamp-2 {
@@ -735,6 +745,8 @@ video {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+=======
+>>>>>>> Stashed changes
 }
 
 .flex {
@@ -777,6 +789,7 @@ video {
   height: 3.5rem;
 }
 
+<<<<<<< Updated upstream
 .h-48 {
   height: 12rem;
 }
@@ -785,18 +798,26 @@ video {
   height: 1.75rem;
 }
 
+=======
+>>>>>>> Stashed changes
 .h-8 {
   height: 2rem;
 }
 
+<<<<<<< Updated upstream
 .h-full {
   height: 100%;
+=======
+.h-\[200px\] {
+  height: 200px;
+>>>>>>> Stashed changes
 }
 
 .h-px {
   height: 1px;
 }
 
+<<<<<<< Updated upstream
 .max-h-\[45vh\] {
   max-height: 45vh;
 }
@@ -805,6 +826,8 @@ video {
   max-height: 90vh;
 }
 
+=======
+>>>>>>> Stashed changes
 .min-h-screen {
   min-height: 100vh;
 }
@@ -829,6 +852,10 @@ video {
   width: 2rem;
 }
 
+.w-\[200px\] {
+  width: 200px;
+}
+
 .w-fit {
   width: -moz-fit-content;
   width: fit-content;
@@ -838,6 +865,7 @@ video {
   width: 100%;
 }
 
+<<<<<<< Updated upstream
 .max-w-4xl {
   max-width: 56rem;
 }
@@ -848,6 +876,10 @@ video {
 
 .max-w-6xl {
   max-width: 72rem;
+=======
+.max-w-5xl {
+  max-width: 64rem;
+>>>>>>> Stashed changes
 }
 
 .max-w-lg {
@@ -904,10 +936,13 @@ video {
   flex-wrap: wrap;
 }
 
+<<<<<<< Updated upstream
 .items-end {
   align-items: flex-end;
 }
 
+=======
+>>>>>>> Stashed changes
 .items-center {
   align-items: center;
 }
@@ -1021,10 +1056,13 @@ video {
   border-color: rgb(255 255 255 / 0.1);
 }
 
+<<<<<<< Updated upstream
 .border-white\/20 {
   border-color: rgb(255 255 255 / 0.2);
 }
 
+=======
+>>>>>>> Stashed changes
 .bg-\[\#06060f\] {
   --tw-bg-opacity: 1;
   background-color: rgb(6 6 15 / var(--tw-bg-opacity, 1));
@@ -1084,11 +1122,14 @@ video {
   background-color: rgb(255 255 255 / 0.05);
 }
 
+<<<<<<< Updated upstream
 .object-contain {
   -o-object-fit: contain;
      object-fit: contain;
 }
 
+=======
+>>>>>>> Stashed changes
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
@@ -1168,11 +1209,14 @@ video {
   padding-bottom: 0.75rem;
 }
 
+<<<<<<< Updated upstream
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
 
+=======
+>>>>>>> Stashed changes
 .py-8 {
   padding-top: 2rem;
   padding-bottom: 2rem;
@@ -1612,6 +1656,7 @@ video {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+<<<<<<< Updated upstream
   .md\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -1620,6 +1665,8 @@ video {
     flex-direction: row;
   }
 
+=======
+>>>>>>> Stashed changes
   .md\:p-6 {
     padding: 1.5rem;
   }
