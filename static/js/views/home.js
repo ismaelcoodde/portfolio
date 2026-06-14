@@ -1,4 +1,5 @@
 function HomeView() {
+  /*html*/
   return `
         <section class="flex flex-col items-center justify-center px-6 py-16">
 
@@ -47,90 +48,41 @@ function HomeView() {
                     </svg>
                 </a>
             </div>
-
-            <!-- Slider -->
-            <div class="cards-slider-wrapper" style="width: 340px; max-width: calc(100vw - 48px); margin-top: 2rem;">
-
-                <button id="slide-prev" style="position:absolute; left:8px; top:50%; transform:translateY(-50%); z-index:20; width:32px; height:32px; background:rgba(255,255,255,0.1); border-radius:50%; border:none; cursor:pointer; display:flex; align-items:center; justify-content:center;">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                        <polyline points="15 18 9 12 15 6"/>
-                    </svg>
-                </button>
-
-                <div class="cards-slider">
-
-                    <div class="card-ring">
-                        <div class="card-ring-spinner"></div>
-                        <div class="card-inner">
-                            <div style="position:relative; height:192px; overflow:hidden; border-radius:22px 22px 0 0;">
-                                <img src="/images/programacion.png" alt="Programación"
-                                     style="width:100%; height:100%; object-fit:cover;"/>
-                                <div style="position:absolute; inset:0; background:linear-gradient(to bottom, transparent, #0f0f1a);"></div>
-                            </div>
-                            <div class="card-text">
-                                <span style="padding:4px 12px; background:rgba(99,102,241,0.1); color:#818cf8; font-size:12px; border-radius:999px; border:1px solid rgba(99,102,241,0.2);">
-                                    Desarrollo Web
-                                </span>
-                                <h3 style="font-size:18px; font-weight:700; margin:12px 0 8px;">Construyo webs que trabajan por ti</h3>
-                                <p style="color:#94a3b8; font-size:14px; line-height:1.6; margin-bottom:20px;">
-                                    Especializado en negocios locales. Tiendas online, sistemas de reservas,
-                                    webs con área de clientes. Todo a medida, moderno y listo en 1 semana.
-                                </p>
-                                <a href="#works" style="display:inline-flex; align-items:center; gap:8px; padding:10px 20px; background:#4f46e5; border-radius:12px; color:white; font-size:14px; font-weight:500; text-decoration:none;">
-                                    Ver mis trabajos
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <line x1="5" y1="12" x2="19" y2="12"/>
-                                        <polyline points="12 5 19 12 12 19"/>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card-ring">
-                        <div class="card-ring-spinner"></div>
-                        <div class="card-inner">
-                            <div style="position:relative; height:192px; overflow:hidden; border-radius:22px 22px 0 0;">
-                                <img src="/images/astrofotografia.png" alt="Astrofotografía"
-                                     style="width:100%; height:100%; object-fit:cover;"/>
-                                <div style="position:absolute; inset:0; background:linear-gradient(to bottom, transparent, #0f0f1a);"></div>
-                            </div>
-                            <div class="card-text">
-                                <span style="padding:4px 12px; background:rgba(168,85,247,0.1); color:#c084fc; font-size:12px; border-radius:999px; border:1px solid rgba(168,85,247,0.2);">
-                                    Astrofotografía
-                                </span>
-                                <h3 style="font-size:18px; font-weight:700; margin:12px 0 8px;">Capturo el universo desde Mallorca</h3>
-                                <p style="color:#94a3b8; font-size:14px; line-height:1.6; margin-bottom:20px;">
-                                    La fotografía del cielo nocturno es mi otra pasión. Galaxias, nebulosas
-                                    y paisajes estelares capturados desde la isla.
-                                </p>
-                                <a href="#gallery" style="display:inline-flex; align-items:center; gap:8px; padding:10px 20px; background:#7c3aed; border-radius:12px; color:white; font-size:14px; font-weight:500; text-decoration:none;">
-                                    Ver la galería
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <line x1="5" y1="12" x2="19" y2="12"/>
-                                        <polyline points="12 5 19 12 12 19"/>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <button id="slide-next" style="position:absolute; right:8px; top:50%; transform:translateY(-50%); z-index:20; width:32px; height:32px; background:rgba(255,255,255,0.1); border-radius:50%; border:none; cursor:pointer; display:flex; align-items:center; justify-content:center;">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                        <polyline points="9 18 15 12 9 6"/>
-                    </svg>
-                </button>
-
-                <div class="cards-dots">
-                    <span class="dot active"></span>
-                    <span class="dot"></span>
-                </div>
-
-            </div>
-
+            
         </section>
+
+
+        <!--Targeta-->
+
+    <div class="flex py-8 justify-center">
+    <div class="project-card  relative w-96 rounded-2xl overflow-hidden bg-white/5 border border-white/10">
+
+    <!-- Imágenes apiladas: solo se ve la que tiene opacity-100 -->
+    <div class="relative h-64">
+        <img src="/images/programacion.png"
+             class="absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-700"/>
+        <img src="/images/astrofotografia.png"
+             class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"/>
+        <img src="/images/yo2.jpg"
+             class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"/>
+    </div>
+
+    <!-- Texto y botón -->
+    <div class="p-5 text-center">
+        <h3 class="text-lg font-bold mb-2 text-center">Full Stack Develoer</h3>
+        <p class="text-slate-400 text-sm leading-relaxed text-center mb-4">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae sapiente adipisci quisquam praesentium, blanditiis cum cumque repudiandae quod soluta quaerat perferendis, eius incidunt sed atque laudantium nesciunt. Itaque, ipsum similique.
+        </p>
+        <a href="https://www.cruzismael.es/#works" target="_blank"
+           class=" inline-flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-500
+                  rounded-xl text-white text-sm font-medium transition-colors duration-300">
+            Ver proyecto
+        </a>
+    </div>
+    </div>
+</div>
+
+<!--Targrta->
 
         <!-- CONTACTO -->
         <section class="flex items-center justify-center px-6 py-16">
@@ -175,108 +127,78 @@ function HomeView() {
                     </button>
                 </form>
             </div>
+            <!--Targeta-->
+            
         </section>
     `;
 }
+//Targeta
+function initProjectCard() {
+  const imgs = document.querySelectorAll(".project-card img");
+  if (!imgs.length) return;
+
+  let current = 0;
+
+  setInterval(() => {
+    imgs[current].classList.replace("opacity-100", "opacity-0");
+    current = (current + 1) % imgs.length;
+    imgs[current].classList.replace("opacity-0", "opacity-100");
+  }, 2500);
+}
+//Targeta
 
 function initContact() {
-    const btn = document.getElementById("submit-btn");
-    btn.addEventListener("click", handleSubmit);
+  const btn = document.getElementById("submit-btn");
+  btn.addEventListener("click", handleSubmit);
 }
 
 async function handleSubmit() {
-    const name    = document.getElementById("name").value.trim();
-    const email   = document.getElementById("email").value.trim();
-    const message = document.getElementById("message").value.trim();
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const message = document.getElementById("message").value.trim();
 
-    if (!name || !email || !message) {
-        showStatus("Por favor rellena todos los campos.", "error");
-        return;
+  if (!name || !email || !message) {
+    showStatus("Por favor rellena todos los campos.", "error");
+    return;
+  }
+
+  const btn = document.getElementById("submit-btn");
+  btn.textContent = "Enviando...";
+  btn.disabled = true;
+
+  try {
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, email, message }),
+    });
+    const data = await response.json();
+    if (data.ok) {
+      showStatus("¡Mensaje enviado! Te respondo pronto.", "success");
+      document.getElementById("name").value = "";
+      document.getElementById("email").value = "";
+      document.getElementById("message").value = "";
+    } else {
+      showStatus("Algo salió mal. Inténtalo de nuevo.", "error");
     }
-
-    const btn = document.getElementById("submit-btn");
-    btn.textContent = "Enviando...";
-    btn.disabled = true;
-
-    try {
-        const response = await fetch("/api/contact", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ name, email, message }),
-        });
-        const data = await response.json();
-        if (data.ok) {
-            showStatus("¡Mensaje enviado! Te respondo pronto.", "success");
-            document.getElementById("name").value    = "";
-            document.getElementById("email").value   = "";
-            document.getElementById("message").value = "";
-        } else {
-            showStatus("Algo salió mal. Inténtalo de nuevo.", "error");
-        }
-    } catch (error) {
-        showStatus("Error de conexión. Inténtalo de nuevo.", "error");
-    } finally {
-        btn.textContent = "Enviar mensaje";
-        btn.disabled = false;
-    }
+  } catch (error) {
+    showStatus("Error de conexión. Inténtalo de nuevo.", "error");
+  } finally {
+    btn.textContent = "Enviar mensaje";
+    btn.disabled = false;
+  }
 }
 
 function showStatus(message, type) {
-    const el = document.getElementById("status-msg");
-    el.textContent = message;
-    el.className = type === "success"
-        ? "text-green-400 text-sm text-center"
-        : "text-red-400 text-sm text-center";
-}
-
-function initSlider() {
-    const slider = document.querySelector('.cards-slider');
-    const dots   = document.querySelectorAll('.dot');
-    const prev   = document.getElementById('slide-prev');
-    const next   = document.getElementById('slide-next');
-
-    if (!slider) return;
-
-    let current = 0;
-    const total = document.querySelectorAll('.card-ring').length;
-    let timer;
-
-    function goTo(index) {
-        current = (index + total) % total;
-        slider.scrollTo({ left: current * slider.offsetWidth, behavior: 'smooth' });
-        dots.forEach((dot, i) => dot.classList.toggle('active', i === current));
-    }
-
-    function startAutoplay() {
-        timer = setInterval(() => goTo(current + 1), 4000);
-    }
-
-    function stopAutoplay() {
-        clearInterval(timer);
-    }
-
-    if (prev) prev.addEventListener('click', () => { stopAutoplay(); goTo(current - 1); startAutoplay(); });
-    if (next) next.addEventListener('click', () => { stopAutoplay(); goTo(current + 1); startAutoplay(); });
-
-    dots.forEach((dot, i) => {
-        dot.addEventListener('click', () => { stopAutoplay(); goTo(i); startAutoplay(); });
-    });
-
-    slider.addEventListener('mouseenter', stopAutoplay);
-    slider.addEventListener('mouseleave', startAutoplay);
-
-    slider.addEventListener('scroll', () => {
-        const index = Math.round(slider.scrollLeft / slider.offsetWidth);
-        if (index !== current) {
-            current = index;
-            dots.forEach((dot, i) => dot.classList.toggle('active', i === current));
-        }
-    });
-
-    startAutoplay();
+  const el = document.getElementById("status-msg");
+  el.textContent = message;
+  el.className =
+    type === "success"
+      ? "text-green-400 text-sm text-center"
+      : "text-red-400 text-sm text-center";
 }
 
 function initHome() {
-    initContact();
-    initSlider();
+  initContact();
+  initProjectCard();
 }
