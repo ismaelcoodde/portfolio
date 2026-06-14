@@ -100,3 +100,93 @@
     right: 10%;
     animation: float-4 14s ease-in-out infinite;
 }
+
+/* REEMPLAZA EL BLOQUE DEL SLIDER EN input.css POR ESTO */
+
+.cards-slider-wrapper {
+    position: relative;
+}
+
+.cards-slider {
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    border-radius: 24px;
+}
+
+.cards-slider::-webkit-scrollbar {
+    display: none;
+}
+
+.card-ring {
+    position: relative;
+    border-radius: 24px;
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    height: 480px;
+    overflow: hidden;
+}
+
+.card-ring-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    transform: translate(-50%, -50%);
+    background: conic-gradient(
+        from 0deg,
+        #6366f1,
+        #818cf8,
+        #a78bfa,
+        #e879f9,
+        #38bdf8,
+        #818cf8,
+        #6366f1
+    );
+    animation: spin-gradient 3s linear infinite;
+    z-index: 0;
+}
+
+.card-inner {
+    position: absolute;
+    inset: 2px;
+    border-radius: 22px;
+    background: #0f0f1a;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.card-text {
+    padding: 20px;
+    scrollbar-width: none;
+}
+
+.card-text::-webkit-scrollbar {
+    display: none;
+}
+
+.cards-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.dot.active {
+    width: 20px;
+    border-radius: 4px;
+    background: #6366f1;
+}

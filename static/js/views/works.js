@@ -201,7 +201,7 @@ function WorksView() {
                 </div>
 
             </div>
-            <div class="max-w-4xl mx-auto p-8 bg-white dark:bg-gray-800 rounded-3xl shadow-lg border border-gray-100 dark:border-gray-700 font-sans transition-transform hover:shadow-xl">
+            <div class="max-w-4xl mt-20 mx-auto p-8 bg-white dark:bg-gray-800 rounded-3xl shadow-lg border border-gray-100 dark:border-gray-700 font-sans transition-transform hover:shadow-xl">
   
   <div class="mb-8 text-center md:text-left md:flex md:items-center md:justify-between">
     <div>
