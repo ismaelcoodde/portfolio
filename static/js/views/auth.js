@@ -21,7 +21,7 @@ function initAuth() {
     renderAuthForm('login');
 }
 
-// Renderiza el formulario de login o de registro según el modo
+// Renderiza el formulario de loginn o de registro según el modo
 function renderAuthForm(mode) {
     const container = document.getElementById('auth-form');
     if (!container) return;
