@@ -67,7 +67,7 @@ function HomeView() {
              class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"/>
     </div>
 
-    <!-- Texto y botón -->
+    <!-- Texto y botónn -->
     <div class="p-5 text-center">
         <h3 class="text-lg font-bold mb-2 text-center">Full Stack Develoer</h3>
         <p class="text-slate-400 text-sm leading-relaxed text-center mb-4">
