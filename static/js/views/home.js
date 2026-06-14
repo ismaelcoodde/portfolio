@@ -5,11 +5,10 @@ function HomeView() {
     return `
         <section class="flex flex-col items-center justify-center px-6 py-16">
 
-            <img
-                src="/images/yo2.jpg"
-                alt="Ismael Cruz"
-                class="w-[200px] h-[200px] rounded-full object-cover mb-6 ring-4 ring-indigo-500/30"
-            />
+           <div class="photo-ring">
+    <div class="photo-ring-spinner"></div>
+    <img src="/images/yo2.jpg" alt="Ismael Cruz" />
+</div>
 
             <h1 class="text-3xl font-bold text-white mb-2">
                 Ismael Cruz Fernandez
@@ -63,111 +62,6 @@ function HomeView() {
 </div>
         </section>
 
-        
-       
-
-        <!-- SERVICIOS -->
-<section class="px-6 py-16 max-w-5xl mx-auto">
-
-    <p class="text-indigo-400 text-xs font-medium tracking-[0.3em] uppercase mb-3 text-center">
-        Servicios
-    </p>
-    <h2 class="text-4xl font-extrabold text-center mb-4">
-        Lo que puedo hacer por ti
-    </h2>
-    <p class="text-slate-400 text-center max-w-xl mx-auto mb-16">
-        Tu web lista en <span class="text-white font-semibold">1 semana</span>.
-        Sin complicaciones, a medida y lista para captar clientes desde el primer día.
-    </p>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-    <!-- Tarjeta 1 -->
-    <div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-indigo-500/50 hover:bg-white/8 transition-all duration-300">
-
-        <!-- Icono -->
-        <div class="w-12 h-12 bg-indigo-500/10 rounded-xl flex items-center justify-center mb-4">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#818cf8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="3" width="18" height="18" rx="2"/>
-                <path d="M3 9h18"/>
-                <path d="M9 21V9"/>
-            </svg>
-        </div>
-
-        <!-- Contenido -->
-        <h3 class="text-lg font-bold mb-2">Web corporativa</h3>
-        <p class="text-slate-400 text-sm leading-relaxed mb-4">
-            Presentación profesional de tu negocio. Diseño moderno, responsive y optimizado para que tus clientes te encuentren.
-        </p>
-
-        <!-- Badge de tiempo -->
-        <span class="px-3 py-1 bg-indigo-500/10 text-indigo-400 text-xs rounded-full border border-indigo-500/20">
-            Lista en 5 días
-        </span>
-
-    </div>
-  <!-- Tarjeta 2 -->
-    <div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-indigo-500/50 hover:bg-white/8 transition-all duration-300">
-
-        <div class="w-12 h-12 bg-indigo-500/10 rounded-xl flex items-center justify-center mb-4">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#818cf8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
-                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
-            </svg>
-        </div>
-
-        <h3 class="text-lg font-bold mb-2">Tienda online</h3>
-        <p class="text-slate-400 text-sm leading-relaxed mb-4">
-            Catálogo de productos con carrito de compra y pago seguro integrado con Stripe. Tus clientes compran sin salir de tu web.
-        </p>
-        <span class="px-3 py-1 bg-indigo-500/10 text-indigo-400 text-xs rounded-full border border-indigo-500/20">
-            Lista en 7 días
-        </span>
-    </div>
-
-    <!-- Tarjeta 3 -->
-    <div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-indigo-500/50 hover:bg-white/8 transition-all duration-300">
-
-        <div class="w-12 h-12 bg-indigo-500/10 rounded-xl flex items-center justify-center mb-4">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#818cf8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/>
-                <line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
-            </svg>
-        </div>
-
-        <h3 class="text-lg font-bold mb-2">Sistema de reservas</h3>
-        <p class="text-slate-400 text-sm leading-relaxed mb-4">
-            Calendario de citas online con pago automático por Stripe. Ideal para clínicas, peluquerías, restaurantes y cualquier negocio de servicios.
-        </p>
-        <span class="px-3 py-1 bg-indigo-500/10 text-indigo-400 text-xs rounded-full border border-indigo-500/20">
-            Lista en 7 días
-        </span>
-    </div>
-
-    <!-- Tarjeta 4 -->
-    <div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-indigo-500/50 hover:bg-white/8 transition-all duration-300">
-
-        <div class="w-12 h-12 bg-indigo-500/10 rounded-xl flex items-center justify-center mb-4">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#818cf8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                <circle cx="9" cy="7" r="4"/>
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-            </svg>
-        </div>
-
-        <h3 class="text-lg font-bold mb-2">Web con área de clientes</h3>
-        <p class="text-slate-400 text-sm leading-relaxed mb-4">
-            Registro e inicio de sesión para tus clientes. Acceso a contenido exclusivo, historial de pedidos o reservas. Tu negocio siempre conectado.
-        </p>
-        <span class="px-3 py-1 bg-indigo-500/10 text-indigo-400 text-xs rounded-full border border-indigo-500/20">
-            Lista en 7 días
-        </span>
-    </div>
-</div>
-
-        
-
-</section>
 
 
         <!-- CONTACTO -->

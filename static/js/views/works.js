@@ -1,9 +1,7 @@
 function WorksView() {
-   return `
+    return `
 
-
-       <!-- PORTFOLIO -->
-
+        <!-- PORTFOLIO -->
         <section class="px-6 py-16 max-w-5xl mx-auto">
 
             <p class="text-indigo-400 text-xs font-medium tracking-[0.3em] uppercase mb-3 text-center">
@@ -17,8 +15,6 @@ function WorksView() {
 
                 <!-- Proyecto 1 -->
                 <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-indigo-500/50 transition-colors duration-300">
-
-                    <!-- Preview en vivo -->
                     <div class="relative w-full overflow-hidden" style="height: 220px;">
                         <iframe
                             src="https://mallorca-mar-excursiones.vercel.app/"
@@ -27,21 +23,17 @@ function WorksView() {
                             loading="lazy">
                         </iframe>
                     </div>
-
-                    <!-- Info del proyecto -->
                     <div class="p-5 text-center">
                         <h3 class="text-lg font-bold mb-2">Mallorca Mar Excursiones</h3>
                         <p class="text-slate-400 text-sm mb-4 leading-relaxed">
                             Web de reservas de excursiones en barco por Mallorca.
                             Diseño responsive con sistema de contacto integrado.
                         </p>
-
                         <div class="flex gap-2 justify-center flex-wrap mb-4">
                             <span class="px-3 py-1 bg-indigo-500/10 text-indigo-400 text-xs rounded-full border border-indigo-500/20">React</span>
                             <span class="px-3 py-1 bg-indigo-500/10 text-indigo-400 text-xs rounded-full border border-indigo-500/20">Tailwind</span>
                             <span class="px-3 py-1 bg-indigo-500/10 text-indigo-400 text-xs rounded-full border border-indigo-500/20">Vercel</span>
                         </div>
-
                         <a href="https://mallorca-mar-excursiones.vercel.app/" target="_blank" rel="noopener noreferrer"
                            class="inline-flex items-center gap-2 text-sm text-indigo-400 hover:text-indigo-300 transition-colors">
                             Ver proyecto en vivo
@@ -52,13 +44,10 @@ function WorksView() {
                             </svg>
                         </a>
                     </div>
-
                 </div>
 
-                                <!-- Proyecto 2 -->
+                <!-- Proyecto 2 -->
                 <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-indigo-500/50 transition-colors duration-300">
-
-                    <!-- Preview en vivo -->
                     <div class="relative w-full overflow-hidden" style="height: 220px;">
                         <iframe
                             src="https://ismaelcruz.onrender.com/"
@@ -67,20 +56,16 @@ function WorksView() {
                             loading="lazy">
                         </iframe>
                     </div>
-
-                    <!-- Info del proyecto -->
                     <div class="p-5 text-center">
                         <h3 class="text-lg font-bold mb-2">Ismael Cruz Fernandez - Full Stack</h3>
                         <p class="text-slate-400 text-sm mb-4 leading-relaxed">
                             Desarrollador Web
                         </p>
-
                         <div class="flex gap-2 justify-center flex-wrap mb-4">
-                            <span class="px-3 py-1 bg-indigo-500/10 text-indigo-400 text-xs rounded-full border border-indigo-500/20">React</span>
+                            <span class="px-3 py-1 bg-indigo-500/10 text-indigo-400 text-xs rounded-full border border-indigo-500/20">FastAPI</span>
                             <span class="px-3 py-1 bg-indigo-500/10 text-indigo-400 text-xs rounded-full border border-indigo-500/20">Tailwind</span>
-                            <span class="px-3 py-1 bg-indigo-500/10 text-indigo-400 text-xs rounded-full border border-indigo-500/20">Vercel</span>
+                            <span class="px-3 py-1 bg-indigo-500/10 text-indigo-400 text-xs rounded-full border border-indigo-500/20">Supabase</span>
                         </div>
-
                         <a href="https://ismaelcruz.onrender.com/" target="_blank" rel="noopener noreferrer"
                            class="inline-flex items-center gap-2 text-sm text-indigo-400 hover:text-indigo-300 transition-colors">
                             Ver proyecto en vivo
@@ -91,16 +76,10 @@ function WorksView() {
                             </svg>
                         </a>
                     </div>
-
                 </div>
 
-                
-
-
-                                <!-- Proyecto 3 -->
+                <!-- Proyecto 3 -->
                 <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-indigo-500/50 transition-colors duration-300">
-
-                    <!-- Preview en vivo -->
                     <div class="relative w-full overflow-hidden" style="height: 220px;">
                         <iframe
                             src="https://peluqueria-rust.vercel.app/"
@@ -109,20 +88,16 @@ function WorksView() {
                             loading="lazy">
                         </iframe>
                     </div>
-
-                    <!-- Info del proyecto -->
                     <div class="p-5 text-center">
-                        <h3 class="text-lg font-bold mb-2">Peluqueria</h3>
+                        <h3 class="text-lg font-bold mb-2">Peluquería</h3>
                         <p class="text-slate-400 text-sm mb-4 leading-relaxed">
-                            Web de reservas y citas para peluquería
+                            Web de reservas y citas para peluquería.
                         </p>
-
                         <div class="flex gap-2 justify-center flex-wrap mb-4">
                             <span class="px-3 py-1 bg-indigo-500/10 text-indigo-400 text-xs rounded-full border border-indigo-500/20">React</span>
                             <span class="px-3 py-1 bg-indigo-500/10 text-indigo-400 text-xs rounded-full border border-indigo-500/20">Tailwind</span>
                             <span class="px-3 py-1 bg-indigo-500/10 text-indigo-400 text-xs rounded-full border border-indigo-500/20">Vercel</span>
                         </div>
-
                         <a href="https://peluqueria-rust.vercel.app/" target="_blank" rel="noopener noreferrer"
                            class="inline-flex items-center gap-2 text-sm text-indigo-400 hover:text-indigo-300 transition-colors">
                             Ver proyecto en vivo
@@ -133,74 +108,100 @@ function WorksView() {
                             </svg>
                         </a>
                     </div>
+                </div>
 
+            </div>
+
+        </section>
+
+        <!-- SERVICIOS -->
+        <section class="px-6 py-16 max-w-5xl mx-auto">
+
+            <p class="text-indigo-400 text-xs font-medium tracking-[0.3em] uppercase mb-3 text-center">
+                Servicios
+            </p>
+            <h2 class="text-4xl font-extrabold text-center mb-4">
+                Lo que puedo hacer por ti
+            </h2>
+            <p class="text-slate-400 text-center max-w-xl mx-auto mb-16">
+                Tu web lista en <span class="text-white font-semibold">1 semana</span>.
+                Sin complicaciones, a medida y lista para captar clientes desde el primer día.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                <!-- Tarjeta 1 -->
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-indigo-500/50 hover:bg-white/8 transition-all duration-300">
+                    <div class="w-12 h-12 bg-indigo-500/10 rounded-xl flex items-center justify-center mb-4">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#818cf8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            <path d="M3 9h18"/>
+                            <path d="M9 21V9"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Web corporativa</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                        Presentación profesional de tu negocio. Diseño moderno, responsive y optimizado para que tus clientes te encuentren.
+                    </p>
+                    <span class="px-3 py-1 bg-indigo-500/10 text-indigo-400 text-xs rounded-full border border-indigo-500/20">
+                        Lista en 5 días
+                    </span>
+                </div>
+
+                <!-- Tarjeta 2 -->
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-indigo-500/50 hover:bg-white/8 transition-all duration-300">
+                    <div class="w-12 h-12 bg-indigo-500/10 rounded-xl flex items-center justify-center mb-4">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#818cf8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Tienda online</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                        Catálogo de productos con carrito de compra y pago seguro integrado con Stripe. Tus clientes compran sin salir de tu web.
+                    </p>
+                    <span class="px-3 py-1 bg-indigo-500/10 text-indigo-400 text-xs rounded-full border border-indigo-500/20">
+                        Lista en 7 días
+                    </span>
+                </div>
+
+                <!-- Tarjeta 3 -->
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-indigo-500/50 hover:bg-white/8 transition-all duration-300">
+                    <div class="w-12 h-12 bg-indigo-500/10 rounded-xl flex items-center justify-center mb-4">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#818cf8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/>
+                            <line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Sistema de reservas</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                        Calendario de citas online con pago automático por Stripe. Ideal para clínicas, peluquerías, restaurantes y cualquier negocio de servicios.
+                    </p>
+                    <span class="px-3 py-1 bg-indigo-500/10 text-indigo-400 text-xs rounded-full border border-indigo-500/20">
+                        Lista en 7 días
+                    </span>
+                </div>
+
+                <!-- Tarjeta 4 -->
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-indigo-500/50 hover:bg-white/8 transition-all duration-300">
+                    <div class="w-12 h-12 bg-indigo-500/10 rounded-xl flex items-center justify-center mb-4">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#818cf8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Web con área de clientes</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                        Registro e inicio de sesión para tus clientes. Acceso a contenido exclusivo, historial de pedidos o reservas. Tu negocio siempre conectado.
+                    </p>
+                    <span class="px-3 py-1 bg-indigo-500/10 text-indigo-400 text-xs rounded-full border border-indigo-500/20">
+                        Lista en 7 días
+                    </span>
                 </div>
 
             </div>
 
         </section>
     `;
-}
-
-// Esta función se ejecuta después de que el HTML del formulario existe en el DOM
-function initContact() {
-    const btn = document.getElementById('submit-btn');
-    btn.addEventListener('click', handleSubmit);
-}
-
-async function handleSubmit() {
-    // Recoge los valores de los campos
-    const name    = document.getElementById('name').value.trim();
-    const email   = document.getElementById('email').value.trim();
-    const message = document.getElementById('message').value.trim();
-
-    // Validación básica antes de enviar
-    if (!name || !email || !message) {
-        showStatus('Por favor rellena todos los campos.', 'error');
-        return;
-    }
-
-    // Cambia el botón a estado "cargando"
-    const btn = document.getElementById('submit-btn');
-    btn.textContent = 'Enviando...';
-    btn.disabled = true;
-
-    try {
-        // fetch() envía una petición HTTP al servidor
-        const response = await fetch('/api/contact', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name, email, message })
-        });
-
-        const data = await response.json();
-
-        if (data.ok) {
-            showStatus('¡Mensaje enviado! Te respondo pronto.', 'success');
-            document.getElementById('name').value    = '';
-            document.getElementById('email').value   = '';
-            document.getElementById('message').value = '';
-        } else {
-            showStatus('Algo salió mal. Inténtalo de nuevo.', 'error');
-        }
-
-    } catch (error) {
-        showStatus('Error de conexión. Inténtalo de nuevo.', 'error');
-    } finally {
-        // Esto se ejecuta SIEMPRE, haya error o no
-        btn.textContent = 'Enviar mensaje';
-        btn.disabled = false;
-    }
-}
-
-function showStatus(message, type) {
-    const el = document.getElementById('status-msg');
-    el.textContent = message;
-    el.className = type === 'success'
-        ? 'text-green-400 text-sm text-center'
-        : 'text-red-400 text-sm text-center';
-}
-
-function initHome() {
-    initContact();
 }
