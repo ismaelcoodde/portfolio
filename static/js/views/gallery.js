@@ -37,14 +37,14 @@ async function initGallery() {
     if (uploadBtn) uploadBtn.addEventListener('click', openUploadModal);
 
     supabaseClient.auth.onAuthStateChange((event, session) => {
-        if (session && session.user.email === 'ibcruzismael@gmail.com') {
+        if (session) {
             const btn = document.getElementById('upload-btn');
             if (btn) btn.classList.remove('hidden');
         }
     });
 
     const { data: { session } } = await supabaseClient.auth.getSession();
-    if (session && session.user.email === 'ibcruzismael@gmail.com') {
+    if (session) {
         const btn = document.getElementById('upload-btn');
         if (btn) btn.classList.remove('hidden');
     }
