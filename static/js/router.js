@@ -37,6 +37,7 @@ function router() {
         app.innerHTML = view();
         // Si esta ruta tiene init, la ejecutamos ahora que el HTML ya existe
         if (inits[hash]) inits[hash]();
+        initScrollAnimations();
     } else {
         app.innerHTML = '<p class="p-8 text-gray-400">Página no encontrada</p>';
     }

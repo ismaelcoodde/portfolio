@@ -9,9 +9,24 @@ function initParallax() {
         });
     }, { passive: true });
 }
+function initScrollAnimations() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-up').forEach(el => {
+        observer.observe(el);
+    });
+}
 
 window.addEventListener("load", function () {
     initParallax();
+    initScrollAnimations();
 
     const hasOAuthRedirect = window.location.hash.includes("access_token");
 

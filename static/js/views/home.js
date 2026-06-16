@@ -19,19 +19,19 @@ function HomeView() {
     </div>
 </div>
 
-            <h1 class="text-3xl font-bold text-white mb-2">
+            <h1 class="text-3xl font-bold text-white mb-2 fade-up">
                 Ismael Cruz Fernandez
             </h1>
 
-            <p class="text-indigo-400 text-sm tracking-widest uppercase mb-4">
+            <p class="text-indigo-400 text-sm tracking-widest uppercase mb-4 fade-up">
                 Bienvenidos a mi espacio personal
             </p>
 
-            <p class="text-slate-400 text-center max-w-md leading-relaxed">
+            <p class="text-slate-400 text-center max-w-md leading-relaxed fade-up">
                 Palma de Mallorca, España. 1994<br/>
             </p>
 
-            <div class="flex gap-6 mt-8">
+            <div class="flex gap-6 mt-8 ">
                 <a href="https://www.instagram.com/ismaelcruzfernandez_/" target="_blank" rel="noopener noreferrer"
                    class="text-slate-500 hover:text-pink-400 transition-colors duration-300">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -72,7 +72,7 @@ function HomeView() {
         <!--Targeta-->
 
  
-       <div class="flex items-center justify-center gap-4 py-8">
+       <div class="flex items-center justify-center gap-4 py-8 fade-up">
 
     <!-- Flecha izquierda -->
     <button id="proj-prev" style="width:36px; height:36px; background:rgba(255,255,255,0.1); border:none; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
@@ -112,7 +112,7 @@ function HomeView() {
         <!--Targrta->
 
         <!-- CONTACTO -->
-        <section class="flex items-center justify-center px-6 py-16">
+        <section class="flex items-center justify-center px-6 py-16 fade-up">
             <div class="w-full max-w-lg">
 
                 <p class="text-indigo-400 text-xs font-medium tracking-[0.3em] uppercase mb-3 text-center">

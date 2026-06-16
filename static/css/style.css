@@ -1765,3 +1765,27 @@ video {
   }
 }
 
+.fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+#hero-foto-wrapper {
+    animation: aparecer-foto 0.8s ease forwards;
+}
+
+@keyframes aparecer-foto {
+    from {
+        opacity: 0;
+        transform: scale(0.92);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
