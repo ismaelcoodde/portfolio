@@ -36,108 +36,52 @@
         <div class="blob blob-4"></div>
       </div>
     </div>
-    <nav
-      class="flex items-center justify-between p-4 md:p-6 border-b border-white/10 relative z-50"
-    >
-      <!-- Izquierda: links en desktop / nombre en móvil -->
-      <div class="hidden md:flex gap-6">
-        <a href="#home" class="hover:text-indigo-400 transition-colors"
-          >Inicio</a
-        >
-        <a href="#works" class="hover:text-indigo-400 transition-colors"
-          >Trabajos</a
-        >
-        <a href="#gallery" class="hover:text-indigo-400 transition-colors"
-          >Galería</a
-        >
-        <a href="#ahora" class="hover:text-indigo-400 transition-colors"
-          >Ahora</a
-        >
+    <nav class="flex items-center justify-between p-4 md:p-6 border-b border-white/10 relative z-50">
+
+    <!-- Logo (izquierda) — sirve para móvil y desktop -->
+    <a href="#home" style="display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; background:rgba(0,0,0,0.4); border:1.5px solid rgba(255,255,255,0.5); border-radius:4px; text-decoration:none; flex-shrink:0;">
+        <span style="font-family:ui-sans-serif,system-ui,sans-serif; font-size:15px; font-weight:300; color:white; letter-spacing:3px;">IC</span>
+    </a>
+
+    <!-- Links desktop (centro) -->
+    <div class="hidden md:flex gap-6">
+        <a href="#home" class="hover:text-indigo-400 transition-colors">Inicio</a>
+        <a href="#works" class="hover:text-indigo-400 transition-colors">Trabajos</a>
+        <a href="#gallery" class="hover:text-indigo-400 transition-colors">Galería</a>
+        <a href="#ahora" class="hover:text-indigo-400 transition-colors">Ahora</a>
         <a href="#chat" class="hover:text-indigo-400 transition-colors">Chat</a>
-        <a href="#contact" class="hover:text-indigo-400 transition-colors"
-          >Contacto</a
-        >
-      </div>
-      <span class="md:hidden font-bold text-white">Ismael Cruz</span>
+        <a href="#contact" class="hover:text-indigo-400 transition-colors">Contacto</a>
+    </div>
 
-      <!-- Derecha: auth + hamburguesa -->
-      <div class="flex items-center gap-3">
-        <!-- Desktop: email + Salir (o Iniciar sesión) -->
+    <!-- Derecha: auth + hamburguesa -->
+    <div class="flex items-center gap-3">
         <div id="nav-auth" class="hidden md:block">
-          <a
-            href="#auth"
-            class="px-4 py-2 border border-indigo-500 rounded-full text-indigo-400 text-sm hover:bg-indigo-500/10 transition-colors"
-          >
-            Iniciar sesión
-          </a>
+            <a href="#auth" class="px-4 py-2 border border-indigo-500 rounded-full text-indigo-400 text-sm hover:bg-indigo-500/10 transition-colors">
+                Iniciar sesión
+            </a>
         </div>
-
-        <!-- Móvil: avatar con inicial (solo cuando hay sesión) -->
         <div id="nav-auth-mobile" class="md:hidden"></div>
-
-        <!-- Hamburguesa: solo en móvil -->
-        <button
-          id="hamburger-btn"
-          class="md:hidden flex flex-col justify-center gap-1.5 w-8 h-8 focus:outline-none"
-        >
-          <span
-            class="w-6 h-0.5 bg-white rounded transition-all duration-300"
-          ></span>
-          <span
-            class="w-6 h-0.5 bg-white rounded transition-all duration-300"
-          ></span>
-          <span
-            class="w-6 h-0.5 bg-white rounded transition-all duration-300"
-          ></span>
+        <button id="hamburger-btn" class="md:hidden flex flex-col justify-center gap-1.5 w-8 h-8 focus:outline-none">
+            <span class="w-6 h-0.5 bg-white rounded transition-all duration-300"></span>
+            <span class="w-6 h-0.5 bg-white rounded transition-all duration-300"></span>
+            <span class="w-6 h-0.5 bg-white rounded transition-all duration-300"></span>
         </button>
-      </div>
+    </div>
 
-      <!-- Menú desplegable móvil -->
-      <div
-        id="mobile-menu"
-        class="hidden absolute top-full left-0 right-0 bg-[#06060f] border-b border-white/10 p-6 flex flex-col gap-5"
-      >
-        <a
-          href="#home"
-          class="mobile-link text-lg hover:text-indigo-400 transition-colors"
-          >Inicio</a
-        >
-        <a
-          href="#works"
-          class="mobile-link text-lg hover:text-indigo-400 transition-colors"
-          >Trabajos</a
-        >
-        <a
-          href="#gallery"
-          class="mobile-link text-lg hover:text-indigo-400 transition-colors"
-          >Galería</a
-        >
-        <a
-          href="#ahora"
-          class="mobile-link text-lg hover:text-indigo-400 transition-colors"
-          >Ahora</a
-        >
-        <a
-          href="#chat"
-          class="mobile-link text-lg hover:text-indigo-400 transition-colors"
-          >Chat</a
-        >
-        <a
-          href="#contact"
-          class="mobile-link text-lg hover:text-indigo-400 transition-colors"
-          >Contacto</a
-        >
-        <!-- Auth en el menú móvil: se actualiza dinámicamente -->
+    <!-- Menú desplegable móvil -->
+    <div id="mobile-menu" class="hidden absolute top-full left-0 right-0 bg-[#06060f] border-b border-white/10 p-6 flex flex-col gap-5">
+        <a href="#home" class="mobile-link text-lg hover:text-indigo-400 transition-colors">Inicio</a>
+        <a href="#works" class="mobile-link text-lg hover:text-indigo-400 transition-colors">Trabajos</a>
+        <a href="#gallery" class="mobile-link text-lg hover:text-indigo-400 transition-colors">Galería</a>
+        <a href="#ahora" class="mobile-link text-lg hover:text-indigo-400 transition-colors">Ahora</a>
+        <a href="#chat" class="mobile-link text-lg hover:text-indigo-400 transition-colors">Chat</a>
+        <a href="#contact" class="mobile-link text-lg hover:text-indigo-400 transition-colors">Contacto</a>
         <div id="mobile-menu-auth" class="pt-4 border-t border-white/10">
-          <a
-            href="#auth"
-            class="mobile-link text-lg hover:text-indigo-400 transition-colors"
-          >
-            Iniciar sesión
-          </a>
+            <a href="#auth" class="mobile-link text-lg hover:text-indigo-400 transition-colors">Iniciar sesión</a>
         </div>
-      </div>
-    </nav>
+    </div>
+
+</nav>
 
     <main id="app">Cargando...</main>
     <footer class="border-t border-white/10 mt-20">

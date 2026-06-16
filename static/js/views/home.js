@@ -3,21 +3,32 @@ function HomeView() {
   return `
         <section class="flex flex-col items-center justify-center px-6 py-16">
 
-            <div class="photo-ring">
-                <div class="photo-ring-spinner"></div>
-                <img src="/images/yo2.jpg" alt="Ismael Cruz" />
-            </div>
+            <div style="position:relative; display:inline-block; cursor:pointer;" id="hero-foto-wrapper">
+    <div class="photo-ring" id="hero-foto">
+        <div class="photo-ring-spinner" id="hero-anillo"></div>
+        <img src="/images/yo2.jpg" alt="Ismael Cruz" />
+    </div>
+
+    <!-- Burbuja de estado nuevo (oculta por defecto) -->
+    <div id="hero-burbuja" style="display:none; position:absolute; top:-10px; right:-145px; width:135px; cursor:pointer;">
+        <div style="background:rgba(15,15,26,0.95); border:1px solid rgba(168,85,247,0.4); border-radius:12px; padding:8px 12px;">
+            <p style="font-size:10px; color:#a855f7; margin:0 0 3px; text-transform:uppercase; letter-spacing:0.05em;">nuevo estado</p>
+            <p id="hero-burbuja-texto" style="font-size:12px; color:#e2e8f0; margin:0; line-height:1.4;"></p>
+        </div>
+        <div style="position:absolute; left:-7px; top:50%; transform:translateY(-50%); width:0; height:0; border-top:6px solid transparent; border-bottom:6px solid transparent; border-right:7px solid rgba(168,85,247,0.4);"></div>
+    </div>
+</div>
 
             <h1 class="text-3xl font-bold text-white mb-2">
                 Ismael Cruz Fernandez
             </h1>
 
             <p class="text-indigo-400 text-sm tracking-widest uppercase mb-4">
-                Desarrollador Full-Stack
+                Bienvenidos a mi espacio personal
             </p>
 
             <p class="text-slate-400 text-center max-w-md leading-relaxed">
-                De Palma de Mallorca, España. 1994<br/> Me gusta escribir código, la fotografía, el cielo y por supuesto también el mar.
+                Palma de Mallorca, España. 1994<br/>
             </p>
 
             <div class="flex gap-6 mt-8">
@@ -41,6 +52,12 @@ function HomeView() {
                         <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
                     </svg>
                 </a>
+                <a href="https://discord.com/users/codigobeach" target="_blank" rel="noopener noreferrer"
+   class="text-slate-500 hover:text-indigo-400 transition-colors duration-300">
+    <svg width="22" height="22" viewBox="0 0 127.14 96.36" fill="currentColor">
+        <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z"/>
+    </svg>
+</a>
                 <a href="https://github.com/ismaelcoodde" target="_blank" rel="noopener noreferrer"
                    class="text-slate-500 hover:text-purple-400 transition-colors duration-300">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
@@ -143,7 +160,6 @@ function HomeView() {
     `;
 }
 
-
 function initContact() {
   const btn = document.getElementById("submit-btn");
   btn.addEventListener("click", handleSubmit);
@@ -197,83 +213,142 @@ function showStatus(message, type) {
 
 //Targetas
 const projects = [
-    {
-        title: 'Full Stack Developer',
-        description: 'Especialista en tiendas online, plataformas de reservas automatizadas e integración de pagos seguros. Soluciones rápidas, modernas y listas para hacer crecer tu negocio.',
-        url: '#works',
-        images: ['/images/programacion.png', '/images/programacion2.jpg', '/images/programacion3.jpg']
-    },
-    {
-        title: 'Astrofotografía',
-        description: 'Aprendiendo cada día un poco más sobre los misterios del cielo nocturno, capturando desde los detalles de la Luna hasta nuestros planetas vecinos. A veces, la mejor forma de poner los pies en la tierra es pasar la noche mirando hacia el cielo.',
-        url: '#gallery',
-        images: ['/images/luna1.JPG', '/images/luna2.JPG', '/images/astrofotografia.png']
-    },
-    {
-        title: '¿Quien soy?',
-        description: 'mi espacio personal',
-        url: '#gallery',
-        images: ['/images/astrofotografia.png', '/images/yo2.jpg', '/images/programacion.png']
-    }
+  {
+    title: "Full Stack Developer",
+    description:
+      "Especialista en tiendas online, plataformas de reservas automatizadas e integración de pagos seguros. Soluciones rápidas, modernas y listas para hacer crecer tu negocio.",
+    url: "#works",
+    images: [
+      "/images/programacion.png",
+      "/images/programacion2.jpg",
+      "/images/programacion3.jpg",
+    ],
+  },
+  {
+    title: "Astrofotografía",
+    description:
+      "Aprendiendo cada día un poco más sobre los misterios del cielo nocturno, capturando desde los detalles de la Luna hasta nuestros planetas vecinos. A veces, la mejor forma de poner los pies en la tierra es pasar la noche mirando hacia el cielo.",
+    url: "#gallery",
+    images: [
+      "/images/luna1.JPG",
+      "/images/luna2.JPG",
+      "/images/astrofotografia.png",
+    ],
+  },
+  {
+    title: "¿Quien soy?",
+    description: "mi espacio personal",
+    url: "#gallery",
+    images: [
+      "/images/astrofotografia.png",
+      "/images/yo2.jpg",
+      "/images/programacion.png",
+    ],
+  },
 ];
 
 //Targeta
 function initProjectCard() {
-    const imgs  = document.querySelectorAll('#card-images img');
-    const title = document.getElementById('card-title');
-    const desc  = document.getElementById('card-desc');
-    const btn   = document.getElementById('card-btn');
-    const prev  = document.getElementById('proj-prev');
-    const next  = document.getElementById('proj-next');
-    const card  = document.getElementById('project-card');
+  const imgs = document.querySelectorAll("#card-images img");
+  const title = document.getElementById("card-title");
+  const desc = document.getElementById("card-desc");
+  const btn = document.getElementById("card-btn");
+  const prev = document.getElementById("proj-prev");
+  const next = document.getElementById("proj-next");
+  const card = document.getElementById("project-card");
 
-    if (!imgs.length) return;
+  if (!imgs.length) return;
 
-    let currentProject = 0;
-    let currentImg = 0;
-    let imgTimer;
+  let currentProject = 0;
+  let currentImg = 0;
+  let imgTimer;
 
-    function loadProject(index) {
-        const p = projects[index];
-        title.textContent = p.title;
-        desc.textContent  = p.description;
-        btn.href          = p.url;
-        imgs.forEach((img, i) => {
-            img.src = p.images[i];
-            img.classList.toggle('opacity-100', i === 0);
-            img.classList.toggle('opacity-0',   i !== 0);
-        });
-        currentImg = 0;
-        clearInterval(imgTimer);
-        imgTimer = setInterval(() => {
-            imgs[currentImg].classList.replace('opacity-100', 'opacity-0');
-            currentImg = (currentImg + 1) % imgs.length;
-            imgs[currentImg].classList.replace('opacity-0', 'opacity-100');
-        }, 3500);
-    }
-
-    function goTo(index) {
-        currentProject = (index + projects.length) % projects.length;
-        loadProject(currentProject);
-    }
-
-    // Flechass
-    prev.addEventListener('click', () => goTo(currentProject - 1));
-    next.addEventListener('click', () => goTo(currentProject + 1));
-
-    // Swipe táctil
-    let startX = 0;
-    card.addEventListener('touchstart', (e) => startX = e.touches[0].clientX);
-    card.addEventListener('touchend',   (e) => {
-        const diff = startX - e.changedTouches[0].clientX;
-        if (Math.abs(diff) > 50) goTo(currentProject + (diff > 0 ? 1 : -1));
+  function loadProject(index) {
+    const p = projects[index];
+    title.textContent = p.title;
+    desc.textContent = p.description;
+    btn.href = p.url;
+    imgs.forEach((img, i) => {
+      img.src = p.images[i];
+      img.classList.toggle("opacity-100", i === 0);
+      img.classList.toggle("opacity-0", i !== 0);
     });
+    currentImg = 0;
+    clearInterval(imgTimer);
+    imgTimer = setInterval(() => {
+      imgs[currentImg].classList.replace("opacity-100", "opacity-0");
+      currentImg = (currentImg + 1) % imgs.length;
+      imgs[currentImg].classList.replace("opacity-0", "opacity-100");
+    }, 3500);
+  }
 
-    loadProject(0);
+  function goTo(index) {
+    currentProject = (index + projects.length) % projects.length;
+    loadProject(currentProject);
+  }
+
+  // Flechass
+  prev.addEventListener("click", () => goTo(currentProject - 1));
+  next.addEventListener("click", () => goTo(currentProject + 1));
+
+  // Swipe táctil
+  let startX = 0;
+  card.addEventListener("touchstart", (e) => (startX = e.touches[0].clientX));
+  card.addEventListener("touchend", (e) => {
+    const diff = startX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) goTo(currentProject + (diff > 0 ? 1 : -1));
+  });
+
+  loadProject(0);
 }
-//Targetas
 
-function initHome() {
-  initContact();
-  initProjectCard();
+async function comprobarEstadoNuevo() {
+    try {
+        // Pedimos el estado más reciente al backend
+        const res = await fetch('/api/estado');
+        const data = await res.json();
+
+        // Si no hay estado, no hacemos nada
+        if (!data.ok || !data.estado) return;
+
+        const estado = data.estado;
+
+        // Leemos del localStorage la última vez que el usuario vio el estado
+        const ultimaVista = localStorage.getItem('estado_ultima_vista');
+
+        // Comparamos fechas
+        const fechaEstado = new Date(estado.creado_en).getTime();
+        const fechaVista = ultimaVista ? new Date(ultimaVista).getTime() : 0;
+
+        // Si el estado es más reciente que la última visita → hay algo nuevo
+        if (fechaEstado > fechaVista) {
+            // Cambiamos el color del anillo
+            document.getElementById('hero-anillo').classList.add('photo-ring-spinner--nuevo');
+
+            // Mostramos la burbuja con el texto del estado
+            const burbuja = document.getElementById('hero-burbuja');
+            const texto = document.getElementById('hero-burbuja-texto');
+            texto.textContent = estado.haciendo || estado.estado_animo || 'nuevo estado';
+            burbuja.style.display = 'block';
+        }
+
+        // Cuando hacen clic en la foto o la burbuja → van a #ahora y marcamos como visto
+        document.getElementById('hero-foto-wrapper').addEventListener('click', () => {
+            localStorage.setItem('estado_ultima_vista', new Date().toISOString());
+            document.getElementById('hero-anillo').classList.remove('photo-ring-spinner--nuevo');
+            document.getElementById('hero-burbuja').style.display = 'none';
+            window.location.hash = '#ahora';
+        });
+
+    } catch (error) {
+        console.error('Error comprobando estado nuevo:', error);
+    }
+}
+
+
+
+async function initHome() {
+    initContact();
+    initProjectCard();
+    await comprobarEstadoNuevo();
 }
