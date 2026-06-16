@@ -4,10 +4,15 @@ from pydantic import BaseModel
 import resend
 import os
 from dotenv import load_dotenv
+from supabase import create_client
 
+load_dotenv(dotenv_path=".env", override=True)
 
-# Carga las variables del archivo .env
-load_dotenv()
+# Conectamos con Supabase usando las variables del .env
+supabase_url = os.getenv("SUPABASE_URL")
+supabase_key = os.getenv("SUPABASE_KEY")
+supabase = create_client(supabase_url, supabase_key)
+
 
 # Configura Resend con tu API key
 resend.api_key = os.getenv("RESEND_API_KEY")
@@ -41,4 +46,102 @@ async def contact(form: ContactForm):
     
     return {"ok": True, "message": "Mensaje enviado"}
 
-app.mount("/", StaticFiles(directory="static", html=True), name="static")
+# Endpoint para obtener el estado más reciente
+@app.get("/api/estado")
+async def get_estado():
+    resultado = supabase.table("estados").select("*").order("creado_en", desc=True).limit(1).execute()
+    
+    if resultado.data:
+        return {"ok": True, "estado": resultado.data[0]}
+    else:
+        return {"ok": False, "estado": None}
+
+
+
+# Endpoint para obtener los comentarios de un estado
+@app.get("/api/comentarios/{estado_id}")
+async def get_comentarios(estado_id: int):
+    resultado = supabase.table("comentarios").select("*").eq("estado_id", estado_id).order("creado_en", desc=False).execute()
+    return {"ok": True, "comentarios": resultado.data}
+
+# Modelo para recibir un comentario nuevo
+class ComentarioForm(BaseModel):
+    estado_id: int
+    texto: str
+    autor: str = 'Anónimo'
+    es_anonimo: bool = True
+
+# Endpoint para crear un comentario nuevo
+@app.post("/api/comentarios")
+async def crear_comentario(form: ComentarioForm):
+    resultado = supabase.table("comentarios").insert({
+        "estado_id": form.estado_id,
+        "texto": form.texto,
+        "autor": form.autor,
+        "es_anonimo": form.es_anonimo
+    }).execute()
+
+    if resultado.data:
+        return {"ok": True, "comentario": resultado.data[0]}
+    else:
+        return {"ok": False}
+    
+
+ # Modelo para recibir un estado nuevo
+class EstadoForm(BaseModel):
+    haciendo: str
+    estado_animo: str
+    escuchando: str = ''
+    en_mi_cabeza: str = ''
+    objetivo: str = ''
+    ubicacion: str = ''
+
+# Endpoint para crear un estado nuevo
+@app.post("/api/estado")
+async def crear_estado(form: EstadoForm):
+    resultado = supabase.table("estados").insert({
+        "haciendo": form.haciendo,
+        "estado_animo": form.estado_animo,
+        "escuchando": form.escuchando,
+        "en_mi_cabeza": form.en_mi_cabeza,
+        "objetivo": form.objetivo,
+        "ubicacion": form.ubicacion
+    }).execute()
+
+    if resultado.data:
+        return {"ok": True, "estado": resultado.data[0]}
+    else:
+        return {"ok": False}   
+    
+    # Endpoint para obtener las reacciones de un estado
+@app.get("/api/reacciones/{estado_id}")
+async def get_reacciones(estado_id: int):
+    resultado = supabase.table("reacciones").select("tipo").eq("estado_id", estado_id).execute()
+    
+    conteo = {"❤️": 0, "🔥": 0, "👏": 0, "sonrisa": 0, "triste": 0}
+    for r in resultado.data:
+        if r["tipo"] in conteo:
+            conteo[r["tipo"]] += 1
+    
+    return {"ok": True, "reacciones": conteo}
+
+# Endpoint para añadir una reacción
+@app.post("/api/reacciones")
+async def crear_reaccion(data: dict):
+    resultado = supabase.table("reacciones").insert({
+        "estado_id": data["estado_id"],
+        "tipo": data["tipo"]
+    }).execute()
+
+    if resultado.data:
+        return {"ok": True}
+    else:
+        return {"ok": False}
+    
+    # Endpoint para obtener todos los estados anteriores
+@app.get("/api/estados")
+async def get_estados():
+    resultado = supabase.table("estados").select("*").order("creado_en", desc=True).execute()
+    return {"ok": True, "estados": resultado.data}
+
+app.mount("/", StaticFiles(directory="static", html=True), name="static")    

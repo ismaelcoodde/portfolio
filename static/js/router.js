@@ -9,6 +9,7 @@ const routes = {
     '#contact':  ContactView,
     '#auth':     AuthView,
     '#chat': ChatView,
+    '#ahora': AhoraView
 };
 
 // Cada vista puede tener una función que se ejecuta
@@ -19,6 +20,7 @@ const inits = {
     '#contact': initContact,
     '#auth':    initAuth,
     '#chat': initChat,
+    '#ahora': initAhora
 };
 
 function router() {
