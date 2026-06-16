@@ -10,7 +10,7 @@ function HomeView() {
     </div>
 
     <!-- Burbuja de estado nuevo (oculta por defecto) -->
-    <div id="hero-burbuja" style="display:none; position:absolute; top:-10px; right:-145px; width:135px; cursor:pointer;">
+    <div id="hero-burbuja" style="display:none; position:absolute; top:-10px; left:67%; transform:translateX(-10%); width:130px; cursor:pointer;">
         <div style="background:rgba(15,15,26,0.95); border:1px solid rgba(168,85,247,0.4); border-radius:12px; padding:8px 12px;">
             <p style="font-size:10px; color:#a855f7; margin:0 0 3px; text-transform:uppercase; letter-spacing:0.05em;">nuevo estado</p>
             <p id="hero-burbuja-texto" style="font-size:12px; color:#e2e8f0; margin:0; line-height:1.4;"></p>
