@@ -18,10 +18,8 @@
     "url": "https://github.com/ismaelcoodde/portfolio/issues"
   },
   "homepage": "https://github.com/ismaelcoodde/portfolio#readme",
-  "dependencies": {
-    "tailwindcss": "^3.4.19"
-  },
   "devDependencies": {
-    "browser-sync": "^3.0.4"
+    "browser-sync": "^3.0.4",
+    "tailwindcss": "^4.3.1"
   }
 }

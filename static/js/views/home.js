@@ -27,7 +27,7 @@ function HomeView() {
                 mi Espacio Personal
             </p>
 
-            <p class="text-slate-400 text-center max-w-md leading-relaxed fade-up">
+            <p class="text-slate-400 text-center max-w-md leading-relaxed fade-up mb-5">
                 Palma de Mallorca, España. 1994<br/>
             </p>
 
@@ -76,6 +76,18 @@ function HomeView() {
             </div>
             
         </section>
+
+        <!--Previw galaeria
+        <!-- Fotos recientes -->
+<div class="mb-16 mx-auto w-full max-w-lg px-0 mt-12 fade-up">
+    <div class="flex items-center justify-center mb-4">
+        <p class="text-slate-500 text-xs font-medium tracking-[0.3em] uppercase mr-3">Fotos recientes </p>
+        <a href="#gallery" class="text-indigo-400 text-xs hover:underline">Ver todas →</a>
+    </div>
+    <div id="home-fotos-grid" class="grid grid-cols-3 md:grid-cols-6 gap-1 ">
+        <p class="text-slate-500 text-sm col-span-2 text-center py-8">Cargando...</p>
+    </div>
+</div>
 
 
         <!--Targeta-->
@@ -357,8 +369,30 @@ async function comprobarEstadoNuevo() {
   }
 }
 
+//Galeria previw
+async function cargarFotosRecientes() {
+    const { data, error } = await supabaseClient
+        .from('photos')
+        .select('id, url, description')
+        .order('created_at', { ascending: false })
+        .limit(6);
+
+    const grid = document.getElementById('home-fotos-grid');
+    if (!grid || error || !data || data.length === 0) return;
+
+    grid.innerHTML = data.map(photo => `
+        <div onclick="window.location.hash='#gallery'"
+             class="relative aspect-square overflow-hidden rounded-xl cursor-pointer group">
+            <img src="${photo.url}" alt="${photo.description || ''}"
+                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"/>
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300"></div>
+        </div>
+    `).join('');
+}
+
 async function initHome() {
   initContact();
+  await cargarFotosRecientes();
   initProjectCard();
   await comprobarEstadoNuevo();
 }

@@ -1,13 +1,14 @@
-/** @type {import('tailwindcss').Config} */
 module.exports = {
     content: [
-        './static/**/*.html',
-        './static/**/*.js',
+        './static/**/*.{html,js}',
     ],
     safelist: [
         'photo-ring-spinner--nuevo',
         'fade-up',
         'visible',
+        'menu-abierto',
+        'mb-10',
+        'mb-16',
     ],
     theme: {
         extend: {},
