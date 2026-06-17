@@ -437,6 +437,8 @@ async function cargarMusicaActual() {
 
 //Notificaciones
 async function initNotificaciones() {
+      alert('initNotificaciones ejecutándose. Permiso: ' + Notification.permission);
+
     if (!('Notification' in window) || !('serviceWorker' in navigator)) return;
 
     const btn = document.getElementById('btn-notificaciones');
