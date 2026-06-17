@@ -101,3 +101,26 @@
     animation: float-4 14s ease-in-out infinite;
 }
 
+#mobile-menu {
+    transform: translateY(-10px);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+#mobile-menu.menu-abierto {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.photo-ring-spinner.photo-ring-spinner--nuevo {
+    background: conic-gradient(
+        from 0deg,
+        #a855f7,
+        #c084fc,
+        #34d399,
+        #6ee7b7,
+        #a855f7,
+        #34d399,
+        #a855f7
+    ) !important;
+}

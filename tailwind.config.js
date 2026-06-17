@@ -4,6 +4,11 @@ module.exports = {
         './static/**/*.html',
         './static/**/*.js',
     ],
+    safelist: [
+        'photo-ring-spinner--nuevo',
+        'fade-up',
+        'visible',
+    ],
     theme: {
         extend: {},
     },
