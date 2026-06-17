@@ -24,12 +24,13 @@ function HomeView() {
             </h1>
 
             <p class="text-indigo-400 text-sm tracking-widest uppercase mb-4 fade-up">
-                Bienvenidos a mi espacio personal
+                mi Espacio Personal
             </p>
 
             <p class="text-slate-400 text-center max-w-md leading-relaxed fade-up">
                 Palma de Mallorca, España. 1994<br/>
             </p>
+
 
             <div class="flex gap-6 mt-8 ">
                 <a href="https://www.instagram.com/ismaelcruzfernandez_/" target="_blank" rel="noopener noreferrer"
@@ -46,6 +47,14 @@ function HomeView() {
                         <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
                     </svg>
                 </a>
+                <a href="https://www.linkedin.com/in/ismael-cruz-fernandez-180989144/" target="_blank" rel="noopener noreferrer"
+   class="text-slate-500 hover:text-blue-400 transition-colors duration-300">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+        <rect x="2" y="9" width="4" height="12"/>
+        <circle cx="4" cy="4" r="2"/>
+    </svg>
+</a>
                 <a href="https://www.tiktok.com/@ismaelcruzfernandez" target="_blank" rel="noopener noreferrer"
                    class="text-slate-500 hover:text-white transition-colors duration-300">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
@@ -303,52 +312,56 @@ function initProjectCard() {
 }
 
 async function comprobarEstadoNuevo() {
-    try {
-        // Pedimos el estado más reciente al backend
-        const res = await fetch('/api/estado');
-        const data = await res.json();
+  try {
+    // Pedimos el estado más reciente al backend
+    const res = await fetch("/api/estado");
+    const data = await res.json();
 
-        // Si no hay estado, no hacemos nada
-        if (!data.ok || !data.estado) return;
+    // Si no hay estado, no hacemos nada
+    if (!data.ok || !data.estado) return;
 
-        const estado = data.estado;
+    const estado = data.estado;
 
-        // Leemos del localStorage la última vez que el usuario vio el estado
-        const ultimaVista = localStorage.getItem('estado_ultima_vista');
+    // Leemos del localStorage la última vez que el usuario vio el estado
+    const ultimaVista = localStorage.getItem("estado_ultima_vista");
 
-        // Comparamos fechas
-        const fechaEstado = new Date(estado.creado_en).getTime();
-        const fechaVista = ultimaVista ? new Date(ultimaVista).getTime() : 0;
+    // Comparamos fechas
+    const fechaEstado = new Date(estado.creado_en).getTime();
+    const fechaVista = ultimaVista ? new Date(ultimaVista).getTime() : 0;
 
-        // Si el estado es más reciente que la última visita → hay algo nuevo
-        if (fechaEstado > fechaVista) {
-            // Cambiamos el color del anillo
-            document.getElementById('hero-anillo').classList.add('photo-ring-spinner--nuevo');
+    // Si el estado es más reciente que la última visita → hay algo nuevo
+    if (fechaEstado > fechaVista) {
+      // Cambiamos el color del anillo
+      document
+        .getElementById("hero-anillo")
+        .classList.add("photo-ring-spinner--nuevo");
 
-            // Mostramos la burbuja con el texto del estado
-            const burbuja = document.getElementById('hero-burbuja');
-            const texto = document.getElementById('hero-burbuja-texto');
-            texto.textContent = estado.haciendo || estado.estado_animo || 'nuevo estado';
-            burbuja.style.display = 'block';
-        }
-
-        // Cuando hacen clic en la foto o la burbuja → van a #ahora y marcamos como visto
-        document.getElementById('hero-foto-wrapper').addEventListener('click', () => {
-            localStorage.setItem('estado_ultima_vista', new Date().toISOString());
-            document.getElementById('hero-anillo').classList.remove('photo-ring-spinner--nuevo');
-            document.getElementById('hero-burbuja').style.display = 'none';
-            window.location.hash = '#ahora';
-        });
-
-    } catch (error) {
-        console.error('Error comprobando estado nuevo:', error);
+      // Mostramos la burbuja con el texto del estado
+      const burbuja = document.getElementById("hero-burbuja");
+      const texto = document.getElementById("hero-burbuja-texto");
+      texto.textContent =
+        estado.haciendo || estado.estado_animo || "nuevo estado";
+      burbuja.style.display = "block";
     }
+
+    // Cuando hacen clic en la foto o la burbuja → van a #ahora y marcamos como visto
+    document
+      .getElementById("hero-foto-wrapper")
+      .addEventListener("click", () => {
+        localStorage.setItem("estado_ultima_vista", new Date().toISOString());
+        document
+          .getElementById("hero-anillo")
+          .classList.remove("photo-ring-spinner--nuevo");
+        document.getElementById("hero-burbuja").style.display = "none";
+        window.location.hash = "#ahora";
+      });
+  } catch (error) {
+    console.error("Error comprobando estado nuevo:", error);
+  }
 }
 
-
-
 async function initHome() {
-    initContact();
-    initProjectCard();
-    await comprobarEstadoNuevo();
+  initContact();
+  initProjectCard();
+  await comprobarEstadoNuevo();
 }
