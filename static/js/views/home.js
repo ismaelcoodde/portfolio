@@ -467,16 +467,18 @@ async function suscribirPush() {
         const keys = suscripcion.toJSON().keys;
         const { data: { session } } = await supabaseClient.auth.getSession();
 
-        await fetch('/api/push/suscribir', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                endpoint: suscripcion.endpoint,
-                p256dh: keys.p256dh,
-                auth: keys.auth,
-                user_id: session?.user?.id || null
-            })
-        });
+const respuesta = await fetch('/api/push/suscribir', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+        endpoint: suscripcion.endpoint,
+        p256dh: keys.p256dh,
+        auth: keys.auth,
+        user_id: session?.user?.id || null
+    })
+});
+const resultado = await respuesta.json();
+alert('Resultado: ' + JSON.stringify(resultado));
 } catch (error) {
     console.error('Error suscribiendo push:', error);
     alert('Error: ' + error.message);
