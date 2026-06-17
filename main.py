@@ -108,10 +108,37 @@ async def crear_estado(form: EstadoForm):
         "ubicacion": form.ubicacion
     }).execute()
 
+    # Enviamos notificación push a todos los suscritos
+    try:
+        import json
+        suscripciones = supabase.table("suscripciones_push").select("*").execute()
+        for sub in suscripciones.data:
+            try:
+                webpush(
+                    subscription_info={
+                        "endpoint": sub["endpoint"],
+                        "keys": {
+                            "p256dh": sub["p256dh"],
+                            "auth": sub["auth"]
+                        }
+                    },
+                    data=json.dumps({
+                        "title": "Ismael Cruz",
+                        "body": f"Nuevo estado: {form.haciendo or form.estado_animo}",
+                        "url": "/#ahora"
+                    }),
+                    vapid_private_key=VAPID_PRIVATE_KEY,
+                    vapid_claims={"sub": f"mailto:{VAPID_EMAIL}"}
+                )
+            except Exception:
+                pass
+    except Exception:
+        pass
+
     if resultado.data:
         return {"ok": True, "estado": resultado.data[0]}
     else:
-        return {"ok": False}   
+        return {"ok": False}  
     
     # Endpoint para obtener las reacciones de un estado
 @app.get("/api/reacciones/{estado_id}")
@@ -143,5 +170,55 @@ async def crear_reaccion(data: dict):
 async def get_estados():
     resultado = supabase.table("estados").select("*").order("creado_en", desc=True).execute()
     return {"ok": True, "estados": resultado.data}
+
+#Notificaciones
+from pywebpush import webpush, WebPushException
+
+VAPID_PRIVATE_KEY = os.getenv("VAPID_PRIVATE_KEY")
+VAPID_PUBLIC_KEY = os.getenv("VAPID_PUBLIC_KEY")
+VAPID_EMAIL = os.getenv("VAPID_EMAIL")
+
+# Modelo para guardar suscripción
+class SuscripcionForm(BaseModel):
+    endpoint: str
+    p256dh: str
+    auth: str
+    user_id: str = None
+
+# Guardar suscripción push
+@app.post("/api/push/suscribir")
+async def suscribir(form: SuscripcionForm):
+    resultado = supabase.table("suscripciones_push").upsert({
+        "endpoint": form.endpoint,
+        "p256dh": form.p256dh,
+        "auth": form.auth,
+        "user_id": form.user_id
+    }, on_conflict="endpoint").execute()
+    return {"ok": True}
+
+# Enviar notificación a todos los suscritos
+@app.post("/api/push/enviar")
+async def enviar_push(data: dict):
+    suscripciones = supabase.table("suscripciones_push").select("*").execute()
+    
+    errores = []
+    for sub in suscripciones.data:
+        try:
+            webpush(
+                subscription_info={
+                    "endpoint": sub["endpoint"],
+                    "keys": {
+                        "p256dh": sub["p256dh"],
+                        "auth": sub["auth"]
+                    }
+                },
+                data=str(data),
+                vapid_private_key=VAPID_PRIVATE_KEY,
+                vapid_claims={"sub": f"mailto:{VAPID_EMAIL}"}
+            )
+        except WebPushException as e:
+            errores.append(str(e))
+    
+    return {"ok": True, "errores": errores}
 
 app.mount("/", StaticFiles(directory="static", html=True), name="static")    

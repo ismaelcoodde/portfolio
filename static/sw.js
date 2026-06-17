@@ -53,3 +53,24 @@ self.addEventListener('fetch', (event) => {
         })
     );
 });
+
+// Recibe notificaciones push
+self.addEventListener('push', (event) => {
+    const data = event.data ? event.data.json() : {};
+    const title = data.title || 'Ismael Cruz';
+    const options = {
+        body: data.body || 'Hay algo nuevo en la web',
+        icon: '/images/icon-192.png',
+        badge: '/images/icon-192.png',
+        data: { url: data.url || '/' }
+    };
+    event.waitUntil(self.registration.showNotification(title, options));
+});
+
+// Al hacer clic en la notificación abre la web
+self.addEventListener('notificationclick', (event) => {
+    event.notification.close();
+    event.waitUntil(
+        clients.openWindow(event.notification.data.url)
+    );
+});

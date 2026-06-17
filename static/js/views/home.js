@@ -77,6 +77,15 @@ function HomeView() {
             
         </section>
 
+        <!-- Botón notificaciones -->
+<button id="btn-notificaciones" style="display:none; margin-top:12px; padding:8px 16px; background:rgba(99,102,241,0.15); border:1px solid rgba(99,102,241,0.3); border-radius:10px; color:#a5b4fc; font-size:12px; cursor:pointer;">
+    🔔 Activar notificaciones
+</button>
+        <!-- Spotify / Last.fm -->
+<div id="lastfm-widget" class="mt-6 fade-up">
+    <p class="text-slate-600 text-xs text-center">Cargando música...</p>
+</div>
+
         <!--Previw galaeria
         <!-- Fotos recientes -->
 <div class="mb-16 mx-auto w-full max-w-lg px-0 mt-12 fade-up">
@@ -390,9 +399,94 @@ async function cargarFotosRecientes() {
     `).join('');
 }
 
+//Musica
+async function cargarMusicaActual() {
+    try {
+        const res = await fetch('https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=Ibcruz94&api_key=370f4140de1aad49efa9610c04b799f9&format=json&limit=1');
+        const data = await res.json();
+
+        const track = data.recenttracks.track[0];
+        const escuchando = track['@attr']?.nowplaying === 'true';
+        const cancion = track.name;
+        const artista = track.artist['#text'];
+        const caratula = track.image[2]['#text'];
+        const spotifyUrl = `https://open.spotify.com/search/${encodeURIComponent(cancion)}%20${encodeURIComponent(artista)}`;
+
+        const widget = document.getElementById('lastfm-widget');
+        if (!widget) return;
+
+       widget.innerHTML = `
+    <a href="${spotifyUrl}" target="_blank" rel="noopener noreferrer" style="text-decoration:none; display:block; max-width:280px; margin:0 auto;">
+        <div style="display:flex; align-items:center; gap:10px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:10px 14px; transition:border-color 0.3s;" onmouseover="this.style.borderColor='rgba(29,185,84,0.4)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.1)'">
+            ${caratula ? `<img src="${caratula}" style="width:40px; height:40px; border-radius:6px; object-fit:cover; flex-shrink:0;"/>` : ''}
+            <div style="min-width:0;">
+                <p style="font-size:10px; color:${escuchando ? '#1db954' : '#64748b'}; margin:0 0 2px; text-transform:uppercase; letter-spacing:0.05em;">
+                    ${escuchando ? 'Escuchando ahora en Spotify' : 'Última canción'}
+                </p>
+                <p style="font-size:13px; color:#e2e8f0; margin:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-weight:500;">${cancion}</p>
+                <p style="font-size:11px; color:#94a3b8; margin:2px 0 0;">${artista}</p>
+            </div>
+        </div>
+    </a>
+`;
+        setTimeout(cargarMusicaActual, 30000);
+    } catch (error) {
+        console.error('Error cargando música:', error);
+    }
+}
+
+//Notificaciones
+async function initNotificaciones() {
+    if (!('Notification' in window) || !('serviceWorker' in navigator)) return;
+
+    const btn = document.getElementById('btn-notificaciones');
+    if (!btn) return;
+
+    if (Notification.permission === 'granted') {
+        await suscribirPush();
+        btn.style.display = 'none';
+    } else if (Notification.permission !== 'denied') {
+        btn.style.display = 'inline-block';
+        btn.addEventListener('click', async () => {
+            const permiso = await Notification.requestPermission();
+            if (permiso !== 'granted') return;
+            await suscribirPush();
+            btn.style.display = 'none';
+        });
+    }
+}
+
+async function suscribirPush() {
+    try {
+        const registro = await navigator.serviceWorker.ready;
+        const suscripcion = await registro.pushManager.subscribe({
+            userVisibleOnly: true,
+            applicationServerKey: 'BIZv4I_n2ih0IRejbShGfu8ZwHUzlmVuYeLQNaHDGpmWR--KJen3k0uVZBbpZvUc904fi_YQTIc7PBugRsh9a7g'
+        });
+
+        const keys = suscripcion.toJSON().keys;
+        const { data: { session } } = await supabaseClient.auth.getSession();
+
+        await fetch('/api/push/suscribir', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                endpoint: suscripcion.endpoint,
+                p256dh: keys.p256dh,
+                auth: keys.auth,
+                user_id: session?.user?.id || null
+            })
+        });
+    } catch (error) {
+        console.error('Error suscribiendo push:', error);
+    }
+}
+
 async function initHome() {
-  initContact();
-  await cargarFotosRecientes();
-  initProjectCard();
-  await comprobarEstadoNuevo();
+    initContact();
+    initProjectCard();
+    await cargarFotosRecientes();
+    await cargarMusicaActual();
+    await comprobarEstadoNuevo();
+    initNotificaciones();
 }
