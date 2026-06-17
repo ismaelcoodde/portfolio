@@ -457,6 +457,7 @@ async function initNotificaciones() {
 }
 
 async function suscribirPush() {
+  alert('Iniciando suscripción...');
     try {
         const registro = await navigator.serviceWorker.ready;
         const suscripcion = await registro.pushManager.subscribe({
