@@ -112,15 +112,3 @@
     opacity: 1;
 }
 
-.photo-ring-spinner.photo-ring-spinner--nuevo {
-    background: conic-gradient(
-        from 0deg,
-        #a855f7,
-        #c084fc,
-        #34d399,
-        #6ee7b7,
-        #a855f7,
-        #34d399,
-        #a855f7
-    ) !important;
-}

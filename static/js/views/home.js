@@ -332,9 +332,8 @@ async function comprobarEstadoNuevo() {
     // Si el estado es más reciente que la última visita → hay algo nuevo
     if (fechaEstado > fechaVista) {
       // Cambiamos el color del anillo
-      document
-        .getElementById("hero-anillo")
-        .classList.add("photo-ring-spinner--nuevo");
+      document.getElementById("hero-anillo").style.background =
+        "conic-gradient(from 0deg, #a855f7, #c084fc, #34d399, #6ee7b7, #a855f7, #34d399, #a855f7)";
 
       // Mostramos la burbuja con el texto del estado
       const burbuja = document.getElementById("hero-burbuja");
@@ -349,9 +348,7 @@ async function comprobarEstadoNuevo() {
       .getElementById("hero-foto-wrapper")
       .addEventListener("click", () => {
         localStorage.setItem("estado_ultima_vista", new Date().toISOString());
-        document
-          .getElementById("hero-anillo")
-          .classList.remove("photo-ring-spinner--nuevo");
+        document.getElementById("hero-anillo").style.background = "";
         document.getElementById("hero-burbuja").style.display = "none";
         window.location.hash = "#ahora";
       });
