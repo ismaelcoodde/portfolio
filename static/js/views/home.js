@@ -421,7 +421,7 @@ async function cargarMusicaActual() {
             ${caratula ? `<img src="${caratula}" style="width:40px; height:40px; border-radius:6px; object-fit:cover; flex-shrink:0;"/>` : ''}
             <div style="min-width:0;">
                 <p style="font-size:10px; color:${escuchando ? '#1db954' : '#64748b'}; margin:0 0 2px; text-transform:uppercase; letter-spacing:0.05em;">
-                    ${escuchando ? 'Escuchando ahora en Spotify' : 'Última canción'}
+                    ${escuchando ? 'Escuchando ahora en Spotify' : 'Última canción en Spotify'}
                 </p>
                 <p style="font-size:13px; color:#e2e8f0; margin:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-weight:500;">${cancion}</p>
                 <p style="font-size:11px; color:#94a3b8; margin:2px 0 0;">${artista}</p>
@@ -477,9 +477,10 @@ async function suscribirPush() {
                 user_id: session?.user?.id || null
             })
         });
-    } catch (error) {
-        console.error('Error suscribiendo push:', error);
-    }
+} catch (error) {
+    console.error('Error suscribiendo push:', error);
+    alert('Error: ' + error.message);
+}
 }
 
 async function initHome() {
