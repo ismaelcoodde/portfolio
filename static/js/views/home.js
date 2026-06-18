@@ -291,14 +291,18 @@ async function suscribirPush() {
             userVisibleOnly: true,
             applicationServerKey: urlBase64ToUint8Array('BIZv4I_n2ih0IRejbShGfu8ZwHUzlmVuYeLQNaHDGpmWR--KJen3k0uVZBbpZvUc904fi_YQTIc7PBugRsh9a7g')
         });
-        const keys = suscripcion.toJSON().keys;
+const keys = suscripcion.toJSON().keys;
         const { data: { session } } = await supabaseClient.auth.getSession();
-        await fetch('/api/push/suscribir', {
+        const res = await fetch('/api/push/suscribir', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ endpoint: suscripcion.endpoint, p256dh: keys.p256dh, auth: keys.auth, user_id: session?.user?.id || null })
         });
-    } catch (error) { console.error('Error suscribiendo push:', error); }
+        const resultado = await res.json();
+        alert(JSON.stringify(resultado));
+    } catch (error) {
+        alert('ERROR: ' + error.message);
+    }
 }
 
 async function initHome() {
