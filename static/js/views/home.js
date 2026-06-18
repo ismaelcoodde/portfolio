@@ -281,8 +281,10 @@ async function initNotificaciones() {
 
 async function suscribirPush() {
     try {
-        const registro = await navigator.serviceWorker.ready;
-        alert('SW listo: ' + registro.scope);
+        // Registrar el SW manualmente
+        const registro = await navigator.serviceWorker.register('/sw.js');
+        await navigator.serviceWorker.ready;
+
         function urlBase64ToUint8Array(base64String) {
             const padding = '='.repeat((4 - base64String.length % 4) % 4);
             const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
@@ -291,22 +293,28 @@ async function suscribirPush() {
             for (let i = 0; i < rawData.length; ++i) { outputArray[i] = rawData.charCodeAt(i); }
             return outputArray;
         }
+
         const suscripcion = await registro.pushManager.subscribe({
             userVisibleOnly: true,
             applicationServerKey: urlBase64ToUint8Array('BIZv4I_n2ih0IRejbShGfu8ZwHUzlmVuYeLQNaHDGpmWR--KJen3k0uVZBbpZvUc904fi_YQTIc7PBugRsh9a7g')
         });
-        alert('Suscripcion: ' + suscripcion.endpoint);
+
         const keys = suscripcion.toJSON().keys;
         const { data: { session } } = await supabaseClient.auth.getSession();
-        const res = await fetch('/api/push/suscribir', {
+
+        await fetch('https://cruzismael.es/api/push/suscribir', {
+
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ endpoint: suscripcion.endpoint, p256dh: keys.p256dh, auth: keys.auth, user_id: session?.user?.id || null })
+            body: JSON.stringify({
+                endpoint: suscripcion.endpoint,
+                p256dh: keys.p256dh,
+                auth: keys.auth,
+                user_id: session?.user?.id || null
+            })
         });
-        const resultado = await res.json();
-        alert('Resultado: ' + JSON.stringify(resultado));
     } catch (error) {
-        alert('ERROR: ' + error.message);
+        console.error('Error:', error);
     }
 }
 
