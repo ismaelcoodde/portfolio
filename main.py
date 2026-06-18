@@ -110,7 +110,35 @@ async def crear_estado(form: EstadoForm):
                 pass
     except Exception:
         pass
+        # Enviamos email a todos los usuarios registrados
+    try:
+        usuarios = supabase.auth.admin.list_users()
+        for usuario in usuarios:
+            if usuario.email:
+                resend.Emails.send({
+                    "from": "Ismael Cruz <onboarding@resend.dev>",
+                    "to": usuario.email,
+                    "subject": "✨ Nuevo estado de Ismael",
+                    "html": f"""
+                        <div style="font-family:sans-serif; max-width:500px; margin:0 auto; padding:24px; background:#0f0f1a; color:#e2e8f0; border-radius:12px;">
+                            <h2 style="color:#a855f7; margin:0 0 16px;">Hay un nuevo estado 👋</h2>
+                            <p style="color:#94a3b8; margin:0 0 8px;">Ismael acaba de publicar algo nuevo:</p>
+                            <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(168,85,247,0.3); border-radius:8px; padding:16px; margin:16px 0;">
+                                <p style="margin:0 0 8px;"><strong>Haciendo:</strong> {form.haciendo}</p>
+                                <p style="margin:0 0 8px;"><strong>Estado:</strong> {form.estado_animo}</p>
+                                {f'<p style="margin:0;"><strong>En mi cabeza:</strong> {form.en_mi_cabeza}</p>' if form.en_mi_cabeza else ''}
+                            </div>
+                            <a href="https://cruzismael.es/#ahora" style="display:inline-block; padding:12px 24px; background:#6366f1; color:white; border-radius:8px; text-decoration:none; font-weight:500;">Ver estado completo →</a>
+                        </div>
+                    """
+                })
+    except Exception as e:
+        print(f"Error enviando emails: {e}")
 
+    if resultado.data:
+        return {"ok": True, "estado": resultado.data[0]}
+    else:
+        return {"ok": False}
     if resultado.data:
         return {"ok": True, "estado": resultado.data[0]}
     else:
