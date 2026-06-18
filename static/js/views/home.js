@@ -267,12 +267,14 @@ async function initNotificaciones() {
         btn.style.display = 'none';
     } else if (Notification.permission !== 'denied') {
         btn.style.display = 'inline-block';
-        btn.addEventListener('click', async () => {
-            const permiso = await Notification.requestPermission();
-            if (permiso !== 'granted') return;
-            await suscribirPush();
-            btn.style.display = 'none';
-        });
+btn.addEventListener('click', async () => {
+    alert('Botón pulsado');
+    const permiso = await Notification.requestPermission();
+    alert('Permiso obtenido: ' + permiso);
+    if (permiso !== 'granted') return;
+    await suscribirPush();
+    btn.style.display = 'none';
+});
     }
 }
 
