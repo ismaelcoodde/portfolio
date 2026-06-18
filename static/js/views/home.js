@@ -4,99 +4,86 @@ function HomeView() {
         <section class="flex flex-col items-center justify-center px-6 py-16">
 
             <div style="position:relative; display:inline-block; cursor:pointer;" id="hero-foto-wrapper">
-    <div class="photo-ring" id="hero-foto">
-        <div class="photo-ring-spinner" id="hero-anillo"></div>
-        <img src="/images/yo2.jpg" alt="Ismael Cruz" />
-    </div>
+                <div class="photo-ring" id="hero-foto">
+                    <div class="photo-ring-spinner" id="hero-anillo"></div>
+                    <img src="/images/yo2.jpg" alt="Ismael Cruz" />
+                </div>
+                <div id="hero-burbuja" style="display:none; position:absolute; top:-10px; left:67%; transform:translateX(-10%); width:130px; cursor:pointer;">
+                    <div style="background:rgba(15,15,26,0.95); border:1px solid rgba(168,85,247,0.4); border-radius:12px; padding:8px 12px;">
+                        <p style="font-size:10px; color:#a855f7; margin:0 0 3px; text-transform:uppercase; letter-spacing:0.05em;">nuevo estado</p>
+                        <p id="hero-burbuja-texto" style="font-size:12px; color:#e2e8f0; margin:0; line-height:1.4;"></p>
+                    </div>
+                    <div style="position:absolute; left:-7px; top:50%; transform:translateY(-50%); width:0; height:0; border-top:6px solid transparent; border-bottom:6px solid transparent; border-right:7px solid rgba(168,85,247,0.4);"></div>
+                </div>
+            </div>
 
-    <!-- Burbuja de estado nuevo (oculta por defecto) -->
-    <div id="hero-burbuja" style="display:none; position:absolute; top:-10px; left:67%; transform:translateX(-10%); width:130px; cursor:pointer;">
-        <div style="background:rgba(15,15,26,0.95); border:1px solid rgba(168,85,247,0.4); border-radius:12px; padding:8px 12px;">
-            <p style="font-size:10px; color:#a855f7; margin:0 0 3px; text-transform:uppercase; letter-spacing:0.05em;">nuevo estado</p>
-            <p id="hero-burbuja-texto" style="font-size:12px; color:#e2e8f0; margin:0; line-height:1.4;"></p>
-        </div>
-        <div style="position:absolute; left:-7px; top:50%; transform:translateY(-50%); width:0; height:0; border-top:6px solid transparent; border-bottom:6px solid transparent; border-right:7px solid rgba(168,85,247,0.4);"></div>
-    </div>
-</div>
+            <h1 class="text-3xl font-bold text-white mb-2 fade-up">Ismael Cruz Fernandez</h1>
 
-            <h1 class="text-3xl font-bold text-white mb-2 fade-up">
-                Ismael Cruz Fernandez
-            </h1>
-
-            <p class="text-indigo-400 text-sm tracking-widest uppercase mb-4 fade-up">
-                mi Espacio Personal
-            </p>
+            <p class="text-indigo-400 text-sm tracking-widest uppercase mb-4 fade-up">mi Espacio Personal</p>
 
             <p class="text-slate-400 text-center max-w-md leading-relaxed fade-up mb-5">
-                Palma de Mallorca, España. 1994<br/>
+                Palma de Mallorca, España. 1994
             </p>
 
-
-            <div class="flex gap-6 mt-8 ">
-                <a href="https://www.instagram.com/ismaelcruzfernandez_/" target="_blank" rel="noopener noreferrer"
-                   class="text-slate-500 hover:text-pink-400 transition-colors duration-300">
+            <div class="flex gap-6 mt-8 fade-up">
+                <a href="https://www.instagram.com/ismaelcruzfernandez_/" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-pink-400 transition-colors duration-300">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="2" y="2" width="20" height="20" rx="5"/>
                         <circle cx="12" cy="12" r="4"/>
                         <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
                     </svg>
                 </a>
-                <a href="https://www.facebook.com/profile.php?id=100053090172826" target="_blank" rel="noopener noreferrer"
-                   class="text-slate-500 hover:text-blue-400 transition-colors duration-300">
+                <a href="https://www.facebook.com/profile.php?id=100053090172826" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-blue-400 transition-colors duration-300">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
                     </svg>
                 </a>
-                <a href="https://www.linkedin.com/in/ismael-cruz-fernandez-180989144/" target="_blank" rel="noopener noreferrer"
-   class="text-slate-500 hover:text-blue-400 transition-colors duration-300">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-        <rect x="2" y="9" width="4" height="12"/>
-        <circle cx="4" cy="4" r="2"/>
-    </svg>
-</a>
-                <a href="https://www.tiktok.com/@ismaelcruzfernandez" target="_blank" rel="noopener noreferrer"
-                   class="text-slate-500 hover:text-white transition-colors duration-300">
+                <a href="https://www.linkedin.com/in/ismael-cruz-fernandez-180989144/" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-blue-400 transition-colors duration-300">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                        <rect x="2" y="9" width="4" height="12"/>
+                        <circle cx="4" cy="4" r="2"/>
+                    </svg>
+                </a>
+                <a href="https://www.tiktok.com/@ismaelcruzfernandez" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-white transition-colors duration-300">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
                     </svg>
                 </a>
-                <a href="https://discord.com/users/codigobeach" target="_blank" rel="noopener noreferrer"
-   class="text-slate-500 hover:text-indigo-400 transition-colors duration-300">
-    <svg width="22" height="22" viewBox="0 0 127.14 96.36" fill="currentColor">
-        <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z"/>
-    </svg>
-</a>
-                <a href="https://github.com/ismaelcoodde" target="_blank" rel="noopener noreferrer"
-                   class="text-slate-500 hover:text-purple-400 transition-colors duration-300">
+                <a href="https://discord.com/users/codigobeach" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-indigo-400 transition-colors duration-300">
+                    <svg width="22" height="22" viewBox="0 0 127.14 96.36" fill="currentColor">
+                        <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z"/>
+                    </svg>
+                </a>
+                <a href="https://github.com/ismaelcoodde" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-purple-400 transition-colors duration-300">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                     </svg>
                 </a>
             </div>
-            
+
+            <!-- Botón notificaciones -->
+            <button id="btn-notificaciones" style="display:none; margin-top:16px; padding:8px 16px; background:rgba(99,102,241,0.15); border:1px solid rgba(99,102,241,0.3); border-radius:10px; color:#a5b4fc; font-size:12px; cursor:pointer;">
+                🔔 Activar notificaciones
+            </button>
+
+            <!-- Spotify / Last.fm -->
+            <div id="lastfm-widget" class="mt-6 fade-up">
+                <p class="text-slate-600 text-xs text-center">Cargando música...</p>
+            </div>
+
+            <!-- Fotos recientes -->
+            <div class="mb-16 mx-auto w-full max-w-lg px-0 mt-12 fade-up">
+                <div class="flex items-center justify-center mb-4">
+                    <p class="text-slate-500 text-xs font-medium tracking-[0.3em] uppercase mr-3">Fotos recientes</p>
+                    <a href="#gallery" class="text-indigo-400 text-xs hover:underline">Ver todas →</a>
+                </div>
+                <div id="home-fotos-grid" class="grid grid-cols-3 md:grid-cols-6 gap-1">
+                    <p class="text-slate-500 text-sm col-span-3 text-center py-8">Cargando...</p>
+                </div>
+            </div>
+
         </section>
-
-        <!-- Botón notificaciones -->
-<button id="btn-notificaciones" style="display:none; margin-top:12px; padding:8px 16px; background:rgba(99,102,241,0.15); border:1px solid rgba(99,102,241,0.3); border-radius:10px; color:#a5b4fc; font-size:12px; cursor:pointer;">
-    🔔 Activar notificaciones
-</button>
-        <!-- Spotify / Last.fm -->
-<div id="lastfm-widget" class="mt-6 fade-up">
-    <p class="text-slate-600 text-xs text-center">Cargando música...</p>
-</div>
-
-        <!--Previw galaeria
-        <!-- Fotos recientes -->
-<div class="mb-16 mx-auto w-full max-w-lg px-0 mt-12 fade-up">
-    <div class="flex items-center justify-center mb-4">
-        <p class="text-slate-500 text-xs font-medium tracking-[0.3em] uppercase mr-3">Fotos recientes </p>
-        <a href="#gallery" class="text-indigo-400 text-xs hover:underline">Ver todas →</a>
-    </div>
-    <div id="home-fotos-grid" class="grid grid-cols-3 md:grid-cols-6 gap-1 ">
-        <p class="text-slate-500 text-sm col-span-2 text-center py-8">Cargando...</p>
-    </div>
-</div>
 
 
         <!--Targeta-->
