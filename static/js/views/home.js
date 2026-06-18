@@ -471,7 +471,7 @@ const resultado = await respuesta.json();
 alert('Resultado: ' + JSON.stringify(resultado));
 } catch (error) {
     console.error('Error suscribiendo push:', error);
-    alert('Error: ' + error.message);
+    alert('Error completo: ' + error.name + ' - ' + error.message + ' - ' + JSON.stringify(error));
 }
 }
 
