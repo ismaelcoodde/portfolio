@@ -259,22 +259,23 @@ async function cargarMusicaActual() {
 }
 
 async function initNotificaciones() {
-    if (!('Notification' in window) || !('serviceWorker' in navigator)) return;
+    if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
+
     const btn = document.getElementById('btn-notificaciones');
     if (!btn) return;
+
     if (Notification.permission === 'granted') {
-        await suscribirPush();
         btn.style.display = 'none';
-    } else if (Notification.permission !== 'denied') {
+        setTimeout(suscribirPush, 1000);
+    } else if (Notification.permission === 'default') {
         btn.style.display = 'inline-block';
-btn.addEventListener('click', async () => {
-    alert('Botón pulsado');
-    const permiso = await Notification.requestPermission();
-    alert('Permiso obtenido: ' + permiso);
-    if (permiso !== 'granted') return;
-    await suscribirPush();
-    btn.style.display = 'none';
-});
+        btn.addEventListener('click', async () => {
+            const permiso = await Notification.requestPermission();
+            if (permiso === 'granted') {
+                btn.style.display = 'none';
+                setTimeout(suscribirPush, 1000);
+            }
+        });
     }
 }
 
