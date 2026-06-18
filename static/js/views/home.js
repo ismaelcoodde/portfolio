@@ -64,17 +64,16 @@ function HomeView() {
                 🔔 Activar notificaciones
             </button>
 
-            <div id="lastfm-widget" class="mt-6 fade-up">
+            <div id="lastfm-widget" class="mt-6 fade-up md:hidden">
                 <p class="text-slate-600 text-xs text-center">Cargando música...</p>
             </div>
 
-            <div class="mb-16 mx-auto w-full max-w-lg px-0 mt-12 fade-up">
+            <div class="mb-16 mx-auto w-full max-w-lg md:max-w-xl px-0 mt-12 fade-up">
                 <div class="flex items-center justify-center mb-4">
                     <p class="text-slate-500 text-xs font-medium tracking-[0.3em] uppercase mr-3">Fotos recientes</p>
                     <a href="#gallery" class="text-indigo-400 text-xs hover:underline">Ver todas →</a>
                 </div>
-                <div id="home-fotos-grid" class="grid grid-cols-3 md:grid-cols-6 gap-1">
-                    <p class="text-slate-500 text-sm col-span-3 text-center py-8">Cargando...</p>
+                <div id="home-fotos-grid" class="grid grid-cols-2 md:grid-cols-4 gap-3">                    <p class="text-slate-500 text-sm col-span-3 text-center py-8">Cargando...</p>
                 </div>
             </div>
 
@@ -101,8 +100,7 @@ function HomeView() {
             </button>
         </div>
 
-        <section class="flex items-center justify-center px-6 py-16 fade-up">
-            <div class="w-full max-w-lg">
+               <div class="hidden md:block fixed right-8 top-[calc(50%+40px)] -translate-y-1/2 z-50 w-96">
                 <p class="text-indigo-400 text-xs font-medium tracking-[0.3em] uppercase mb-3 text-center">Contacto</p>
                 <h2 class="text-4xl font-extrabold text-center mb-2">Hablemos</h2>
                 <p class="text-slate-500 text-center mb-10">Cuéntame tu proyecto y te respondo en menos de 24h.</p>
@@ -128,201 +126,304 @@ function HomeView() {
 }
 
 function initContact() {
-    const btn = document.getElementById("submit-btn");
-    btn.addEventListener("click", handleSubmit);
+  const btn = document.getElementById("submit-btn");
+  btn.addEventListener("click", handleSubmit);
 }
 
 async function handleSubmit() {
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const message = document.getElementById("message").value.trim();
-    if (!name || !email || !message) { showStatus("Por favor rellena todos los campos.", "error"); return; }
-    const btn = document.getElementById("submit-btn");
-    btn.textContent = "Enviando...";
-    btn.disabled = true;
-    try {
-        const response = await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name, email, message }) });
-        const data = await response.json();
-        if (data.ok) {
-            showStatus("¡Mensaje enviado! Te respondo pronto.", "success");
-            document.getElementById("name").value = "";
-            document.getElementById("email").value = "";
-            document.getElementById("message").value = "";
-        } else { showStatus("Algo salió mal. Inténtalo de nuevo.", "error"); }
-    } catch (error) { showStatus("Error de conexión. Inténtalo de nuevo.", "error"); }
-    finally { btn.textContent = "Enviar mensaje"; btn.disabled = false; }
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const message = document.getElementById("message").value.trim();
+  if (!name || !email || !message) {
+    showStatus("Por favor rellena todos los campos.", "error");
+    return;
+  }
+  const btn = document.getElementById("submit-btn");
+  btn.textContent = "Enviando...";
+  btn.disabled = true;
+  try {
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, email, message }),
+    });
+    const data = await response.json();
+    if (data.ok) {
+      showStatus("¡Mensaje enviado! Te respondo pronto.", "success");
+      document.getElementById("name").value = "";
+      document.getElementById("email").value = "";
+      document.getElementById("message").value = "";
+    } else {
+      showStatus("Algo salió mal. Inténtalo de nuevo.", "error");
+    }
+  } catch (error) {
+    showStatus("Error de conexión. Inténtalo de nuevo.", "error");
+  } finally {
+    btn.textContent = "Enviar mensaje";
+    btn.disabled = false;
+  }
 }
 
 function showStatus(message, type) {
-    const el = document.getElementById("status-msg");
-    el.textContent = message;
-    el.className = type === "success" ? "text-green-400 text-sm text-center" : "text-red-400 text-sm text-center";
+  const el = document.getElementById("status-msg");
+  el.textContent = message;
+  el.className =
+    type === "success"
+      ? "text-green-400 text-sm text-center"
+      : "text-red-400 text-sm text-center";
 }
 
 const projects = [
-    { title: "Full Stack Developer", description: "Especialista en tiendas online, plataformas de reservas automatizadas e integración de pagos seguros. Soluciones rápidas, modernas y listas para hacer crecer tu negocio.", url: "#works", images: ["/images/programacion.png", "/images/programacion2.jpg", "/images/programacion3.jpg"] },
-    { title: "Astrofotografía", description: "Aprendiendo cada día un poco más sobre los misterios del cielo nocturno, capturando desde los detalles de la Luna hasta nuestros planetas vecinos. A veces, la mejor forma de poner los pies en la tierra es pasar la noche mirando hacia el cielo.", url: "#gallery", images: ["/images/luna1.JPG", "/images/luna2.JPG", "/images/astrofotografia.png"] },
-    { title: "¿Quien soy?", description: "mi espacio personal", url: "#gallery", images: ["/images/astrofotografia.png", "/images/yo2.jpg", "/images/programacion.png"] }
+  {
+    title: "Full Stack Developer",
+    description:
+      "Especialista en tiendas online, plataformas de reservas automatizadas e integración de pagos seguros. Soluciones rápidas, modernas y listas para hacer crecer tu negocio.",
+    url: "#works",
+    images: [
+      "/images/programacion.png",
+      "/images/programacion2.jpg",
+      "/images/programacion3.jpg",
+    ],
+  },
+  {
+    title: "Astrofotografía",
+    description:
+      "Aprendiendo cada día un poco más sobre los misterios del cielo nocturno, capturando desde los detalles de la Luna hasta nuestros planetas vecinos. A veces, la mejor forma de poner los pies en la tierra es pasar la noche mirando hacia el cielo.",
+    url: "#gallery",
+    images: [
+      "/images/luna1.JPG",
+      "/images/luna2.JPG",
+      "/images/astrofotografia.png",
+    ],
+  },
+  {
+    title: "¿Quien soy?",
+    description: "mi espacio personal",
+    url: "#gallery",
+    images: [
+      "/images/astrofotografia.png",
+      "/images/yo2.jpg",
+      "/images/programacion.png",
+    ],
+  },
 ];
 
 function initProjectCard() {
-    const imgs = document.querySelectorAll("#card-images img");
-    const title = document.getElementById("card-title");
-    const desc = document.getElementById("card-desc");
-    const btn = document.getElementById("card-btn");
-    const prev = document.getElementById("proj-prev");
-    const next = document.getElementById("proj-next");
-    const card = document.getElementById("project-card");
-    if (!imgs.length) return;
-    let currentProject = 0, currentImg = 0, imgTimer;
-    function loadProject(index) {
-        const p = projects[index];
-        title.textContent = p.title;
-        desc.textContent = p.description;
-        btn.href = p.url;
-        imgs.forEach((img, i) => { img.src = p.images[i]; img.classList.toggle("opacity-100", i === 0); img.classList.toggle("opacity-0", i !== 0); });
-        currentImg = 0;
-        clearInterval(imgTimer);
-        imgTimer = setInterval(() => { imgs[currentImg].classList.replace("opacity-100", "opacity-0"); currentImg = (currentImg + 1) % imgs.length; imgs[currentImg].classList.replace("opacity-0", "opacity-100"); }, 3500);
-    }
-    function goTo(index) { currentProject = (index + projects.length) % projects.length; loadProject(currentProject); }
-    prev.addEventListener("click", () => goTo(currentProject - 1));
-    next.addEventListener("click", () => goTo(currentProject + 1));
-    let startX = 0;
-    card.addEventListener("touchstart", (e) => (startX = e.touches[0].clientX));
-    card.addEventListener("touchend", (e) => { const diff = startX - e.changedTouches[0].clientX; if (Math.abs(diff) > 50) goTo(currentProject + (diff > 0 ? 1 : -1)); });
-    loadProject(0);
+  const imgs = document.querySelectorAll("#card-images img");
+  const title = document.getElementById("card-title");
+  const desc = document.getElementById("card-desc");
+  const btn = document.getElementById("card-btn");
+  const prev = document.getElementById("proj-prev");
+  const next = document.getElementById("proj-next");
+  const card = document.getElementById("project-card");
+  if (!imgs.length) return;
+  let currentProject = 0,
+    currentImg = 0,
+    imgTimer;
+  function loadProject(index) {
+    const p = projects[index];
+    title.textContent = p.title;
+    desc.textContent = p.description;
+    btn.href = p.url;
+    imgs.forEach((img, i) => {
+      img.src = p.images[i];
+      img.classList.toggle("opacity-100", i === 0);
+      img.classList.toggle("opacity-0", i !== 0);
+    });
+    currentImg = 0;
+    clearInterval(imgTimer);
+    imgTimer = setInterval(() => {
+      imgs[currentImg].classList.replace("opacity-100", "opacity-0");
+      currentImg = (currentImg + 1) % imgs.length;
+      imgs[currentImg].classList.replace("opacity-0", "opacity-100");
+    }, 3500);
+  }
+  function goTo(index) {
+    currentProject = (index + projects.length) % projects.length;
+    loadProject(currentProject);
+  }
+  prev.addEventListener("click", () => goTo(currentProject - 1));
+  next.addEventListener("click", () => goTo(currentProject + 1));
+  let startX = 0;
+  card.addEventListener("touchstart", (e) => (startX = e.touches[0].clientX));
+  card.addEventListener("touchend", (e) => {
+    const diff = startX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) goTo(currentProject + (diff > 0 ? 1 : -1));
+  });
+  loadProject(0);
 }
 
 async function comprobarEstadoNuevo() {
-    try {
-        const res = await fetch("/api/estado");
-        const data = await res.json();
-        if (!data.ok || !data.estado) return;
-        const estado = data.estado;
-        const ultimaVista = localStorage.getItem("estado_ultima_vista");
-        const fechaEstado = new Date(estado.creado_en).getTime();
-        const fechaVista = ultimaVista ? new Date(ultimaVista).getTime() : 0;
-        if (fechaEstado > fechaVista) {
-            document.getElementById("hero-anillo").style.background = "conic-gradient(from 0deg, #a855f7, #c084fc, #34d399, #6ee7b7, #a855f7, #34d399, #a855f7)";
-            const burbuja = document.getElementById("hero-burbuja");
-            const texto = document.getElementById("hero-burbuja-texto");
-            texto.textContent = estado.haciendo || estado.estado_animo || "nuevo estado";
-            burbuja.style.display = "block";
-        }
-        document.getElementById("hero-foto-wrapper").addEventListener("click", () => {
-            localStorage.setItem("estado_ultima_vista", new Date().toISOString());
-            document.getElementById("hero-anillo").style.background = "";
-            document.getElementById("hero-burbuja").style.display = "none";
-            window.location.hash = "#ahora";
-        });
-    } catch (error) { console.error("Error comprobando estado nuevo:", error); }
+  try {
+    const res = await fetch("/api/estado");
+    const data = await res.json();
+    if (!data.ok || !data.estado) return;
+    const estado = data.estado;
+    const ultimaVista = localStorage.getItem("estado_ultima_vista");
+    const fechaEstado = new Date(estado.creado_en).getTime();
+    const fechaVista = ultimaVista ? new Date(ultimaVista).getTime() : 0;
+    if (fechaEstado > fechaVista) {
+      document.getElementById("hero-anillo").style.background =
+        "conic-gradient(from 0deg, #a855f7, #c084fc, #34d399, #6ee7b7, #a855f7, #34d399, #a855f7)";
+      const burbuja = document.getElementById("hero-burbuja");
+      const texto = document.getElementById("hero-burbuja-texto");
+      texto.textContent =
+        estado.haciendo || estado.estado_animo || "nuevo estado";
+      burbuja.style.display = "block";
+    }
+    document
+      .getElementById("hero-foto-wrapper")
+      .addEventListener("click", () => {
+        localStorage.setItem("estado_ultima_vista", new Date().toISOString());
+        document.getElementById("hero-anillo").style.background = "";
+        document.getElementById("hero-burbuja").style.display = "none";
+        window.location.hash = "#ahora";
+      });
+  } catch (error) {
+    console.error("Error comprobando estado nuevo:", error);
+  }
 }
 
 async function cargarFotosRecientes() {
-    const { data, error } = await supabaseClient.from('photos').select('id, url, description').order('created_at', { ascending: false }).limit(6);
-    const grid = document.getElementById('home-fotos-grid');
-    if (!grid || error || !data || data.length === 0) return;
-    grid.innerHTML = data.map(photo => `
+  const { data, error } = await supabaseClient
+    .from("photos")
+    .select("id, url, description")
+    .order("created_at", { ascending: false })
+    .limit(6);
+  const grid = document.getElementById("home-fotos-grid");
+  if (!grid || error || !data || data.length === 0) return;
+  grid.innerHTML = data
+    .map(
+      (photo) => `
         <div onclick="window.location.hash='#gallery'" class="relative aspect-square overflow-hidden rounded-xl cursor-pointer group">
-            <img src="${photo.url}" alt="${photo.description || ''}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"/>
+            <img src="${photo.url}" alt="${photo.description || ""}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"/>
             <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300"></div>
         </div>
-    `).join('');
+    `,
+    )
+    .join("");
 }
 
 async function cargarMusicaActual() {
-    try {
-        const res = await fetch('https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=Ibcruz94&api_key=370f4140de1aad49efa9610c04b799f9&format=json&limit=1');
-        const data = await res.json();
-        const track = data.recenttracks.track[0];
-        const escuchando = track['@attr']?.nowplaying === 'true';
-        const cancion = track.name;
-        const artista = track.artist['#text'];
-        const caratula = track.image[2]['#text'];
-        const spotifyUrl = `https://open.spotify.com/search/${encodeURIComponent(cancion)}%20${encodeURIComponent(artista)}`;
-        const widget = document.getElementById('lastfm-widget');
-        if (!widget) return;
-        widget.innerHTML = `
+  try {
+    const res = await fetch(
+      "https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=Ibcruz94&api_key=370f4140de1aad49efa9610c04b799f9&format=json&limit=1",
+    );
+    const data = await res.json();
+    const track = data.recenttracks.track[0];
+    const escuchando = track["@attr"]?.nowplaying === "true";
+    const cancion = track.name;
+    const artista = track.artist["#text"];
+    const caratula = track.image[2]["#text"];
+    const spotifyUrl = `https://open.spotify.com/search/${encodeURIComponent(cancion)}%20${encodeURIComponent(artista)}`;
+    const widget = document.getElementById("lastfm-widget");
+    if (!widget) return;
+    const navWidget = document.getElementById('nav-lastfm');
+if (navWidget) {
+    navWidget.innerHTML = `
+        <a href="${spotifyUrl}" target="_blank" rel="noopener noreferrer" style="text-decoration:none; display:flex; align-items:center; gap:8px;">
+            ${caratula ? `<img src="${caratula}" style="width:28px; height:28px; border-radius:4px; object-fit:cover;"/>` : ''}
+            <div>
+                <p style="font-size:9px; color:${escuchando ? '#1db954' : '#64748b'}; margin:0; text-transform:uppercase; letter-spacing:0.05em;">${escuchando ? 'Escuchando ahora en Spotify' : 'Última canción en Spotify'}</p>
+                <p style="font-size:11px; color:#e2e8f0; margin:0; max-width:150px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${cancion}</p>
+            </div>
+        </a>
+    `;
+}
+    widget.innerHTML = `
             <a href="${spotifyUrl}" target="_blank" rel="noopener noreferrer" style="text-decoration:none; display:block; max-width:280px; margin:0 auto;">
                 <div style="display:flex; align-items:center; gap:10px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:10px 14px; transition:border-color 0.3s;" onmouseover="this.style.borderColor='rgba(29,185,84,0.4)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.1)'">
-                    ${caratula ? `<img src="${caratula}" style="width:40px; height:40px; border-radius:6px; object-fit:cover; flex-shrink:0;"/>` : ''}
+                    ${caratula ? `<img src="${caratula}" style="width:40px; height:40px; border-radius:6px; object-fit:cover; flex-shrink:0;"/>` : ""}
                     <div style="min-width:0;">
-                        <p style="font-size:10px; color:${escuchando ? '#1db954' : '#64748b'}; margin:0 0 2px; text-transform:uppercase; letter-spacing:0.05em;">${escuchando ? 'Escuchando ahora en Spotify' : 'Última canción en Spotify'}</p>
+                        <p style="font-size:10px; color:${escuchando ? "#1db954" : "#64748b"}; margin:0 0 2px; text-transform:uppercase; letter-spacing:0.05em;">${escuchando ? "Escuchando ahora en Spotify" : "Última canción en Spotify"}</p>
                         <p style="font-size:13px; color:#e2e8f0; margin:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-weight:500;">${cancion}</p>
                         <p style="font-size:11px; color:#94a3b8; margin:2px 0 0;">${artista}</p>
                     </div>
                 </div>
             </a>`;
-        setTimeout(cargarMusicaActual, 30000);
-    } catch (error) { console.error('Error cargando música:', error); }
+    setTimeout(cargarMusicaActual, 30000);
+  } catch (error) {
+    console.error("Error cargando música:", error);
+  }
 }
 
 async function initNotificaciones() {
-    if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
+  if (
+    !("Notification" in window) ||
+    !("serviceWorker" in navigator) ||
+    !("PushManager" in window)
+  )
+    return;
 
-    const btn = document.getElementById('btn-notificaciones');
-    if (!btn) return;
+  const btn = document.getElementById("btn-notificaciones");
+  if (!btn) return;
 
-    if (Notification.permission === 'granted') {
-        btn.style.display = 'none';
+  if (Notification.permission === "granted") {
+    btn.style.display = "none";
+    setTimeout(suscribirPush, 1000);
+  } else if (Notification.permission === "default") {
+    btn.style.display = "inline-block";
+    btn.addEventListener("click", async () => {
+      const permiso = await Notification.requestPermission();
+      if (permiso === "granted") {
+        btn.style.display = "none";
         setTimeout(suscribirPush, 1000);
-    } else if (Notification.permission === 'default') {
-        btn.style.display = 'inline-block';
-        btn.addEventListener('click', async () => {
-            const permiso = await Notification.requestPermission();
-            if (permiso === 'granted') {
-                btn.style.display = 'none';
-                setTimeout(suscribirPush, 1000);
-            }
-        });
-    }
+      }
+    });
+  }
 }
 
 async function suscribirPush() {
-    try {
-        // Registrar el SW manualmente
-        const registro = await navigator.serviceWorker.register('/sw.js');
-        await navigator.serviceWorker.ready;
+  try {
+    // Registrar el SW manualmente
+    const registro = await navigator.serviceWorker.register("/sw.js");
+    await navigator.serviceWorker.ready;
 
-        function urlBase64ToUint8Array(base64String) {
-            const padding = '='.repeat((4 - base64String.length % 4) % 4);
-            const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
-            const rawData = window.atob(base64);
-            const outputArray = new Uint8Array(rawData.length);
-            for (let i = 0; i < rawData.length; ++i) { outputArray[i] = rawData.charCodeAt(i); }
-            return outputArray;
-        }
-
-        const suscripcion = await registro.pushManager.subscribe({
-            userVisibleOnly: true,
-            applicationServerKey: urlBase64ToUint8Array('BIZv4I_n2ih0IRejbShGfu8ZwHUzlmVuYeLQNaHDGpmWR--KJen3k0uVZBbpZvUc904fi_YQTIc7PBugRsh9a7g')
-        });
-
-        const keys = suscripcion.toJSON().keys;
-        const { data: { session } } = await supabaseClient.auth.getSession();
-
-        await fetch('https://cruzismael.es/api/push/suscribir', {
-
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                endpoint: suscripcion.endpoint,
-                p256dh: keys.p256dh,
-                auth: keys.auth,
-                user_id: session?.user?.id || null
-            })
-        });
-    } catch (error) {
-        console.error('Error:', error);
+    function urlBase64ToUint8Array(base64String) {
+      const padding = "=".repeat((4 - (base64String.length % 4)) % 4);
+      const base64 = (base64String + padding)
+        .replace(/-/g, "+")
+        .replace(/_/g, "/");
+      const rawData = window.atob(base64);
+      const outputArray = new Uint8Array(rawData.length);
+      for (let i = 0; i < rawData.length; ++i) {
+        outputArray[i] = rawData.charCodeAt(i);
+      }
+      return outputArray;
     }
+
+    const suscripcion = await registro.pushManager.subscribe({
+      userVisibleOnly: true,
+      applicationServerKey: urlBase64ToUint8Array(
+        "BIZv4I_n2ih0IRejbShGfu8ZwHUzlmVuYeLQNaHDGpmWR--KJen3k0uVZBbpZvUc904fi_YQTIc7PBugRsh9a7g",
+      ),
+    });
+
+    const keys = suscripcion.toJSON().keys;
+    const {
+      data: { session },
+    } = await supabaseClient.auth.getSession();
+
+    await fetch("https://cruzismael.es/api/push/suscribir", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        endpoint: suscripcion.endpoint,
+        p256dh: keys.p256dh,
+        auth: keys.auth,
+        user_id: session?.user?.id || null,
+      }),
+    });
+  } catch (error) {
+    console.error("Error:", error);
+  }
 }
 
 async function initHome() {
-    initContact();
-    initProjectCard();
-    await cargarFotosRecientes();
-    await cargarMusicaActual();
-    await comprobarEstadoNuevo();
-    initNotificaciones();
+  initContact();
+  initProjectCard();
+  await cargarFotosRecientes();
+  await cargarMusicaActual();
+  await comprobarEstadoNuevo();
+  initNotificaciones();
 }

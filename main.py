@@ -8,8 +8,7 @@ from dotenv import load_dotenv
 from supabase import create_client
 from pywebpush import webpush, WebPushException
 
-load_dotenv(dotenv_path=".env", override=True)
-
+load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), ".env"), override=True)
 supabase_url = os.getenv("SUPABASE_URL")
 supabase_key = os.getenv("SUPABASE_KEY")
 supabase = create_client(supabase_url, supabase_key)
