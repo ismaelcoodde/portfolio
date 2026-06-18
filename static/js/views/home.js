@@ -18,7 +18,7 @@ function HomeView() {
             </div>
 
             <h1 class="text-3xl font-bold text-white mb-2 fade-up">Ismael Cruz Fernandez</h1>
-            <p class="text-indigo-400 text-sm tracking-widest uppercase mb-4 fade-up">mi Espacio Personal</p>
+            <p class="text-indigo-400 text-sm tracking-widest uppercase mb-4 fade-up">ENTRE CÓDIGO Y ESTRELLAS</p>
             <p class="text-slate-400 text-center max-w-md leading-relaxed fade-up mb-5">
                 Palma de Mallorca, España. 1994
             </p>
@@ -68,7 +68,21 @@ function HomeView() {
                 <p class="text-slate-600 text-xs text-center">Cargando música...</p>
             </div>
 
-            <div class="mb-16 mx-auto w-full max-w-lg md:max-w-xl px-0 mt-12 fade-up">
+            <!-- Sobre mí mini card -->
+
+<div class="mt-20 fade-up w-full max-w-sm md:max-w-md">
+    <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+        <p class="text-indigo-400 text-xs uppercase tracking-widest font-medium mb-2">¿QUÉ ES ESTE SITIO?</p>
+        <div class="max-h-40 overflow-y-auto pr-1" style="scrollbar-width:thin; scrollbar-color:rgba(255,255,255,0.1) transparent;">
+            <p class="text-slate-400 text-xs md:text-sm leading-relaxed">
+                Bienvenidos a mi patio de recreo digital. No soy desarrollador profesional, pero he encontrado en la programación un lenguaje fascinante para dar forma a ideas y poner en practica los conocimientos que voy adquiriendo. Este rincón de internet es un experimento. Lo empecé simplemente porque estoy aprendiendo a desarrollar lógica y quería un lienzo en blanco donde poner en práctica mis ideas. No busca venderte nada, solo es un reflejo de lo que hago y lo que me gusta.
+            </p>
+        </div>
+        
+    </div>
+</div>
+
+            <div class="mb-16 mx-auto w-full max-w-lg md:max-w-xl px-0 mt-12 mt-30 fade-up">
                 <div class="flex items-center justify-center mb-4">
                     <p class="text-slate-500 text-xs font-medium tracking-[0.3em] uppercase mr-3">Fotos recientes</p>
                     <a href="#gallery" class="text-indigo-400 text-xs hover:underline">Ver todas →</a>
@@ -79,28 +93,25 @@ function HomeView() {
 
         </section>
 
-        <div class="flex items-center justify-center gap-4 py-8 fade-up">
-            <button id="proj-prev" style="width:36px; height:36px; background:rgba(255,255,255,0.1); border:none; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
-            </button>
-            <div id="project-card" class="project-card relative w-96 rounded-2xl overflow-hidden bg-white/5 border border-white/10">
-                <div class="relative h-64" id="card-images">
-                    <img class="absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-700"/>
-                    <img class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"/>
-                    <img class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"/>
-                </div>
-                <div class="p-5 text-center">
-                    <h3 id="card-title" class="text-lg font-bold mb-2"></h3>
-                    <p id="card-desc" class="text-slate-400 text-sm leading-relaxed mb-4"></p>
-                    <a id="card-btn" href="#" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-500 rounded-xl text-white text-sm font-medium transition-colors duration-300">Ver proyecto</a>
-                </div>
-            </div>
-            <button id="proj-next" style="width:36px; height:36px; background:rgba(255,255,255,0.1); border:none; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-            </button>
+        <!-- Chat -->
+<div id="home-chat" class="md:absolute md:left-8 md:top-24 md:w-72 mt-8 md:mt-25 px-4 md:px-0 mb-4 md:absolute md:left-8 hidden md:block">
+    <div style="background:rgba(13,17,23,0.9); border:1px solid rgba(255,255,255,0.1); border-radius:16px; overflow:hidden; backdrop-filter:blur(10px);">
+        <div class="p-4 border-b border-white/10">
+            <p class="text-indigo-400 text-xs font-medium tracking-[0.3em] uppercase mb-1">Comunidad</p>
+            <h3 class="text-sm font-bold">Chat en vivo</h3>
+        </div>
+        <div id="home-messages-container" style="height:200px; overflow-y:auto; padding:12px; display:flex; flex-direction:column; gap:8px;">
+            <p class="text-slate-500 text-xs text-center">Cargando...</p>
+        </div>
+        <div id="home-chat-input" class="p-3 border-t border-white/10"></div>
+    </div>
+</div>
+
+        <!-- GitHub Stats - Desktop izquierda / Mobile debajo tarjetas -->
+        <div id="github-card" class="md:w-72 mt-8 md:mt-0 md:absolute md:left-8 md:top-150 px-4 md:px-0">    <p class="text-slate-500 text-xs text-center">Cargando GitHub...</p>
         </div>
 
-               <div class="hidden md:block fixed right-8 top-[calc(50%+40px)] -translate-y-1/2 z-50 w-96">
+               <div class="md:fixed md:right-8 md:top-[calc(50%+40px)] md:-translate-y-1/2 md:z-50 md:w-96 w-full px-6 py-16">
                 <p class="text-indigo-400 text-xs font-medium tracking-[0.3em] uppercase mb-3 text-center">Contacto</p>
                 <h2 class="text-4xl font-extrabold text-center mb-2">Hablemos</h2>
                 <p class="text-slate-500 text-center mb-10">Cuéntame tu proyecto y te respondo en menos de 24h.</p>
@@ -173,40 +184,6 @@ function showStatus(message, type) {
       : "text-red-400 text-sm text-center";
 }
 
-const projects = [
-  {
-    title: "Full Stack Developer",
-    description:
-      "Especialista en tiendas online, plataformas de reservas automatizadas e integración de pagos seguros. Soluciones rápidas, modernas y listas para hacer crecer tu negocio.",
-    url: "#works",
-    images: [
-      "/images/programacion.png",
-      "/images/programacion2.jpg",
-      "/images/programacion3.jpg",
-    ],
-  },
-  {
-    title: "Astrofotografía",
-    description:
-      "Aprendiendo cada día un poco más sobre los misterios del cielo nocturno, capturando desde los detalles de la Luna hasta nuestros planetas vecinos. A veces, la mejor forma de poner los pies en la tierra es pasar la noche mirando hacia el cielo.",
-    url: "#gallery",
-    images: [
-      "/images/luna1.JPG",
-      "/images/luna2.JPG",
-      "/images/astrofotografia.png",
-    ],
-  },
-  {
-    title: "¿Quien soy?",
-    description: "mi espacio personal",
-    url: "#gallery",
-    images: [
-      "/images/astrofotografia.png",
-      "/images/yo2.jpg",
-      "/images/programacion.png",
-    ],
-  },
-];
 
 function initProjectCard() {
   const imgs = document.querySelectorAll("#card-images img");
@@ -318,18 +295,18 @@ async function cargarMusicaActual() {
     const spotifyUrl = `https://open.spotify.com/search/${encodeURIComponent(cancion)}%20${encodeURIComponent(artista)}`;
     const widget = document.getElementById("lastfm-widget");
     if (!widget) return;
-    const navWidget = document.getElementById('nav-lastfm');
-if (navWidget) {
-    navWidget.innerHTML = `
+    const navWidget = document.getElementById("nav-lastfm");
+    if (navWidget) {
+      navWidget.innerHTML = `
         <a href="${spotifyUrl}" target="_blank" rel="noopener noreferrer" style="text-decoration:none; display:flex; align-items:center; gap:8px;">
-            ${caratula ? `<img src="${caratula}" style="width:28px; height:28px; border-radius:4px; object-fit:cover;"/>` : ''}
+            ${caratula ? `<img src="${caratula}" style="width:28px; height:28px; border-radius:4px; object-fit:cover;"/>` : ""}
             <div>
-                <p style="font-size:9px; color:${escuchando ? '#1db954' : '#64748b'}; margin:0; text-transform:uppercase; letter-spacing:0.05em;">${escuchando ? 'Escuchando ahora en Spotify' : 'Última canción en Spotify'}</p>
+                <p style="font-size:9px; color:${escuchando ? "#1db954" : "#64748b"}; margin:0; text-transform:uppercase; letter-spacing:0.05em;">${escuchando ? "Escuchando ahora en Spotify" : "Última canción en Spotify"}</p>
                 <p style="font-size:11px; color:#e2e8f0; margin:0; max-width:150px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${cancion}</p>
             </div>
         </a>
     `;
-}
+    }
     widget.innerHTML = `
             <a href="${spotifyUrl}" target="_blank" rel="noopener noreferrer" style="text-decoration:none; display:block; max-width:280px; margin:0 auto;">
                 <div style="display:flex; align-items:center; gap:10px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:10px 14px; transition:border-color 0.3s;" onmouseover="this.style.borderColor='rgba(29,185,84,0.4)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.1)'">
@@ -419,6 +396,165 @@ async function suscribirPush() {
   }
 }
 
+//GitHub
+async function cargarGithubStats() {
+    try {
+        const [userRes, reposRes] = await Promise.all([
+            fetch('https://api.github.com/users/ismaelcoodde'),
+            fetch('https://api.github.com/users/ismaelcoodde/repos?per_page=100')
+        ]);
+        const user = await userRes.json();
+        const repos = await reposRes.json();
+
+        // Lenguajes más usados
+        const lenguajes = {};
+        repos.forEach(r => { if (r.language) lenguajes[r.language] = (lenguajes[r.language] || 0) + 1; });
+        const topLenguajes = Object.entries(lenguajes).sort((a, b) => b[1] - a[1]).slice(0, 4);
+        const totalLenguajes = topLenguajes.reduce((a, b) => a + b[1], 0);
+
+        // Colores por lenguaje
+        const colores = { JavaScript: '#f7df1e', Python: '#3572A5', HTML: '#e34c26', CSS: '#563d7c', TypeScript: '#2b7489', Vue: '#41b883', React: '#61dafb' };
+
+        // Últimos 4 repos
+        const ultimosRepos = repos.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at)).slice(0, 4);
+
+        const card = document.getElementById('github-card');
+        if (!card) return;
+
+        card.innerHTML = `
+            <div style="background:rgba(13,17,23,0.9); border:1px solid rgba(255,255,255,0.1); border-radius:16px; padding:16px; backdrop-filter:blur(10px);">
+                
+                <!-- Header -->
+                <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
+                    <img src="${user.avatar_url}" style="width:40px; height:40px; border-radius:50%; border:2px solid rgba(255,255,255,0.1);"/>
+                    <div>
+                        <p style="font-size:13px; font-weight:600; color:#e6edf3; margin:0;">${user.name || user.login}</p>
+                        <a href="${user.html_url}" target="_blank" style="font-size:11px; color:#58a6ff; text-decoration:none;">@${user.login}</a>
+                    </div>
+                    <svg style="margin-left:auto;" width="20" height="20" viewBox="0 0 24 24" fill="#e6edf3">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </div>
+
+                <!-- Stats -->
+                <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; margin-bottom:16px;">
+                    <div style="background:rgba(255,255,255,0.05); border-radius:8px; padding:8px; text-align:center;">
+                        <p style="font-size:16px; font-weight:700; color:#e6edf3; margin:0;">${user.public_repos}</p>
+                        <p style="font-size:10px; color:#8b949e; margin:0;">Repos</p>
+                    </div>
+                    <div style="background:rgba(255,255,255,0.05); border-radius:8px; padding:8px; text-align:center;">
+                        <p style="font-size:16px; font-weight:700; color:#e6edf3; margin:0;">${user.followers}</p>
+                        <p style="font-size:10px; color:#8b949e; margin:0;">Seguidores</p>
+                    </div>
+                    <div style="background:rgba(255,255,255,0.05); border-radius:8px; padding:8px; text-align:center;">
+                        <p style="font-size:16px; font-weight:700; color:#e6edf3; margin:0;">${user.following}</p>
+                        <p style="font-size:10px; color:#8b949e; margin:0;">Siguiendo</p>
+                    </div>
+                </div>
+
+                <!-- Últimos repos -->
+                <p style="font-size:11px; color:#8b949e; margin:0 0 8px; text-transform:uppercase; letter-spacing:0.05em;">Últimos repositorios</p>
+                <div style="display:flex; flex-direction:column; gap:6px; margin-bottom:16px;">
+                    ${ultimosRepos.map(r => `
+                        <a href="${r.html_url}" target="_blank" style="text-decoration:none; display:flex; align-items:center; justify-content:space-between; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06); border-radius:8px; padding:8px 10px;">
+                            <div style="min-width:0;">
+                                <p style="font-size:12px; color:#58a6ff; margin:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${r.name}</p>
+                                ${r.description ? `<p style="font-size:10px; color:#8b949e; margin:2px 0 0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${r.description}</p>` : ''}
+                            </div>
+                            ${r.language ? `<span style="font-size:10px; color:${colores[r.language] || '#8b949e'}; flex-shrink:0; margin-left:8px;">●  ${r.language}</span>` : ''}
+                        </a>
+                    `).join('')}
+                </div>
+
+                <!-- Lenguajes -->
+                <p style="font-size:11px; color:#8b949e; margin:0 0 6px; text-transform:uppercase; letter-spacing:0.05em;">Lenguajes</p>
+                <div style="display:flex; gap:4px; border-radius:4px; overflow:hidden; margin-bottom:8px;">
+                    ${topLenguajes.map(([lang, count]) => `
+                        <div style="height:6px; width:${(count/totalLenguajes*100).toFixed(0)}%; background:${colores[lang] || '#8b949e'};"></div>
+                    `).join('')}
+                </div>
+                <div style="display:flex; flex-wrap:wrap; gap:8px;">
+                    ${topLenguajes.map(([lang, count]) => `
+                        <span style="font-size:10px; color:#8b949e;">
+                            <span style="color:${colores[lang] || '#8b949e'};">●</span> ${lang} ${(count/totalLenguajes*100).toFixed(0)}%
+                        </span>
+                    `).join('')}
+                </div>
+
+            </div>
+        `;
+    } catch (error) {
+        console.error('Error cargando GitHub:', error);
+    }
+}
+
+//Chat
+async function initHomeChat() {
+    // Input
+    const { data: { session } } = await supabaseClient.auth.getSession();
+    const area = document.getElementById('home-chat-input');
+    if (area) {
+        if (session) {
+            area.innerHTML = `
+                <div style="display:flex; gap:8px;">
+                    <input id="home-chat-texto" type="text" placeholder="Escribe..." 
+                        style="flex:1; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:8px 12px; color:white; font-size:12px; outline:none;"/>
+                    <button id="home-chat-btn" style="padding:8px 12px; background:#4f46e5; border:none; border-radius:8px; color:white; font-size:12px; cursor:pointer;">→</button>
+                </div>
+            `;
+            const sendHomeMsg = async () => {
+                const input = document.getElementById('home-chat-texto');
+                const content = input.value.trim();
+                if (!content) return;
+                input.value = '';
+                await supabaseClient.from('messages').insert({ user_id: session.user.id, email: session.user.email, content });
+            };
+            document.getElementById('home-chat-btn').addEventListener('click', sendHomeMsg);
+            document.getElementById('home-chat-texto').addEventListener('keydown', (e) => { if (e.key === 'Enter') sendHomeMsg(); });
+        } else {
+            area.innerHTML = `<p style="text-align:center; font-size:11px; color:#64748b;"><a href="#auth" style="color:#818cf8;">Inicia sesión</a> para chatear.</p>`;
+        }
+    }
+
+    // Cargar mensajes
+    const { data } = await supabaseClient.from('messages').select('*').order('created_at', { ascending: true }).limit(20);
+    const container = document.getElementById('home-messages-container');
+    if (container && data) {
+        container.innerHTML = data.map(msg => {
+            const time = new Date(msg.created_at).toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
+            const shortEmail = msg.email.split('@')[0];
+            return `<div style="display:flex; flex-direction:column; gap:2px;">
+                <div style="display:flex; gap:6px; align-items:baseline;">
+                    <span style="font-size:10px; color:#818cf8; font-weight:500;">${shortEmail}</span>
+                    <span style="font-size:9px; color:#475569;">${time}</span>
+                </div>
+                <p style="font-size:11px; color:#cbd5e1; margin:0;">${msg.content}</p>
+            </div>`;
+        }).join('');
+        container.scrollTop = container.scrollHeight;
+    }
+
+    // Realtime
+    supabaseClient.channel('home-chat').on('postgres_changes',
+        { event: 'INSERT', schema: 'public', table: 'messages' },
+        (payload) => {
+            const container = document.getElementById('home-messages-container');
+            if (!container) return;
+            const msg = payload.new;
+            const time = new Date(msg.created_at).toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
+            const shortEmail = msg.email.split('@')[0];
+            container.insertAdjacentHTML('beforeend', `<div style="display:flex; flex-direction:column; gap:2px;">
+                <div style="display:flex; gap:6px; align-items:baseline;">
+                    <span style="font-size:10px; color:#818cf8; font-weight:500;">${shortEmail}</span>
+                    <span style="font-size:9px; color:#475569;">${time}</span>
+                </div>
+                <p style="font-size:11px; color:#cbd5e1; margin:0;">${msg.content}</p>
+            </div>`);
+            container.scrollTop = container.scrollHeight;
+        }
+    ).subscribe();
+}
+
 async function initHome() {
   initContact();
   initProjectCard();
@@ -426,4 +562,6 @@ async function initHome() {
   await cargarMusicaActual();
   await comprobarEstadoNuevo();
   initNotificaciones();
+  await cargarGithubStats();
+  await initHomeChat();
 }
