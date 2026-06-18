@@ -110,10 +110,12 @@ async def crear_estado(form: EstadoForm):
                 pass
     except Exception:
         pass
-        # Enviamos email a todos los usuarios registrados
+
     try:
         usuarios = supabase.auth.admin.list_users()
+        print(f"Usuarios encontrados: {usuarios}")
         for usuario in usuarios:
+            print(f"Enviando email a: {usuario.email}")
             if usuario.email:
                 resend.Emails.send({
                     "from": "Ismael Cruz <onboarding@resend.dev>",
@@ -135,10 +137,6 @@ async def crear_estado(form: EstadoForm):
     except Exception as e:
         print(f"Error enviando emails: {e}")
 
-    if resultado.data:
-        return {"ok": True, "estado": resultado.data[0]}
-    else:
-        return {"ok": False}
     if resultado.data:
         return {"ok": True, "estado": resultado.data[0]}
     else:
