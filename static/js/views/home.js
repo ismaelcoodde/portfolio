@@ -453,6 +453,8 @@ async function suscribirPush() {
             userVisibleOnly: true,
             applicationServerKey: 'BIZv4I_n2ih0IRejbShGfu8ZwHUzlmVuYeLQNaHDGpmWR--KJen3k0uVZBbpZvUc904fi_YQTIc7PBugRsh9a7g'
         });
+        alert('Suscripcion creada: ' + suscripcion.endpoint);
+
 
         const keys = suscripcion.toJSON().keys;
         const { data: { session } } = await supabaseClient.auth.getSession();
