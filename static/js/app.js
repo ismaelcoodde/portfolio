@@ -75,3 +75,5 @@ if (hamburgerBtn) {
     });
 }
 });
+// Inicializar formulario de contacto (está en index.html como fixed)
+document.getElementById('submit-btn').addEventListener('click', handleSubmit);
