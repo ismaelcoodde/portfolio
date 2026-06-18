@@ -212,4 +212,51 @@ async def enviar_push(data: dict):
             errores.append(str(e))
     return {"ok": True, "errores": errores}
 
+#Salud
+@app.post("/api/health")
+async def recibir_health(data: dict):
+    try:
+        metrics = data.get("data", {}).get("metrics", [])
+        
+        # Organizar datos por fecha
+        por_fecha = {}
+        
+        for metric in metrics:
+            nombre = metric.get("name")
+            for entrada in metric.get("data", []):
+                fecha = entrada.get("date", "")[:10]
+                if fecha not in por_fecha:
+                    por_fecha[fecha] = {}
+                
+                if nombre == "step_count":
+                    por_fecha[fecha]["pasos"] = int(entrada.get("qty", 0))
+                elif nombre == "heart_rate":
+                    por_fecha[fecha]["frecuencia_cardiaca_avg"] = entrada.get("Avg")
+                    por_fecha[fecha]["frecuencia_cardiaca_min"] = entrada.get("Min")
+                    por_fecha[fecha]["frecuencia_cardiaca_max"] = entrada.get("Max")
+                elif nombre == "resting_heart_rate":
+                    por_fecha[fecha]["frecuencia_cardiaca_reposo"] = entrada.get("qty")
+                elif nombre == "blood_oxygen_saturation":
+                    por_fecha[fecha]["oxigeno_sangre"] = entrada.get("qty")
+                elif nombre == "apple_exercise_time":
+                    por_fecha[fecha]["tiempo_ejercicio"] = entrada.get("qty")
+                elif nombre == "apple_stand_time":
+                    por_fecha[fecha]["tiempo_pie"] = entrada.get("qty")
+                elif nombre == "time_in_daylight":
+                    por_fecha[fecha]["tiempo_sol"] = entrada.get("qty")
+                elif nombre == "sleep_analysis":
+                    por_fecha[fecha]["sueno_total"] = entrada.get("totalSleep")
+                    por_fecha[fecha]["sueno_rem"] = entrada.get("rem")
+                    por_fecha[fecha]["sueno_profundo"] = entrada.get("deep")
+                    por_fecha[fecha]["sueno_core"] = entrada.get("core")
+
+        # Guardar en Supabase
+        for fecha, valores in por_fecha.items():
+            valores["fecha"] = fecha
+            supabase.table("health_data").upsert(valores, on_conflict="fecha").execute()
+
+        return {"ok": True, "fechas": list(por_fecha.keys())}
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
+
 app.mount("/", StaticFiles(directory="static", html=True), name="static")

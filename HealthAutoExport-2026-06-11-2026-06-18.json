@@ -1,0 +1,2105 @@
+{
+  "data" : {
+    "metrics" : [
+      {
+        "data" : [
+          {
+            "asleep" : 0,
+            "sleepEnd" : "2026-06-11 11:27:05 +0200",
+            "awake" : 0.14934077203273774,
+            "rem" : 2.953512397739622,
+            "core" : 4.6959341253174678,
+            "inBedStart" : "2026-06-11 02:30:57 +0200",
+            "deep" : 1.1366696477929752,
+            "sleepStart" : "2026-06-11 02:30:57 +0200",
+            "inBed" : 0,
+            "inBedEnd" : "2026-06-11 11:27:05 +0200",
+            "totalSleep" : 8.7861161708500646,
+            "date" : "2026-06-11 00:00:00 +0200",
+            "source" : "Apple Watch de Ismael"
+          },
+          {
+            "sleepStart" : "2026-06-12 05:31:24 +0200",
+            "date" : "2026-06-12 00:00:00 +0200",
+            "asleep" : 0,
+            "awake" : 0.04978011555141873,
+            "inBedEnd" : "2026-06-12 11:56:12 +0200",
+            "inBed" : 0,
+            "inBedStart" : "2026-06-12 05:31:24 +0200",
+            "totalSleep" : 6.3634112373656695,
+            "sleepEnd" : "2026-06-12 11:56:12 +0200",
+            "core" : 2.9453106093075534,
+            "deep" : 0.89602970136536497,
+            "source" : "Apple Watch de Ismael",
+            "rem" : 2.5220709266927508
+          },
+          {
+            "totalSleep" : 4.0322867701782119,
+            "source" : "Apple Watch de Ismael",
+            "sleepEnd" : "2026-06-15 13:49:58 +0200",
+            "sleepStart" : "2026-06-15 05:59:47 +0200",
+            "inBedEnd" : "2026-06-15 13:49:58 +0200",
+            "asleep" : 4.0322867701782119,
+            "rem" : 0,
+            "date" : "2026-06-15 00:00:00 +0200",
+            "inBed" : 0,
+            "inBedStart" : "2026-06-15 05:59:47 +0200",
+            "core" : 0,
+            "awake" : 0.5973713567852974,
+            "deep" : 0
+          }
+        ],
+        "name" : "sleep_analysis",
+        "units" : "hr"
+      },
+      {
+        "data" : [
+          {
+            "date" : "2026-06-11 00:00:00 +0200",
+            "qty" : 5731.715195171716,
+            "source" : "Apple Watch de Ismael|iPhone"
+          },
+          {
+            "qty" : 3832.3843715923585,
+            "date" : "2026-06-12 00:00:00 +0200",
+            "source" : "Apple Watch de Ismael|iPhone"
+          },
+          {
+            "qty" : 148,
+            "source" : "Apple Watch de Ismael|iPhone",
+            "date" : "2026-06-13 00:00:00 +0200"
+          },
+          {
+            "qty" : 2687,
+            "source" : "Apple Watch de Ismael|iPhone",
+            "date" : "2026-06-14 00:00:00 +0200"
+          },
+          {
+            "qty" : 8154.4646518853151,
+            "source" : "Apple Watch de Ismael|iPhone",
+            "date" : "2026-06-15 00:00:00 +0200"
+          },
+          {
+            "qty" : 4361,
+            "date" : "2026-06-16 00:00:00 +0200",
+            "source" : "Apple Watch de Ismael|iPhone"
+          },
+          {
+            "date" : "2026-06-17 00:00:00 +0200",
+            "qty" : 4690.0971763859397,
+            "source" : "Apple Watch de Ismael|iPhone"
+          },
+          {
+            "date" : "2026-06-18 00:00:00 +0200",
+            "source" : "Apple Watch de Ismael|iPhone",
+            "qty" : 266
+          }
+        ],
+        "units" : "count",
+        "name" : "step_count"
+      },
+      {
+        "name" : "physical_effort",
+        "data" : [
+          {
+            "date" : "2026-06-11 00:00:00 +0200",
+            "qty" : 3.3905660462829301,
+            "source" : "Apple Watch de Ismael"
+          },
+          {
+            "source" : "Apple Watch de Ismael",
+            "qty" : 3.2725146207195972,
+            "date" : "2026-06-12 00:00:00 +0200"
+          },
+          {
+            "date" : "2026-06-13 00:00:00 +0200",
+            "source" : "Apple Watch de Ismael",
+            "qty" : 1
+          },
+          {
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-14 00:00:00 +0200",
+            "qty" : 3.798461533509768
+          },
+          {
+            "qty" : 3.5560283753888826,
+            "date" : "2026-06-15 00:00:00 +0200",
+            "source" : "Apple Watch de Ismael"
+          },
+          {
+            "qty" : 3.4255814081014591,
+            "date" : "2026-06-16 00:00:00 +0200",
+            "source" : "Apple Watch de Ismael"
+          },
+          {
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-17 00:00:00 +0200",
+            "qty" : 3.9243478422579559
+          }
+        ],
+        "units" : "kcal\/hr·kg"
+      },
+      {
+        "units" : "count\/min",
+        "name" : "heart_rate",
+        "data" : [
+          {
+            "date" : "2026-06-11 00:00:00 +0200",
+            "Min" : 44,
+            "Max" : 105,
+            "source" : "Apple Watch de Ismael",
+            "Avg" : 67.940355674825739
+          },
+          {
+            "date" : "2026-06-12 00:00:00 +0200",
+            "source" : "Apple Watch de Ismael",
+            "Min" : 49,
+            "Max" : 106,
+            "Avg" : 67.981262438924674
+          },
+          {
+            "date" : "2026-06-13 00:00:00 +0200",
+            "source" : "Apple Watch de Ismael",
+            "Min" : 69,
+            "Max" : 83,
+            "Avg" : 73.199999999999989
+          },
+          {
+            "date" : "2026-06-14 00:00:00 +0200",
+            "Min" : 63.85968017578125,
+            "source" : "Apple Watch de Ismael",
+            "Avg" : 78.501815716453734,
+            "Max" : 111
+          },
+          {
+            "source" : "Apple Watch de Ismael",
+            "Max" : 165,
+            "date" : "2026-06-15 00:00:00 +0200",
+            "Min" : 48,
+            "Avg" : 79.822901328952895
+          },
+          {
+            "Avg" : 90.565792512563661,
+            "date" : "2026-06-16 00:00:00 +0200",
+            "source" : "Apple Watch de Ismael",
+            "Min" : 76.70977783203125,
+            "Max" : 114
+          },
+          {
+            "source" : "Apple Watch de Ismael",
+            "Avg" : 88.47627898850601,
+            "date" : "2026-06-17 00:00:00 +0200",
+            "Max" : 114,
+            "Min" : 73
+          }
+        ]
+      },
+      {
+        "data" : [
+          {
+            "qty" : 97,
+            "date" : "2026-06-11 00:00:00 +0200",
+            "source" : "Apple Watch de Ismael"
+          },
+          {
+            "date" : "2026-06-12 00:00:00 +0200",
+            "qty" : 91.5,
+            "source" : "Apple Watch de Ismael"
+          },
+          {
+            "date" : "2026-06-16 00:00:00 +0200",
+            "qty" : 109,
+            "source" : "Apple Watch de Ismael"
+          },
+          {
+            "qty" : 104,
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-17 00:00:00 +0200"
+          }
+        ],
+        "name" : "walking_heart_rate_average",
+        "units" : "count\/min"
+      },
+      {
+        "units" : "count\/min",
+        "name" : "resting_heart_rate",
+        "data" : [
+          {
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-11 00:00:00 +0200",
+            "qty" : 64
+          },
+          {
+            "qty" : 70,
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-12 00:00:00 +0200"
+          },
+          {
+            "date" : "2026-06-14 00:00:00 +0200",
+            "qty" : 64,
+            "source" : "Apple Watch de Ismael"
+          },
+          {
+            "date" : "2026-06-15 00:00:00 +0200",
+            "qty" : 52,
+            "source" : "Apple Watch de Ismael"
+          },
+          {
+            "qty" : 79,
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-16 00:00:00 +0200"
+          },
+          {
+            "qty" : 74,
+            "date" : "2026-06-17 00:00:00 +0200",
+            "source" : "Apple Watch de Ismael"
+          }
+        ]
+      },
+      {
+        "units" : "count\/min",
+        "name" : "respiratory_rate",
+        "data" : [
+          {
+            "qty" : 16.301724137931036,
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-11 00:00:00 +0200"
+          },
+          {
+            "date" : "2026-06-12 00:00:00 +0200",
+            "source" : "Apple Watch de Ismael",
+            "qty" : 17.035714285714285
+          },
+          {
+            "qty" : 19.26530612244898,
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 00:00:00 +0200"
+          }
+        ]
+      },
+      {
+        "name" : "apple_exercise_time",
+        "units" : "min",
+        "data" : [
+          {
+            "qty" : 11,
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-11 00:00:00 +0200"
+          },
+          {
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-12 00:00:00 +0200",
+            "qty" : 2
+          },
+          {
+            "date" : "2026-06-14 00:00:00 +0200",
+            "qty" : 14,
+            "source" : "Apple Watch de Ismael"
+          },
+          {
+            "qty" : 61,
+            "date" : "2026-06-15 00:00:00 +0200",
+            "source" : "Apple Watch de Ismael"
+          },
+          {
+            "qty" : 6,
+            "date" : "2026-06-16 00:00:00 +0200",
+            "source" : "Apple Watch de Ismael"
+          },
+          {
+            "qty" : 13,
+            "date" : "2026-06-17 00:00:00 +0200",
+            "source" : "Apple Watch de Ismael"
+          }
+        ]
+      },
+      {
+        "units" : "degC",
+        "name" : "apple_sleeping_wrist_temperature",
+        "data" : [
+          {
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-11 00:00:00 +0200",
+            "qty" : 35.471519470214844
+          },
+          {
+            "date" : "2026-06-12 00:00:00 +0200",
+            "source" : "Apple Watch de Ismael",
+            "qty" : 34.828460693359375
+          },
+          {
+            "qty" : 35.299186706542969,
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 00:00:00 +0200"
+          }
+        ]
+      },
+      {
+        "name" : "blood_oxygen_saturation",
+        "units" : "%",
+        "data" : [
+          {
+            "date" : "2026-06-11 00:00:00 +0200",
+            "qty" : 96.782608695652172,
+            "source" : "Apple Watch de Ismael"
+          },
+          {
+            "source" : "Apple Watch de Ismael",
+            "qty" : 98.25,
+            "date" : "2026-06-12 00:00:00 +0200"
+          },
+          {
+            "qty" : 98,
+            "date" : "2026-06-14 00:00:00 +0200",
+            "source" : "Apple Watch de Ismael"
+          },
+          {
+            "qty" : 96.388888888888886,
+            "date" : "2026-06-15 00:00:00 +0200",
+            "source" : "Apple Watch de Ismael"
+          },
+          {
+            "qty" : 96,
+            "date" : "2026-06-17 00:00:00 +0200",
+            "source" : "Apple Watch de Ismael"
+          }
+        ]
+      },
+      {
+        "units" : "min",
+        "name" : "apple_stand_time",
+        "data" : [
+          {
+            "date" : "2026-06-11 00:00:00 +0200",
+            "source" : "Apple Watch de Ismael",
+            "qty" : 66
+          },
+          {
+            "qty" : 53,
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-12 00:00:00 +0200"
+          },
+          {
+            "date" : "2026-06-14 00:00:00 +0200",
+            "qty" : 34,
+            "source" : "Apple Watch de Ismael"
+          },
+          {
+            "date" : "2026-06-15 00:00:00 +0200",
+            "qty" : 121,
+            "source" : "Apple Watch de Ismael"
+          },
+          {
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-16 00:00:00 +0200",
+            "qty" : 51
+          },
+          {
+            "qty" : 47,
+            "date" : "2026-06-17 00:00:00 +0200",
+            "source" : "Apple Watch de Ismael"
+          }
+        ]
+      },
+      {
+        "data" : [
+          {
+            "date" : "2026-06-11 00:00:00 +0200",
+            "qty" : 62,
+            "source" : "Apple Watch de Ismael"
+          },
+          {
+            "date" : "2026-06-12 00:00:00 +0200",
+            "source" : "Apple Watch de Ismael",
+            "qty" : 126
+          },
+          {
+            "date" : "2026-06-14 00:00:00 +0200",
+            "source" : "Apple Watch de Ismael",
+            "qty" : 28
+          },
+          {
+            "qty" : 41,
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 00:00:00 +0200"
+          },
+          {
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-16 00:00:00 +0200",
+            "qty" : 28
+          },
+          {
+            "qty" : 100,
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-17 00:00:00 +0200"
+          }
+        ],
+        "name" : "time_in_daylight",
+        "units" : "min"
+      },
+      {
+        "units" : "km\/hr",
+        "data" : [
+          {
+            "date" : "2026-06-11 00:00:00 +0200",
+            "qty" : 4.5576000000000008,
+            "source" : "iPhone"
+          },
+          {
+            "source" : "iPhone",
+            "date" : "2026-06-12 00:00:00 +0200",
+            "qty" : 4.5850909090909093
+          },
+          {
+            "qty" : 4.3559999999999999,
+            "source" : "iPhone",
+            "date" : "2026-06-14 00:00:00 +0200"
+          },
+          {
+            "date" : "2026-06-15 00:00:00 +0200",
+            "source" : "iPhone",
+            "qty" : 4.233272727272726
+          },
+          {
+            "qty" : 4.1914285714285704,
+            "date" : "2026-06-16 00:00:00 +0200",
+            "source" : "iPhone"
+          },
+          {
+            "qty" : 4.5192000000000005,
+            "source" : "iPhone",
+            "date" : "2026-06-17 00:00:00 +0200"
+          },
+          {
+            "date" : "2026-06-18 00:00:00 +0200",
+            "source" : "iPhone",
+            "qty" : 3.4559999999999995
+          }
+        ],
+        "name" : "walking_speed"
+      }
+    ],
+    "workouts" : [
+      {
+        "intensity" : {
+          "units" : "kcal\/hr·kg",
+          "qty" : 3.9535419015695163
+        },
+        "avgHeartRate" : {
+          "units" : "count\/min",
+          "qty" : 120.21996518223291
+        },
+        "humidity" : {
+          "qty" : 71,
+          "units" : "%"
+        },
+        "activeEnergyBurned" : {
+          "qty" : 706.97671020713437,
+          "units" : "kJ"
+        },
+        "activeEnergy" : [
+          {
+            "qty" : 28.210997564781632,
+            "date" : "2026-06-15 22:05:50 +0200",
+            "source" : "Apple Watch de Ismael",
+            "units" : "kJ"
+          },
+          {
+            "qty" : 26.81147567527055,
+            "date" : "2026-06-15 22:06:50 +0200",
+            "source" : "Apple Watch de Ismael",
+            "units" : "kJ"
+          },
+          {
+            "qty" : 28.533290880136935,
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 22:07:50 +0200",
+            "units" : "kJ"
+          },
+          {
+            "units" : "kJ",
+            "qty" : 20.846359900032077,
+            "date" : "2026-06-15 22:08:50 +0200",
+            "source" : "Apple Watch de Ismael"
+          },
+          {
+            "qty" : 19.010753934174161,
+            "source" : "Apple Watch de Ismael",
+            "units" : "kJ",
+            "date" : "2026-06-15 22:09:50 +0200"
+          },
+          {
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 22:10:50 +0200",
+            "units" : "kJ",
+            "qty" : 30.537437487160833
+          },
+          {
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 22:11:50 +0200",
+            "qty" : 26.353786522024841,
+            "units" : "kJ"
+          },
+          {
+            "date" : "2026-06-15 22:12:50 +0200",
+            "qty" : 19.072977309744793,
+            "source" : "Apple Watch de Ismael",
+            "units" : "kJ"
+          },
+          {
+            "source" : "Apple Watch de Ismael",
+            "qty" : 29.971543959295339,
+            "units" : "kJ",
+            "date" : "2026-06-15 22:13:50 +0200"
+          },
+          {
+            "units" : "kJ",
+            "qty" : 34.561145214136808,
+            "date" : "2026-06-15 22:14:50 +0200",
+            "source" : "Apple Watch de Ismael"
+          },
+          {
+            "date" : "2026-06-15 22:15:50 +0200",
+            "qty" : 36.937878160353613,
+            "units" : "kJ",
+            "source" : "Apple Watch de Ismael"
+          },
+          {
+            "source" : "Apple Watch de Ismael",
+            "qty" : 22.962345918957254,
+            "date" : "2026-06-15 22:16:50 +0200",
+            "units" : "kJ"
+          },
+          {
+            "qty" : 31.033208239850754,
+            "units" : "kJ",
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 22:17:50 +0200"
+          },
+          {
+            "qty" : 27.109114684402734,
+            "date" : "2026-06-15 22:18:50 +0200",
+            "source" : "Apple Watch de Ismael",
+            "units" : "kJ"
+          },
+          {
+            "qty" : 32.103544101045081,
+            "source" : "Apple Watch de Ismael",
+            "units" : "kJ",
+            "date" : "2026-06-15 22:19:50 +0200"
+          },
+          {
+            "units" : "kJ",
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 22:20:50 +0200",
+            "qty" : 30.489301581617191
+          },
+          {
+            "date" : "2026-06-15 22:21:50 +0200",
+            "source" : "Apple Watch de Ismael",
+            "units" : "kJ",
+            "qty" : 26.874479274700093
+          },
+          {
+            "source" : "Apple Watch de Ismael",
+            "qty" : 20.768055377000355,
+            "date" : "2026-06-15 22:22:50 +0200",
+            "units" : "kJ"
+          },
+          {
+            "qty" : 27.050517606792059,
+            "source" : "Apple Watch de Ismael",
+            "units" : "kJ",
+            "date" : "2026-06-15 22:23:50 +0200"
+          },
+          {
+            "qty" : 21.476907103108704,
+            "date" : "2026-06-15 22:24:50 +0200",
+            "source" : "Apple Watch de Ismael",
+            "units" : "kJ"
+          },
+          {
+            "units" : "kJ",
+            "date" : "2026-06-15 22:25:50 +0200",
+            "qty" : 19.010604699835348,
+            "source" : "Apple Watch de Ismael"
+          },
+          {
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 22:26:50 +0200",
+            "units" : "kJ",
+            "qty" : 20.188722099995687
+          },
+          {
+            "qty" : 19.037569995116886,
+            "date" : "2026-06-15 22:27:50 +0200",
+            "source" : "Apple Watch de Ismael",
+            "units" : "kJ"
+          },
+          {
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 22:28:50 +0200",
+            "qty" : 19.010860396303926,
+            "units" : "kJ"
+          },
+          {
+            "units" : "kJ",
+            "qty" : 19.0111118839929,
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 22:29:50 +0200"
+          },
+          {
+            "date" : "2026-06-15 22:30:50 +0200",
+            "source" : "Apple Watch de Ismael",
+            "units" : "kJ",
+            "qty" : 19.01125233812942
+          },
+          {
+            "qty" : 19.01124324043608,
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 22:31:50 +0200",
+            "units" : "kJ"
+          },
+          {
+            "source" : "Apple Watch de Ismael",
+            "qty" : 19.011362390789927,
+            "units" : "kJ",
+            "date" : "2026-06-15 22:32:50 +0200"
+          },
+          {
+            "units" : "kJ",
+            "date" : "2026-06-15 22:33:50 +0200",
+            "qty" : 17.029958825532116,
+            "source" : "Apple Watch de Ismael"
+          }
+        ],
+        "id" : "63153DFC-D3F3-450C-943D-26B533E89DFE",
+        "maxHeartRate" : {
+          "units" : "count\/min",
+          "qty" : 165
+        },
+        "heartRateRecovery" : [
+          {
+            "Max" : 110,
+            "Avg" : 110,
+            "units" : "count\/min",
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 22:34:41 +0200",
+            "Min" : 110
+          },
+          {
+            "units" : "count\/min",
+            "Min" : 110,
+            "Max" : 110,
+            "Avg" : 110,
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 22:34:44 +0200"
+          },
+          {
+            "date" : "2026-06-15 22:34:49 +0200",
+            "Max" : 110,
+            "Min" : 110,
+            "units" : "count\/min",
+            "Avg" : 110,
+            "source" : "Apple Watch de Ismael"
+          },
+          {
+            "source" : "Apple Watch de Ismael",
+            "units" : "count\/min",
+            "Avg" : 108,
+            "date" : "2026-06-15 22:34:58 +0200",
+            "Max" : 108,
+            "Min" : 108
+          },
+          {
+            "date" : "2026-06-15 22:35:09 +0200",
+            "source" : "Apple Watch de Ismael",
+            "Min" : 107,
+            "Max" : 107,
+            "units" : "count\/min",
+            "Avg" : 107
+          },
+          {
+            "Max" : 107,
+            "date" : "2026-06-15 22:35:42 +0200",
+            "Avg" : 107,
+            "units" : "count\/min",
+            "source" : "Apple Watch de Ismael",
+            "Min" : 107
+          },
+          {
+            "date" : "2026-06-15 22:35:44 +0200",
+            "Min" : 106,
+            "source" : "Apple Watch de Ismael",
+            "Avg" : 106,
+            "Max" : 106,
+            "units" : "count\/min"
+          }
+        ],
+        "stepCount" : [
+          {
+            "date" : "2026-06-15 22:13:50 +0200",
+            "units" : "count",
+            "qty" : 35.967970160194781,
+            "source" : "Apple Watch de Ismael"
+          },
+          {
+            "units" : "count",
+            "qty" : 43.017853948813944,
+            "date" : "2026-06-15 22:14:50 +0200",
+            "source" : "Apple Watch de Ismael"
+          },
+          {
+            "qty" : 43.017853948813944,
+            "date" : "2026-06-15 22:15:50 +0200",
+            "source" : "Apple Watch de Ismael",
+            "units" : "count"
+          },
+          {
+            "date" : "2026-06-15 22:16:50 +0200",
+            "source" : "Apple Watch de Ismael",
+            "qty" : 43.017853948813951,
+            "units" : "count"
+          },
+          {
+            "date" : "2026-06-15 22:17:50 +0200",
+            "source" : "Apple Watch de Ismael",
+            "units" : "count",
+            "qty" : 43.017853948813951
+          },
+          {
+            "units" : "count",
+            "date" : "2026-06-15 22:18:50 +0200",
+            "qty" : 43.017853948813951,
+            "source" : "Apple Watch de Ismael"
+          },
+          {
+            "qty" : 43.017853948813958,
+            "units" : "count",
+            "date" : "2026-06-15 22:19:50 +0200",
+            "source" : "Apple Watch de Ismael|iPhone"
+          },
+          {
+            "units" : "count",
+            "source" : "Apple Watch de Ismael|iPhone",
+            "date" : "2026-06-15 22:20:50 +0200",
+            "qty" : 43.017853948813951
+          },
+          {
+            "source" : "Apple Watch de Ismael|iPhone",
+            "date" : "2026-06-15 22:21:50 +0200",
+            "units" : "count",
+            "qty" : 43.017853948813958
+          },
+          {
+            "units" : "count",
+            "date" : "2026-06-15 22:22:50 +0200",
+            "qty" : 21.889198249293649,
+            "source" : "Apple Watch de Ismael|iPhone"
+          },
+          {
+            "qty" : 0.65534619310642395,
+            "date" : "2026-06-15 22:23:50 +0200",
+            "units" : "count",
+            "source" : "Apple Watch de Ismael|iPhone"
+          },
+          {
+            "units" : "count",
+            "qty" : 1.9034465034554364,
+            "date" : "2026-06-15 22:24:50 +0200",
+            "source" : "Apple Watch de Ismael|iPhone"
+          },
+          {
+            "qty" : 1.9034465034554362,
+            "source" : "Apple Watch de Ismael|iPhone",
+            "date" : "2026-06-15 22:25:50 +0200",
+            "units" : "count"
+          },
+          {
+            "source" : "Apple Watch de Ismael|iPhone",
+            "units" : "count",
+            "qty" : 1.9034465034554364,
+            "date" : "2026-06-15 22:26:50 +0200"
+          },
+          {
+            "source" : "Apple Watch de Ismael|iPhone",
+            "date" : "2026-06-15 22:27:50 +0200",
+            "qty" : 1.9034465034554364,
+            "units" : "count"
+          },
+          {
+            "qty" : 1.9034465034554364,
+            "source" : "Apple Watch de Ismael|iPhone",
+            "date" : "2026-06-15 22:28:50 +0200",
+            "units" : "count"
+          },
+          {
+            "source" : "Apple Watch de Ismael|iPhone",
+            "units" : "count",
+            "date" : "2026-06-15 22:29:50 +0200",
+            "qty" : 1.9034465034554362
+          },
+          {
+            "source" : "Apple Watch de Ismael|iPhone",
+            "units" : "count",
+            "qty" : 1.9034465034554362,
+            "date" : "2026-06-15 22:30:50 +0200"
+          },
+          {
+            "date" : "2026-06-15 22:31:50 +0200",
+            "source" : "Apple Watch de Ismael|iPhone",
+            "qty" : 1.9034465034554364,
+            "units" : "count"
+          },
+          {
+            "source" : "Apple Watch de Ismael|iPhone",
+            "qty" : 1.9034465034554364,
+            "units" : "count",
+            "date" : "2026-06-15 22:32:50 +0200"
+          },
+          {
+            "date" : "2026-06-15 22:33:50 +0200",
+            "units" : "count",
+            "source" : "Apple Watch de Ismael|iPhone",
+            "qty" : 10.213635275794648
+          }
+        ],
+        "start" : "2026-06-15 22:05:50 +0200",
+        "totalEnergy" : {
+          "qty" : 928.52426714211356,
+          "units" : "kJ"
+        },
+        "end" : "2026-06-15 22:34:35 +0200",
+        "heartRateData" : [
+          {
+            "Min" : 127,
+            "source" : "Apple Watch de Ismael",
+            "Max" : 132,
+            "units" : "count\/min",
+            "date" : "2026-06-15 22:05:50 +0200",
+            "Avg" : 129.36046511627907
+          },
+          {
+            "date" : "2026-06-15 22:06:50 +0200",
+            "Max" : 129,
+            "units" : "count\/min",
+            "Min" : 119,
+            "Avg" : 123.60897435897436,
+            "source" : "Apple Watch de Ismael"
+          },
+          {
+            "Max" : 129,
+            "units" : "count\/min",
+            "date" : "2026-06-15 22:07:50 +0200",
+            "Min" : 119,
+            "source" : "Apple Watch de Ismael",
+            "Avg" : 123.64130434782609
+          },
+          {
+            "units" : "count\/min",
+            "Max" : 121,
+            "Avg" : 117.16161616161615,
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 22:08:50 +0200",
+            "Min" : 114
+          },
+          {
+            "Min" : 109,
+            "Avg" : 113.59239130434781,
+            "units" : "count\/min",
+            "Max" : 118,
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 22:09:50 +0200"
+          },
+          {
+            "units" : "count\/min",
+            "Max" : 134,
+            "date" : "2026-06-15 22:10:50 +0200",
+            "source" : "Apple Watch de Ismael",
+            "Min" : 130,
+            "Avg" : 131.91346153846152
+          },
+          {
+            "units" : "count\/min",
+            "Max" : 128,
+            "date" : "2026-06-15 22:11:50 +0200",
+            "Avg" : 120.33204134366925,
+            "Min" : 113,
+            "source" : "Apple Watch de Ismael"
+          },
+          {
+            "Max" : 122.99999999999999,
+            "date" : "2026-06-15 22:12:50 +0200",
+            "Min" : 111,
+            "source" : "Apple Watch de Ismael",
+            "Avg" : 115.53999999999999,
+            "units" : "count\/min"
+          },
+          {
+            "Avg" : 131.06060606060606,
+            "units" : "count\/min",
+            "source" : "Apple Watch de Ismael",
+            "Max" : 134,
+            "Min" : 129,
+            "date" : "2026-06-15 22:13:50 +0200"
+          },
+          {
+            "Max" : 140,
+            "Min" : 130,
+            "date" : "2026-06-15 22:14:50 +0200",
+            "source" : "Apple Watch de Ismael",
+            "Avg" : 135.89583333333334,
+            "units" : "count\/min"
+          },
+          {
+            "date" : "2026-06-15 22:15:50 +0200",
+            "Avg" : 143.22159090909093,
+            "source" : "Apple Watch de Ismael",
+            "Min" : 135,
+            "units" : "count\/min",
+            "Max" : 152
+          },
+          {
+            "date" : "2026-06-15 22:16:50 +0200",
+            "Max" : 135,
+            "Min" : 123.99999999999999,
+            "Avg" : 129.08125000000001,
+            "units" : "count\/min",
+            "source" : "Apple Watch de Ismael"
+          },
+          {
+            "units" : "count\/min",
+            "Max" : 146,
+            "Avg" : 136.17283950617286,
+            "source" : "Apple Watch de Ismael",
+            "Min" : 125.00000000000001,
+            "date" : "2026-06-15 22:17:50 +0200"
+          },
+          {
+            "units" : "count\/min",
+            "date" : "2026-06-15 22:18:50 +0200",
+            "Max" : 165,
+            "Min" : 149,
+            "source" : "Apple Watch de Ismael",
+            "Avg" : 155.80405405405403
+          },
+          {
+            "source" : "Apple Watch de Ismael",
+            "units" : "count\/min",
+            "Max" : 148,
+            "date" : "2026-06-15 22:19:50 +0200",
+            "Min" : 132,
+            "Avg" : 140.55825242718447
+          },
+          {
+            "date" : "2026-06-15 22:20:50 +0200",
+            "units" : "count\/min",
+            "Max" : 130,
+            "Avg" : 128.421875,
+            "source" : "Apple Watch de Ismael",
+            "Min" : 126
+          },
+          {
+            "Max" : 122,
+            "Avg" : 120.53684210526315,
+            "Min" : 120,
+            "units" : "count\/min",
+            "date" : "2026-06-15 22:21:50 +0200",
+            "source" : "Apple Watch de Ismael"
+          },
+          {
+            "Max" : 122,
+            "Min" : 119,
+            "date" : "2026-06-15 22:22:50 +0200",
+            "Avg" : 120.48258064516131,
+            "units" : "count\/min",
+            "source" : "Apple Watch de Ismael"
+          },
+          {
+            "Avg" : 119.57692307692308,
+            "units" : "count\/min",
+            "source" : "Apple Watch de Ismael",
+            "Max" : 122,
+            "Min" : 117,
+            "date" : "2026-06-15 22:23:50 +0200"
+          },
+          {
+            "Min" : 101,
+            "units" : "count\/min",
+            "source" : "Apple Watch de Ismael",
+            "Avg" : 109.51075268817203,
+            "date" : "2026-06-15 22:24:50 +0200",
+            "Max" : 122
+          },
+          {
+            "Max" : 107,
+            "units" : "count\/min",
+            "date" : "2026-06-15 22:25:50 +0200",
+            "Avg" : 104.1236559139785,
+            "Min" : 97,
+            "source" : "Apple Watch de Ismael"
+          },
+          {
+            "date" : "2026-06-15 22:26:50 +0200",
+            "Max" : 107,
+            "Min" : 99,
+            "source" : "Apple Watch de Ismael",
+            "Avg" : 101.71428571428571,
+            "units" : "count\/min"
+          },
+          {
+            "source" : "Apple Watch de Ismael",
+            "Min" : 95,
+            "Avg" : 102.15611441156516,
+            "units" : "count\/min",
+            "Max" : 114,
+            "date" : "2026-06-15 22:27:50 +0200"
+          },
+          {
+            "Avg" : 106.98469387755101,
+            "date" : "2026-06-15 22:28:50 +0200",
+            "Max" : 116,
+            "source" : "Apple Watch de Ismael",
+            "Min" : 101,
+            "units" : "count\/min"
+          },
+          {
+            "date" : "2026-06-15 22:29:50 +0200",
+            "source" : "Apple Watch de Ismael",
+            "Max" : 114,
+            "Min" : 103,
+            "Avg" : 107.81914893617019,
+            "units" : "count\/min"
+          },
+          {
+            "Max" : 108,
+            "source" : "Apple Watch de Ismael",
+            "Avg" : 103.99239543726236,
+            "Min" : 98,
+            "units" : "count\/min",
+            "date" : "2026-06-15 22:30:50 +0200"
+          },
+          {
+            "Max" : 107,
+            "units" : "count\/min",
+            "date" : "2026-06-15 22:31:50 +0200",
+            "Min" : 102,
+            "source" : "Apple Watch de Ismael",
+            "Avg" : 104.16386554621849
+          },
+          {
+            "Max" : 105,
+            "Min" : 102,
+            "units" : "count\/min",
+            "source" : "Apple Watch de Ismael",
+            "Avg" : 103.41,
+            "date" : "2026-06-15 22:32:50 +0200"
+          },
+          {
+            "source" : "Apple Watch de Ismael",
+            "Avg" : 106.54117647058824,
+            "Min" : 103,
+            "units" : "count\/min",
+            "Max" : 110,
+            "date" : "2026-06-15 22:33:50 +0200"
+          }
+        ],
+        "duration" : 1724.7320790290833,
+        "stepCadence" : {
+          "qty" : 14.95884509466757,
+          "units" : "count\/min"
+        },
+        "metadata" : {
+
+        },
+        "basalEnergy" : [
+          {
+            "date" : "2026-06-15 22:05:50 +0200",
+            "units" : "kJ",
+            "qty" : 7.6186963007925765,
+            "source" : "Apple Watch de Ismael"
+          },
+          {
+            "units" : "kJ",
+            "date" : "2026-06-15 22:06:50 +0200",
+            "source" : "Apple Watch de Ismael",
+            "qty" : 7.6831691953642656
+          },
+          {
+            "date" : "2026-06-15 22:07:50 +0200",
+            "units" : "kJ",
+            "source" : "Apple Watch de Ismael",
+            "qty" : 7.6831475466623731
+          },
+          {
+            "qty" : 7.683123960171744,
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 22:08:50 +0200",
+            "units" : "kJ"
+          },
+          {
+            "units" : "kJ",
+            "qty" : 7.6831026262465532,
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 22:09:50 +0200"
+          },
+          {
+            "qty" : 7.6830774684775074,
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 22:10:50 +0200",
+            "units" : "kJ"
+          },
+          {
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 22:11:50 +0200",
+            "qty" : 7.6830777269446928,
+            "units" : "kJ"
+          },
+          {
+            "date" : "2026-06-15 22:12:50 +0200",
+            "source" : "Apple Watch de Ismael",
+            "units" : "kJ",
+            "qty" : 7.6830679650027731
+          },
+          {
+            "units" : "kJ",
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 22:13:50 +0200",
+            "qty" : 7.6830546552278172
+          },
+          {
+            "date" : "2026-06-15 22:14:50 +0200",
+            "source" : "Apple Watch de Ismael",
+            "units" : "kJ",
+            "qty" : 7.6830482555062733
+          },
+          {
+            "date" : "2026-06-15 22:15:50 +0200",
+            "units" : "kJ",
+            "qty" : 7.6830395397832625,
+            "source" : "Apple Watch de Ismael"
+          },
+          {
+            "date" : "2026-06-15 22:16:50 +0200",
+            "source" : "Apple Watch de Ismael",
+            "qty" : 7.6830239838872521,
+            "units" : "kJ"
+          },
+          {
+            "units" : "kJ",
+            "source" : "Apple Watch de Ismael",
+            "qty" : 7.6829930543874889,
+            "date" : "2026-06-15 22:17:50 +0200"
+          },
+          {
+            "source" : "Apple Watch de Ismael",
+            "qty" : 7.6829708462409165,
+            "date" : "2026-06-15 22:18:50 +0200",
+            "units" : "kJ"
+          },
+          {
+            "units" : "kJ",
+            "date" : "2026-06-15 22:19:50 +0200",
+            "source" : "Apple Watch de Ismael",
+            "qty" : 7.6829662131973366
+          },
+          {
+            "units" : "kJ",
+            "qty" : 7.6829835571965885,
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 22:20:50 +0200"
+          },
+          {
+            "units" : "kJ",
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 22:21:50 +0200",
+            "qty" : 7.683017808534486
+          },
+          {
+            "date" : "2026-06-15 22:22:50 +0200",
+            "qty" : 7.6831112922592126,
+            "source" : "Apple Watch de Ismael",
+            "units" : "kJ"
+          },
+          {
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 22:23:50 +0200",
+            "units" : "kJ",
+            "qty" : 7.6831020537251637
+          },
+          {
+            "qty" : 7.6830598912088313,
+            "source" : "Apple Watch de Ismael",
+            "units" : "kJ",
+            "date" : "2026-06-15 22:24:50 +0200"
+          },
+          {
+            "source" : "Apple Watch de Ismael",
+            "units" : "kJ",
+            "date" : "2026-06-15 22:25:50 +0200",
+            "qty" : 7.6830423139230986
+          },
+          {
+            "date" : "2026-06-15 22:26:50 +0200",
+            "source" : "Apple Watch de Ismael",
+            "qty" : 6.5049537263589619,
+            "units" : "kJ"
+          },
+          {
+            "units" : "kJ",
+            "qty" : 7.6561755556036326,
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 22:27:50 +0200"
+          },
+          {
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 22:28:50 +0200",
+            "qty" : 7.6831456523922617,
+            "units" : "kJ"
+          },
+          {
+            "qty" : 7.6832472899038677,
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 22:29:50 +0200",
+            "units" : "kJ"
+          },
+          {
+            "units" : "kJ",
+            "date" : "2026-06-15 22:30:50 +0200",
+            "qty" : 7.6833040537517858,
+            "source" : "Apple Watch de Ismael"
+          },
+          {
+            "date" : "2026-06-15 22:31:50 +0200",
+            "qty" : 7.6833003769638051,
+            "source" : "Apple Watch de Ismael",
+            "units" : "kJ"
+          },
+          {
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 22:32:50 +0200",
+            "qty" : 7.6833485309928209,
+            "units" : "kJ"
+          },
+          {
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 22:33:50 +0200",
+            "qty" : 7.6902054942718445,
+            "units" : "kJ"
+          }
+        ],
+        "temperature" : {
+          "units" : "degC",
+          "qty" : 24.250207900998589
+        },
+        "heartRate" : {
+          "max" : {
+            "units" : "count\/min",
+            "qty" : 165
+          },
+          "avg" : {
+            "units" : "count\/min",
+            "qty" : 120.21996518223291
+          },
+          "min" : {
+            "units" : "count\/min",
+            "qty" : 95
+          }
+        },
+        "name" : "Entrenamiento de Fuerza Tradicional"
+      },
+      {
+        "humidity" : {
+          "qty" : 70,
+          "units" : "%"
+        },
+        "location" : "Interior",
+        "heartRateRecovery" : [
+          {
+            "Max" : 128,
+            "Avg" : 128,
+            "date" : "2026-06-15 22:05:26 +0200",
+            "source" : "Apple Watch de Ismael",
+            "units" : "count\/min",
+            "Min" : 128
+          },
+          {
+            "units" : "count\/min",
+            "date" : "2026-06-15 22:05:27 +0200",
+            "source" : "Apple Watch de Ismael",
+            "Min" : 127,
+            "Avg" : 127,
+            "Max" : 127
+          },
+          {
+            "units" : "count\/min",
+            "Max" : 125.00000000000001,
+            "Avg" : 125.00000000000001,
+            "Min" : 125.00000000000001,
+            "date" : "2026-06-15 22:05:32 +0200",
+            "source" : "Apple Watch de Ismael"
+          },
+          {
+            "date" : "2026-06-15 22:05:37 +0200",
+            "units" : "count\/min",
+            "Min" : 126,
+            "Max" : 126,
+            "source" : "Apple Watch de Ismael",
+            "Avg" : 126
+          },
+          {
+            "date" : "2026-06-15 22:05:46 +0200",
+            "Avg" : 129,
+            "Min" : 129,
+            "Max" : 129,
+            "source" : "Apple Watch de Ismael",
+            "units" : "count\/min"
+          },
+          {
+            "date" : "2026-06-15 22:05:51 +0200",
+            "Min" : 132,
+            "Max" : 132,
+            "source" : "Apple Watch de Ismael",
+            "Avg" : 132,
+            "units" : "count\/min"
+          },
+          {
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 22:05:52 +0200",
+            "Min" : 132,
+            "Avg" : 132,
+            "Max" : 132,
+            "units" : "count\/min"
+          },
+          {
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 22:05:57 +0200",
+            "Min" : 131,
+            "units" : "count\/min",
+            "Max" : 131,
+            "Avg" : 131
+          },
+          {
+            "Min" : 129,
+            "Max" : 129,
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 22:06:12 +0200",
+            "Avg" : 129,
+            "units" : "count\/min"
+          },
+          {
+            "Min" : 129,
+            "Avg" : 129,
+            "units" : "count\/min",
+            "Max" : 129,
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 22:06:18 +0200"
+          },
+          {
+            "units" : "count\/min",
+            "Min" : 127,
+            "date" : "2026-06-15 22:06:24 +0200",
+            "Avg" : 127,
+            "Max" : 127,
+            "source" : "Apple Watch de Ismael"
+          },
+          {
+            "date" : "2026-06-15 22:06:29 +0200",
+            "Max" : 127,
+            "Min" : 127,
+            "units" : "count\/min",
+            "Avg" : 127,
+            "source" : "Apple Watch de Ismael"
+          },
+          {
+            "Max" : 127,
+            "Avg" : 127,
+            "source" : "Apple Watch de Ismael",
+            "units" : "count\/min",
+            "date" : "2026-06-15 22:06:32 +0200",
+            "Min" : 127
+          },
+          {
+            "units" : "count\/min",
+            "Min" : 119,
+            "Avg" : 119,
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 22:06:52 +0200",
+            "Max" : 119
+          },
+          {
+            "Max" : 120,
+            "units" : "count\/min",
+            "date" : "2026-06-15 22:06:57 +0200",
+            "Min" : 120,
+            "Avg" : 120,
+            "source" : "Apple Watch de Ismael"
+          },
+          {
+            "Min" : 120,
+            "Avg" : 120,
+            "source" : "Apple Watch de Ismael",
+            "Max" : 120,
+            "date" : "2026-06-15 22:07:02 +0200",
+            "units" : "count\/min"
+          },
+          {
+            "source" : "Apple Watch de Ismael",
+            "Max" : 122,
+            "date" : "2026-06-15 22:07:07 +0200",
+            "units" : "count\/min",
+            "Avg" : 122,
+            "Min" : 122
+          },
+          {
+            "Max" : 125.00000000000001,
+            "Avg" : 125.00000000000001,
+            "source" : "Apple Watch de Ismael",
+            "units" : "count\/min",
+            "date" : "2026-06-15 22:07:15 +0200",
+            "Min" : 125.00000000000001
+          },
+          {
+            "date" : "2026-06-15 22:07:17 +0200",
+            "Min" : 126,
+            "units" : "count\/min",
+            "Max" : 126,
+            "source" : "Apple Watch de Ismael",
+            "Avg" : 126
+          }
+        ],
+        "stepCadence" : {
+          "units" : "count\/min",
+          "qty" : 97.377478671061695
+        },
+        "metadata" : {
+
+        },
+        "temperature" : {
+          "units" : "degC",
+          "qty" : 24.627822875974175
+        },
+        "isIndoor" : true,
+        "start" : "2026-06-15 21:43:44 +0200",
+        "heartRateData" : [
+          {
+            "source" : "Apple Watch de Ismael",
+            "Max" : 118,
+            "date" : "2026-06-15 21:43:44 +0200",
+            "Min" : 117,
+            "Avg" : 117.5,
+            "units" : "count\/min"
+          },
+          {
+            "date" : "2026-06-15 21:44:44 +0200",
+            "Max" : 135,
+            "units" : "count\/min",
+            "Avg" : 128.01041666666669,
+            "source" : "Apple Watch de Ismael",
+            "Min" : 122.99999999999999
+          },
+          {
+            "units" : "count\/min",
+            "Avg" : 129.546875,
+            "source" : "Apple Watch de Ismael",
+            "Max" : 134,
+            "date" : "2026-06-15 21:45:44 +0200",
+            "Min" : 127
+          },
+          {
+            "date" : "2026-06-15 21:46:44 +0200",
+            "Max" : 133,
+            "Avg" : 131.57843137254901,
+            "source" : "Apple Watch de Ismael",
+            "Min" : 129,
+            "units" : "count\/min"
+          },
+          {
+            "source" : "Apple Watch de Ismael",
+            "Max" : 136,
+            "date" : "2026-06-15 21:47:44 +0200",
+            "Min" : 133,
+            "Avg" : 134.45360824742269,
+            "units" : "count\/min"
+          },
+          {
+            "date" : "2026-06-15 21:48:44 +0200",
+            "source" : "Apple Watch de Ismael",
+            "Min" : 132,
+            "Avg" : 136.71207430340559,
+            "Max" : 140,
+            "units" : "count\/min"
+          },
+          {
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 21:49:44 +0200",
+            "Max" : 142,
+            "units" : "count\/min",
+            "Avg" : 140.3217821782178,
+            "Min" : 137
+          },
+          {
+            "date" : "2026-06-15 21:50:44 +0200",
+            "Min" : 137,
+            "Max" : 139,
+            "units" : "count\/min",
+            "source" : "Apple Watch de Ismael",
+            "Avg" : 137.97777777777779
+          },
+          {
+            "Min" : 136,
+            "Max" : 140,
+            "Avg" : 137.51162790697674,
+            "date" : "2026-06-15 21:51:44 +0200",
+            "source" : "Apple Watch de Ismael",
+            "units" : "count\/min"
+          },
+          {
+            "date" : "2026-06-15 21:52:44 +0200",
+            "units" : "count\/min",
+            "Avg" : 135.06451612903226,
+            "Max" : 137,
+            "source" : "Apple Watch de Ismael",
+            "Min" : 133
+          },
+          {
+            "Avg" : 134.30198019801981,
+            "Min" : 132,
+            "date" : "2026-06-15 21:53:44 +0200",
+            "Max" : 137,
+            "units" : "count\/min",
+            "source" : "Apple Watch de Ismael"
+          },
+          {
+            "Min" : 132,
+            "source" : "Apple Watch de Ismael",
+            "units" : "count\/min",
+            "Avg" : 133.73118279569891,
+            "Max" : 135,
+            "date" : "2026-06-15 21:54:44 +0200"
+          },
+          {
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 21:55:44 +0200",
+            "Min" : 133,
+            "Avg" : 133.50555555555556,
+            "units" : "count\/min",
+            "Max" : 134
+          },
+          {
+            "Max" : 136,
+            "Avg" : 135.28787878787878,
+            "units" : "count\/min",
+            "source" : "Apple Watch de Ismael",
+            "Min" : 134,
+            "date" : "2026-06-15 21:56:44 +0200"
+          },
+          {
+            "Min" : 135,
+            "date" : "2026-06-15 21:57:44 +0200",
+            "Max" : 139,
+            "Avg" : 136.49468085106383,
+            "units" : "count\/min",
+            "source" : "Apple Watch de Ismael"
+          },
+          {
+            "Min" : 134,
+            "units" : "count\/min",
+            "date" : "2026-06-15 21:58:44 +0200",
+            "Max" : 137,
+            "source" : "Apple Watch de Ismael",
+            "Avg" : 135.25555555555556
+          },
+          {
+            "Min" : 132,
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 21:59:44 +0200",
+            "Avg" : 132.54000000000002,
+            "units" : "count\/min",
+            "Max" : 133
+          },
+          {
+            "Min" : 135,
+            "source" : "Apple Watch de Ismael",
+            "Avg" : 135,
+            "units" : "count\/min",
+            "date" : "2026-06-15 22:00:44 +0200",
+            "Max" : 135
+          },
+          {
+            "units" : "count\/min",
+            "source" : "Apple Watch de Ismael",
+            "Min" : 141,
+            "date" : "2026-06-15 22:01:44 +0200",
+            "Max" : 143,
+            "Avg" : 142.01818181818183
+          },
+          {
+            "Min" : 129,
+            "units" : "count\/min",
+            "Max" : 149,
+            "date" : "2026-06-15 22:02:44 +0200",
+            "source" : "Apple Watch de Ismael",
+            "Avg" : 137.73456790123458
+          },
+          {
+            "Max" : 139,
+            "Avg" : 127.54123711340203,
+            "units" : "count\/min",
+            "date" : "2026-06-15 22:03:44 +0200",
+            "Min" : 117,
+            "source" : "Apple Watch de Ismael"
+          },
+          {
+            "source" : "Apple Watch de Ismael",
+            "Max" : 137,
+            "Min" : 131,
+            "units" : "count\/min",
+            "date" : "2026-06-15 22:04:44 +0200",
+            "Avg" : 134.40277777777777
+          }
+        ],
+        "id" : "260C4F63-FF3B-486B-A632-A5926D12B5A2",
+        "heartRate" : {
+          "max" : {
+            "units" : "count\/min",
+            "qty" : 149
+          },
+          "avg" : {
+            "qty" : 133.93139581529169,
+            "units" : "count\/min"
+          },
+          "min" : {
+            "qty" : 117,
+            "units" : "count\/min"
+          }
+        },
+        "maxHeartRate" : {
+          "units" : "count\/min",
+          "qty" : 149
+        },
+        "activeEnergy" : [
+          {
+            "units" : "kJ",
+            "date" : "2026-06-15 21:43:44 +0200",
+            "source" : "Apple Watch de Ismael",
+            "qty" : 30.239691657314811
+          },
+          {
+            "date" : "2026-06-15 21:44:44 +0200",
+            "source" : "Apple Watch de Ismael",
+            "units" : "kJ",
+            "qty" : 29.043821218893971
+          },
+          {
+            "source" : "Apple Watch de Ismael",
+            "qty" : 30.738579627150738,
+            "units" : "kJ",
+            "date" : "2026-06-15 21:45:44 +0200"
+          },
+          {
+            "qty" : 32.397927653938837,
+            "source" : "Apple Watch de Ismael",
+            "units" : "kJ",
+            "date" : "2026-06-15 21:46:44 +0200"
+          },
+          {
+            "qty" : 34.799334465840992,
+            "units" : "kJ",
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 21:47:44 +0200"
+          },
+          {
+            "date" : "2026-06-15 21:48:44 +0200",
+            "source" : "Apple Watch de Ismael",
+            "qty" : 33.189270332621156,
+            "units" : "kJ"
+          },
+          {
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 21:49:44 +0200",
+            "units" : "kJ",
+            "qty" : 34.147528340647504
+          },
+          {
+            "qty" : 33.435106836542978,
+            "source" : "Apple Watch de Ismael",
+            "units" : "kJ",
+            "date" : "2026-06-15 21:50:44 +0200"
+          },
+          {
+            "qty" : 34.754518896664059,
+            "source" : "Apple Watch de Ismael",
+            "units" : "kJ",
+            "date" : "2026-06-15 21:51:44 +0200"
+          },
+          {
+            "date" : "2026-06-15 21:52:44 +0200",
+            "qty" : 32.430663856300583,
+            "units" : "kJ",
+            "source" : "Apple Watch de Ismael"
+          },
+          {
+            "source" : "Apple Watch de Ismael",
+            "qty" : 32.026704335143535,
+            "units" : "kJ",
+            "date" : "2026-06-15 21:53:44 +0200"
+          },
+          {
+            "source" : "Apple Watch de Ismael",
+            "qty" : 31.46060676005127,
+            "units" : "kJ",
+            "date" : "2026-06-15 21:54:44 +0200"
+          },
+          {
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 21:55:44 +0200",
+            "units" : "kJ",
+            "qty" : 30.578134733302093
+          },
+          {
+            "qty" : 30.300934799806207,
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 21:56:44 +0200",
+            "units" : "kJ"
+          },
+          {
+            "qty" : 30.33650851727629,
+            "date" : "2026-06-15 21:57:44 +0200",
+            "source" : "Apple Watch de Ismael",
+            "units" : "kJ"
+          },
+          {
+            "date" : "2026-06-15 21:58:44 +0200",
+            "qty" : 32.086885909192816,
+            "units" : "kJ",
+            "source" : "Apple Watch de Ismael"
+          },
+          {
+            "units" : "kJ",
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 21:59:44 +0200",
+            "qty" : 30.856690773665527
+          },
+          {
+            "date" : "2026-06-15 22:00:44 +0200",
+            "units" : "kJ",
+            "qty" : 29.649962565692675,
+            "source" : "Apple Watch de Ismael"
+          },
+          {
+            "date" : "2026-06-15 22:01:44 +0200",
+            "source" : "Apple Watch de Ismael",
+            "qty" : 29.070027139640697,
+            "units" : "kJ"
+          },
+          {
+            "date" : "2026-06-15 22:02:44 +0200",
+            "source" : "Apple Watch de Ismael",
+            "units" : "kJ",
+            "qty" : 31.59641053281074
+          },
+          {
+            "date" : "2026-06-15 22:03:44 +0200",
+            "source" : "Apple Watch de Ismael",
+            "qty" : 21.657420434586435,
+            "units" : "kJ"
+          },
+          {
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 22:04:44 +0200",
+            "units" : "kJ",
+            "qty" : 12.111950612916067
+          }
+        ],
+        "totalEnergy" : {
+          "qty" : 832.28680082276162,
+          "units" : "kJ"
+        },
+        "activeEnergyBurned" : {
+          "units" : "kJ",
+          "qty" : 665.18620882276161
+        },
+        "name" : "Elíptica",
+        "end" : "2026-06-15 22:05:22 +0200",
+        "stepCount" : [
+          {
+            "units" : "count",
+            "date" : "2026-06-15 21:43:44 +0200",
+            "qty" : 87.10237558081478,
+            "source" : "Apple Watch de Ismael"
+          },
+          {
+            "date" : "2026-06-15 21:44:44 +0200",
+            "qty" : 106.39280435833452,
+            "source" : "Apple Watch de Ismael",
+            "units" : "count"
+          },
+          {
+            "qty" : 106.39280435833453,
+            "units" : "count",
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 21:45:44 +0200"
+          },
+          {
+            "source" : "Apple Watch de Ismael|iPhone",
+            "units" : "count",
+            "date" : "2026-06-15 21:46:44 +0200",
+            "qty" : 106.39280435833452
+          },
+          {
+            "date" : "2026-06-15 21:47:44 +0200",
+            "qty" : 106.39280435833453,
+            "units" : "count",
+            "source" : "Apple Watch de Ismael|iPhone"
+          },
+          {
+            "source" : "Apple Watch de Ismael|iPhone",
+            "units" : "count",
+            "qty" : 106.39280435833454,
+            "date" : "2026-06-15 21:48:44 +0200"
+          },
+          {
+            "units" : "count",
+            "qty" : 106.39280435833453,
+            "source" : "Apple Watch de Ismael|iPhone",
+            "date" : "2026-06-15 21:49:44 +0200"
+          },
+          {
+            "units" : "count",
+            "date" : "2026-06-15 21:50:44 +0200",
+            "qty" : 106.39280435833452,
+            "source" : "Apple Watch de Ismael|iPhone"
+          },
+          {
+            "date" : "2026-06-15 21:51:44 +0200",
+            "source" : "Apple Watch de Ismael|iPhone",
+            "units" : "count",
+            "qty" : 106.39280435833453
+          },
+          {
+            "date" : "2026-06-15 21:52:44 +0200",
+            "qty" : 106.39280435833453,
+            "units" : "count",
+            "source" : "Apple Watch de Ismael|iPhone"
+          },
+          {
+            "units" : "count",
+            "source" : "Apple Watch de Ismael|iPhone",
+            "qty" : 101.19675890037837,
+            "date" : "2026-06-15 21:53:44 +0200"
+          },
+          {
+            "date" : "2026-06-15 21:54:44 +0200",
+            "units" : "count",
+            "source" : "Apple Watch de Ismael|iPhone",
+            "qty" : 100.18344520855885
+          },
+          {
+            "date" : "2026-06-15 21:55:44 +0200",
+            "source" : "Apple Watch de Ismael|iPhone",
+            "qty" : 100.18344520855884,
+            "units" : "count"
+          },
+          {
+            "date" : "2026-06-15 21:56:44 +0200",
+            "source" : "Apple Watch de Ismael|iPhone",
+            "qty" : 100.18344520855884,
+            "units" : "count"
+          },
+          {
+            "date" : "2026-06-15 21:57:44 +0200",
+            "units" : "count",
+            "source" : "Apple Watch de Ismael|iPhone",
+            "qty" : 100.18344520855884
+          },
+          {
+            "date" : "2026-06-15 21:58:44 +0200",
+            "source" : "Apple Watch de Ismael|iPhone",
+            "units" : "count",
+            "qty" : 100.18344520855884
+          },
+          {
+            "date" : "2026-06-15 21:59:44 +0200",
+            "source" : "Apple Watch de Ismael|iPhone",
+            "qty" : 100.18344520855882,
+            "units" : "count"
+          },
+          {
+            "qty" : 100.18344520855882,
+            "units" : "count",
+            "source" : "Apple Watch de Ismael|iPhone",
+            "date" : "2026-06-15 22:00:44 +0200"
+          },
+          {
+            "date" : "2026-06-15 22:01:44 +0200",
+            "qty" : 100.18344520855882,
+            "units" : "count",
+            "source" : "Apple Watch de Ismael|iPhone"
+          },
+          {
+            "units" : "count",
+            "qty" : 100.18344520855881,
+            "date" : "2026-06-15 22:02:44 +0200",
+            "source" : "Apple Watch de Ismael|iPhone"
+          },
+          {
+            "date" : "2026-06-15 22:03:44 +0200",
+            "units" : "count",
+            "source" : "Apple Watch de Ismael|iPhone",
+            "qty" : 35.074649726691867
+          },
+          {
+            "source" : "Apple Watch de Ismael|iPhone",
+            "qty" : 24.043456309845279,
+            "date" : "2026-06-15 22:04:44 +0200",
+            "units" : "count"
+          }
+        ],
+        "intensity" : {
+          "qty" : 6.7500175186237437,
+          "units" : "kcal\/hr·kg"
+        },
+        "basalEnergy" : [
+          {
+            "date" : "2026-06-15 21:43:44 +0200",
+            "units" : "kJ",
+            "qty" : 7.5955325493568306,
+            "source" : "Apple Watch de Ismael"
+          },
+          {
+            "source" : "Apple Watch de Ismael",
+            "units" : "kJ",
+            "qty" : 7.6831798463720355,
+            "date" : "2026-06-15 21:44:44 +0200"
+          },
+          {
+            "date" : "2026-06-15 21:45:44 +0200",
+            "source" : "Apple Watch de Ismael",
+            "units" : "kJ",
+            "qty" : 7.6831798970795235
+          },
+          {
+            "source" : "Apple Watch de Ismael",
+            "qty" : 7.6831686985226391,
+            "date" : "2026-06-15 21:46:44 +0200",
+            "units" : "kJ"
+          },
+          {
+            "units" : "kJ",
+            "source" : "Apple Watch de Ismael",
+            "qty" : 7.6831631756245438,
+            "date" : "2026-06-15 21:47:44 +0200"
+          },
+          {
+            "units" : "kJ",
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 21:48:44 +0200",
+            "qty" : 7.6831698224918972
+          },
+          {
+            "qty" : 7.6831950021799429,
+            "units" : "kJ",
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 21:49:44 +0200"
+          },
+          {
+            "qty" : 7.6832073833582939,
+            "date" : "2026-06-15 21:50:44 +0200",
+            "source" : "Apple Watch de Ismael",
+            "units" : "kJ"
+          },
+          {
+            "qty" : 7.683230785694712,
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 21:51:44 +0200",
+            "units" : "kJ"
+          },
+          {
+            "units" : "kJ",
+            "qty" : 7.6832575733797288,
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 21:52:44 +0200"
+          },
+          {
+            "qty" : 7.6832763943368878,
+            "date" : "2026-06-15 21:53:44 +0200",
+            "units" : "kJ",
+            "source" : "Apple Watch de Ismael"
+          },
+          {
+            "date" : "2026-06-15 21:54:44 +0200",
+            "qty" : 7.6832913408230841,
+            "source" : "Apple Watch de Ismael",
+            "units" : "kJ"
+          },
+          {
+            "date" : "2026-06-15 21:55:44 +0200",
+            "units" : "kJ",
+            "qty" : 7.6833124509252348,
+            "source" : "Apple Watch de Ismael"
+          },
+          {
+            "qty" : 7.68333221837133,
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 21:56:44 +0200",
+            "units" : "kJ"
+          },
+          {
+            "date" : "2026-06-15 21:57:44 +0200",
+            "source" : "Apple Watch de Ismael",
+            "units" : "kJ",
+            "qty" : 7.6833428954333902
+          },
+          {
+            "source" : "Apple Watch de Ismael",
+            "qty" : 7.6833537665859257,
+            "date" : "2026-06-15 21:58:44 +0200",
+            "units" : "kJ"
+          },
+          {
+            "source" : "Apple Watch de Ismael",
+            "units" : "kJ",
+            "qty" : 7.6833665972034515,
+            "date" : "2026-06-15 21:59:44 +0200"
+          },
+          {
+            "qty" : 7.6833790037343146,
+            "date" : "2026-06-15 22:00:44 +0200",
+            "source" : "Apple Watch de Ismael",
+            "units" : "kJ"
+          },
+          {
+            "qty" : 7.6833845305172437,
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 22:01:44 +0200",
+            "units" : "kJ"
+          },
+          {
+            "units" : "kJ",
+            "date" : "2026-06-15 22:02:44 +0200",
+            "source" : "Apple Watch de Ismael",
+            "qty" : 7.6833593605530917
+          },
+          {
+            "source" : "Apple Watch de Ismael",
+            "units" : "kJ",
+            "date" : "2026-06-15 22:03:44 +0200",
+            "qty" : 7.6833269437227818
+          },
+          {
+            "qty" : 5.8395817637331602,
+            "units" : "kJ",
+            "source" : "Apple Watch de Ismael",
+            "date" : "2026-06-15 22:04:44 +0200"
+          }
+        ],
+        "avgHeartRate" : {
+          "qty" : 133.93139581529169,
+          "units" : "count\/min"
+        },
+        "duration" : 1298.0024839639664
+      }
+    ]
+  }
+}
