@@ -73,7 +73,7 @@ function HomeView() {
         </section>
 
         <!-- Chat solo desktop -->
-        <div id="home-chat" class="hidden md:block md:absolute md:left-8 md:top-24 md:w-72">
+        <div id="home-chat" class="hidden md:block md:absolute md:left-8 md:top-24 md:w-72 mt-16">
             <div style="background:rgba(13,17,23,0.9); border:1px solid rgba(255,255,255,0.1); border-radius:16px; overflow:hidden; backdrop-filter:blur(10px);">
                 <div class="p-4 border-b border-white/10">
                     <p class="text-indigo-400 text-xs font-medium tracking-[0.3em] uppercase mb-1">Comunidad</p>
@@ -87,8 +87,7 @@ function HomeView() {
         </div>
 
         <!-- GitHub Stats solo desktop -->
-        <div id="github-card" class=" md:absolute md:left-8 md:top-150 md:w-72">
-            <p class="text-slate-500 text-xs text-center">Cargando GitHub...</p>
+<div id="github-card" class="md:absolute md:left-8 md:top-[875px] md:w-72">            <p class="text-slate-500 text-xs text-center">Cargando GitHub...</p>
         </div>
 
         <!-- Botón salud solo desktop -->
@@ -99,6 +98,11 @@ function HomeView() {
                 <span style="margin-left:auto; color:#8b949e; font-size:12px;">→</span>
             </button>
         </div>
+
+        <!--Luna-->
+        <!-- Luna widget -->
+<div id="luna-widget" class="hidden md:block md:absolute md:left-8 md:top-[480px] md:w-72 mt-4">    <p class="text-slate-500 text-xs text-center">Cargando luna...</p>
+</div>
     `;
 }
 
@@ -106,33 +110,78 @@ async function handleSubmit() {
   const name = document.getElementById("name").value.trim();
   const email = document.getElementById("email").value.trim();
   const message = document.getElementById("message").value.trim();
-  if (!name || !email || !message) { showStatus("Por favor rellena todos los campos.", "error"); return; }
+  if (!name || !email || !message) {
+    showStatus("Por favor rellena todos los campos.", "error");
+    return;
+  }
   const btn = document.getElementById("submit-btn");
   btn.textContent = "Enviando...";
   btn.disabled = true;
   try {
-    const response = await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name, email, message }) });
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, email, message }),
+    });
     const data = await response.json();
     if (data.ok) {
       showStatus("¡Mensaje enviado! Te respondo pronto.", "success");
       document.getElementById("name").value = "";
       document.getElementById("email").value = "";
       document.getElementById("message").value = "";
-    } else { showStatus("Algo salió mal. Inténtalo de nuevo.", "error"); }
-  } catch (error) { showStatus("Error de conexión. Inténtalo de nuevo.", "error"); }
-  finally { btn.textContent = "Enviar mensaje"; btn.disabled = false; }
+    } else {
+      showStatus("Algo salió mal. Inténtalo de nuevo.", "error");
+    }
+  } catch (error) {
+    showStatus("Error de conexión. Inténtalo de nuevo.", "error");
+  } finally {
+    btn.textContent = "Enviar mensaje";
+    btn.disabled = false;
+  }
 }
 
 function showStatus(message, type) {
   const el = document.getElementById("status-msg");
   el.textContent = message;
-  el.className = type === "success" ? "text-green-400 text-sm text-center" : "text-red-400 text-sm text-center";
+  el.className =
+    type === "success"
+      ? "text-green-400 text-sm text-center"
+      : "text-red-400 text-sm text-center";
 }
 
 const projects = [
-  { title: "Full Stack Developer", description: "Especialista en tiendas online, plataformas de reservas automatizadas e integración de pagos seguros. Soluciones rápidas, modernas y listas para hacer crecer tu negocio.", url: "#works", images: ["/images/programacion.png", "/images/programacion2.jpg", "/images/programacion3.jpg"] },
-  { title: "Astrofotografía", description: "Aprendiendo cada día un poco más sobre los misterios del cielo nocturno, capturando desde los detalles de la Luna hasta nuestros planetas vecinos. A veces, la mejor forma de poner los pies en la tierra es pasar la noche mirando hacia el cielo.", url: "#gallery", images: ["/images/luna1.JPG", "/images/luna2.JPG", "/images/astrofotografia.png"] },
-  { title: "¿Quien soy?", description: "mi espacio personal", url: "#gallery", images: ["/images/astrofotografia.png", "/images/yo2.jpg", "/images/programacion.png"] }
+  {
+    title: "Full Stack Developer",
+    description:
+      "Especialista en tiendas online, plataformas de reservas automatizadas e integración de pagos seguros. Soluciones rápidas, modernas y listas para hacer crecer tu negocio.",
+    url: "#works",
+    images: [
+      "/images/programacion.png",
+      "/images/programacion2.jpg",
+      "/images/programacion3.jpg",
+    ],
+  },
+  {
+    title: "Astrofotografía",
+    description:
+      "Aprendiendo cada día un poco más sobre los misterios del cielo nocturno, capturando desde los detalles de la Luna hasta nuestros planetas vecinos. A veces, la mejor forma de poner los pies en la tierra es pasar la noche mirando hacia el cielo.",
+    url: "#gallery",
+    images: [
+      "/images/luna1.JPG",
+      "/images/luna2.JPG",
+      "/images/astrofotografia.png",
+    ],
+  },
+  {
+    title: "¿Quien soy?",
+    description: "mi espacio personal",
+    url: "#gallery",
+    images: [
+      "/images/astrofotografia.png",
+      "/images/yo2.jpg",
+      "/images/programacion.png",
+    ],
+  },
 ];
 
 function initProjectCard() {
@@ -144,23 +193,39 @@ function initProjectCard() {
   const next = document.getElementById("proj-next");
   const card = document.getElementById("project-card");
   if (!imgs.length) return;
-  let currentProject = 0, currentImg = 0, imgTimer;
+  let currentProject = 0,
+    currentImg = 0,
+    imgTimer;
   function loadProject(index) {
     const p = projects[index];
     title.textContent = p.title;
     desc.textContent = p.description;
     btn.href = p.url;
-    imgs.forEach((img, i) => { img.src = p.images[i]; img.classList.toggle("opacity-100", i === 0); img.classList.toggle("opacity-0", i !== 0); });
+    imgs.forEach((img, i) => {
+      img.src = p.images[i];
+      img.classList.toggle("opacity-100", i === 0);
+      img.classList.toggle("opacity-0", i !== 0);
+    });
     currentImg = 0;
     clearInterval(imgTimer);
-    imgTimer = setInterval(() => { imgs[currentImg].classList.replace("opacity-100", "opacity-0"); currentImg = (currentImg + 1) % imgs.length; imgs[currentImg].classList.replace("opacity-0", "opacity-100"); }, 3500);
+    imgTimer = setInterval(() => {
+      imgs[currentImg].classList.replace("opacity-100", "opacity-0");
+      currentImg = (currentImg + 1) % imgs.length;
+      imgs[currentImg].classList.replace("opacity-0", "opacity-100");
+    }, 3500);
   }
-  function goTo(index) { currentProject = (index + projects.length) % projects.length; loadProject(currentProject); }
+  function goTo(index) {
+    currentProject = (index + projects.length) % projects.length;
+    loadProject(currentProject);
+  }
   prev.addEventListener("click", () => goTo(currentProject - 1));
   next.addEventListener("click", () => goTo(currentProject + 1));
   let startX = 0;
   card.addEventListener("touchstart", (e) => (startX = e.touches[0].clientX));
-  card.addEventListener("touchend", (e) => { const diff = startX - e.changedTouches[0].clientX; if (Math.abs(diff) > 50) goTo(currentProject + (diff > 0 ? 1 : -1)); });
+  card.addEventListener("touchend", (e) => {
+    const diff = startX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) goTo(currentProject + (diff > 0 ? 1 : -1));
+  });
   loadProject(0);
 }
 
@@ -174,35 +239,51 @@ async function comprobarEstadoNuevo() {
     const fechaEstado = new Date(estado.creado_en).getTime();
     const fechaVista = ultimaVista ? new Date(ultimaVista).getTime() : 0;
     if (fechaEstado > fechaVista) {
-      document.getElementById("hero-anillo").style.background = "conic-gradient(from 0deg, #a855f7, #c084fc, #34d399, #6ee7b7, #a855f7, #34d399, #a855f7)";
+      document.getElementById("hero-anillo").style.background =
+        "conic-gradient(from 0deg, #a855f7, #c084fc, #34d399, #6ee7b7, #a855f7, #34d399, #a855f7)";
       const burbuja = document.getElementById("hero-burbuja");
       const texto = document.getElementById("hero-burbuja-texto");
-      texto.textContent = estado.haciendo || estado.estado_animo || "nuevo estado";
+      texto.textContent =
+        estado.haciendo || estado.estado_animo || "nuevo estado";
       burbuja.style.display = "block";
     }
-    document.getElementById("hero-foto-wrapper").addEventListener("click", () => {
-      localStorage.setItem("estado_ultima_vista", new Date().toISOString());
-      document.getElementById("hero-anillo").style.background = "";
-      document.getElementById("hero-burbuja").style.display = "none";
-      window.location.hash = "#ahora";
-    });
-  } catch (error) { console.error("Error comprobando estado nuevo:", error); }
+    document
+      .getElementById("hero-foto-wrapper")
+      .addEventListener("click", () => {
+        localStorage.setItem("estado_ultima_vista", new Date().toISOString());
+        document.getElementById("hero-anillo").style.background = "";
+        document.getElementById("hero-burbuja").style.display = "none";
+        window.location.hash = "#ahora";
+      });
+  } catch (error) {
+    console.error("Error comprobando estado nuevo:", error);
+  }
 }
 
 async function cargarFotosRecientes() {
-  const { data, error } = await supabaseClient.from("photos").select("id, url, description").order("created_at", { ascending: false }).limit(6);
+  const { data, error } = await supabaseClient
+    .from("photos")
+    .select("id, url, description")
+    .order("created_at", { ascending: false })
+    .limit(6);
   const grid = document.getElementById("home-fotos-grid");
   if (!grid || error || !data || data.length === 0) return;
-  grid.innerHTML = data.map((photo) => `
+  grid.innerHTML = data
+    .map(
+      (photo) => `
     <div onclick="window.location.hash='#gallery'" class="relative aspect-square overflow-hidden rounded-xl cursor-pointer group">
         <img src="${photo.url}" alt="${photo.description || ""}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"/>
         <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300"></div>
-    </div>`).join("");
+    </div>`,
+    )
+    .join("");
 }
 
 async function cargarMusicaActual() {
   try {
-    const res = await fetch("https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=Ibcruz94&api_key=370f4140de1aad49efa9610c04b799f9&format=json&limit=1");
+    const res = await fetch(
+      "https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=Ibcruz94&api_key=370f4140de1aad49efa9610c04b799f9&format=json&limit=1",
+    );
     const data = await res.json();
     const track = data.recenttracks.track[0];
     const escuchando = track["@attr"]?.nowplaying === "true";
@@ -235,11 +316,18 @@ async function cargarMusicaActual() {
             </div>
         </a>`;
     setTimeout(cargarMusicaActual, 30000);
-  } catch (error) { console.error("Error cargando música:", error); }
+  } catch (error) {
+    console.error("Error cargando música:", error);
+  }
 }
 
 async function initNotificaciones() {
-  if (!("Notification" in window) || !("serviceWorker" in navigator) || !("PushManager" in window)) return;
+  if (
+    !("Notification" in window) ||
+    !("serviceWorker" in navigator) ||
+    !("PushManager" in window)
+  )
+    return;
   const btn = document.getElementById("btn-notificaciones");
   if (!btn) return;
   if (Notification.permission === "granted") {
@@ -249,7 +337,10 @@ async function initNotificaciones() {
     btn.style.display = "inline-block";
     btn.addEventListener("click", async () => {
       const permiso = await Notification.requestPermission();
-      if (permiso === "granted") { btn.style.display = "none"; setTimeout(suscribirPush, 1000); }
+      if (permiso === "granted") {
+        btn.style.display = "none";
+        setTimeout(suscribirPush, 1000);
+      }
     });
   }
 }
@@ -260,40 +351,69 @@ async function suscribirPush() {
     await navigator.serviceWorker.ready;
     function urlBase64ToUint8Array(base64String) {
       const padding = "=".repeat((4 - (base64String.length % 4)) % 4);
-      const base64 = (base64String + padding).replace(/-/g, "+").replace(/_/g, "/");
+      const base64 = (base64String + padding)
+        .replace(/-/g, "+")
+        .replace(/_/g, "/");
       const rawData = window.atob(base64);
       const outputArray = new Uint8Array(rawData.length);
-      for (let i = 0; i < rawData.length; ++i) { outputArray[i] = rawData.charCodeAt(i); }
+      for (let i = 0; i < rawData.length; ++i) {
+        outputArray[i] = rawData.charCodeAt(i);
+      }
       return outputArray;
     }
     const suscripcion = await registro.pushManager.subscribe({
       userVisibleOnly: true,
-      applicationServerKey: urlBase64ToUint8Array("BIZv4I_n2ih0IRejbShGfu8ZwHUzlmVuYeLQNaHDGpmWR--KJen3k0uVZBbpZvUc904fi_YQTIc7PBugRsh9a7g")
+      applicationServerKey: urlBase64ToUint8Array(
+        "BIZv4I_n2ih0IRejbShGfu8ZwHUzlmVuYeLQNaHDGpmWR--KJen3k0uVZBbpZvUc904fi_YQTIc7PBugRsh9a7g",
+      ),
     });
     const keys = suscripcion.toJSON().keys;
-    const { data: { session } } = await supabaseClient.auth.getSession();
+    const {
+      data: { session },
+    } = await supabaseClient.auth.getSession();
     await fetch("https://cruzismael.es/api/push/suscribir", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ endpoint: suscripcion.endpoint, p256dh: keys.p256dh, auth: keys.auth, user_id: session?.user?.id || null })
+      body: JSON.stringify({
+        endpoint: suscripcion.endpoint,
+        p256dh: keys.p256dh,
+        auth: keys.auth,
+        user_id: session?.user?.id || null,
+      }),
     });
-  } catch (error) { console.error("Error:", error); }
+  } catch (error) {
+    console.error("Error:", error);
+  }
 }
 
 async function cargarGithubStats() {
   try {
     const [userRes, reposRes] = await Promise.all([
       fetch("https://api.github.com/users/ismaelcoodde"),
-      fetch("https://api.github.com/users/ismaelcoodde/repos?per_page=100")
+      fetch("https://api.github.com/users/ismaelcoodde/repos?per_page=100"),
     ]);
     const user = await userRes.json();
     const repos = await reposRes.json();
     const lenguajes = {};
-    repos.forEach((r) => { if (r.language) lenguajes[r.language] = (lenguajes[r.language] || 0) + 1; });
-    const topLenguajes = Object.entries(lenguajes).sort((a, b) => b[1] - a[1]).slice(0, 4);
+    repos.forEach((r) => {
+      if (r.language) lenguajes[r.language] = (lenguajes[r.language] || 0) + 1;
+    });
+    const topLenguajes = Object.entries(lenguajes)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 4);
     const totalLenguajes = topLenguajes.reduce((a, b) => a + b[1], 0);
-    const colores = { JavaScript: "#f7df1e", Python: "#3572A5", HTML: "#e34c26", CSS: "#563d7c", TypeScript: "#2b7489", Vue: "#41b883", React: "#61dafb" };
-    const ultimosRepos = repos.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at)).slice(0, 4);
+    const colores = {
+      JavaScript: "#f7df1e",
+      Python: "#3572A5",
+      HTML: "#e34c26",
+      CSS: "#563d7c",
+      TypeScript: "#2b7489",
+      Vue: "#41b883",
+      React: "#61dafb",
+    };
+    const ultimosRepos = repos
+      .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))
+      .slice(0, 4);
     const card = document.getElementById("github-card");
     if (!card) return;
     card.innerHTML = `
@@ -313,14 +433,18 @@ async function cargarGithubStats() {
         </div>
         <p style="font-size:11px; color:#8b949e; margin:0 0 8px; text-transform:uppercase; letter-spacing:0.05em;">Últimos repositorios</p>
         <div style="display:flex; flex-direction:column; gap:6px; margin-bottom:16px;">
-          ${ultimosRepos.map((r) => `
+          ${ultimosRepos
+            .map(
+              (r) => `
             <a href="${r.html_url}" target="_blank" style="text-decoration:none; display:flex; align-items:center; justify-content:space-between; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06); border-radius:8px; padding:8px 10px;">
               <div style="min-width:0;">
                 <p style="font-size:12px; color:#58a6ff; margin:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${r.name}</p>
                 ${r.description ? `<p style="font-size:10px; color:#8b949e; margin:2px 0 0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${r.description}</p>` : ""}
               </div>
               ${r.language ? `<span style="font-size:10px; color:${colores[r.language] || "#8b949e"}; flex-shrink:0; margin-left:8px;">● ${r.language}</span>` : ""}
-            </a>`).join("")}
+            </a>`,
+            )
+            .join("")}
         </div>
         <p style="font-size:11px; color:#8b949e; margin:0 0 6px; text-transform:uppercase; letter-spacing:0.05em;">Lenguajes</p>
         <div style="display:flex; gap:4px; border-radius:4px; overflow:hidden; margin-bottom:8px;">
@@ -330,11 +454,15 @@ async function cargarGithubStats() {
           ${topLenguajes.map(([lang, count]) => `<span style="font-size:10px; color:#8b949e;"><span style="color:${colores[lang] || "#8b949e"};">●</span> ${lang} ${((count / totalLenguajes) * 100).toFixed(0)}%</span>`).join("")}
         </div>
       </div>`;
-  } catch (error) { console.error("Error cargando GitHub:", error); }
+  } catch (error) {
+    console.error("Error cargando GitHub:", error);
+  }
 }
 
 async function initHomeChat() {
-  const { data: { session } } = await supabaseClient.auth.getSession();
+  const {
+    data: { session },
+  } = await supabaseClient.auth.getSession();
   const area = document.getElementById("home-chat-input");
   if (area) {
     if (session) {
@@ -348,64 +476,109 @@ async function initHomeChat() {
         const content = input.value.trim();
         if (!content) return;
         input.value = "";
-        await supabaseClient.from("messages").insert({ user_id: session.user.id, email: session.user.email, content });
+        await supabaseClient
+          .from("messages")
+          .insert({
+            user_id: session.user.id,
+            email: session.user.email,
+            content,
+          });
       };
-      document.getElementById("home-chat-btn").addEventListener("click", sendHomeMsg);
-      document.getElementById("home-chat-texto").addEventListener("keydown", (e) => { if (e.key === "Enter") sendHomeMsg(); });
+      document
+        .getElementById("home-chat-btn")
+        .addEventListener("click", sendHomeMsg);
+      document
+        .getElementById("home-chat-texto")
+        .addEventListener("keydown", (e) => {
+          if (e.key === "Enter") sendHomeMsg();
+        });
     } else {
       area.innerHTML = `<p style="text-align:center; font-size:11px; color:#64748b;"><a href="#auth" style="color:#818cf8;">Inicia sesión</a> para chatear.</p>`;
     }
   }
-  const { data } = await supabaseClient.from("messages").select("*").order("created_at", { ascending: true }).limit(20);
+  const { data } = await supabaseClient
+    .from("messages")
+    .select("*")
+    .order("created_at", { ascending: true })
+    .limit(20);
   const container = document.getElementById("home-messages-container");
   if (container && data) {
-    container.innerHTML = data.map((msg) => {
-      const time = new Date(msg.created_at).toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit" });
-      const shortEmail = msg.email.split("@")[0];
-      return `<div style="display:flex; flex-direction:column; gap:2px;">
+    container.innerHTML = data
+      .map((msg) => {
+        const time = new Date(msg.created_at).toLocaleTimeString("es-ES", {
+          hour: "2-digit",
+          minute: "2-digit",
+        });
+        const shortEmail = msg.email.split("@")[0];
+        return `<div style="display:flex; flex-direction:column; gap:2px;">
         <div style="display:flex; gap:6px; align-items:baseline;">
           <span style="font-size:10px; color:#818cf8; font-weight:500;">${shortEmail}</span>
           <span style="font-size:9px; color:#475569;">${time}</span>
         </div>
         <p style="font-size:11px; color:#cbd5e1; margin:0;">${msg.content}</p>
       </div>`;
-    }).join("");
+      })
+      .join("");
     container.scrollTop = container.scrollHeight;
   }
-  supabaseClient.channel("home-chat").on("postgres_changes", { event: "INSERT", schema: "public", table: "messages" }, (payload) => {
-    const container = document.getElementById("home-messages-container");
-    if (!container) return;
-    const msg = payload.new;
-    const time = new Date(msg.created_at).toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit" });
-    const shortEmail = msg.email.split("@")[0];
-    container.insertAdjacentHTML("beforeend", `<div style="display:flex; flex-direction:column; gap:2px;">
+  supabaseClient
+    .channel("home-chat")
+    .on(
+      "postgres_changes",
+      { event: "INSERT", schema: "public", table: "messages" },
+      (payload) => {
+        const container = document.getElementById("home-messages-container");
+        if (!container) return;
+        const msg = payload.new;
+        const time = new Date(msg.created_at).toLocaleTimeString("es-ES", {
+          hour: "2-digit",
+          minute: "2-digit",
+        });
+        const shortEmail = msg.email.split("@")[0];
+        container.insertAdjacentHTML(
+          "beforeend",
+          `<div style="display:flex; flex-direction:column; gap:2px;">
       <div style="display:flex; gap:6px; align-items:baseline;">
         <span style="font-size:10px; color:#818cf8; font-weight:500;">${shortEmail}</span>
         <span style="font-size:9px; color:#475569;">${time}</span>
       </div>
       <p style="font-size:11px; color:#cbd5e1; margin:0;">${msg.content}</p>
-    </div>`);
-    container.scrollTop = container.scrollHeight;
-  }).subscribe();
+    </div>`,
+        );
+        container.scrollTop = container.scrollHeight;
+      },
+    )
+    .subscribe();
 }
 
 async function cargarHealthData() {
-  const { data, error } = await supabaseClient.from('health_data').select('*').order('fecha', { ascending: false }).limit(7);
+  const { data, error } = await supabaseClient
+    .from("health_data")
+    .select("*")
+    .order("fecha", { ascending: false })
+    .limit(7);
   if (error || !data || data.length === 0) return;
-  const widget = document.getElementById('health-widget');
+  const widget = document.getElementById("health-widget");
   if (!widget) return;
-  const hoy = data.find(d => d.frecuencia_cardiaca_avg) || data[0];
-  const maxPasos = Math.max(...data.map(d => d.pasos || 0));
-  const barrasPasos = data.slice().reverse().map(d => {
-    const pct = maxPasos > 0 ? ((d.pasos || 0) / maxPasos * 100).toFixed(0) : 0;
-    const dia = new Date(d.fecha).toLocaleDateString('es-ES', { weekday: 'short' });
-    return `<div style="display:flex; flex-direction:column; align-items:center; gap:4px; flex:1;">
+  const hoy = data.find((d) => d.frecuencia_cardiaca_avg) || data[0];
+  const maxPasos = Math.max(...data.map((d) => d.pasos || 0));
+  const barrasPasos = data
+    .slice()
+    .reverse()
+    .map((d) => {
+      const pct =
+        maxPasos > 0 ? (((d.pasos || 0) / maxPasos) * 100).toFixed(0) : 0;
+      const dia = new Date(d.fecha).toLocaleDateString("es-ES", {
+        weekday: "short",
+      });
+      return `<div style="display:flex; flex-direction:column; align-items:center; gap:4px; flex:1;">
       <div style="width:100%; background:rgba(255,255,255,0.05); border-radius:4px; height:50px; display:flex; align-items:flex-end;">
         <div style="width:100%; height:${pct}%; background:linear-gradient(to top, #6366f1, #818cf8); border-radius:4px; min-height:3px;"></div>
       </div>
       <p style="font-size:9px; color:#475569; margin:0;">${dia}</p>
     </div>`;
-  }).join('');
+    })
+    .join("");
   widget.innerHTML = `
     <div style="background:rgba(13,17,23,0.9); border:1px solid rgba(255,255,255,0.1); border-radius:16px; padding:16px; backdrop-filter:blur(10px);">
       <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
@@ -413,44 +586,193 @@ async function cargarHealthData() {
         <span style="font-size:9px; color:#475569;">Apple Watch</span>
       </div>
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-bottom:12px;">
-        ${hoy.pasos ? `<div style="background:rgba(99,102,241,0.1); border:1px solid rgba(99,102,241,0.2); border-radius:10px; padding:8px;"><p style="font-size:16px; font-weight:700; color:#e6edf3; margin:0;">${hoy.pasos.toLocaleString()}</p><p style="font-size:9px; color:#8b949e; margin:2px 0 0;">👟 Pasos</p></div>` : ''}
-        ${hoy.frecuencia_cardiaca_avg ? `<div style="background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.2); border-radius:10px; padding:8px;"><p style="font-size:16px; font-weight:700; color:#e6edf3; margin:0;">${Math.round(hoy.frecuencia_cardiaca_avg)} <span style="font-size:9px;">bpm</span></p><p style="font-size:9px; color:#8b949e; margin:2px 0 0;">❤️ Frec. cardíaca</p></div>` : ''}
-        ${hoy.sueno_total ? `<div style="background:rgba(139,92,246,0.1); border:1px solid rgba(139,92,246,0.2); border-radius:10px; padding:8px;"><p style="font-size:16px; font-weight:700; color:#e6edf3; margin:0;">${hoy.sueno_total.toFixed(1)} <span style="font-size:9px;">h</span></p><p style="font-size:9px; color:#8b949e; margin:2px 0 0;">😴 Sueño</p></div>` : ''}
-        ${hoy.oxigeno_sangre ? `<div style="background:rgba(14,165,233,0.1); border:1px solid rgba(14,165,233,0.2); border-radius:10px; padding:8px;"><p style="font-size:16px; font-weight:700; color:#e6edf3; margin:0;">${Math.round(hoy.oxigeno_sangre)} <span style="font-size:9px;">%</span></p><p style="font-size:9px; color:#8b949e; margin:2px 0 0;">🫁 SpO2</p></div>` : ''}
-        ${hoy.tiempo_ejercicio ? `<div style="background:rgba(34,197,94,0.1); border:1px solid rgba(34,197,94,0.2); border-radius:10px; padding:8px;"><p style="font-size:16px; font-weight:700; color:#e6edf3; margin:0;">${Math.round(hoy.tiempo_ejercicio)} <span style="font-size:9px;">min</span></p><p style="font-size:9px; color:#8b949e; margin:2px 0 0;">🏃 Ejercicio</p></div>` : ''}
-        ${hoy.tiempo_sol ? `<div style="background:rgba(234,179,8,0.1); border:1px solid rgba(234,179,8,0.2); border-radius:10px; padding:8px;"><p style="font-size:16px; font-weight:700; color:#e6edf3; margin:0;">${Math.round(hoy.tiempo_sol)} <span style="font-size:9px;">min</span></p><p style="font-size:9px; color:#8b949e; margin:2px 0 0;">☀️ Sol</p></div>` : ''}
+        ${hoy.pasos ? `<div style="background:rgba(99,102,241,0.1); border:1px solid rgba(99,102,241,0.2); border-radius:10px; padding:8px;"><p style="font-size:16px; font-weight:700; color:#e6edf3; margin:0;">${hoy.pasos.toLocaleString()}</p><p style="font-size:9px; color:#8b949e; margin:2px 0 0;">👟 Pasos</p></div>` : ""}
+        ${hoy.frecuencia_cardiaca_avg ? `<div style="background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.2); border-radius:10px; padding:8px;"><p style="font-size:16px; font-weight:700; color:#e6edf3; margin:0;">${Math.round(hoy.frecuencia_cardiaca_avg)} <span style="font-size:9px;">bpm</span></p><p style="font-size:9px; color:#8b949e; margin:2px 0 0;">❤️ Frec. cardíaca</p></div>` : ""}
+        ${hoy.sueno_total ? `<div style="background:rgba(139,92,246,0.1); border:1px solid rgba(139,92,246,0.2); border-radius:10px; padding:8px;"><p style="font-size:16px; font-weight:700; color:#e6edf3; margin:0;">${hoy.sueno_total.toFixed(1)} <span style="font-size:9px;">h</span></p><p style="font-size:9px; color:#8b949e; margin:2px 0 0;">😴 Sueño</p></div>` : ""}
+        ${hoy.oxigeno_sangre ? `<div style="background:rgba(14,165,233,0.1); border:1px solid rgba(14,165,233,0.2); border-radius:10px; padding:8px;"><p style="font-size:16px; font-weight:700; color:#e6edf3; margin:0;">${Math.round(hoy.oxigeno_sangre)} <span style="font-size:9px;">%</span></p><p style="font-size:9px; color:#8b949e; margin:2px 0 0;">🫁 SpO2</p></div>` : ""}
+        ${hoy.tiempo_ejercicio ? `<div style="background:rgba(34,197,94,0.1); border:1px solid rgba(34,197,94,0.2); border-radius:10px; padding:8px;"><p style="font-size:16px; font-weight:700; color:#e6edf3; margin:0;">${Math.round(hoy.tiempo_ejercicio)} <span style="font-size:9px;">min</span></p><p style="font-size:9px; color:#8b949e; margin:2px 0 0;">🏃 Ejercicio</p></div>` : ""}
+        ${hoy.tiempo_sol ? `<div style="background:rgba(234,179,8,0.1); border:1px solid rgba(234,179,8,0.2); border-radius:10px; padding:8px;"><p style="font-size:16px; font-weight:700; color:#e6edf3; margin:0;">${Math.round(hoy.tiempo_sol)} <span style="font-size:9px;">min</span></p><p style="font-size:9px; color:#8b949e; margin:2px 0 0;">☀️ Sol</p></div>` : ""}
       </div>
       <p style="font-size:9px; color:#475569; margin:0 0 6px; text-transform:uppercase; letter-spacing:0.05em;">Pasos últimos 7 días</p>
       <div style="display:flex; gap:4px; align-items:flex-end; height:66px;">${barrasPasos}</div>
       <p style="font-size:9px; color:#475569; margin:10px 0 6px; text-transform:uppercase; letter-spacing:0.05em;">Sueño últimos 7 días</p>
       <div style="display:flex; flex-direction:column; gap:4px;">
-        ${data.slice().reverse().map(d => {
-          const dia = new Date(d.fecha).toLocaleDateString('es-ES', { weekday: 'short', day: 'numeric' });
-          const pct = d.sueno_total ? Math.min((d.sueno_total / 9) * 100, 100).toFixed(0) : 0;
-          const color = d.sueno_total >= 7 ? '#22c55e' : d.sueno_total >= 5 ? '#eab308' : '#ef4444';
-          return `<div style="display:flex; align-items:center; gap:6px;">
+        ${data
+          .slice()
+          .reverse()
+          .map((d) => {
+            const dia = new Date(d.fecha).toLocaleDateString("es-ES", {
+              weekday: "short",
+              day: "numeric",
+            });
+            const pct = d.sueno_total
+              ? Math.min((d.sueno_total / 9) * 100, 100).toFixed(0)
+              : 0;
+            const color =
+              d.sueno_total >= 7
+                ? "#22c55e"
+                : d.sueno_total >= 5
+                  ? "#eab308"
+                  : "#ef4444";
+            return `<div style="display:flex; align-items:center; gap:6px;">
             <p style="font-size:9px; color:#475569; margin:0; width:36px;">${dia}</p>
             <div style="flex:1; background:rgba(255,255,255,0.05); border-radius:4px; height:6px;">
               <div style="width:${pct}%; height:100%; background:${color}; border-radius:4px;"></div>
             </div>
-            <p style="font-size:9px; color:#8b949e; margin:0; width:24px; text-align:right;">${d.sueno_total ? d.sueno_total.toFixed(1) + 'h' : '-'}</p>
+            <p style="font-size:9px; color:#8b949e; margin:0; width:24px; text-align:right;">${d.sueno_total ? d.sueno_total.toFixed(1) + "h" : "-"}</p>
           </div>`;
-        }).join('')}
+          })
+          .join("")}
       </div>
     </div>`;
 }
 
 let healthCargado = false;
 function toggleHealthPanel() {
-  const modal = document.getElementById('health-modal');
-  if (modal.style.display === 'none' || modal.style.display === '') {
-    modal.style.cssText = 'display:flex; position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:999; background:rgba(0,0,0,0.85); backdrop-filter:blur(8px); align-items:center; justify-content:center;';
-    if (!healthCargado) { cargarHealthData(); healthCargado = true; }
+  const modal = document.getElementById("health-modal");
+  if (modal.style.display === "none" || modal.style.display === "") {
+    modal.style.cssText =
+      "display:flex; position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:999; background:rgba(0,0,0,0.85); backdrop-filter:blur(8px); align-items:center; justify-content:center;";
+    if (!healthCargado) {
+      cargarHealthData();
+      healthCargado = true;
+    }
   } else {
-    modal.style.cssText = 'display:none;';
+    modal.style.cssText = "display:none;";
   }
 }
 
+//Luna
+async function cargarFaseLunar() {
+  try {
+    const ahora = new Date();
+    const fecha = ahora.toISOString().split("T")[0];
+    const hora = ahora.getHours().toString().padStart(2, "0");
+
+    // Pedimos imagen real de la luna a la NASA
+    const res = await fetch("/api/luna");
+    const data = await res.json();
+    const imagenUrl = data.image.url;
+    const fase = data.phase;
+    const edad = data.age.toFixed(1);
+    const distancia = Math.round(data.distance).toLocaleString();
+
+    // Convertir fase en grados a nombre
+    function nombreFase(grados) {
+      if (grados < 10) return "Luna Nueva";
+      if (grados < 80) return "Cuarto Creciente";
+      if (grados < 100) return "Luna Llena";
+      if (grados < 170) return "Cuarto Menguante";
+      if (grados < 190) return "Luna Nueva";
+      if (grados < 260) return "Cuarto Creciente";
+      if (grados < 280) return "Luna Llena";
+      return "Cuarto Menguante";
+    }
+
+    const widget = document.getElementById("luna-widget");
+    if (!widget) return;
+
+    widget.innerHTML = `
+               <div onclick="toggleLunaPanel()" style="cursor:pointer; background:rgba(13,17,23,0.9); border:1px solid rgba(255,255,255,0.1); border-radius:16px; padding:16px; backdrop-filter:blur(10px); transition:border-color 0.3s;" onmouseover="this.style.borderColor='rgba(255,255,255,0.3)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.1)'">
+
+                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+                    <p style="font-size:11px; color:#8b949e; margin:0; text-transform:uppercase; letter-spacing:0.05em;">🌙 Fase Lunar</p>
+                    <span style="font-size:9px; color:#475569;">NASA · Hoy</span>
+                </div>
+                <div style="text-align:center; margin-bottom:12px;">
+                    <img src="${imagenUrl}" alt="Luna hoy" style="width:200px; height:200px; border-radius:50%; object-fit:cover; border:2px solid rgba(255,255,255,0.1); margin:0 auto; display:block;"/>
+                    <p style="font-size:13px; font-weight:600; color:#e6edf3; margin:8px 0 2px;">${nombreFase(fase)}</p>
+                </div>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;">
+                    <div style="background:rgba(255,255,255,0.04); border-radius:8px; padding:8px; text-align:center;">
+                        <p style="font-size:13px; font-weight:600; color:#e6edf3; margin:0;">${edad} días</p>
+                        <p style="font-size:9px; color:#8b949e; margin:2px 0 0;">Edad lunar</p>
+                    </div>
+                    <div style="background:rgba(255,255,255,0.04); border-radius:8px; padding:8px; text-align:center;">
+                        <p style="font-size:13px; font-weight:600; color:#e6edf3; margin:0;">${distancia} km</p>
+                        <p style="font-size:9px; color:#8b949e; margin:2px 0 0;">Distancia</p>
+                    </div>
+                </div>
+            </div>
+        `;
+  } catch (error) {
+    console.error("Error cargando fase lunar:", error);
+  }
+}
+
+async function cargarLunaModal() {
+    try {
+        const ahora = new Date();
+        const fecha = ahora.toISOString().split('T')[0];
+        const res = await fetch('/api/luna');
+        const data = await res.json();
+        const imagenUrl = data.image.url;
+        const fase = data.phase;
+        const edad = data.age.toFixed(1);
+        const distancia = Math.round(data.distance).toLocaleString();
+        const diametro = data.diameter.toFixed(1);
+
+        function nombreFase(grados) {
+            if (grados < 10) return 'Luna Nueva';
+            if (grados < 80) return 'Cuarto Creciente';
+            if (grados < 100) return 'Luna Llena';
+            if (grados < 170) return 'Cuarto Menguante';
+            if (grados < 190) return 'Luna Nueva';
+            if (grados < 260) return 'Cuarto Creciente';
+            if (grados < 280) return 'Luna Llena';
+            return 'Cuarto Menguante';
+        }
+
+        const modal = document.getElementById('luna-widget-modal');
+        if (!modal) return;
+
+        modal.innerHTML = `
+            <div style="text-align:center; margin-bottom:20px;">
+                <p style="font-size:11px; color:#8b949e; margin:0 0 12px; text-transform:uppercase; letter-spacing:0.1em;">🌙 Fase Lunar · NASA</p>
+                <img src="${imagenUrl}" alt="Luna hoy" style="width:280px; height:280px; border-radius:50%; object-fit:cover; border:2px solid rgba(255,255,255,0.15); margin:0 auto; display:block;"/>
+                <p style="font-size:20px; font-weight:700; color:#e6edf3; margin:16px 0 4px;">${nombreFase(fase)}</p>
+                <p style="font-size:12px; color:#8b949e; margin:0;">Fase: ${fase.toFixed(1)}°</p>
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+                <div style="background:rgba(255,255,255,0.05); border-radius:10px; padding:12px; text-align:center;">
+                    <p style="font-size:18px; font-weight:700; color:#e6edf3; margin:0;">${edad}</p>
+                    <p style="font-size:10px; color:#8b949e; margin:4px 0 0;">Días desde luna nueva</p>
+                </div>
+                <div style="background:rgba(255,255,255,0.05); border-radius:10px; padding:12px; text-align:center;">
+                    <p style="font-size:18px; font-weight:700; color:#e6edf3; margin:0;">${distancia}</p>
+                    <p style="font-size:10px; color:#8b949e; margin:4px 0 0;">Distancia en km</p>
+                </div>
+                <div style="background:rgba(255,255,255,0.05); border-radius:10px; padding:12px; text-align:center;">
+                    <p style="font-size:18px; font-weight:700; color:#e6edf3; margin:0;">${diametro}"</p>
+                    <p style="font-size:10px; color:#8b949e; margin:4px 0 0;">Diámetro aparente</p>
+                </div>
+                <div style="background:rgba(255,255,255,0.05); border-radius:10px; padding:12px; text-align:center;">
+                    <p style="font-size:18px; font-weight:700; color:#e6edf3; margin:0;">${fecha}</p>
+                    <p style="font-size:10px; color:#8b949e; margin:4px 0 0;">Fecha</p>
+                </div>
+            </div>
+        `;
+    } catch (error) {
+        console.error('Error cargando luna modal:', error);
+    }
+}
+//Modal Luna
+let lunaCargada = false;
+function toggleLunaPanel() {
+  const modal = document.getElementById("luna-modal");
+  if (modal.style.display === "none" || modal.style.display === "") {
+    modal.style.cssText =
+      "display:flex; position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:9999; background:rgba(0,0,0,0.85); backdrop-filter:blur(8px); align-items:center; justify-content:center;";
+    if (!lunaCargada) {
+      setTimeout(() => {
+        cargarLunaModal();
+      }, 100);
+      lunaCargada = true;
+    }
+  } else {
+    modal.style.cssText = "display:none;";
+  }
+}
 async function initHome() {
   initProjectCard();
   await cargarFotosRecientes();
@@ -459,4 +781,5 @@ async function initHome() {
   initNotificaciones();
   await cargarGithubStats();
   await initHomeChat();
+  await cargarFaseLunar();
 }

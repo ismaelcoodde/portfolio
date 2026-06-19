@@ -20,14 +20,7 @@ function SobreMiView() {
                 </div>
 
                 <div class="flex flex-col gap-8 text-slate-300 leading-relaxed">
-                    <p class="fade-up">Hola, me llamo Ismael. Tengo 31 años, soy de Palma de Mallorca y te doy la bienvenida a mi espacio personal.</p>
-                    <p class="fade-up">Durante mucho tiempo he buscado la manera de gestionar la ansiedad, de entenderme un poco mejor y de sanar en momentos donde el entorno se volvía demasiado complicado. En ese proceso aprendes que la resiliencia empieza por regalarte a ti mismo un lienzo en blanco; un lugar seguro donde no existan presiones externas. Este sitio es mi lienzo. Lo construí para recordarme que soy capaz de crear orden en medio del caos, y las herramientas que elegí para dar forma a esa paz fueron la programación y la fotografía.</p>
-                    <p class="fade-up">Mi relación con estas dos disciplinas empezó hace muchos años, de manera autodidacta. Sin embargo, la vida me llevó por otros caminos y trabajé en sectores totalmente distintos. Si soy sincero, nunca pensé que este pudiera ser mi lugar; miraba el mundo del código desde la distancia, pensando que me quedaba grande y que yo no valía para esto. Nos autosaboteamos tan bien que a veces enterramos lo que nos gusta por miedo a no estar a la altura. Ha tenido que ser ahora, en esta búsqueda de calma, cuando picar código se ha convertido en mi mayor refugio, dándome la vía para volver a sentirme útil, realizado y en paz.</p>
-                    <p class="fade-up">La otra mitad de mi calma la encontré mirando al cielo. Vengo de una familia de músicos y artistas, y creo que de ellos heredé una sensibilidad especial para conectar con la naturaleza y con esos pequeños detalles que a menudo pasan desapercibidos. Siempre he sido una persona reflexiva, que disfruta de la tranquilidad y de su propia compañía; por eso, hay algo mágico para mí en las noches a solas con el telescopio, capturando la Luna, los planetas o la inmensidad del cielo en absoluto silencio.</p>
-
-                    <blockquote class="border-l-2 border-indigo-500/50 pl-6 py-2 fade-up">
-                        <p class="text-white text-lg italic leading-relaxed">"Este rincón de internet es, de momento, un experimento. Lo empecé simplemente porque quería un lugar propio donde plasmar mis ideas y poner en práctica todo lo que voy aprendiendo. No busca venderte nada, solo es un reflejo honesto de lo que hago, de lo que me apasiona y del camino que he decidido tomar para sanar."</p>
-                    </blockquote>
+                    <p>Pues de momento no vas a saber nada de mi pero si has llegado hasta aquí es por que te importo y desearias ayudarme, pues tengo la solución, he aprendido ha hacer pasarelas de pago mediante Stripe asi que puedes aprinarme por 1€ al mes aqui te lo dejo</p>
                 </div>
 
             </div>

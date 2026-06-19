@@ -36,6 +36,7 @@
         <a href="#ahora" class="hover:text-indigo-400 transition-colors">Ahora</a>
         <a href="#chat" class="hover:text-indigo-400 transition-colors">Chat</a>
         <a href="#sobre-mi" class="hover:text-indigo-400 transition-colors">Sobre mí</a>
+        <a href="#suscripcion" class="hover:text-indigo-400 transition-colors">Apóyame</a>
         <a href="#contact" class="hover:text-indigo-400 transition-colors">Contacto</a>
       </div>
       <div class="flex items-center gap-3">
@@ -55,6 +56,7 @@
         <a href="#ahora" class="mobile-link text-lg py-3 px-2 rounded-xl transition-colors" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">Ahora</a>
         <a href="#chat" class="mobile-link text-lg py-3 px-2 rounded-xl transition-colors" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">Chat</a>
         <a href="#sobre-mi" class="mobile-link text-lg py-3 px-2 rounded-xl transition-colors" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">Sobre mí</a>
+        <a href="#suscripcion" class="mobile-link text-lg py-3 px-2 rounded-xl transition-colors" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">Apóyame</a>
         <a href="#contact" class="mobile-link text-lg py-3 px-2 rounded-xl transition-colors" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">Contacto</a>
         <div id="mobile-menu-auth" class="pt-4 border-t border-white/10 flex flex-col gap-3">
           <a href="#auth" style="display:block; text-align:center; padding:12px; border:1px solid rgba(99,102,241,0.5); border-radius:12px; color:#818cf8; font-size:1rem; transition:all 0.3s;" onmouseover="this.style.background='rgba(99,102,241,0.1)'" onmouseout="this.style.background='transparent'">Iniciar sesión</a>
@@ -99,7 +101,7 @@
     </a>
 
     <!-- Formulario de contacto fixed desktop -->
-    <div class="hidden md:block fixed right-8 top-1/2 -translate-y-1/2 z-40 w-96" id="contacto-fixed">
+    <div class="hidden md:block fixed right-8 top-1/2 -translate-y-1/2 z-40 w-96 mt-16" id="contacto-fixed">
       <p class="text-indigo-400 text-xs font-medium tracking-[0.3em] uppercase mb-3 text-center">Contacto</p>
       <h2 class="text-4xl font-extrabold text-center mb-2">Hablemos</h2>
       <p class="text-slate-500 text-center mb-10">Cuéntame tu proyecto y te respondo en menos de 24h.</p>
@@ -129,6 +131,14 @@
       </div>
     </div>
 
+    <!-- Modal luna -->
+<div id="luna-modal" onclick="toggleLunaPanel()" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:9999; background:rgba(0,0,0,0.85); backdrop-filter:blur(8px); align-items:center; justify-content:center;">
+    <div onclick="event.stopPropagation()" style="background:rgba(13,17,23,0.98); border:1px solid rgba(255,255,255,0.1); border-radius:20px; padding:20px; width:90%; max-width:500px; max-height:85vh; overflow-y:auto; position:relative; scrollbar-width:thin; scrollbar-color:rgba(255,255,255,0.1) transparent;">
+        <button onclick="toggleLunaPanel()" style="position:absolute; top:12px; right:12px; background:rgba(255,255,255,0.1); border:none; border-radius:50%; width:28px; height:28px; color:white; cursor:pointer; font-size:14px; z-index:1;">✕</button>
+        <div id="luna-widget-modal"></div>
+    </div>
+</div>
+
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="/js/supabase-client.js"></script>
     <script src="/js/views/home.js"></script>
@@ -139,6 +149,8 @@
     <script src="/js/views/gallery.js"></script>
     <script src="/js/views/ahora.js"></script>
     <script src="/js/views/sobre-mi.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="/js/views/suscripcion.js"></script>
     <script src="/js/router.js"></script>
     <script src="/js/app.js"></script>
 
@@ -152,5 +164,6 @@
       }
       document.getElementById('submit-btn').addEventListener('click', handleSubmit);
     </script>
+    
   </body>
 </html>

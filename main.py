@@ -7,6 +7,8 @@ import json
 from dotenv import load_dotenv
 from supabase import create_client
 from pywebpush import webpush, WebPushException
+import httpx
+import stripe
 
 load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), ".env"), override=True)
 supabase_url = os.getenv("SUPABASE_URL")
@@ -258,5 +260,71 @@ async def recibir_health(data: dict):
         return {"ok": True, "fechas": list(por_fecha.keys())}
     except Exception as e:
         return {"ok": False, "error": str(e)}
+    
+    #Luna
+    import httpx
+
+@app.get("/api/luna")
+async def get_luna():
+    from datetime import datetime
+    ahora = datetime.now()
+    fecha = ahora.strftime("%Y-%m-%dT%H:00")
+    try:
+        async with httpx.AsyncClient() as client:
+            res = await client.get(f"https://svs.gsfc.nasa.gov/api/dialamoon/{fecha}")
+            return res.json()
+    except Exception as e:
+        return {"error": str(e)}
+    
+#Stripe
+stripe.api_key = os.getenv("STRIPE_SECRET_KEY")
+STRIPE_PRICE_ID = os.getenv("STRIPE_PRICE_ID")
+STRIPE_PUBLISHABLE_KEY = os.getenv("STRIPE_PUBLISHABLE_KEY")
+print(f"STRIPE_PUBLISHABLE_KEY: {STRIPE_PUBLISHABLE_KEY}")
+
+@app.get("/api/stripe/config")
+async def stripe_config():
+    return {"publishableKey": STRIPE_PUBLISHABLE_KEY}
+
+@app.post("/api/stripe/create-subscription")
+async def create_subscription(data: dict):
+    try:
+       # Crear cliente en Stripe
+        customer = stripe.Customer.create(email=data["email"])
+        
+        # Crear suscripción con pago pendiente
+        subscription = stripe.Subscription.create(
+            customer=customer.id,
+            items=[{"price": STRIPE_PRICE_ID}],
+            payment_behavior="default_incomplete",
+            payment_settings={"save_default_payment_method": "on_subscription"},
+            # CAMBIO: Usamos confirmation_secret en lugar de payment_intent
+            expand=["latest_invoice.confirmation_secret"]
+        )
+        
+        return {
+            "subscriptionId": subscription.id,
+            # CAMBIO: Accedemos al client_secret a través de confirmation_secret
+            "clientSecret": subscription.latest_invoice.confirmation_secret.client_secret
+        }
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.post("/api/stripe/webhook")
+async def stripe_webhook(request: Request):
+    payload = await request.body()
+    sig_header = request.headers.get("stripe-signature")
+    webhook_secret = os.getenv("STRIPE_WEBHOOK_SECRET")
+    
+    try:
+        event = stripe.Webhook.construct_event(payload, sig_header, webhook_secret)
+        if event["type"] == "customer.subscription.created":
+            print(f"Nueva suscripción: {event['data']['object']['id']}")
+        elif event["type"] == "invoice.payment_succeeded":
+            print(f"Pago recibido: {event['data']['object']['id']}")
+    except Exception as e:
+        return {"error": str(e)}
+    
+    return {"ok": True}
 
 app.mount("/", StaticFiles(directory="static", html=True), name="static")
