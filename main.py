@@ -121,7 +121,7 @@ async def crear_estado(form: EstadoForm):
             print(f"Enviando email a: {usuario.email}")
             if usuario.email:
                 resend.Emails.send({
-                    "from": "Ismael Cruz <onboarding@resend.dev>",
+                    "from": "Ismael Cruz <ismael@cruzismael.es>",
                     "to": usuario.email,
                     "subject": "✨ Nuevo estado de Ismael",
                     "html": f"""
