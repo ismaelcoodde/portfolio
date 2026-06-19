@@ -103,7 +103,34 @@ function HomeView() {
         <!-- Luna widget -->
 <div id="luna-widget" class="hidden md:block md:absolute md:left-8 md:top-[480px] md:w-72 mt-4">    <p class="text-slate-500 text-xs text-center">Cargando luna...</p>
 </div>
-    `;
+
+
+<section class="md:hidden flex items-center justify-center px-6 py-16 fade-up">
+    <div class="w-full max-w-lg">
+        <p class="text-indigo-400 text-xs font-medium tracking-[0.3em] uppercase mb-3 text-center">Contacto</p>
+        <h2 class="text-4xl font-extrabold text-center mb-2">Hablemos</h2>
+        <p class="text-slate-500 text-center mb-10">Cuéntame tu proyecto y te respondo en menos de 24h.</p>
+        <div class="flex flex-col gap-5">
+            <div class="flex flex-col gap-2">
+                <label class="text-sm text-slate-400">Nombre</label>
+                <input type="text" id="name-mobile" placeholder="Tu nombre" class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500 transition-colors duration-300"/>
+            </div>
+            <div class="flex flex-col gap-2">
+                <label class="text-sm text-slate-400">Email</label>
+                <input type="email" id="email-mobile" placeholder="tu@email.com" class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500 transition-colors duration-300"/>
+            </div>
+            <div class="flex flex-col gap-2">
+                <label class="text-sm text-slate-400">Mensaje</label>
+                <textarea id="message-mobile" rows="5" placeholder="Cuéntame en qué puedo ayudarte..." class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500 transition-colors duration-300 resize-none"></textarea>
+            </div>
+            <p id="status-msg-mobile" class="text-sm text-center hidden"></p>
+            <button type="button" id="submit-btn-mobile" class="w-full py-3 bg-indigo-600 hover:bg-indigo-500 rounded-xl text-white font-medium transition-colors duration-300">Enviar mensaje</button>
+        </div>
+    </div>
+</section>
+`;
+
+
 }
 
 async function handleSubmit() {
@@ -773,6 +800,52 @@ function toggleLunaPanel() {
     modal.style.cssText = "display:none;";
   }
 }
+//Contacto mvl
+function initContactMobile() {
+    const btn = document.getElementById('submit-btn-mobile');
+    if (!btn) return;
+    btn.addEventListener('click', async () => {
+        const name = document.getElementById('name-mobile').value.trim();
+        const email = document.getElementById('email-mobile').value.trim();
+        const message = document.getElementById('message-mobile').value.trim();
+        const statusEl = document.getElementById('status-msg-mobile');
+        if (!name || !email || !message) {
+            statusEl.textContent = 'Por favor rellena todos los campos.';
+            statusEl.className = 'text-red-400 text-sm text-center';
+            statusEl.classList.remove('hidden');
+            return;
+        }
+        btn.textContent = 'Enviando...';
+        btn.disabled = true;
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, email, message })
+            });
+            const data = await response.json();
+            if (data.ok) {
+                statusEl.textContent = '¡Mensaje enviado! Te respondo pronto.';
+                statusEl.className = 'text-green-400 text-sm text-center';
+                statusEl.classList.remove('hidden');
+                document.getElementById('name-mobile').value = '';
+                document.getElementById('email-mobile').value = '';
+                document.getElementById('message-mobile').value = '';
+            } else {
+                statusEl.textContent = 'Algo salió mal. Inténtalo de nuevo.';
+                statusEl.className = 'text-red-400 text-sm text-center';
+                statusEl.classList.remove('hidden');
+            }
+        } catch (error) {
+            statusEl.textContent = 'Error de conexión. Inténtalo de nuevo.';
+            statusEl.className = 'text-red-400 text-sm text-center';
+            statusEl.classList.remove('hidden');
+        } finally {
+            btn.textContent = 'Enviar mensaje';
+            btn.disabled = false;
+        }
+    });
+}
 async function initHome() {
   initProjectCard();
   await cargarFotosRecientes();
@@ -782,4 +855,5 @@ async function initHome() {
   await cargarGithubStats();
   await initHomeChat();
   await cargarFaseLunar();
+  initContactMobile();
 }
