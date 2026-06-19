@@ -20,7 +20,7 @@ function SobreMiView() {
                 </div>
 
                 <div class="flex flex-col gap-8 text-slate-300 leading-relaxed">
-                    <p>Pues de momento no vas a saber nada de mi pero si has llegado hasta aquí es por que te importo y desearias ayudarme, pues tengo la solución, he aprendido ha hacer pasarelas de pago mediante Stripe asi que puedes aprinarme por 1€ al mes aqui te lo dejo</p>
+                    <p>En construcción</p>
                 </div>
 
             </div>

@@ -4,7 +4,7 @@ function SuscripcionView() {
             <div class="w-full max-w-md">
                 <p class="text-indigo-400 text-xs font-medium tracking-[0.3em] uppercase mb-3 text-center">Apóyame</p>
                 <h2 class="text-4xl font-extrabold text-center mb-2">Suscríbete</h2>
-                <p class="text-slate-500 text-center mb-10">Por solo 1€ al mes apoya este espacio personal.</p>
+                <p class="text-slate-500 text-center mb-10">Más barato que un café, pero da mucha más energía</p>
 
                 <div class="bg-white/5 border border-white/10 rounded-2xl p-8 mb-8">
                     <div class="flex items-center justify-between mb-6">
@@ -19,7 +19,7 @@ function SuscripcionView() {
                             <span class="text-green-400">✓</span> Apoyas este proyecto personal
                         </li>
                         <li class="flex items-center gap-2 text-slate-300 text-sm">
-                            <span class="text-green-400">✓</span> Acceso a contenido exclusivo
+                            <span class="text-green-400">✓</span> Mantienes vivo este rincón de internet
                         </li>
                         <li class="flex items-center gap-2 text-slate-300 text-sm">
                             <span class="text-green-400">✓</span> Cancela cuando quieras
