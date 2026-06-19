@@ -114,8 +114,9 @@ async def crear_estado(form: EstadoForm):
         pass
 
     try:
-        usuarios = supabase.auth.admin.list_users()
-        print(f"Usuarios encontrados: {usuarios}")
+        respuesta = supabase.auth.admin.list_users()
+        usuarios = respuesta.users if hasattr(respuesta, 'users') else respuesta
+        print(f"Usuarios encontrados: {len(usuarios)}")
         for usuario in usuarios:
             print(f"Enviando email a: {usuario.email}")
             if usuario.email:
@@ -262,7 +263,6 @@ async def recibir_health(data: dict):
         return {"ok": False, "error": str(e)}
     
     #Luna
-    import httpx
 
 @app.get("/api/luna")
 async def get_luna():
