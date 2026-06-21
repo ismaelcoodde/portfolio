@@ -72,6 +72,94 @@ function HomeView() {
 
         </section>
 
+        <div class="mx-auto w-full max-w-lg md:max-w-xl mt-12 mb-8">
+        <div class="w-full overflow-hidden mt-12 mb-8" style="mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);">
+    <p class="text-slate-500 text-xs font-medium tracking-[0.3em] uppercase mb-6 text-center">Mi Stack tecnológico</p>
+    <div class="flex gap-8 w-max marquee-track">
+
+        <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">Python</span></div>
+        <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">JavaScript</span></div>
+        <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">Tailwind</span></div>
+        <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">Supabase</span></div>
+        <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">FastAPI</span></div>
+        <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">React</span></div>
+        <div class="flex flex-col items-center gap-2 min-w-[64px]">
+        <img src="https://cdn.simpleicons.org/github/white" class="w-9 h-9"/>
+        <span class="text-[11px] text-slate-500">GitHub</span>
+        </div>
+        <div class="flex flex-col items-center gap-2 min-w-[64px]">
+        <img src="https://cdn.simpleicons.org/git" class="w-9 h-9"/>
+        <span class="text-[11px] text-slate-500">Git</span>
+        </div>
+        <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">VS Code</span></div>
+        <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">PostgreSQL</span></div>
+        <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">HTML5</span></div>
+        <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">CSS3</span></div>
+        <div class="flex flex-col items-center gap-2 min-w-[64px]">
+    <img src="https://cdn.simpleicons.org/vercel/white" class="w-9 h-9"/>
+    <span class="text-[11px] text-slate-500">Vercel</span>
+</div>
+<div class="flex flex-col items-center gap-2 min-w-[64px]">
+    <img src="https://cdn.simpleicons.org/render/white" class="w-9 h-9"/>
+    <span class="text-[11px] text-slate-500">Render</span>
+</div>
+<div class="flex flex-col items-center gap-2 min-w-[64px]">
+    <img src="https://cdn.simpleicons.org/hetzner/white" class="w-9 h-9"/>
+    <span class="text-[11px] text-slate-500">Hetzner</span>
+</div>
+<div class="flex flex-col items-center gap-2 min-w-[64px]">
+    <img src="https://cdn.simpleicons.org/coolify/white" class="w-9 h-9"/>
+    <span class="text-[11px] text-slate-500">Coolify</span>
+</div>
+<div class="flex flex-col items-center gap-2 min-w-[64px]">
+    <img src="https://cdn.simpleicons.org/resend/white" class="w-9 h-9"/>
+    <span class="text-[11px] text-slate-500">Resend</span>
+</div>
+
+        <!-- Duplicado para bucle sin corte -->
+        <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">Python</span></div>
+        <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">JavaScript</span></div>
+        <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">Tailwind</span></div>
+        <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">Supabase</span></div>
+        <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">FastAPI</span></div>
+        <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">React</span></div>
+        <div class="flex flex-col items-center gap-2 min-w-[64px]">
+        <img src="https://cdn.simpleicons.org/github/white" class="w-9 h-9"/>
+        <span class="text-[11px] text-slate-500">GitHub</span>
+        </div>
+          <div class="flex flex-col items-center gap-2 min-w-[64px]">
+        <img src="https://cdn.simpleicons.org/git" class="w-9 h-9"/>
+        <span class="text-[11px] text-slate-500">Git</span>
+        </div>
+        <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">VS Code</span></div>
+        <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">PostgreSQL</span></div>
+        <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">HTML5</span></div>
+        <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">CSS3</span></div>
+        <div class="flex flex-col items-center gap-2 min-w-[64px]">
+    <img src="https://cdn.simpleicons.org/vercel/white" class="w-9 h-9"/>
+    <span class="text-[11px] text-slate-500">Vercel</span>
+</div>
+<div class="flex flex-col items-center gap-2 min-w-[64px]">
+    <img src="https://cdn.simpleicons.org/render/white" class="w-9 h-9"/>
+    <span class="text-[11px] text-slate-500">Render</span>
+</div>
+<div class="flex flex-col items-center gap-2 min-w-[64px]">
+    <img src="https://cdn.simpleicons.org/hetzner/white" class="w-9 h-9"/>
+    <span class="text-[11px] text-slate-500">Hetzner</span>
+</div>
+<div class="flex flex-col items-center gap-2 min-w-[64px]">
+    <img src="https://cdn.simpleicons.org/coolify/white" class="w-9 h-9"/>
+    <span class="text-[11px] text-slate-500">Coolify</span>
+</div>
+<div class="flex flex-col items-center gap-2 min-w-[64px]">
+    <img src="https://cdn.simpleicons.org/resend/white" class="w-9 h-9"/>
+    <span class="text-[11px] text-slate-500">Resend</span>
+</div>
+
+    </div>
+</div>
+</div>
+
         <!-- Chat solo desktop -->
         <div id="home-chat" class="hidden md:block md:absolute md:left-8 md:top-24 md:w-72 mt-16">
             <div style="background:rgba(13,17,23,0.9); border:1px solid rgba(255,255,255,0.1); border-radius:16px; overflow:hidden; backdrop-filter:blur(10px);">
@@ -90,22 +178,14 @@ function HomeView() {
 <div id="github-card" class="md:absolute md:left-8 md:top-[875px] md:w-72">            <p class="text-slate-500 text-xs text-center">Cargando GitHub...</p>
         </div>
 
-        <!-- Botón salud solo desktop -->
-        <div id="health-section" class=" md:absolute md:left-8 md:w-72 mt-4">
-            <button onclick="toggleHealthPanel()" style="width:100%; display:flex; align-items:center; gap:10px; background:rgba(13,17,23,0.9); border:1px solid rgba(255,255,255,0.1); border-radius:16px; padding:12px 16px; cursor:pointer; transition:border-color 0.3s;" onmouseover="this.style.borderColor='rgba(239,68,68,0.4)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.1)'">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="#ef4444"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg>
-                <span style="font-size:13px; color:#e6edf3; font-weight:500;">Salud</span>
-                <span style="margin-left:auto; color:#8b949e; font-size:12px;">→</span>
-            </button>
-        </div>
-
+        
         <!--Luna-->
         <!-- Luna widget -->
 <div id="luna-widget" class="hidden md:block md:absolute md:left-8 md:top-[480px] md:w-72 mt-4">    <p class="text-slate-500 text-xs text-center">Cargando luna...</p>
 </div>
 
 
-<section class="md:hidden flex items-center justify-center px-6 py-16 fade-up">
+<section class="md:hidden flex items-center justify-center mt-16 px-6 fade-up">
     <div class="w-full max-w-lg">
         <p class="text-indigo-400 text-xs font-medium tracking-[0.3em] uppercase mb-3 text-center">Contacto</p>
         <h2 class="text-4xl font-extrabold text-center mb-2">Hablemos</h2>
@@ -129,8 +209,6 @@ function HomeView() {
     </div>
 </section>
 `;
-
-
 }
 
 async function handleSubmit() {
@@ -305,6 +383,8 @@ async function cargarFotosRecientes() {
     )
     .join("");
 }
+
+//Stack
 
 async function cargarMusicaActual() {
   try {
@@ -503,13 +583,11 @@ async function initHomeChat() {
         const content = input.value.trim();
         if (!content) return;
         input.value = "";
-        await supabaseClient
-          .from("messages")
-          .insert({
-            user_id: session.user.id,
-            email: session.user.email,
-            content,
-          });
+        await supabaseClient.from("messages").insert({
+          user_id: session.user.id,
+          email: session.user.email,
+          content,
+        });
       };
       document
         .getElementById("home-chat-btn")
@@ -728,32 +806,32 @@ async function cargarFaseLunar() {
 }
 
 async function cargarLunaModal() {
-    try {
-        const ahora = new Date();
-        const fecha = ahora.toISOString().split('T')[0];
-        const res = await fetch('/api/luna');
-        const data = await res.json();
-        const imagenUrl = data.image.url;
-        const fase = data.phase;
-        const edad = data.age.toFixed(1);
-        const distancia = Math.round(data.distance).toLocaleString();
-        const diametro = data.diameter.toFixed(1);
+  try {
+    const ahora = new Date();
+    const fecha = ahora.toISOString().split("T")[0];
+    const res = await fetch("/api/luna");
+    const data = await res.json();
+    const imagenUrl = data.image.url;
+    const fase = data.phase;
+    const edad = data.age.toFixed(1);
+    const distancia = Math.round(data.distance).toLocaleString();
+    const diametro = data.diameter.toFixed(1);
 
-        function nombreFase(grados) {
-            if (grados < 10) return 'Luna Nueva';
-            if (grados < 80) return 'Cuarto Creciente';
-            if (grados < 100) return 'Luna Llena';
-            if (grados < 170) return 'Cuarto Menguante';
-            if (grados < 190) return 'Luna Nueva';
-            if (grados < 260) return 'Cuarto Creciente';
-            if (grados < 280) return 'Luna Llena';
-            return 'Cuarto Menguante';
-        }
+    function nombreFase(grados) {
+      if (grados < 10) return "Luna Nueva";
+      if (grados < 80) return "Cuarto Creciente";
+      if (grados < 100) return "Luna Llena";
+      if (grados < 170) return "Cuarto Menguante";
+      if (grados < 190) return "Luna Nueva";
+      if (grados < 260) return "Cuarto Creciente";
+      if (grados < 280) return "Luna Llena";
+      return "Cuarto Menguante";
+    }
 
-        const modal = document.getElementById('luna-widget-modal');
-        if (!modal) return;
+    const modal = document.getElementById("luna-widget-modal");
+    if (!modal) return;
 
-        modal.innerHTML = `
+    modal.innerHTML = `
             <div style="text-align:center; margin-bottom:20px;">
                 <p style="font-size:11px; color:#8b949e; margin:0 0 12px; text-transform:uppercase; letter-spacing:0.1em;">🌙 Fase Lunar · NASA</p>
                 <img src="${imagenUrl}" alt="Luna hoy" style="width:280px; height:280px; border-radius:50%; object-fit:cover; border:2px solid rgba(255,255,255,0.15); margin:0 auto; display:block;"/>
@@ -779,9 +857,9 @@ async function cargarLunaModal() {
                 </div>
             </div>
         `;
-    } catch (error) {
-        console.error('Error cargando luna modal:', error);
-    }
+  } catch (error) {
+    console.error("Error cargando luna modal:", error);
+  }
 }
 //Modal Luna
 let lunaCargada = false;
@@ -802,49 +880,49 @@ function toggleLunaPanel() {
 }
 //Contacto mvl
 function initContactMobile() {
-    const btn = document.getElementById('submit-btn-mobile');
-    if (!btn) return;
-    btn.addEventListener('click', async () => {
-        const name = document.getElementById('name-mobile').value.trim();
-        const email = document.getElementById('email-mobile').value.trim();
-        const message = document.getElementById('message-mobile').value.trim();
-        const statusEl = document.getElementById('status-msg-mobile');
-        if (!name || !email || !message) {
-            statusEl.textContent = 'Por favor rellena todos los campos.';
-            statusEl.className = 'text-red-400 text-sm text-center';
-            statusEl.classList.remove('hidden');
-            return;
-        }
-        btn.textContent = 'Enviando...';
-        btn.disabled = true;
-        try {
-            const response = await fetch('/api/contact', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name, email, message })
-            });
-            const data = await response.json();
-            if (data.ok) {
-                statusEl.textContent = '¡Mensaje enviado! Te respondo pronto.';
-                statusEl.className = 'text-green-400 text-sm text-center';
-                statusEl.classList.remove('hidden');
-                document.getElementById('name-mobile').value = '';
-                document.getElementById('email-mobile').value = '';
-                document.getElementById('message-mobile').value = '';
-            } else {
-                statusEl.textContent = 'Algo salió mal. Inténtalo de nuevo.';
-                statusEl.className = 'text-red-400 text-sm text-center';
-                statusEl.classList.remove('hidden');
-            }
-        } catch (error) {
-            statusEl.textContent = 'Error de conexión. Inténtalo de nuevo.';
-            statusEl.className = 'text-red-400 text-sm text-center';
-            statusEl.classList.remove('hidden');
-        } finally {
-            btn.textContent = 'Enviar mensaje';
-            btn.disabled = false;
-        }
-    });
+  const btn = document.getElementById("submit-btn-mobile");
+  if (!btn) return;
+  btn.addEventListener("click", async () => {
+    const name = document.getElementById("name-mobile").value.trim();
+    const email = document.getElementById("email-mobile").value.trim();
+    const message = document.getElementById("message-mobile").value.trim();
+    const statusEl = document.getElementById("status-msg-mobile");
+    if (!name || !email || !message) {
+      statusEl.textContent = "Por favor rellena todos los campos.";
+      statusEl.className = "text-red-400 text-sm text-center";
+      statusEl.classList.remove("hidden");
+      return;
+    }
+    btn.textContent = "Enviando...";
+    btn.disabled = true;
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, message }),
+      });
+      const data = await response.json();
+      if (data.ok) {
+        statusEl.textContent = "¡Mensaje enviado! Te respondo pronto.";
+        statusEl.className = "text-green-400 text-sm text-center";
+        statusEl.classList.remove("hidden");
+        document.getElementById("name-mobile").value = "";
+        document.getElementById("email-mobile").value = "";
+        document.getElementById("message-mobile").value = "";
+      } else {
+        statusEl.textContent = "Algo salió mal. Inténtalo de nuevo.";
+        statusEl.className = "text-red-400 text-sm text-center";
+        statusEl.classList.remove("hidden");
+      }
+    } catch (error) {
+      statusEl.textContent = "Error de conexión. Inténtalo de nuevo.";
+      statusEl.className = "text-red-400 text-sm text-center";
+      statusEl.classList.remove("hidden");
+    } finally {
+      btn.textContent = "Enviar mensaje";
+      btn.disabled = false;
+    }
+  });
 }
 async function initHome() {
   initProjectCard();
