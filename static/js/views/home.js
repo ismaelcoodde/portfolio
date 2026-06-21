@@ -17,10 +17,10 @@ function HomeView() {
             </div>
 
             <h1 class="text-3xl font-bold text-white mb-2 fade-up">Ismael Cruz Fernandez</h1>
-            <p class="text-indigo-400 text-sm tracking-widest uppercase mb-4 fade-up">ENTRE CÓDIGO Y ESTRELLAS</p>
-            <p class="text-slate-400 text-center max-w-md leading-relaxed fade-up mb-5">Palma de Mallorca, España. 1994</p>
+            <p class="text-indigo-400 text-sm tracking-widest uppercase mb-20 fade-up">ENTRE CÓDIGO Y ESTRELLAS</p>
+            
 
-            <div class="flex gap-6 mt-8 mb-30 fade-up">
+            <div class="flex gap-6 mt-8 mb-20 fade-up">
                 <a href="https://www.instagram.com/ismaelcruzfernandez_/" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-pink-400 transition-colors duration-300">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
                 </a>
@@ -45,9 +45,6 @@ function HomeView() {
                 🔔 Activar notificaciones
             </button>
 
-            <div id="lastfm-widget" class="mt-6 fade-up md:hidden">
-                <p class="text-slate-600 text-xs text-center">Cargando música...</p>
-            </div>
 
             <div class="mt-20 fade-up w-full max-w-sm md:max-w-md">
                 <div class="bg-white/5 border border-white/10 rounded-xl p-4">
@@ -58,6 +55,10 @@ function HomeView() {
                         </p>
                     </div>
                 </div>
+            </div>
+
+            <div id="lastfm-widget" class="mt-6 fade-up md:hidden">
+                <p class="text-slate-600 text-xs text-center">Cargando música...</p>
             </div>
 
             <div class="mb-16 mx-auto w-full max-w-lg md:max-w-xl px-0 mt-12 fade-up">
