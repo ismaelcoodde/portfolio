@@ -20,7 +20,7 @@ function HomeView() {
             <p class="text-indigo-400 text-sm tracking-widest uppercase mb-4 fade-up">ENTRE CÓDIGO Y ESTRELLAS</p>
             <p class="text-slate-400 text-center max-w-md leading-relaxed fade-up mb-5">Palma de Mallorca, España. 1994</p>
 
-            <div class="flex gap-6 mt-8 fade-up">
+            <div class="flex gap-6 mt-8 mb-30 fade-up">
                 <a href="https://www.instagram.com/ismaelcruzfernandez_/" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-pink-400 transition-colors duration-300">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
                 </a>
@@ -72,9 +72,9 @@ function HomeView() {
 
         </section>
 
-        <div class="mx-auto w-full max-w-lg md:max-w-xl mt-12 mb-8">
-        <div class="w-full overflow-hidden mt-12 mb-8" style="mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);">
-    <p class="text-slate-500 text-xs font-medium tracking-[0.3em] uppercase mb-6 text-center">Mi Stacki tecnológico</p>
+        <div class="mx-auto w-full max-w-lg md:max-w-xl mt-6 mb-4 md:mt-16 md:mb-1">
+        <div class="w-full overflow-hidden" style="mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);">
+    <p class="text-slate-500 text-xs font-medium tracking-[0.3em] uppercase mb-6 text-center">Mi Stack tecnológico</p>
     <div class="flex gap-8 w-max marquee-track">
 
         <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">Python</span></div>
@@ -175,7 +175,7 @@ function HomeView() {
         </div>
 
         <!-- GitHub Stats solo desktop -->
-<div id="github-card" class="md:absolute md:left-8 md:top-[875px] md:w-72">            <p class="text-slate-500 text-xs text-center">Cargando GitHub...</p>
+<div id="github-card" class="md:absolute mt-16 mx-5 md:left-8 md:top-[875px] md:w-72">            <p class="text-slate-500 text-xs text-center">Cargando GitHub...</p>
         </div>
 
         
@@ -524,7 +524,7 @@ async function cargarGithubStats() {
     const card = document.getElementById("github-card");
     if (!card) return;
     card.innerHTML = `
-      <div style="background:rgba(13,17,23,0.9); border:1px solid rgba(255,255,255,0.1); border-radius:16px; padding:16px; backdrop-filter:blur(10px);">
+      <div style="background:rgba(13,17,23,0.3); border:1px solid rgba(255,255,255,0.1); border-radius:16px; padding:16px; backdrop-filter:blur(10px);">
         <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
           <img src="${user.avatar_url}" style="width:40px; height:40px; border-radius:50%; border:2px solid rgba(255,255,255,0.1);"/>
           <div>
