@@ -74,7 +74,7 @@ function HomeView() {
 
         <div class="mx-auto w-full max-w-lg md:max-w-xl mt-12 mb-8">
         <div class="w-full overflow-hidden mt-12 mb-8" style="mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);">
-    <p class="text-slate-500 text-xs font-medium tracking-[0.3em] uppercase mb-6 text-center">Mi Stack tecnológico</p>
+    <p class="text-slate-500 text-xs font-medium tracking-[0.3em] uppercase mb-6 text-center">Mi Stacki tecnológico</p>
     <div class="flex gap-8 w-max marquee-track">
 
         <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">Python</span></div>
