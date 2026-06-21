@@ -18,7 +18,6 @@ function HomeView() {
 
             <h1 class="text-3xl font-bold text-white mb-2 fade-up">Ismael Cruz Fernandez</h1>
             <p class="text-indigo-400 text-sm tracking-widest uppercase mb-20 fade-up">ENTRE CÓDIGO Y ESTRELLAS</p>
-            
 
             <div class="flex gap-6 mt-8 mb-20 fade-up">
                 <a href="https://www.instagram.com/ismaelcruzfernandez_/" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-pink-400 transition-colors duration-300">
@@ -45,8 +44,7 @@ function HomeView() {
                 🔔 Activar notificaciones
             </button>
 
-
-            <div class="mt-20 fade-up w-full max-w-sm md:max-w-md">
+            <div class="mt-16 mb-16 fade-up w-full max-w-sm md:max-w-md">
                 <div class="bg-white/5 border border-white/10 rounded-xl p-4">
                     <p class="text-indigo-400 text-xs uppercase tracking-widest font-medium mb-2">¿QUÉ ES ESTE SITIO?</p>
                     <div class="max-h-40 overflow-y-auto pr-1" style="scrollbar-width:thin; scrollbar-color:rgba(255,255,255,0.1) transparent;">
@@ -73,94 +71,6 @@ function HomeView() {
 
         </section>
 
-        <div class="mx-auto w-full max-w-lg md:max-w-xl mt-6 mb-4 md:mt-16 md:mb-1">
-        <div class="w-full overflow-hidden" style="mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);">
-    <p class="text-slate-500 text-xs font-medium tracking-[0.3em] uppercase mb-6 text-center">Mi Stack tecnológico</p>
-    <div class="flex gap-8 w-max marquee-track">
-
-        <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">Python</span></div>
-        <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">JavaScript</span></div>
-        <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">Tailwind</span></div>
-        <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">Supabase</span></div>
-        <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">FastAPI</span></div>
-        <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">React</span></div>
-        <div class="flex flex-col items-center gap-2 min-w-[64px]">
-        <img src="https://cdn.simpleicons.org/github/white" class="w-9 h-9"/>
-        <span class="text-[11px] text-slate-500">GitHub</span>
-        </div>
-        <div class="flex flex-col items-center gap-2 min-w-[64px]">
-        <img src="https://cdn.simpleicons.org/git" class="w-9 h-9"/>
-        <span class="text-[11px] text-slate-500">Git</span>
-        </div>
-        <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">VS Code</span></div>
-        <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">PostgreSQL</span></div>
-        <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">HTML5</span></div>
-        <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">CSS3</span></div>
-        <div class="flex flex-col items-center gap-2 min-w-[64px]">
-    <img src="https://cdn.simpleicons.org/vercel/white" class="w-9 h-9"/>
-    <span class="text-[11px] text-slate-500">Vercel</span>
-</div>
-<div class="flex flex-col items-center gap-2 min-w-[64px]">
-    <img src="https://cdn.simpleicons.org/render/white" class="w-9 h-9"/>
-    <span class="text-[11px] text-slate-500">Render</span>
-</div>
-<div class="flex flex-col items-center gap-2 min-w-[64px]">
-    <img src="https://cdn.simpleicons.org/hetzner/white" class="w-9 h-9"/>
-    <span class="text-[11px] text-slate-500">Hetzner</span>
-</div>
-<div class="flex flex-col items-center gap-2 min-w-[64px]">
-    <img src="https://cdn.simpleicons.org/coolify/white" class="w-9 h-9"/>
-    <span class="text-[11px] text-slate-500">Coolify</span>
-</div>
-<div class="flex flex-col items-center gap-2 min-w-[64px]">
-    <img src="https://cdn.simpleicons.org/resend/white" class="w-9 h-9"/>
-    <span class="text-[11px] text-slate-500">Resend</span>
-</div>
-
-        <!-- Duplicado para bucle sin corte -->
-        <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">Python</span></div>
-        <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">JavaScript</span></div>
-        <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">Tailwind</span></div>
-        <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">Supabase</span></div>
-        <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">FastAPI</span></div>
-        <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">React</span></div>
-        <div class="flex flex-col items-center gap-2 min-w-[64px]">
-        <img src="https://cdn.simpleicons.org/github/white" class="w-9 h-9"/>
-        <span class="text-[11px] text-slate-500">GitHub</span>
-        </div>
-          <div class="flex flex-col items-center gap-2 min-w-[64px]">
-        <img src="https://cdn.simpleicons.org/git" class="w-9 h-9"/>
-        <span class="text-[11px] text-slate-500">Git</span>
-        </div>
-        <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">VS Code</span></div>
-        <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">PostgreSQL</span></div>
-        <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">HTML5</span></div>
-        <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">CSS3</span></div>
-        <div class="flex flex-col items-center gap-2 min-w-[64px]">
-    <img src="https://cdn.simpleicons.org/vercel/white" class="w-9 h-9"/>
-    <span class="text-[11px] text-slate-500">Vercel</span>
-</div>
-<div class="flex flex-col items-center gap-2 min-w-[64px]">
-    <img src="https://cdn.simpleicons.org/render/white" class="w-9 h-9"/>
-    <span class="text-[11px] text-slate-500">Render</span>
-</div>
-<div class="flex flex-col items-center gap-2 min-w-[64px]">
-    <img src="https://cdn.simpleicons.org/hetzner/white" class="w-9 h-9"/>
-    <span class="text-[11px] text-slate-500">Hetzner</span>
-</div>
-<div class="flex flex-col items-center gap-2 min-w-[64px]">
-    <img src="https://cdn.simpleicons.org/coolify/white" class="w-9 h-9"/>
-    <span class="text-[11px] text-slate-500">Coolify</span>
-</div>
-<div class="flex flex-col items-center gap-2 min-w-[64px]">
-    <img src="https://cdn.simpleicons.org/resend/white" class="w-9 h-9"/>
-    <span class="text-[11px] text-slate-500">Resend</span>
-</div>
-
-    </div>
-</div>
-</div>
-
         <!-- Chat solo desktop -->
         <div id="home-chat" class="hidden md:block md:absolute md:left-8 md:top-24 md:w-72 mt-16">
             <div style="background:rgba(13,17,23,0.9); border:1px solid rgba(255,255,255,0.1); border-radius:16px; overflow:hidden; backdrop-filter:blur(10px);">
@@ -176,40 +86,86 @@ function HomeView() {
         </div>
 
         <!-- GitHub Stats solo desktop -->
-<div id="github-card" class="md:absolute mt-16 mx-5 md:left-8 md:top-[875px] md:w-72">            <p class="text-slate-500 text-xs text-center">Cargando GitHub...</p>
+        <div id="github-card" class="md:absolute mt-16 mx-5 md:left-8 md:top-[875px] md:w-72">
+            <p class="text-slate-500 text-xs text-center">Cargando GitHub...</p>
         </div>
 
-        
-        <!--Luna-->
         <!-- Luna widget -->
-<div id="luna-widget" class="hidden md:block md:absolute md:left-8 md:top-[480px] md:w-72 mt-4">    <p class="text-slate-500 text-xs text-center">Cargando luna...</p>
-</div>
-
-
-<section class="md:hidden flex items-center justify-center mt-16 px-6 fade-up">
-    <div class="w-full max-w-lg">
-        <p class="text-indigo-400 text-xs font-medium tracking-[0.3em] uppercase mb-3 text-center">Contacto</p>
-        <h2 class="text-4xl font-extrabold text-center mb-2">Hablemos</h2>
-        <p class="text-slate-500 text-center mb-10">Cuéntame tu proyecto y te respondo en menos de 24h.</p>
-        <div class="flex flex-col gap-5">
-            <div class="flex flex-col gap-2">
-                <label class="text-sm text-slate-400">Nombre</label>
-                <input type="text" id="name-mobile" placeholder="Tu nombre" class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500 transition-colors duration-300"/>
-            </div>
-            <div class="flex flex-col gap-2">
-                <label class="text-sm text-slate-400">Email</label>
-                <input type="email" id="email-mobile" placeholder="tu@email.com" class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500 transition-colors duration-300"/>
-            </div>
-            <div class="flex flex-col gap-2">
-                <label class="text-sm text-slate-400">Mensaje</label>
-                <textarea id="message-mobile" rows="5" placeholder="Cuéntame en qué puedo ayudarte..." class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500 transition-colors duration-300 resize-none"></textarea>
-            </div>
-            <p id="status-msg-mobile" class="text-sm text-center hidden"></p>
-            <button type="button" id="submit-btn-mobile" class="w-full py-3 bg-indigo-600 hover:bg-indigo-500 rounded-xl text-white font-medium transition-colors duration-300">Enviar mensaje</button>
+        <div id="luna-widget" class="hidden md:block md:absolute md:left-8 md:top-[480px] md:w-72 mt-4">
+            <p class="text-slate-500 text-xs text-center">Cargando luna...</p>
         </div>
-    </div>
-</section>
-`;
+
+        <!-- Contacto solo móvil -->
+        <section class="md:hidden flex items-center justify-center mt-16 px-6 fade-up">
+            <div class="w-full max-w-lg">
+                <p class="text-indigo-400 text-xs font-medium tracking-[0.3em] uppercase mb-3 text-center">Contacto</p>
+                <h2 class="text-4xl font-extrabold text-center mb-2">Hablemos</h2>
+                <p class="text-slate-500 text-center mb-10">Cuéntame tu proyecto y te respondo en menos de 24h.</p>
+                <div class="flex flex-col gap-5">
+                    <div class="flex flex-col gap-2">
+                        <label class="text-sm text-slate-400">Nombre</label>
+                        <input type="text" id="name-mobile" placeholder="Tu nombre" class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500 transition-colors duration-300"/>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <label class="text-sm text-slate-400">Email</label>
+                        <input type="email" id="email-mobile" placeholder="tu@email.com" class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500 transition-colors duration-300"/>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <label class="text-sm text-slate-400">Mensaje</label>
+                        <textarea id="message-mobile" rows="5" placeholder="Cuéntame en qué puedo ayudarte..." class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500 transition-colors duration-300 resize-none"></textarea>
+                    </div>
+                    <p id="status-msg-mobile" class="text-sm text-center hidden"></p>
+                    <button type="button" id="submit-btn-mobile" class="w-full py-3 bg-indigo-600 hover:bg-indigo-500 rounded-xl text-white font-medium transition-colors duration-300">Enviar mensaje</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stack tecnológico (móvil y desktop) -->
+        <div class="mx-auto w-full max-w-lg md:max-w-xl mt-6 mb-8 px-4 md:px-0">
+            <div class="w-full overflow-hidden" style="mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);">
+                <p class="text-slate-500 text-xs font-medium tracking-[0.3em] uppercase mb-6 text-center">Mi Stack tecnológico</p>
+                <div class="flex gap-8 w-max marquee-track">
+
+                    <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">Python</span></div>
+                    <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">JavaScript</span></div>
+                    <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">Tailwind</span></div>
+                    <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">Supabase</span></div>
+                    <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">FastAPI</span></div>
+                    <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">React</span></div>
+                    <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.simpleicons.org/github/white" class="w-9 h-9"/><span class="text-[11px] text-slate-500">GitHub</span></div>
+                    <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.simpleicons.org/git" class="w-9 h-9"/><span class="text-[11px] text-slate-500">Git</span></div>
+                    <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">VS Code</span></div>
+                    <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">PostgreSQL</span></div>
+                    <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">HTML5</span></div>
+                    <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">CSS3</span></div>
+                    <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.simpleicons.org/vercel/white" class="w-9 h-9"/><span class="text-[11px] text-slate-500">Vercel</span></div>
+                    <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.simpleicons.org/render/white" class="w-9 h-9"/><span class="text-[11px] text-slate-500">Render</span></div>
+                    <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.simpleicons.org/hetzner/white" class="w-9 h-9"/><span class="text-[11px] text-slate-500">Hetzner</span></div>
+                    <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.simpleicons.org/coolify/white" class="w-9 h-9"/><span class="text-[11px] text-slate-500">Coolify</span></div>
+                    <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.simpleicons.org/resend/white" class="w-9 h-9"/><span class="text-[11px] text-slate-500">Resend</span></div>
+
+                    <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">Python</span></div>
+                    <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">JavaScript</span></div>
+                    <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">Tailwind</span></div>
+                    <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">Supabase</span></div>
+                    <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">FastAPI</span></div>
+                    <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">React</span></div>
+                    <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.simpleicons.org/github/white" class="w-9 h-9"/><span class="text-[11px] text-slate-500">GitHub</span></div>
+                    <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.simpleicons.org/git" class="w-9 h-9"/><span class="text-[11px] text-slate-500">Git</span></div>
+                    <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">VS Code</span></div>
+                    <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">PostgreSQL</span></div>
+                    <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">HTML5</span></div>
+                    <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" class="w-9 h-9"/><span class="text-[11px] text-slate-500">CSS3</span></div>
+                    <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.simpleicons.org/vercel/white" class="w-9 h-9"/><span class="text-[11px] text-slate-500">Vercel</span></div>
+                    <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.simpleicons.org/render/white" class="w-9 h-9"/><span class="text-[11px] text-slate-500">Render</span></div>
+                    <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.simpleicons.org/hetzner/white" class="w-9 h-9"/><span class="text-[11px] text-slate-500">Hetzner</span></div>
+                    <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.simpleicons.org/coolify/white" class="w-9 h-9"/><span class="text-[11px] text-slate-500">Coolify</span></div>
+                    <div class="flex flex-col items-center gap-2 min-w-[64px]"><img src="https://cdn.simpleicons.org/resend/white" class="w-9 h-9"/><span class="text-[11px] text-slate-500">Resend</span></div>
+
+                </div>
+            </div>
+        </div>
+    `;
 }
 
 async function handleSubmit() {
@@ -384,8 +340,6 @@ async function cargarFotosRecientes() {
     )
     .join("");
 }
-
-//Stack
 
 async function cargarMusicaActual() {
   try {
@@ -748,14 +702,11 @@ function toggleHealthPanel() {
   }
 }
 
-//Luna
 async function cargarFaseLunar() {
   try {
     const ahora = new Date();
     const fecha = ahora.toISOString().split("T")[0];
     const hora = ahora.getHours().toString().padStart(2, "0");
-
-    // Pedimos imagen real de la luna a la NASA
     const res = await fetch("/api/luna");
     const data = await res.json();
     const imagenUrl = data.image.url;
@@ -763,7 +714,6 @@ async function cargarFaseLunar() {
     const edad = data.age.toFixed(1);
     const distancia = Math.round(data.distance).toLocaleString();
 
-    // Convertir fase en grados a nombre
     function nombreFase(grados) {
       if (grados < 10) return "Luna Nueva";
       if (grados < 80) return "Cuarto Creciente";
@@ -780,7 +730,6 @@ async function cargarFaseLunar() {
 
     widget.innerHTML = `
                <div onclick="toggleLunaPanel()" style="cursor:pointer; background:rgba(13,17,23,0.9); border:1px solid rgba(255,255,255,0.1); border-radius:16px; padding:16px; backdrop-filter:blur(10px); transition:border-color 0.3s;" onmouseover="this.style.borderColor='rgba(255,255,255,0.3)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.1)'">
-
                 <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
                     <p style="font-size:11px; color:#8b949e; margin:0; text-transform:uppercase; letter-spacing:0.05em;">🌙 Fase Lunar</p>
                     <span style="font-size:9px; color:#475569;">NASA · Hoy</span>
@@ -862,7 +811,7 @@ async function cargarLunaModal() {
     console.error("Error cargando luna modal:", error);
   }
 }
-//Modal Luna
+
 let lunaCargada = false;
 function toggleLunaPanel() {
   const modal = document.getElementById("luna-modal");
@@ -879,7 +828,7 @@ function toggleLunaPanel() {
     modal.style.cssText = "display:none;";
   }
 }
-//Contacto mvl
+
 function initContactMobile() {
   const btn = document.getElementById("submit-btn-mobile");
   if (!btn) return;
@@ -925,6 +874,7 @@ function initContactMobile() {
     }
   });
 }
+
 async function initHome() {
   initProjectCard();
   await cargarFotosRecientes();
