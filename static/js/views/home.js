@@ -563,22 +563,26 @@ async function initHomeChat() {
     .limit(20);
   const container = document.getElementById("home-messages-container");
   if (container && data) {
-    container.innerHTML = data
-      .map((msg) => {
-        const time = new Date(msg.created_at).toLocaleTimeString("es-ES", {
-          hour: "2-digit",
-          minute: "2-digit",
-        });
-        const shortEmail = msg.email.split("@")[0];
-        return `<div style="display:flex; flex-direction:column; gap:2px;">
-        <div style="display:flex; gap:6px; align-items:baseline;">
-          <span style="font-size:10px; color:#818cf8; font-weight:500;">${shortEmail}</span>
-          <span style="font-size:9px; color:#475569;">${time}</span>
-        </div>
-        <p style="font-size:11px; color:#cbd5e1; margin:0;">${msg.content}</p>
-      </div>`;
-      })
-      .join("");
+    const htmlMensajes = [];
+    for (const msg of data) {
+      const time = new Date(msg.created_at).toLocaleTimeString("es-ES", {
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+      const perfil = msg.user_id ? await getProfile(msg.user_id) : null;
+      const shortEmail = perfil?.nombre || msg.email.split("@")[0];
+      const avatarMsg = avatarHTML(perfil, msg.email, 24);
+      htmlMensajes.push(`
+        <div style="display:flex; flex-direction:column; gap:2px;">
+          <div style="display:flex; gap:6px; align-items:center;">
+            ${avatarMsg}
+            <span style="font-size:10px; color:#818cf8; font-weight:500;">${shortEmail}</span>
+            <span style="font-size:9px; color:#475569;">${time}</span>
+          </div>
+          <p style="font-size:11px; color:#cbd5e1; margin:0; padding-left:30px;">${msg.content}</p>
+        </div>`);
+    }
+    container.innerHTML = htmlMensajes.join("");
     container.scrollTop = container.scrollHeight;
   }
   supabaseClient

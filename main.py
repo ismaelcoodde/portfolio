@@ -33,6 +33,7 @@ class ComentarioForm(BaseModel):
     texto: str
     autor: str = 'Anónimo'
     es_anonimo: bool = True
+    user_id: str = None
 
 class EstadoForm(BaseModel):
     haciendo: str
@@ -156,7 +157,8 @@ async def crear_comentario(form: ComentarioForm):
         "estado_id": form.estado_id,
         "texto": form.texto,
         "autor": form.autor,
-        "es_anonimo": form.es_anonimo
+        "es_anonimo": form.es_anonimo,
+        "user_id": form.user_id
     }).execute()
     if resultado.data:
         return {"ok": True, "comentario": resultado.data[0]}

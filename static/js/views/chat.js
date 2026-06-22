@@ -1,3 +1,26 @@
+async function getProfile(userId) {
+    if (typeof profilesCache !== 'undefined' && profilesCache[userId]) return profilesCache[userId];
+    const { data } = await supabaseClient
+        .from('profiles')
+        .select('nombre, avatar_url')
+        .eq('id', userId)
+        .single();
+    if (data && typeof profilesCache !== 'undefined') profilesCache[userId] = data;
+    return data;
+}
+
+function avatarHTML(profile, email, size = 28) {
+    if (profile?.avatar_url) {
+        return `<img src="${profile.avatar_url}" 
+                     style="width:${size}px; height:${size}px; border-radius:50%; object-fit:cover; flex-shrink:0;"/>`;
+    }
+    const inicial = (profile?.nombre || email || '?')[0].toUpperCase();
+    return `<div style="width:${size}px; height:${size}px; border-radius:50%; background:rgba(99,102,241,0.6); 
+                        display:flex; align-items:center; justify-content:center; 
+                        color:white; font-size:${size * 0.4}px; font-weight:600; flex-shrink:0;">
+                ${inicial}
+            </div>`;
+}
 function ChatView() {
     return `
         <section class="flex flex-col" style="height: calc(100dvh - 170px)">
@@ -62,6 +85,7 @@ async function renderChatInput() {
 }
 
 // loadMessages solo carga y renderiza, sin suscribirse (eso lo hace initChat)
+
 async function loadMessages() {
     const { data, error } = await supabaseClient
         .from('messages')
@@ -73,10 +97,10 @@ async function loadMessages() {
         return;
     }
 
-    renderMessages(data);
+    await renderMessages(data);
 }
 
-function renderMessages(messages) {
+async function renderMessages(messages) {
     const container = document.getElementById('messages-container');
     if (!container) return;
 
@@ -89,23 +113,32 @@ function renderMessages(messages) {
         return;
     }
 
-    container.innerHTML = messages.map(msg => messageHTML(msg)).join('');
+    const htmlMensajes = [];
+    for (const msg of messages) {
+        const perfil = msg.user_id ? await getProfile(msg.user_id) : null;
+        htmlMensajes.push(messageHTML(msg, perfil));
+    }
+    container.innerHTML = htmlMensajes.join('');
     container.scrollTop = container.scrollHeight;
 }
 
-function messageHTML(msg) {
+function messageHTML(msg, perfil = null) {
     const time = new Date(msg.created_at).toLocaleTimeString('es-ES', {
         hour: '2-digit', minute: '2-digit'
     });
-    const shortEmail = msg.email.split('@')[0];
+    const nombre = perfil?.nombre || msg.email.split('@')[0];
+    const avatar = avatarHTML(perfil, msg.email, 32);
 
     return `
-        <div class="flex flex-col gap-1">
-            <div class="flex items-baseline gap-2">
-                <span class="text-indigo-400 text-xs font-medium">${shortEmail}</span>
-                <span class="text-slate-600 text-xs">${time}</span>
+        <div class="flex gap-3 items-start">
+            ${avatar}
+            <div class="flex flex-col gap-1">
+                <div class="flex items-baseline gap-2">
+                    <span class="text-indigo-400 text-xs font-medium">${nombre}</span>
+                    <span class="text-slate-600 text-xs">${time}</span>
+                </div>
+                <p class="text-slate-300 text-sm leading-relaxed">${msg.content}</p>
             </div>
-            <p class="text-slate-300 text-sm leading-relaxed">${msg.content}</p>
         </div>
     `;
 }
@@ -142,13 +175,13 @@ function subscribeToMessages() {
         .channel('chat-room')
         .on('postgres_changes',
             { event: 'INSERT', schema: 'public', table: 'messages' },
-            (payload) => {
+            async (payload) => {
                 const container = document.getElementById('messages-container');
                 if (!container) return;
-                // Elimina solo el placeholder, no los mensajes existentes
                 const placeholder = container.querySelector('.chat-placeholder');
                 if (placeholder) placeholder.remove();
-                container.insertAdjacentHTML('beforeend', messageHTML(payload.new));
+                const perfil = payload.new.user_id ? await getProfile(payload.new.user_id) : null;
+                container.insertAdjacentHTML('beforeend', messageHTML(payload.new, perfil));
                 container.scrollTop = container.scrollHeight;
             }
         )

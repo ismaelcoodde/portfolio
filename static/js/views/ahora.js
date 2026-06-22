@@ -1,3 +1,29 @@
+const profilesCache = {};
+
+async function getProfile(userId) {
+  if (profilesCache[userId]) return profilesCache[userId];
+  const { data } = await supabaseClient
+    .from("profiles")
+    .select("nombre, avatar_url")
+    .eq("id", userId)
+    .single();
+  if (data) profilesCache[userId] = data;
+  return data;
+}
+
+function avatarHTML(profile, email, size = 28) {
+  if (profile?.avatar_url) {
+    return `<img src="${profile.avatar_url}" 
+                     style="width:${size}px; height:${size}px; border-radius:50%; object-fit:cover; flex-shrink:0;"/>`;
+  }
+  const inicial = (profile?.nombre || email || "?")[0].toUpperCase();
+  return `<div style="width:${size}px; height:${size}px; border-radius:50%; background:rgba(99,102,241,0.6); 
+                        display:flex; align-items:center; justify-content:center; 
+                        color:white; font-size:${size * 0.4}px; font-weight:600; flex-shrink:0;">
+                ${inicial}
+            </div>`;
+}
+
 function AhoraView() {
   return /*html*/ `
         <section class="flex flex-col items-center px-6 py-16 max-w-lg mx-auto">
@@ -11,11 +37,9 @@ function AhoraView() {
             <div class="w-full bg-white/5 border border-white/10 rounded-2xl p-6">
 
                 <div class="flex items-center gap-3 mb-6">
-                    <div class="w-10 h-10 rounded-full bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center text-indigo-400 font-bold text-sm">
-                        IC
-                    </div>
-                    <div>
-                        <p class="text-white font-medium text-sm">Ismael Cruz</p>
+                    <div id="estado-avatar"></div>
+          <div>
+             <p id="estado-nombre" class="text-white font-medium text-sm">Ismael Cruz</p>
                         <p id="estado-fecha" class="text-slate-500 text-xs"></p>
                     </div>
                     <span id="estado-animo-emoji" class="ml-auto text-2xl"></span>
@@ -195,8 +219,10 @@ async function cargarReacciones(estadoId) {
     data.reacciones["🔥"] || 0;
   document.getElementById("reaccion-👏").textContent =
     data.reacciones["👏"] || 0;
-    document.getElementById('reaccion-sonrisa').textContent = data.reacciones['sonrisa'] || 0;  // cambia esto
-    document.getElementById('reaccion-triste').textContent = data.reacciones['triste'] || 0;    // y esto
+  document.getElementById("reaccion-sonrisa").textContent =
+    data.reacciones["sonrisa"] || 0; // cambia esto
+  document.getElementById("reaccion-triste").textContent =
+    data.reacciones["triste"] || 0; // y esto
 }
 
 async function cargarComentarios(estadoId) {
@@ -211,55 +237,72 @@ async function cargarComentarios(estadoId) {
   if (dataC.comentarios.length === 0) {
     lista.innerHTML =
       '<p class="text-slate-500 text-sm">Sé el primero en comentar.</p>';
-  } else {
-    lista.innerHTML = dataC.comentarios
-      .map((c) => {
-        const avatar = c.es_anonimo
-          ? `<div class="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-500 flex-shrink-0 text-lg">👻</div>`
-          : `<div class="w-8 h-8 rounded-full bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center text-indigo-400 font-bold text-xs flex-shrink-0">${c.autor.slice(0, 2).toUpperCase()}</div>`;
-
-        const fechaC = new Date(c.creado_en).toLocaleDateString("es-ES", {
-          day: "numeric",
-          month: "short",
-        });
-
-        return `
-                <div class="flex gap-3">
-                    ${avatar}
-                    <div>
-                        <div class="flex items-baseline gap-2 mb-1">
-                            <p class="text-white text-sm font-medium">${c.autor}</p>
-                            <p class="text-slate-500 text-xs">${fechaC}</p>
-                        </div>
-                        <p class="text-slate-300 text-sm">${c.texto}</p>
-                    </div>
-                </div>
-            `;
-      })
-      .join("");
+    return;
   }
+
+  // Carga los perfiles de todos los comentaristas en paralelo
+  const comentariosConPerfil = await Promise.all(
+    dataC.comentarios.map(async (c) => {
+      let perfil = null;
+      if (c.user_id) {
+        perfil = await getProfile(c.user_id);
+      }
+      return { ...c, perfil };
+    }),
+  );
+
+  lista.innerHTML = comentariosConPerfil
+    .map((c) => {
+      const nombre = c.perfil?.nombre || c.autor || "Anónimo";
+      const avatar = c.es_anonimo
+        ? `<div class="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-500 flex-shrink-0 text-lg">👻</div>`
+        : avatarHTML(c.perfil, c.autor, 32);
+
+      const fechaC = new Date(c.creado_en).toLocaleDateString("es-ES", {
+        day: "numeric",
+        month: "short",
+      });
+
+      return `
+            <div class="flex gap-3">
+                ${avatar}
+                <div>
+                    <div class="flex items-baseline gap-2 mb-1">
+                        <p class="text-white text-sm font-medium">${nombre}</p>
+                        <p class="text-slate-500 text-xs">${fechaC}</p>
+                    </div>
+                    <p class="text-slate-300 text-sm">${c.texto}</p>
+                </div>
+            </div>
+        `;
+    })
+    .join("");
 }
 
 async function cargarFeed() {
-    const res = await fetch('/api/estados');
-    const data = await res.json();
+  const res = await fetch("/api/estados");
+  const data = await res.json();
 
-    const feed = document.getElementById('feed-estados');
+  const feed = document.getElementById("feed-estados");
 
-    if (!data.ok || data.estados.length <= 1) {
-        feed.innerHTML = '<p class="text-slate-500 text-sm">Aún no hay estados anteriores.</p>';
-        return;
-    }
+  if (!data.ok || data.estados.length <= 1) {
+    feed.innerHTML =
+      '<p class="text-slate-500 text-sm">Aún no hay estados anteriores.</p>';
+    return;
+  }
 
-    // Saltamos el primero porque ya se muestra arriba como estado actual
-    const anteriores = data.estados.slice(1);
+  // Saltamos el primero porque ya se muestra arriba como estado actual
+  const anteriores = data.estados.slice(1);
 
-    feed.innerHTML = anteriores.map(e => {
-        const fecha = new Date(e.creado_en).toLocaleDateString('es-ES', {
-            day: 'numeric', month: 'long', year: 'numeric'
-        });
+  feed.innerHTML = anteriores
+    .map((e) => {
+      const fecha = new Date(e.creado_en).toLocaleDateString("es-ES", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      });
 
-        return `
+      return `
             <div class="w-full bg-white/5 border border-white/10 rounded-2xl p-5">
                 <div class="flex items-center gap-3 mb-4">
                     <div class="w-8 h-8 rounded-full bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center text-indigo-400 font-bold text-xs flex-shrink-0">
@@ -267,39 +310,56 @@ async function cargarFeed() {
                     </div>
                     <div>
                         <p class="text-white text-xs font-medium">Ismael Cruz</p>
-                        <p class="text-slate-500 text-xs">${fecha} · ${e.ubicacion || ''}</p>
+                        <p class="text-slate-500 text-xs">${fecha} · ${e.ubicacion || ""}</p>
                     </div>
-                    <span class="ml-auto text-lg">${e.estado_animo?.split(' ')[0] || ''}</span>
+                    <span class="ml-auto text-lg">${e.estado_animo?.split(" ")[0] || ""}</span>
                 </div>
 
                 <div class="flex flex-col gap-3">
-                    ${e.haciendo ? `
+                    ${
+                      e.haciendo
+                        ? `
                     <div class="border-l-2 border-indigo-500/30 pl-3">
                         <p class="text-slate-500 text-xs mb-0.5">Haciendo</p>
                         <p class="text-slate-300 text-sm">${e.haciendo}</p>
-                    </div>` : ''}
+                    </div>`
+                        : ""
+                    }
 
-                    ${e.estado_animo ? `
+                    ${
+                      e.estado_animo
+                        ? `
                     <div class="border-l-2 border-indigo-500/30 pl-3">
                         <p class="text-slate-500 text-xs mb-0.5">Estado de ánimo</p>
                         <p class="text-slate-300 text-sm">${e.estado_animo}</p>
-                    </div>` : ''}
+                    </div>`
+                        : ""
+                    }
 
-                    ${e.escuchando ? `
+                    ${
+                      e.escuchando
+                        ? `
                     <div class="border-l-2 border-indigo-500/30 pl-3">
                         <p class="text-slate-500 text-xs mb-0.5">Escuchando</p>
                         <p class="text-slate-300 text-sm">${e.escuchando}</p>
-                    </div>` : ''}
+                    </div>`
+                        : ""
+                    }
 
-                    ${e.en_mi_cabeza ? `
+                    ${
+                      e.en_mi_cabeza
+                        ? `
                     <div class="border-l-2 border-pink-500/30 pl-3">
                         <p class="text-pink-400/70 text-xs mb-0.5">En mi cabeza</p>
                         <p class="text-slate-300 text-sm italic">"${e.en_mi_cabeza}"</p>
-                    </div>` : ''}
+                    </div>`
+                        : ""
+                    }
                 </div>
             </div>
         `;
-    }).join('');
+    })
+    .join("");
 }
 
 async function initAhora() {
@@ -406,6 +466,12 @@ async function initAhora() {
 
     const e = data.estado;
 
+    const perfilAdmin = await getProfile(session?.user?.id || '');
+if (perfilAdmin) {
+    document.getElementById('estado-nombre').textContent = perfilAdmin.nombre || 'Ismael Cruz';
+    document.getElementById('estado-avatar').innerHTML = avatarHTML(perfilAdmin, 'Ismael Cruz', 40);
+}
+
     document.getElementById("estado-haciendo").textContent = e.haciendo || "";
     document.getElementById("estado-animo").textContent = e.estado_animo || "";
     document.getElementById("estado-animo-emoji").textContent =
@@ -433,8 +499,8 @@ async function initAhora() {
     // Cargamos las reacciones
     await cargarReacciones(e.id);
 
-            // Cargamos el feed de estados anteriores
-        await cargarFeed();
+    // Cargamos el feed de estados anteriores
+    await cargarFeed();
 
     // Lógica de los botones de reacción
     document.querySelectorAll(".reaccion-btn").forEach((btn) => {
@@ -478,6 +544,7 @@ async function initAhora() {
                   usuario.email.split("@")[0]
                 : "Anónimo",
               es_anonimo: usuario ? false : true,
+              user_id: usuario ? usuario.id : null,
             }),
           });
 
