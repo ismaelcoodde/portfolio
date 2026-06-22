@@ -31,18 +31,18 @@ const inits = {
 };
 
 function router() {
-    // Lee lo que hay después del # en la URL
-    // Si no hay nada, usamos #home por defecto
     const hash = window.location.hash || '#home';
-
-    // Busca la vista que corresponde a esa ruta
     const view = routes[hash];
-
-    // Mete el HTML de la vista dentro del <main id="app">
     const app = document.getElementById('app');
     if (view) {
         app.innerHTML = view();
-        // Si esta ruta tiene init, la ejecutamos ahora que el HTML ya existe
+
+        // Muestra el formulario de contacto fijo solo en #home
+        const contactoFixed = document.getElementById('contacto-fixed');
+        if (contactoFixed) {
+            contactoFixed.style.display = hash === '#home' ? 'block' : 'none';
+        }
+
         if (inits[hash]) inits[hash]();
         initScrollAnimations();
     } else {

@@ -31,12 +31,12 @@ function ChatView() {
                 </p>
                 <h2 class="text-2xl font-bold">Chat en vivo</h2>
             </div>
-
+            
             <div id="messages-container"
                  class="flex-1 overflow-y-auto p-6 flex flex-col gap-4">
                 <p class="text-slate-500 text-sm text-center">Un momento...</p>
             </div>
-
+            
             <div id="chat-input-area" class="p-4 border-t border-white/10">
             </div>
 
