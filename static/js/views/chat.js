@@ -1,26 +1,6 @@
-async function getProfile(userId) {
-    if (typeof profilesCache !== 'undefined' && profilesCache[userId]) return profilesCache[userId];
-    const { data } = await supabaseClient
-        .from('profiles')
-        .select('nombre, avatar_url')
-        .eq('id', userId)
-        .single();
-    if (data && typeof profilesCache !== 'undefined') profilesCache[userId] = data;
-    return data;
-}
 
-function avatarHTML(profile, email, size = 28) {
-    if (profile?.avatar_url) {
-        return `<img src="${profile.avatar_url}" 
-                     style="width:${size}px; height:${size}px; border-radius:50%; object-fit:cover; flex-shrink:0;"/>`;
-    }
-    const inicial = (profile?.nombre || email || '?')[0].toUpperCase();
-    return `<div style="width:${size}px; height:${size}px; border-radius:50%; background:rgba(99,102,241,0.6); 
-                        display:flex; align-items:center; justify-content:center; 
-                        color:white; font-size:${size * 0.4}px; font-weight:600; flex-shrink:0;">
-                ${inicial}
-            </div>`;
-}
+
+
 function ChatView() {
     return `
         <section class="flex flex-col" style="height: calc(100dvh - 170px)">
