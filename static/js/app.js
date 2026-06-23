@@ -24,6 +24,41 @@ function avatarHTML(profile, email, size = 28) {
             </div>`;
 }
 
+//presencia
+let presenceChannel = null;
+
+async function initPresence(session) {
+    if (!session) return;
+
+    const { data: profile } = await supabaseClient
+        .from('profiles')
+        .select('nombre, avatar_url, pais, estado_corto')
+        .eq('id', session.user.id)
+        .single();
+
+    presenceChannel = supabaseClient.channel('presencia-global', {
+        config: { presence: { key: session.user.id } }
+    });
+
+    presenceChannel
+        .on('presence', { event: 'sync' }, () => {
+            const estado = presenceChannel.presenceState();
+            window.dispatchEvent(new CustomEvent('presencia-actualizada', { detail: estado }));
+        })
+        .subscribe(async (status) => {
+            if (status === 'SUBSCRIBED') {
+                await presenceChannel.track({
+                    user_id: session.user.id,
+                    nombre:  profile?.nombre || session.user.email.split('@')[0],
+                    avatar_url: profile?.avatar_url || null,
+                    pais:   profile?.pais || null,
+                    estado_corto: profile?.estado_corto || null,
+                    online_at: new Date().toISOString()
+                });
+            }
+        });
+}
+
 function initParallax() {
     const layers = document.querySelectorAll(".parallax-layer");
     window.addEventListener("scroll", () => {
@@ -64,15 +99,17 @@ window.addEventListener("load", function () {
     // getSession en paralelo sin bloquear el router
     supabaseClient.auth.getSession().then(({ data: { session } }) => {
         if (session) updateNavAuth(session);
+                    initPresence(session);
     });
 
-    supabaseClient.auth.onAuthStateChange((event, session) => {
-        updateNavAuth(session);
-        if (event === "SIGNED_IN" && hasOAuthRedirect) {
-            window.location.hash = "#home";
-            router();
-        }
-    });
+supabaseClient.auth.onAuthStateChange((event, session) => {
+    updateNavAuth(session);
+    if (session) initPresence(session);
+    if (event === "SIGNED_IN" && hasOAuthRedirect) {
+        window.location.hash = "#home";
+        router();
+    }
+});
 
     const hamburgerBtn = document.getElementById("hamburger-btn");
     const mobileMenu = document.getElementById("mobile-menu");
