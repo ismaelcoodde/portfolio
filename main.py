@@ -146,6 +146,39 @@ async def crear_estado(form: EstadoForm):
     else:
         return {"ok": False}
 
+@app.get("/api/usuarios")
+async def get_usuarios():
+    try:
+        respuesta = supabase.auth.admin.list_users()
+        usuarios = respuesta.users if hasattr(respuesta, 'users') else respuesta
+        # Ordenar por created_at descendente y tomar los 5 últimos
+        usuarios_ordenados = sorted(usuarios, key=lambda u: u.created_at or '', reverse=True)[:5]
+        user_ids = [u.id for u in usuarios_ordenados]
+
+        # Obtener profiles de esos usuarios (select * para no fallar si falta alguna columna)
+        profiles_data = {}
+        if user_ids:
+            profiles_result = supabase.table("profiles").select("*").in_("user_id", user_ids).execute()
+            for p in (profiles_result.data or []):
+                profiles_data[p["user_id"]] = p
+
+        resultado = []
+        for u in usuarios_ordenados:
+            profile = profiles_data.get(u.id, {})
+            resultado.append({
+                "user_id": u.id,
+                "email": u.email,
+                "nombre": profile.get("nombre", ""),
+                "avatar_url": profile.get("avatar_url", ""),
+                "pais": profile.get("pais", ""),
+                "created_at": u.created_at or "",
+            })
+
+        return {"ok": True, "usuarios": resultado}
+    except Exception as e:
+        print(f"Error listando usuarios: {e}")
+        return {"ok": False, "usuarios": [], "error": str(e)}
+
 @app.get("/api/comentarios/{estado_id}")
 async def get_comentarios(estado_id: int):
     resultado = supabase.table("comentarios").select("*").eq("estado_id", estado_id).order("creado_en", desc=False).execute()

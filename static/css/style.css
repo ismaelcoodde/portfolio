@@ -1356,14 +1356,29 @@
       top: calc(var(--spacing) * 24);
     }
   }
+  .md\:top-\[430px\] {
+    @media (width >= 48rem) {
+      top: 430px;
+    }
+  }
   .md\:top-\[480px\] {
     @media (width >= 48rem) {
       top: 480px;
     }
   }
+  .md\:top-\[700px\] {
+    @media (width >= 48rem) {
+      top: 700px;
+    }
+  }
   .md\:top-\[875px\] {
     @media (width >= 48rem) {
       top: 875px;
+    }
+  }
+  .md\:top-\[1020px\] {
+    @media (width >= 48rem) {
+      top: 1020px;
     }
   }
   .md\:left-8 {
