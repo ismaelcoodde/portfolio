@@ -310,11 +310,11 @@
       max-width: 96rem;
     }
   }
-  .mx-4 {
-    margin-inline: calc(var(--spacing) * 4);
-  }
   .mx-5 {
     margin-inline: calc(var(--spacing) * 5);
+  }
+  .mx-6 {
+    margin-inline: calc(var(--spacing) * 6);
   }
   .mx-auto {
     margin-inline: auto;
@@ -451,6 +451,9 @@
   .h-9 {
     height: calc(var(--spacing) * 9);
   }
+  .h-10 {
+    height: calc(var(--spacing) * 10);
+  }
   .h-12 {
     height: calc(var(--spacing) * 12);
   }
@@ -502,6 +505,9 @@
   .w-9 {
     width: calc(var(--spacing) * 9);
   }
+  .w-10 {
+    width: calc(var(--spacing) * 10);
+  }
   .w-12 {
     width: calc(var(--spacing) * 12);
   }
@@ -517,6 +523,9 @@
   .w-86 {
     width: calc(var(--spacing) * 86);
   }
+  .w-fit {
+    width: fit-content;
+  }
   .w-full {
     width: 100%;
   }
@@ -531,9 +540,6 @@
   }
   .max-w-6xl {
     max-width: var(--container-6xl);
-  }
-  .max-w-\[140px\] {
-    max-width: 140px;
   }
   .max-w-lg {
     max-width: var(--container-lg);
@@ -628,11 +634,6 @@
   }
   .gap-8 {
     gap: calc(var(--spacing) * 8);
-  }
-  .truncate {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
   }
   .overflow-hidden {
     overflow: hidden;
@@ -899,9 +900,6 @@
   .pr-1 {
     padding-right: var(--spacing);
   }
-  .pb-1 {
-    padding-bottom: var(--spacing);
-  }
   .pl-3 {
     padding-left: calc(var(--spacing) * 3);
   }
@@ -1049,10 +1047,6 @@
       --tw-shadow-color: color-mix(in oklab, color-mix(in oklab, var(--color-green-500) 25%, transparent) var(--tw-shadow-alpha), transparent);
     }
   }
-  .outline {
-    outline-style: var(--tw-outline-style);
-    outline-width: 1px;
-  }
   .filter {
     filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
   }
@@ -1093,6 +1087,10 @@
   .duration-500 {
     --tw-duration: 500ms;
     transition-duration: 500ms;
+  }
+  .select-none {
+    -webkit-user-select: none;
+    user-select: none;
   }
   .group-hover\:scale-105 {
     &:is(:where(.group):hover *) {
@@ -1225,16 +1223,6 @@
         background-color: color-mix(in srgb, oklch(63.7% 0.237 25.331) 10%, transparent);
         @supports (color: color-mix(in lab, red, red)) {
           background-color: color-mix(in oklab, var(--color-red-500) 10%, transparent);
-        }
-      }
-    }
-  }
-  .hover\:bg-white\/5 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: color-mix(in srgb, #fff 5%, transparent);
-        @supports (color: color-mix(in lab, red, red)) {
-          background-color: color-mix(in oklab, var(--color-white) 5%, transparent);
         }
       }
     }
@@ -1378,9 +1366,19 @@
       position: absolute;
     }
   }
+  .md\:fixed {
+    @media (width >= 48rem) {
+      position: fixed;
+    }
+  }
   .md\:top-24 {
     @media (width >= 48rem) {
       top: calc(var(--spacing) * 24);
+    }
+  }
+  .md\:top-\[430px\] {
+    @media (width >= 48rem) {
+      top: 430px;
     }
   }
   .md\:top-\[480px\] {
@@ -1388,19 +1386,24 @@
       top: 480px;
     }
   }
+  .md\:top-\[700px\] {
+    @media (width >= 48rem) {
+      top: 700px;
+    }
+  }
   .md\:top-\[875px\] {
     @media (width >= 48rem) {
       top: 875px;
     }
   }
+  .md\:top-\[1020px\] {
+    @media (width >= 48rem) {
+      top: 1020px;
+    }
+  }
   .md\:left-8 {
     @media (width >= 48rem) {
       left: calc(var(--spacing) * 8);
-    }
-  }
-  .md\:mx-6 {
-    @media (width >= 48rem) {
-      margin-inline: calc(var(--spacing) * 6);
     }
   }
   .md\:block {
@@ -1493,14 +1496,14 @@
       gap: 0;
     }
   }
+  .md\:gap-4 {
+    @media (width >= 48rem) {
+      gap: calc(var(--spacing) * 4);
+    }
+  }
   .md\:overflow-x-hidden {
     @media (width >= 48rem) {
       overflow-x: hidden;
-    }
-  }
-  .md\:overflow-x-visible {
-    @media (width >= 48rem) {
-      overflow-x: visible;
     }
   }
   .md\:border-r {
@@ -1529,9 +1532,9 @@
       padding-top: calc(var(--spacing) * 20);
     }
   }
-  .md\:pb-0 {
+  .md\:pl-80 {
     @media (width >= 48rem) {
-      padding-bottom: 0;
+      padding-left: calc(var(--spacing) * 80);
     }
   }
   .md\:text-left {
@@ -1862,11 +1865,6 @@
   inherits: false;
   initial-value: 0 0 #0000;
 }
-@property --tw-outline-style {
-  syntax: "*";
-  inherits: false;
-  initial-value: solid;
-}
 @property --tw-blur {
   syntax: "*";
   inherits: false;
@@ -2004,7 +2002,6 @@
       --tw-ring-offset-width: 0px;
       --tw-ring-offset-color: #fff;
       --tw-ring-offset-shadow: 0 0 #0000;
-      --tw-outline-style: solid;
       --tw-blur: initial;
       --tw-brightness: initial;
       --tw-contrast: initial;

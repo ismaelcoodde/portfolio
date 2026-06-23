@@ -83,6 +83,15 @@ function initChat() {
     subscribeToMessages();
     cargarUsuarios();
 
+    // Actualiza cada 5 segundos por si cambia la presencia
+    const presenciaInterval = setInterval(() => {
+        if (!document.getElementById('usuarios-lista')) {
+            clearInterval(presenciaInterval);
+            return;
+        }
+        cargarUsuarios();
+    }, 5000);
+
     window.addEventListener('presencia-actualizada', () => {
         cargarUsuarios();
     });
