@@ -85,34 +85,13 @@ function HomeView() {
             </div>
         </div>
 
-        <!-- Usuarios solo desktop -->
-        <div id="home-usuarios" class="hidden md:block md:absolute md:left-8 md:top-[430px] md:w-72">
-            <div style="background:rgba(13,17,23,0.9); border:1px solid rgba(255,255,255,0.1); border-radius:16px; overflow:hidden; backdrop-filter:blur(10px);">
-                <div class="p-4 border-b border-white/10">
-                    <p class="text-indigo-400 text-xs font-medium tracking-[0.3em] uppercase mb-1">Comunidad</p>
-                    <h3 class="text-sm font-bold">Usuarios</h3>
-                </div>
-                <div id="home-usuarios-lista" class="p-3 flex flex-col gap-1">
-                    <p class="text-slate-500 text-xs text-center py-2">Cargando...</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Modal perfil usuario -->
-        <div id="user-profile-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:9999; background:rgba(0,0,0,0.85); backdrop-filter:blur(8px); align-items:center; justify-content:center;" onclick="closeUserProfileModal()">
-            <div onclick="event.stopPropagation()" style="background:rgba(13,17,23,0.98); border:1px solid rgba(255,255,255,0.1); border-radius:20px; padding:24px; width:90%; max-width:360px; position:relative;">
-                <button onclick="closeUserProfileModal()" style="position:absolute; top:12px; right:12px; background:rgba(255,255,255,0.1); border:none; border-radius:50%; width:28px; height:28px; color:white; cursor:pointer; font-size:14px;">✕</button>
-                <div id="user-profile-content" style="text-align:center;"></div>
-            </div>
-        </div>
-
         <!-- GitHub Stats solo desktop -->
-        <div id="github-card" class="md:absolute mt-16 mx-5 md:left-8 md:top-[1020px] md:w-72">
+        <div id="github-card" class="md:absolute mt-16 mx-5 md:left-8 md:top-[875px] md:w-72">
             <p class="text-slate-500 text-xs text-center">Cargando GitHub...</p>
         </div>
 
         <!-- Luna widget -->
-        <div id="luna-widget" class="hidden md:block md:absolute md:left-8 md:top-[700px] md:w-72 mt-4">
+        <div id="luna-widget" class="hidden md:block md:absolute md:left-8 md:top-[480px] md:w-72 mt-4">
             <p class="text-slate-500 text-xs text-center">Cargando luna...</p>
         </div>
 
@@ -900,142 +879,6 @@ function initContactMobile() {
   });
 }
 
-// Usuarios online - conjunto de user_ids conectados
-const usuariosOnline = new Set();
-
-async function initUsuariosOnline() {
-  const channel = supabaseClient.channel('online-users', {
-    config: { presence: { key: 'user_id' } }
-  });
-
-  const { data: { session } } = await supabaseClient.auth.getSession();
-  if (session) {
-    await channel.track({ user_id: session.user.id });
-  }
-
-  channel.on('presence', { event: 'sync' }, () => {
-    const state = channel.presenceState();
-    usuariosOnline.clear();
-    Object.values(state).forEach(presences => {
-      presences.forEach(p => usuariosOnline.add(p.user_id));
-    });
-    actualizarPuntosOnline();
-  });
-
-  channel.subscribe();
-}
-
-function actualizarPuntosOnline() {
-  document.querySelectorAll('[data-user-id]').forEach(el => {
-    const userId = el.dataset.userId;
-    const dot = el.querySelector('.online-dot');
-    if (dot) {
-      if (usuariosOnline.has(userId)) {
-        dot.style.background = '#22c55e';
-        dot.style.boxShadow = '0 0 6px rgba(34,197,94,0.6)';
-      } else {
-        dot.style.background = '#475569';
-        dot.style.boxShadow = 'none';
-      }
-    }
-  });
-}
-
-async function cargarUsuariosHome() {
-  try {
-    const res = await fetch('/api/usuarios');
-    const data = await res.json();
-    const container = document.getElementById('home-usuarios-lista');
-    if (!container || !data.ok || !data.usuarios.length) {
-      if (container) container.innerHTML = '<p class="text-slate-500 text-xs text-center py-2">No hay usuarios aún</p>';
-      return;
-    }
-
-    // Guardar datos globalmente para el modal
-    window._usuariosData = data.usuarios;
-
-    container.innerHTML = data.usuarios.map((u, i) => {
-      const nombre = u.nombre || u.email.split('@')[0];
-      const avatar = u.avatar_url
-        ? `<img src="${u.avatar_url}" style="width:36px; height:36px; border-radius:50%; object-fit:cover; flex-shrink:0;"/>`
-        : `<div style="width:36px; height:36px; border-radius:50%; background:rgba(99,102,241,0.6); display:flex; align-items:center; justify-content:center; color:white; font-size:14px; font-weight:600; flex-shrink:0;">${nombre[0].toUpperCase()}</div>`;
-
-      return `
-        <div data-user-id="${u.user_id}" onclick="abrirUserProfileModal(${i})" 
-             style="display:flex; align-items:center; gap:10px; padding:8px; border-radius:10px; cursor:pointer; transition:background 0.2s;" 
-             onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
-          <div style="position:relative;">
-            ${avatar}
-            <div class="online-dot" style="position:absolute; bottom:0; right:0; width:10px; height:10px; border-radius:50%; background:#475569; border:2px solid rgba(13,17,23,0.9);"></div>
-          </div>
-          <div style="min-width:0; flex:1;">
-            <p style="font-size:12px; color:#e2e8f0; margin:0; font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${nombre}</p>
-            ${u.pais ? `<p style="font-size:10px; color:#64748b; margin:1px 0 0;">${u.pais}</p>` : ''}
-          </div>
-        </div>`;
-    }).join('');
-
-    // Actualizar puntos después de renderizar
-    setTimeout(actualizarPuntosOnline, 100);
-  } catch (error) {
-    console.error('Error cargando usuarios:', error);
-  }
-}
-
-function abrirUserProfileModal(index) {
-  const usuario = window._usuariosData ? window._usuariosData[index] : null;
-  if (!usuario) return;
-  const modal = document.getElementById('user-profile-modal');
-  const content = document.getElementById('user-profile-content');
-  if (!modal || !content) return;
-
-  const nombre = usuario.nombre || usuario.email.split('@')[0];
-  const avatar = usuario.avatar_url
-    ? `<img src="${usuario.avatar_url}" style="width:80px; height:80px; border-radius:50%; object-fit:cover; border:3px solid rgba(99,102,241,0.4); margin:0 auto; display:block;"/>`
-    : `<div style="width:80px; height:80px; border-radius:50%; background:rgba(99,102,241,0.6); display:flex; align-items:center; justify-content:center; color:white; font-size:32px; font-weight:600; margin:0 auto;">${nombre[0].toUpperCase()}</div>`;
-
-  const online = usuariosOnline.has(usuario.user_id);
-
-  content.innerHTML = `
-    <div style="margin-bottom:16px;">${avatar}</div>
-    <p style="font-size:18px; font-weight:700; color:#e2e8f0; margin:0 0 4px;">${nombre}</p>
-    <div style="display:flex; align-items:center; justify-content:center; gap:6px; margin-bottom:16px;">
-      <div style="width:8px; height:8px; border-radius:50%; background:${online ? '#22c55e' : '#475569'}; ${online ? 'box-shadow:0 0 6px rgba(34,197,94,0.6);' : ''}"></div>
-      <span style="font-size:12px; color:${online ? '#22c55e' : '#64748b'};">${online ? 'En línea' : 'Desconectado'}</span>
-    </div>
-    <div style="display:flex; flex-direction:column; gap:8px;">
-      ${usuario.pais ? `
-        <div style="background:rgba(255,255,255,0.05); border-radius:10px; padding:10px 14px; display:flex; align-items:center; gap:10px;">
-          <span style="font-size:16px;">🌍</span>
-          <div>
-            <p style="font-size:10px; color:#64748b; margin:0; text-transform:uppercase; letter-spacing:0.05em;">País</p>
-            <p style="font-size:13px; color:#e2e8f0; margin:2px 0 0;">${usuario.pais}</p>
-          </div>
-        </div>` : ''}
-      <div style="background:rgba(255,255,255,0.05); border-radius:10px; padding:10px 14px; display:flex; align-items:center; gap:10px;">
-        <span style="font-size:16px;">📧</span>
-        <div>
-          <p style="font-size:10px; color:#64748b; margin:0; text-transform:uppercase; letter-spacing:0.05em;">Email</p>
-          <p style="font-size:13px; color:#e2e8f0; margin:2px 0 0;">${usuario.email}</p>
-        </div>
-      </div>
-      <div style="background:rgba(255,255,255,0.05); border-radius:10px; padding:10px 14px; display:flex; align-items:center; gap:10px;">
-        <span style="font-size:16px;">📅</span>
-        <div>
-          <p style="font-size:10px; color:#64748b; margin:0; text-transform:uppercase; letter-spacing:0.05em;">Registro</p>
-          <p style="font-size:13px; color:#e2e8f0; margin:2px 0 0;">${new Date(usuario.created_at).toLocaleDateString('es-ES', { day:'numeric', month:'short', year:'numeric' })}</p>
-        </div>
-      </div>
-    </div>`;
-
-  modal.style.cssText = "display:flex; position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:9999; background:rgba(0,0,0,0.85); backdrop-filter:blur(8px); align-items:center; justify-content:center;";
-}
-
-function closeUserProfileModal() {
-  const modal = document.getElementById('user-profile-modal');
-  if (modal) modal.style.cssText = "display:none;";
-}
-
 async function initHome() {
   initProjectCard();
   await cargarFotosRecientes();
@@ -1045,7 +888,5 @@ async function initHome() {
   await cargarGithubStats();
   await initHomeChat();
   await cargarFaseLunar();
-  await cargarUsuariosHome();
-  initUsuariosOnline();
   initContactMobile();
 }
