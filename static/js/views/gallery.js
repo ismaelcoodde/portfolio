@@ -36,18 +36,18 @@ async function initGallery() {
     const uploadBtn = document.getElementById('upload-btn');
     if (uploadBtn) uploadBtn.addEventListener('click', openUploadModal);
 
-    supabaseClient.auth.onAuthStateChange((event, session) => {
-        if (session) {
-            const btn = document.getElementById('upload-btn');
-            if (btn) btn.classList.remove('hidden');
-        }
-    });
-
-    const { data: { session } } = await supabaseClient.auth.getSession();
-    if (session) {
+supabaseClient.auth.onAuthStateChange((event, session) => {
+    if (session && session.user.email === 'ibcruzismael@gmail.com') {
         const btn = document.getElementById('upload-btn');
         if (btn) btn.classList.remove('hidden');
     }
+});
+
+const { data: { session } } = await supabaseClient.auth.getSession();
+if (session && session.user.email === 'ibcruzismael@gmail.com') {
+    const btn = document.getElementById('upload-btn');
+    if (btn) btn.classList.remove('hidden');
+}
 }
 
 async function loadPhotos() {

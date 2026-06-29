@@ -44,8 +44,8 @@ function ChatView() {
 
             </div>
 
-            <!-- Panel derecho: chat -->
-            <div class="flex-1 flex flex-col min-h-0">
+            <!-- Panel central: chat -->
+            <div class="flex-1 flex flex-col min-h-0 md:border-r border-white/10">
 
                 <!-- Header chat -->
                 <div class="p-4 md:p-6 border-b border-white/10">
@@ -53,13 +53,59 @@ function ChatView() {
                     <h2 class="text-xl md:text-2xl font-bold">Chat en vivo</h2>
                 </div>
 
-
                 <div id="messages-container"
                      class="flex-1 overflow-y-auto p-4 md:p-6 flex flex-col gap-4 min-h-0">
                     <p class="text-slate-500 text-sm text-center">Un momento...</p>
                 </div>
 
                 <div id="chat-input-area" class="p-4 border-t border-white/10 flex-shrink-0">
+                </div>
+
+            </div>
+
+            <!-- Panel derecho: tablón -->
+            <div class="md:w-80 flex flex-col flex-shrink-0 border-t md:border-t-0 md:border-l border-white/10">
+
+                <!-- Header tablón -->
+                <div class="p-4 md:p-6 border-b border-white/10 flex items-center justify-between">
+                    <div>
+                        <p class="text-indigo-400 text-xs font-medium tracking-[0.3em] uppercase mb-1">Comunidad</p>
+                        <h2 class="text-xl md:text-2xl font-bold">Tablón</h2>
+                    </div>
+                    <button id="nuevo-post-btn"
+                            style="display:none;"
+                            class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 rounded-lg text-white text-xs font-medium transition-colors duration-300">
+                        + Publicar
+                    </button>
+                </div>
+
+                <!-- Formulario nuevo post (oculto por defecto) -->
+                <div id="nuevo-post-form" style="display:none;" class="p-4 border-b border-white/10 flex flex-col gap-3">
+                    <textarea id="post-descripcion"
+                              placeholder="¿Qué quieres compartir?"
+                              class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3
+                                     text-white placeholder-slate-600 text-sm resize-none
+                                     focus:outline-none focus:border-indigo-500 transition-colors duration-300"
+                              rows="2"></textarea>
+                    <label class="flex items-center gap-2 cursor-pointer text-slate-400 text-sm hover:text-slate-300 transition-colors">
+                        <span id="imagen-label">📎 Adjuntar imagen</span>
+                        <input id="post-imagen" type="file" accept="image/*" class="hidden"/>
+                    </label>
+                    <div class="flex gap-2">
+                        <button id="publicar-btn"
+                                class="flex-1 px-4 py-2 bg-indigo-600 hover:bg-indigo-500 rounded-xl text-white text-sm font-medium transition-colors duration-300">
+                            Publicar
+                        </button>
+                        <button id="cancelar-post-btn"
+                                class="px-4 py-2 bg-white/5 hover:bg-white/10 rounded-xl text-slate-400 text-sm transition-colors duration-300">
+                            Cancelar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Feed de posts -->
+                <div id="posts-container" class="flex-1 overflow-y-auto flex flex-col">
+                    <p class="text-slate-500 text-xs text-center p-6">Cargando...</p>
                 </div>
 
             </div>
@@ -82,6 +128,7 @@ function initChat() {
     loadMessages();
     subscribeToMessages();
     cargarUsuarios();
+    initTablon();
 
     // Actualiza cada 5 segundos por si cambia la presencia
     const presenciaInterval = setInterval(() => {
@@ -354,4 +401,175 @@ function subscribeToMessages() {
             }
         )
         .subscribe();
+}
+
+async function initTablon() {
+    const { data: { session } } = await supabaseClient.auth.getSession();
+
+    // Mostrar botón publicar solo si hay sesión
+    const btn = document.getElementById('nuevo-post-btn');
+    if (btn && session) btn.style.display = 'block';
+
+    // Toggle formulario
+    document.getElementById('nuevo-post-btn')?.addEventListener('click', () => {
+        const form = document.getElementById('nuevo-post-form');
+        form.style.display = form.style.display === 'none' ? 'flex' : 'none';
+        form.style.flexDirection = 'column';
+    });
+
+    document.getElementById('cancelar-post-btn')?.addEventListener('click', () => {
+        document.getElementById('nuevo-post-form').style.display = 'none';
+        document.getElementById('post-descripcion').value = '';
+        document.getElementById('post-imagen').value = '';
+        document.getElementById('imagen-label').textContent = '📎 Adjuntar imagen';
+    });
+
+    // Preview nombre del archivo seleccionado
+    document.getElementById('post-imagen')?.addEventListener('change', (e) => {
+        const archivo = e.target.files[0];
+        if (archivo) {
+            document.getElementById('imagen-label').textContent = `✅ ${archivo.name}`;
+        }
+    });
+
+    document.getElementById('publicar-btn')?.addEventListener('click', publicarPost);
+
+    // Cargar posts existentes
+    await cargarPosts();
+
+    // Suscripción realtime
+    supabaseClient
+        .channel('posts-room')
+        .on('postgres_changes',
+            { event: 'INSERT', schema: 'public', table: 'posts' },
+            async (payload) => {
+                const container = document.getElementById('posts-container');
+                if (!container) return;
+                const placeholder = container.querySelector('.posts-placeholder');
+                if (placeholder) placeholder.remove();
+                const perfil = await getProfile(payload.new.user_id);
+                container.insertAdjacentHTML('afterbegin', renderPost(payload.new, perfil));
+            }
+        )
+        .subscribe();
+}
+
+async function cargarPosts() {
+    const container = document.getElementById('posts-container');
+    if (!container) return;
+
+    const { data: posts, error } = await supabaseClient
+        .from('posts')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+    if (error || !posts || posts.length === 0) {
+        container.innerHTML = '<p class="posts-placeholder text-slate-500 text-xs text-center p-6">Aún no hay publicaciones.</p>';
+        return;
+    }
+
+    const htmlPosts = [];
+    for (const post of posts) {
+        const perfil = await getProfile(post.user_id);
+        htmlPosts.push(renderPost(post, perfil));
+    }
+    container.innerHTML = htmlPosts.join('');
+}
+
+async function publicarPost() {
+    const descripcion = document.getElementById('post-descripcion').value.trim();
+    const archivoInput = document.getElementById('post-imagen');
+    const archivo = archivoInput.files[0];
+
+    if (!descripcion && !archivo) return;
+
+    const { data: { session } } = await supabaseClient.auth.getSession();
+    if (!session) return;
+
+    const btn = document.getElementById('publicar-btn');
+    btn.textContent = 'Publicando...';
+    btn.disabled = true;
+
+    let imagen_url = null;
+
+    // Subir imagen si hay una
+    if (archivo) {
+        const extension = archivo.name.split('.').pop();
+        const nombreArchivo = `${session.user.id}/${Date.now()}.${extension}`;
+
+        const { error: uploadError } = await supabaseClient.storage
+            .from('posts-images')
+            .upload(nombreArchivo, archivo);
+
+        if (uploadError) {
+            console.error('Error subiendo imagen:', uploadError);
+            btn.textContent = 'Publicar';
+            btn.disabled = false;
+            return;
+        }
+
+        const { data: urlData } = supabaseClient.storage
+            .from('posts-images')
+            .getPublicUrl(nombreArchivo);
+
+        imagen_url = urlData.publicUrl;
+    }
+
+    // Insertar post en la tabla
+    const { error } = await supabaseClient
+        .from('posts')
+        .insert({
+            user_id: session.user.id,
+            descripcion: descripcion || null,
+            imagen_url: imagen_url
+        });
+
+    if (error) {
+        console.error('Error publicando:', error);
+        btn.textContent = 'Publicar';
+        btn.disabled = false;
+        return;
+    }
+
+    // Limpiar formulario
+    document.getElementById('post-descripcion').value = '';
+    archivoInput.value = '';
+    document.getElementById('imagen-label').textContent = '📎 Adjuntar imagen';
+    document.getElementById('nuevo-post-form').style.display = 'none';
+    btn.textContent = 'Publicar';
+    btn.disabled = false;
+}
+
+function renderPost(post, perfil) {
+    const fecha = new Date(post.created_at).toLocaleDateString('es-ES', {
+        day: '2-digit', month: 'short', year: 'numeric'
+    });
+    const hora = new Date(post.created_at).toLocaleTimeString('es-ES', {
+        hour: '2-digit', minute: '2-digit'
+    });
+    const nombre = perfil?.nombre || 'Usuario';
+    const avatar = avatarHTML(perfil, nombre, 32);
+
+    return `
+        <div style="padding:16px; border-bottom:1px solid rgba(255,255,255,0.06);">
+            <!-- Cabecera: avatar + nombre + fecha -->
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+                ${avatar}
+                <div style="min-width:0; flex:1;">
+                    <p style="font-size:13px; color:#e2e8f0; margin:0; font-weight:500;">${nombre}</p>
+                    <p style="font-size:11px; color:#475569; margin:0;">${fecha} · ${hora}</p>
+                </div>
+            </div>
+            <!-- Imagen -->
+            ${post.imagen_url ? `
+                <img src="${post.imagen_url}"
+                     style="width:100%; border-radius:12px; object-fit:cover; max-height:200px; margin-bottom:${post.descripcion ? '10px' : '0'};"
+                     loading="lazy"/>
+            ` : ''}
+            <!-- Descripción -->
+            ${post.descripcion ? `
+                <p style="font-size:13px; color:#cbd5e1; margin:0; line-height:1.5;">${post.descripcion}</p>
+            ` : ''}
+        </div>
+    `;
 }
