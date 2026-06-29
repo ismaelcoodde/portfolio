@@ -24,7 +24,7 @@ function avatarHTML(profile, email, size = 28) {
 
 function ChatView() {
     return `
-        <section class="flex flex-col md:flex-row" style="height: calc(100dvh - 64px)">
+        <section class="flex flex-col md:flex-row" style="min-height: calc(100dvh - 64px)">
 
             <!-- Panel izquierdo -->
             <div class="md:w-64 md:border-r border-white/10 flex flex-col flex-shrink-0">
