@@ -1,13 +1,15 @@
 const profilesCache = {};
 
 async function getProfile(userId) {
-    if (profilesCache[userId]) return profilesCache[userId];
+    if (typeof profilesCache !== 'undefined' && profilesCache[userId] && profilesCache[userId].pais !== undefined) {
+        return profilesCache[userId];
+    }
     const { data } = await supabaseClient
         .from('profiles')
-        .select('nombre, avatar_url')
+        .select('nombre, avatar_url, pais, estado_corto')
         .eq('id', userId)
         .single();
-    if (data) profilesCache[userId] = data;
+    if (data && typeof profilesCache !== 'undefined') profilesCache[userId] = data;
     return data;
 }
 
