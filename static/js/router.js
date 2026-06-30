@@ -13,6 +13,10 @@ const routes = {
   "#ahora": AhoraView,
   "#sobre-mi": SobreMiView,
   "#suscripcion": SuscripcionView,
+  "#biblia": BibliaView,
+  "#biblia-archivo": BibliaArchivoView,
+
+
 };
 
 // Cada vista puede tener una función que se ejecuta
@@ -27,6 +31,9 @@ const inits = {
   "#ahora": initAhora,
   "#sobre-mi": initSobreMi,
   "#suscripcion": initSuscripcion,
+  "#biblia": initBiblia,
+  "#biblia-archivo": initBibliaArchivo,
+
 };
 
 function router() {

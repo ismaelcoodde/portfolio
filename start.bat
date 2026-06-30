@@ -1,4 +1,31 @@
 @echo off
-start "Servidor FastAPI" cmd /k "cd /d %~dp0 && venv\Scripts\activate && uvicorn main:app --reload"
-start "Tailwind Watch" cmd /k "cd /d %~dp0 && npx @tailwindcss/cli -i static/css/input.css -o static/css/style.css --watch"
-start "Browser Sync" cmd /k "cd /d %~dp0 && timeout 5 && npx browser-sync start --proxy localhost:8000 --files static --reload-delay 500 --open"
+title Servidor FastAPI - Portfolio
+
+REM Esto hace que el .bat siempre use la carpeta donde esta guardado el archivo,
+REM sin importar desde donde lo ejecutes ni si mueves la carpeta del proyecto.
+cd /d "%~dp0"
+
+echo ==========================================
+echo  Carpeta del proyecto: %cd%
+echo ==========================================
+echo.
+
+REM Comprueba que existe el entorno virtual antes de intentar activarlo
+if not exist "venv\Scripts\activate.bat" (
+    echo [ERROR] No se encontro el entorno virtual en venv\Scripts\activate.bat
+    echo Asegurate de que este .bat esta en la misma carpeta que main.py
+    pause
+    exit /b
+)
+
+call venv\Scripts\activate.bat
+
+echo.
+echo Entorno virtual activado correctamente.
+echo Iniciando servidor FastAPI en http://localhost:8000
+echo.
+
+uvicorn main:app --reload
+
+REM Si el servidor se cierra o falla, deja la ventana abierta para poder leer el error
+pause

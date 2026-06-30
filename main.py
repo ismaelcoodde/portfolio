@@ -278,6 +278,142 @@ async def get_luna():
     except Exception as e:
         return {"error": str(e)}
     
+# ---------- Lectura Bíblica ----------
+
+FECHA_INICIO_BIBLIA = "2026-06-30"
+CAPITULOS_POR_DIA = 7
+TOTAL_CAPITULOS = 1189
+
+def calcular_dia_actual():
+    from datetime import datetime
+    inicio = datetime.strptime(FECHA_INICIO_BIBLIA, "%Y-%m-%d")
+    hoy = datetime.now()
+    dias_transcurridos = (hoy - inicio).days
+    if dias_transcurridos < 0:
+        return 0
+    return dias_transcurridos
+
+@app.get("/api/biblia/hoy")
+async def lectura_de_hoy():
+    dia = calcular_dia_actual()
+    orden_inicio = dia * CAPITULOS_POR_DIA + 1
+    orden_fin = min(orden_inicio + CAPITULOS_POR_DIA - 1, TOTAL_CAPITULOS)
+
+    if orden_inicio > TOTAL_CAPITULOS:
+        return {"ok": True, "completado": True, "capitulos": []}
+
+    rango = supabase.table("orden_biblia") \
+        .select("libro, capitulo, orden") \
+        .gte("orden", orden_inicio) \
+        .lte("orden", orden_fin) \
+        .order("orden") \
+        .execute()
+
+    capitulos = []
+    for item in rango.data:
+        capitulo_data = await obtener_o_descargar_capitulo(item["libro"], item["capitulo"], item["orden"])
+        capitulos.append(capitulo_data)
+
+    return {"ok": True, "completado": False, "dia": dia + 1, "capitulos": capitulos}
+
+
+
+NUMERO_LIBRO = {
+    "Génesis": 1, "Éxodo": 2, "Levítico": 3, "Números": 4, "Deuteronomio": 5,
+    "Josué": 6, "Jueces": 7, "Rut": 8, "1 Samuel": 9, "2 Samuel": 10,
+    "1 Reyes": 11, "2 Reyes": 12, "1 Crónicas": 13, "2 Crónicas": 14, "Esdras": 15,
+    "Nehemías": 16, "Ester": 17, "Job": 18, "Salmos": 19, "Proverbios": 20,
+    "Eclesiastés": 21, "Cantares": 22, "Isaías": 23, "Jeremías": 24, "Lamentaciones": 25,
+    "Ezequiel": 26, "Daniel": 27, "Oseas": 28, "Joel": 29, "Amós": 30,
+    "Abdías": 31, "Jonás": 32, "Miqueas": 33, "Nahúm": 34, "Habacuc": 35,
+    "Sofonías": 36, "Hageo": 37, "Zacarías": 38, "Malaquías": 39,
+    "Mateo": 40, "Marcos": 41, "Lucas": 42, "Juan": 43, "Hechos": 44,
+    "Romanos": 45, "1 Corintios": 46, "2 Corintios": 47, "Gálatas": 48, "Efesios": 49,
+    "Filipenses": 50, "Colosenses": 51, "1 Tesalonicenses": 52, "2 Tesalonicenses": 53,
+    "1 Timoteo": 54, "2 Timoteo": 55, "Tito": 56, "Filemón": 57, "Hebreos": 58,
+    "Santiago": 59, "1 Pedro": 60, "2 Pedro": 61, "1 Juan": 62, "2 Juan": 63,
+    "3 Juan": 64, "Judas": 65, "Apocalipsis": 66
+}
+
+async def obtener_o_descargar_capitulo(libro: str, capitulo: int, orden: int):
+    existente = supabase.table("lectura_biblica") \
+        .select("*") \
+        .eq("libro", libro) \
+        .eq("capitulo", capitulo) \
+        .execute()
+
+    if existente.data:
+        return existente.data[0]
+
+    numero_libro = NUMERO_LIBRO.get(libro)
+    url = f"https://api.getbible.net/v2/sse/{numero_libro}/{capitulo}.json"
+
+    async with httpx.AsyncClient(timeout=15.0) as client:
+        res = await client.get(url)
+        data = res.json()
+
+    versiculos = data.get("verses", [])
+    texto = "\n".join(v["text"].strip() for v in versiculos)
+
+    nuevo = supabase.table("lectura_biblica").insert({
+        "libro": libro,
+        "capitulo": capitulo,
+        "texto": texto,
+        "orden": orden
+    }).execute()
+
+    return nuevo.data[0]
+
+
+@app.get("/api/biblia/progreso")
+async def progreso_biblia():
+    leidos = supabase.table("lectura_biblica").select("id", count="exact").execute()
+    total_leidos = leidos.count or 0
+    porcentaje = round((total_leidos / TOTAL_CAPITULOS) * 100, 1)
+    return {
+        "ok": True,
+        "leidos": total_leidos,
+        "total": TOTAL_CAPITULOS,
+        "porcentaje": porcentaje
+    }
+    
+
+
+@app.get("/api/biblia/libro/{libro}")
+async def capitulos_de_libro(libro: str):
+    resultado = supabase.table("lectura_biblica") \
+        .select("*") \
+        .eq("libro", libro) \
+        .order("capitulo") \
+        .execute()
+    return {"ok": True, "capitulos": resultado.data}
+
+@app.get("/api/biblia/resumen-libros")
+async def resumen_libros():
+    todos = supabase.table("orden_biblia") \
+        .select("libro, capitulo, orden") \
+        .order("orden") \
+        .execute()
+
+    leidos = supabase.table("lectura_biblica") \
+        .select("libro, capitulo") \
+        .execute()
+
+    leidos_set = {(item["libro"], item["capitulo"]) for item in leidos.data}
+
+    libros = {}
+    for item in todos.data:
+        libro = item["libro"]
+        if libro not in libros:
+            libros[libro] = {"libro": libro, "total_capitulos": 0, "leidos": 0, "orden_inicio": item["orden"]}
+        libros[libro]["total_capitulos"] += 1
+        if (libro, item["capitulo"]) in leidos_set:
+            libros[libro]["leidos"] += 1
+
+    lista_libros = sorted(libros.values(), key=lambda x: x["orden_inicio"])
+
+    return {"ok": True, "libros": lista_libros}
+    
 #Stripe
 stripe.api_key = os.getenv("STRIPE_SECRET_KEY")
 STRIPE_PRICE_ID = os.getenv("STRIPE_PRICE_ID")

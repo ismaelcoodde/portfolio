@@ -19,11 +19,33 @@ function SobreMiView() {
                         <p class="text-white font-medium">Ismael Cruz Fernandez</p>
                         <p class="text-slate-500 text-sm">Palma de Mallorca · 1994</p>
                     </div>
-                    <p class="text-slate-400 text-sm leading-relaxed text-center max-w-md">
-                        En construcción
-                    </p>
-                </div>
+               <p class="text-slate-400 text-sm leading-relaxed text-center max-w-md">
+    En construcción
+</p>
+</div>
 
+<!-- Lectura bíblica -->
+<a href="#biblia" style="text-decoration:none;"
+   class="bg-white/5 border border-white/10 rounded-2xl p-6 flex items-center gap-4
+          hover:bg-white/10 hover:border-indigo-500/30 transition-all duration-300">
+    <div style="width:48px; height:48px; border-radius:12px; background:rgba(99,102,241,0.15);
+                display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#818cf8" stroke-width="1.8">
+            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+        </svg>
+    </div>
+    <div>
+        <p class="text-white font-medium text-sm">Mi camino con Dios</p>
+        <p class="text-slate-500 text-sm max-w-md mx-auto leading-relaxed">
+    Lectura de la Biblia completa en 6 meses, 7 capitulos diarios.
+</p>
+    </div>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="2"
+         style="margin-left:auto; flex-shrink:0;">
+        <polyline points="9 18 15 12 9 6"/>
+    </svg>
+</a>
                 <!-- Salud -->
                 <div>
                     <p class="text-slate-500 text-xs font-medium tracking-[0.3em] uppercase mb-4 text-center">
